@@ -1,0 +1,177 @@
+osa
+========================================================
+author: Nicholas L Medina
+date: December 29, 2018
+autosize: true
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(ggplot2)
+library(dplyr)
+```
+
+========================================================
+
+```{r dat}
+dat <- read.csv("~/Documents/u/0/dat/osa/osa.csv")
+head(dat)
+dat <- dat[-585,]
+dat <- subset(dat, subset=dat$fam!="-" &&
+                dat$dist!=" ")
+```
+
+===
+# Osa peninsula, Costa Rica
+```{r map}
+plot(dat$W,dat$N)
+#!(~/Documents/u/0/dat/osa/map.png)
+```
+- _Bombacopsis quinata_ plantation, abandoned 20y
+
+===
+
+```{r group_plot_dist}
+# 2 groupings to average correctly & simplify plot
+datkgp <- group_by(dat, dist,plot)
+datkgp <- summarise(datkgp, kg=mean(kg),
+                    S=length(unique(fam)))
+```
+
+```{r group_dist}
+datkg <- group_by(datkgp, dist)
+datkg <- summarise(datkg,
+                   kg.se=sd(kg)/sqrt(length(kg)),
+                   kg=mean(kg),
+                   S.se=sd(S)/sqrt(length(S)),
+                   S=mean(S))
+```
+
+# 1˚ forest edge effects on adjacent 2˚ restoration
+```{r dist_kg}
+ggplot(datkg, aes(x=dist,y=kg)) +
+  geom_point(stat='identity', size=3) +
+  geom_errorbar(aes(ymax=kg+kg.se, ymin=kg-kg.se)) +
+  theme_classic()
+```
+
+```{r stats_dist}
+summary(aov(kg~dist,datkgp))  #notreal
+```
+
+===
+
+```{r group_dist_kg_fam}
+datkgpf <- group_by(dat, dist,plot,fam)
+datkgpf <- summarise(datkgpf, kg=mean(kg))
+
+datkgf <- group_by(datkgpf, dist,fam)
+datkgf <- summarise(datkgf,
+                    kg.se=sd(kg)/sqrt(length(kg)),
+                    kg=mean(kg),
+                    kg.se.pos=kg+kg.se,
+                    kg.se.neg=kg-kg.se)
+```
+
+```{r stats_fam}
+stats_fam <- aov(kg ~ fam, datkgpf)
+summary(stats_fam)  #famfx
+tukey_fam <- TukeyHSD(stats_fam)
+tukey_fam_p <- subset(tukey_fam$fam[,4],
+                      subset = tukey_fam$fam[,4] < 0.1)
+head(tukey_fam_p)
+```
+
+
+===
+
+# Family frequency, ordered by biomass
+```{r fam_hist}
+# try to order by biomass
+dat$fam.kg <- factor(dat$fam, levels=
+                    unique(levels(dat$fam)[order(datkgf$kg)]))
+ggplot(dat, aes(fam.kg)) +
+  geom_bar() +
+  #facet_wrap(~dist) +
+  theme(axis.text.x=element_text(angle=-45,vjust=1,hjust=0))
+```
+
+===
+
+# Family frequency by edge distance
+```{r fam_hist_dist}
+# run fam.kg from previous chunk
+ggplot(dat, aes(fam.kg)) +
+  geom_bar() +
+  facet_wrap(~dist) +
+  theme(axis.text.x=element_text(angle=-45,vjust=1,hjust=0))
+```
+- Medium-biomass families most common/stems, e.g. Vochysia, Tilia
+
+===
+
+# Regeneration by family
+
+```{r dist_kg_fam}
+ggplot(datkgf, aes(x=dist,y=kg,fill=fam)) +
+  geom_bar(stat='identity') +
+  theme_classic()
+#ggplot(datkgf, aes(x=dist,y=kg,fill=fam)) +
+  geom_bar(stat='identity',
+           position=position_fill()) +
+  theme_classic()
+```
+- Highest biomass from low-occurrence Fabaceae, at middle (150m) range
+- Fabaceae=competitor, Vochysia/Tilia=disperser?
+
+===
+
+# Edge effects on family diversity
+
+```{r div}
+ggplot(datkg, aes(x=dist,y=S)) +
+  geom_point(stat='identity') +
+  geom_errorbar(aes(ymax=S+S.se,ymin=S-S.se)) +
+  theme_classic()
+```
+- 150m: contains most (~40) _Inga_ (Fabaceae), but are small
+- N fert for Bombaceae?
+
+===
+
+# Biomass by family
+```{r kg_fam_hist_dist}
+ggplot(dat, aes(x=fam.kg,y=kg,fill=dist)) +
+  geom_bar(stat='identity') +
+  #facet_wrap(~dist) +
+  theme(axis.text.x=element_text(angle=-45,vjust=1,hjust=0))
+```
+- Most Bombaceae mass not co-occurring with _Inga_ at 150m
+
+===
+
+## Extra: Family biomass at 150m
+```{r fam_kg}
+dat150 <- dat[dat$dist==150,]
+ggplot(dat150, aes(x=fam.kg,y=kg)) +
+  geom_bar(stat='identity') +
+  #facet_wrap(~dist) +
+  theme(axis.text.x=element_text(angle=-45,vjust=1,hjust=0))
+```
+
+===
+
+# Biomass by family richness...
+```{r kgS}
+# run early group_plot chunk before this
+ggplot(datkgp,aes(x=S,y=kg)) +
+  geom_point() +
+  theme_classic()
+```
+
+===
+
+```{r map_kg}
+ggplot(datkgp,aes(x=dat))
+```
+

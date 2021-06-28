@@ -66,8 +66,8 @@ with *D* in cm, *H* in m, and *p* in g cm\^-3. Measured DBHs and heights were us
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo=F)
 #loadpacks
-library(tidyverse)
-library(BIOMASS)
+
+
 library(rstatix)
 library(ggpubr)
 library(ggbeeswarm) #jitter/quasi-random
@@ -78,44 +78,7 @@ library(vegan)
 styleOsa <- theme_bw() +
   theme(text = element_text(size = 12))
 theme_set(styleOsa)
-#import
-setwd("~/Documents/u/0/art/res/GitHub/dat/osa")
-dat <- read.csv("osa.csv")
-```
 
-```{r newTaxa2017}
-taxasp <- correctTaxo(genus = dat$gen, 
-                      species = dat$sp)  #notneeded
-
-taxa <- getTaxonomy(dat$gen)  #useful
-dat$fam <- taxa$family
-getWD <- getWoodDensity(genus = dat$gen, 
-                        species = dat$sp,
-                        family = dat$fam, 
-                        stand = dat$plot)
-dat$spg <- getWD$meanWD
-dat <- subset(dat, dist != "NA")#&gen!="-")#&sp!="sp.")
-dat$kg17 <- computeAGB(D = dat$dap, WD = dat$spg, 
-                       H = dat$h) * 1000
-
-# both methods do seem equal
-```
-
-```{r Chave2014fam, include=F}
-attach(dat)
-dat$kg14 <- 0.0673 * (spg * dap^2 * h)^0.976
-
-#updatefams
-for (name in dat$fam) {
-  #if (name == "Bombacaceae" | 
-        #name == "Sterculiaceae") {
-    #name <- "Malvaceae"
-  #}
-  #if (name == "Cecropiaceae") {
-    #name <- "Urticaceae"
-  #}
-}
-detach(dat)
 ```
 
 ## *Abiotic plot characteristics*
