@@ -1,18 +1,110 @@
 ---
-title: "R Notebook"
+title: "Osa"
 output: html_notebook
 ---
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. When you execute code within the notebook, the results appear beneath the code.
+# Introduction
 
-Try executing this chunk by clicking the *Run* button within the chunk or by placing your cursor inside it and pressing *Cmd+Shift+Enter*.
+1.  importance of reforestation
 
-```{r}
-plot(cars)
-```
+2.  patterns of reforestation
 
-Add a new chunk by clicking the *Insert Chunk* button on the toolbar or by pressing *Cmd+Option+I*.
+    1.  general
 
-When you save the notebook, an HTML file containing the code and output will be saved alongside it (click the *Preview* button or press *Cmd+Shift+K* to preview the HTML file).
+    2.  tropical
 
-The preview shows you a rendered HTML copy of the contents of the editor. Consequently, unlike *Knit*, *Preview* does not run any R code chunks. Instead, the output of the chunk when it was last run in the editor is displayed.
+3.  things that affect reforestation
+
+    1.  edge effects
+
+    2.  plantation structure?
+
+4.  [for NGO--start biomass census]
+
+    1.  Does leaving the plantation structure help reforestation?
+
+        1.  shade
+
+        2.  edge effects (i.e. buffer)
+
+# Results
+
+## Shade / Canopy
+
+1.  shade x distance + timber sp
+
+## Edge effects
+
+1.  biomass x distance + timber sp
+
+    -   can break down biomass by component
+
+2.  diversity x distance [+ 1 timber sp]
+
+    -   can break down by diversity index
+
+# Discussion
+
+1.  assess hypotheses
+2.  infer causes of patterns - plantation structure, old legacy trees, or species traits?
+3.  compare inferences to other studies
+4.  recommend future conservation approaches, ecological studies
+
+# Methods
+
+## Study site
+
+-   osa peninsula (GPS)
+-   wet lowland rainforest
+-   greg gund conservation center, osa conservation
+
+## Plot design
+
+-   QGIS/ArcGIS 50m bands 0-300m from forest
+-   30 plots, random within each band, allocated by area: 11, 8, 5, 3, 2, 1
+-   20x20m
+
+## Data collection
+
+### Canopy light and slope
+
+-   densiometer in 4 directions at center of plot
+-   slope?
+
+### Tree biomass
+
+-   DBH, H using rangefinder (BUSHNELL)
+
+-   chave 2014, updated to chave 2017, little difference in result
+
+-   unique individual tag/plate \#s
+
+-   species IDs
+
+    -   local knowledge of common names
+
+    -   taxonomy matches using local field guides
+
+-   wood density using Agroforestry Wood Database in 2013, updated using BIOMASS package
+
+## Statistical analysis
+
+-   code available (somewhere..., DRYAD, GitHub)
+
+-   R v\#\#\#
+
+    -   BIOMASS package v\#\#\#
+
+        -   taxa (family, maybe genus) updated from raw IDs using field guides
+
+        -   matched wood densities from package database
+
+    -   tidyverse v\#\#\# = summary stats, plotting
+
+    -   vegan v\#\#\# = community analysis
+
+# Acknowledgements
+
+-   osa conservation - max villalobos, [dan student harvard alum], agustín (& annia), manuel director
+-   lehigh group - don, emma, ?, ?
+-   brandeis WOW funding

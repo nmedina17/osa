@@ -1,6 +1,6 @@
 library(vroom)
 
-dat <- vroom("osa.csv")
+dat <- vroom("data/raw/osa.csv")
 
 
 #updatetaxa2017
