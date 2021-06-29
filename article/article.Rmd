@@ -1,6 +1,11 @@
 ---
 title: "Osa"
-output: html_notebook
+output: 
+  html_notebook: 
+    toc: yes
+    code_folding: hide
+    theme: spacelab
+    fig_caption: yes
 ---
 
 # Introduction
@@ -38,10 +43,14 @@ output: html_notebook
 1.  biomass x distance + timber sp
 
     -   can break down biomass by component
+    -   maybe system-level curve (e.g. biomas hist) + timber sp
 
 2.  diversity x distance [+ 1 timber sp]
 
     -   can break down by diversity index
+    -   compare to NMDS?
+
+    1.  system-level curve (e.g. rank-abund) x distance [+ 1 timber sp]
 
 # Discussion
 

@@ -1,6 +1,6 @@
 library(vroom)
 
-dat <- vroom("data/raw/osa.csv")
+dat <- vroom("../data/raw/osa.csv") #rel2analysisfiles
 
 
 #updatetaxa2017
@@ -26,7 +26,7 @@ dat$kg17 <- computeAGB(D = dat$dap, WD = dat$spg,
 attach(dat)
 dat$kg14 <- 0.0673 * (spg * dap^2 * h)^0.976
 
-#updatefams
+#updatefams--old
 for (name in dat$fam) {
   #if (name == "Bombacaceae" |
   #name == "Sterculiaceae") {
@@ -39,6 +39,3 @@ for (name in dat$fam) {
 detach(dat)
 
 # both methods do seem equal
-
-
-library(tidyverse)
