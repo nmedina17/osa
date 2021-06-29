@@ -1,23 +1,43 @@
 ---
 title: "Osa data exploration"
-output: html_notebook
+output: 
+  html_notebook: 
+    toc: yes
+    code_folding: hide
+    theme: spacelab
+    fig_caption: yes
 ---
 
-```{r source}
-source("stats.R")
+```{r setup}
+source(here("analysis/stats.R"))
 library(ggbeeswarm) #quasirandom()
 library(ggpmisc) #stat_poly_eq()
 ```
 
-# Results
-
-```{r general}
-dats
+```{r data}
+plotVarsTbl
+plotVarsTbl$vardata
 ```
 
+# Results
+
+## Shade and slope
+
 ```{r stats}
-dats %>%
-  nest(dist)
+plotVarsStatTbl <- plotVarsTbl %>%
+  mutate(statTest = map(.x = vardata,
+                        .f = ~ .x %>% lm(formula = median ~ dist))) %>%
+  mutate(normality = map(.x = statTest, #needstatcol1st
+                         .f = ~ .x %>% residuals() %>% shapiro_test()),
+         variance = map(.x = vardata, #originaldata
+                        .f = ~ .x %>% 
+                          levene_test(formula = median ~ as.factor(dist))),
+         statVals = map(.x = statTest, #formatsumlast
+                        .f = ~ .x %>% summary())) %>%
+  mutate(signif = if_else(pluck(statVals[[8]]) < 0.05, #p
+                          true = T, false = F)) #bughere
+
+plotVarsStatTbl
 ```
 
 ## Canopy light and slope

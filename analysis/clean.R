@@ -1,13 +1,15 @@
+library(here) #fromprojdir
 library(vroom)
 
-dat <- vroom("../data/raw/osa.csv") #rel2analysisfiles
+dat <- vroom(here("data/raw/osa.csv"))
 
 
 #updatetaxa2017
 library(BIOMASS)
 
 taxasp <- correctTaxo(genus = dat$gen,
-                      species = dat$sp)  #notneeded
+                      species = dat$sp, #notneeded
+                      useCache = T)
 
 taxa <- getTaxonomy(dat$gen)  #useful
 dat$fam <- taxa$family
