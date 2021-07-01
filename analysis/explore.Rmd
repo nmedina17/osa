@@ -1,7 +1,7 @@
 ---
 title: "Osa data exploration"
-output: 
-  html_notebook: 
+output:
+  html_notebook:
     toc: yes
     code_folding: hide
     theme: spacelab
@@ -9,14 +9,15 @@ output:
 ---
 
 ```{r setup}
-source(here("analysis/stats.R"))
+library(knitr); opts_chunk$set(echo=F, include=F)
+library(here); source(here("analysis/stats.R"))
 library(ggbeeswarm) #quasirandom()
 library(ggpmisc) #stat_poly_eq()
+library(ggpubr) #ggarrange()
 ```
 
 ```{r data}
-plotVarsTbl
-plotVarsTbl$vardata
+plotVarsTbl; plotVarsTbl$vardata
 ```
 
 # Results
@@ -26,54 +27,32 @@ plotVarsTbl$vardata
 ```{r stats}
 plotVarsStatTbl <- plotVarsTbl %>%
   mutate(statTest = map(.x = vardata,
-                        .f = ~ .x %>% lm(formula = median ~ dist))) %>%
+                        .f = ~ .x %>%
+                        lm(formula = median ~ dist))) %>%
   mutate(normality = map(.x = statTest, #needstatcol1st
                          .f = ~ .x %>% residuals() %>% shapiro_test()),
          variance = map(.x = vardata, #originaldata
-                        .f = ~ .x %>% 
+                        .f = ~ .x %>%
                           levene_test(formula = median ~ as.factor(dist))),
          statVals = map(.x = statTest, #formatsumlast
                         .f = ~ .x %>% summary())) %>%
-  mutate(signif = if_else(pluck(statVals[[8]]) < 0.05, #p
-                          true = T, false = F)) #bughere
-
+  mutate(signif = map(.x = statVals,
+                      .f = ~ if_else(condition = .x$coefficients[[8]] < 0.05, #p
+                                     true = T, false = F))) %>%
+                                     unnest(cols = signif)
 plotVarsStatTbl
 ```
 
-## Canopy light and slope
-
-```{r light}
-luz <- dats %>%
-  filter(variable == "luz")
-
-luz %>%
-  ggplot(aes(x = dist, y = median)) + 
-  geom_quasirandom() +
-  geom_smooth(method = "lm") +
-  stat_poly_eq(formula = y ~ x, parse = T, 
-               aes(label = stat(..p.value.label..)))
-
-luz %>% 
-  as.data.frame() %>%
-  lm(formula = median ~ dist) %>%
-  summary()
-```
-
-```{r slope}
-slope <- dats %>%
-  filter(variable == "incl")
-
-slope %>%
-  ggplot(aes(x = dist, y = median)) + 
-  geom_quasirandom() +
-  geom_smooth(method = "lm") +
-  stat_poly_eq(formula = y ~ x, parse = T, 
-               aes(label = stat(..p.value.label..)))
-
-slope %>% 
-  as.data.frame() %>%
-  lm(formula = median ~ dist) %>%
-  summary()
+```{r graphs}
+plotVarsGraphTbl <- plotVarsStatTbl %>%
+  mutate(graph = map(.x = vardata,
+                     .f = ~ .x %>%
+                       ggplot(aes(x = dist, y = median)) +
+                       geom_quasirandom() +
+                       geom_smooth(method = "lm") +
+                       stat_poly_eq(formula = y ~ x, parse = T,
+                                    aes(label = stat(..p.value.label..)))))
+plotVarsGraphTbl$graph #%>% ggarrange(.[[1]], .[[2]]) #buggy
 ```
 
 ## Edge effects
