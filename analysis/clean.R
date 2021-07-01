@@ -1,5 +1,5 @@
 library(here) #fromprojdir
-library(vroom)
+library(vroom) #loadastbl
 
 dat <- vroom(here("data/raw/osa.csv"))
 

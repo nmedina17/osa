@@ -29,17 +29,25 @@ plotVarsStatTbl <- plotVarsTbl %>%
   mutate(statTest = map(.x = vardata,
                         .f = ~ .x %>%
                         lm(formula = median ~ dist))) %>%
-  mutate(normality = map(.x = statTest, #needstatcol1st
-                         .f = ~ .x %>% residuals() %>% shapiro_test()),
-         variance = map(.x = vardata, #originaldata
-                        .f = ~ .x %>%
-                          levene_test(formula = median ~ as.factor(dist))),
-         statVals = map(.x = statTest, #formatsumlast
+  mutate(normalTest = map(.x = statTest, #needstatcol1st
+                         .f = ~ .x %>% 
+                           residuals() %>% shapiro_test()),
+         varianceTest = map(.x = vardata, #OGdata
+                            .f = ~ .x %>%
+                              levene_test(formula = median ~ as.factor(dist))),
+         statReport = map(.x = statTest, #formatsumlast
                         .f = ~ .x %>% summary())) %>%
-  mutate(signif = map(.x = statVals,
-                      .f = ~ if_else(condition = .x$coefficients[[8]] < 0.05, #p
-                                     true = T, false = F))) %>%
-                                     unnest(cols = signif)
+  mutate(isNormal = map(.x = normalTest,
+                           .f = ~ if_else(condition = .x$p.value > 0.05,
+                                          true = T, false = F)),
+         isHomosced = map(.x = varianceTest,
+                          .f = ~ if_else(condition = .x$p > 0.05,
+                                       true = T, false = F))) %>%
+  mutate(isSignif = map_if(.x = statReport,
+                           .p = ~ isNormal & isHomosced, #bug-notlogical
+                           .f = ~ if_else(condition = .x$coefficients[[8]] < 0.05, #p
+                                          true = T, false = F))) %>%
+  unnest(cols = isSignif)
 plotVarsStatTbl
 ```
 
@@ -58,5 +66,19 @@ plotVarsGraphTbl$graph #%>% ggarrange(.[[1]], .[[2]]) #buggy
 ## Edge effects
 
 ```{r biomass}
-
+treeVarsResultTbl <- treeVarsTbl %>%
+  mutate(statTest = map(.x = vardata,
+                        .f = ~ .x %>%
+                        lm(formula = median ~ dist))) %>%
+  mutate(normality = map(.x = statTest, #needstatcol1st
+                         .f = ~ .x %>% residuals() %>% shapiro_test()),
+         variance = map(.x = vardata, #originaldata
+                        .f = ~ .x %>%
+                          levene_test(formula = median ~ as.factor(dist))),
+         statVals = map(.x = statTest, #formatsumlast
+                        .f = ~ .x %>% summary())) %>%
+  mutate(signif = map(.x = statVals,
+                      .f = ~ if_else(condition = .x$coefficients[[8]] < 0.05, #p
+                                     true = T, false = F))) %>%
+                                     unnest(cols = signif)
 ```
