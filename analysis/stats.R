@@ -4,16 +4,16 @@ library(rstatix)
 
 plotVarsTbl <- dat %>%
   group_by(dist, plot) %>%
-  select(N, W, luz, incl) %>%
+  select(luz, incl, #abiotic
+         dap, h, spg, kg17) %>%
   get_summary_stats(type = "median") %>%
-  select(-n) %>% #deprecated
   nest(vardata = -variable)
 
 
 treeVarsTbl <- dat %>%
   group_by(dist, plot, fam, gen, sp) %>%
   select(dap, h, spg, kg17) %>%
-  #mutate(richness?)
-  select(-n) %>% #deprecated
+  #mutate(richness?) #maybevegan
   get_summary_stats(type = "median_mad") %>%
   nest(vardata = -variable)
+

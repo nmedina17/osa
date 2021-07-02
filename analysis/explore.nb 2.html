@@ -217,7 +217,7 @@ pre code {
 <ul>
 <li><a href="#results">Results</a>
 <ul>
-<li><a href="#shade-and-slope-stems">Shade and slope; stems</a></li>
+<li><a href="#shade-and-slope">Shade and slope</a></li>
 <li><a href="#edge-effects">Edge effects</a></li>
 </ul></li>
 </ul>
@@ -225,23 +225,99 @@ pre code {
 
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxubGlicmFyeShrbml0cik7IG9wdHNfY2h1bmskc2V0KGVjaG89RiwgaW5jbHVkZT1GKVxubGlicmFyeShoZXJlKTsgc291cmNlKGhlcmUoXCJhbmFseXNpcy9zdGF0cy5SXCIpKVxubGlicmFyeShnZ2JlZXN3YXJtKSAjcXVhc2lyYW5kb20oKVxubGlicmFyeShnZ3BtaXNjKSAjc3RhdF9wb2x5X2VxKClcbmxpYnJhcnkoZ2dwdWJyKSAjZ2dhcnJhbmdlKClcbmBgYCJ9 -->
+<pre class="r"><code>library(knitr); opts_chunk$set(echo=F, include=F)
+library(here); source(here(&quot;analysis/stats.R&quot;))
+library(ggbeeswarm) #quasirandom()
+library(ggpmisc) #stat_poly_eq()
+library(ggpubr) #ggarrange()</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
+<!-- rnb-text-begin -->
+<!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGxvdFZhcnNUYmw7IHBsb3RWYXJzVGJsJHZhcmRhdGFcbmBgYCJ9 -->
+<pre class="r"><code>plotVarsTbl; plotVarsTbl$vardata</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <div id="results" class="section level1">
 <h1>Results</h1>
-<div id="shade-and-slope-stems" class="section level2">
-<h2>Shade and slope; stems</h2>
+<div id="shade-and-slope" class="section level2">
+<h2>Shade and slope</h2>
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGxvdFZhcnNTdGF0VGJsIDwtIHBsb3RWYXJzVGJsICU+JVxuICBtdXRhdGUoc3RhdFRlc3QgPSBtYXAoLnggPSB2YXJkYXRhLFxuICAgICAgICAgICAgICAgICAgICAgICAgLmYgPSB+IC54ICU+JVxuICAgICAgICAgICAgICAgICAgICAgICAgbG0oZm9ybXVsYSA9IG1lZGlhbiB+IGRpc3QpKSkgJT4lXG4gIG11dGF0ZShub3JtYWxUZXN0ID0gbWFwKC54ID0gc3RhdFRlc3QsICNuZWVkc3RhdGNvbDFzdFxuICAgICAgICAgICAgICAgICAgICAgICAgIC5mID0gfiAueCAlPiUgXG4gICAgICAgICAgICAgICAgICAgICAgICAgICByZXNpZHVhbHMoKSAlPiUgc2hhcGlyb190ZXN0KCkpLFxuICAgICAgICAgdmFyaWFuY2VUZXN0ID0gbWFwKC54ID0gdmFyZGF0YSwgI09HZGF0YVxuICAgICAgICAgICAgICAgICAgICAgICAgICAgIC5mID0gfiAueCAlPiVcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxldmVuZV90ZXN0KGZvcm11bGEgPSBtZWRpYW4gfiBhcy5mYWN0b3IoZGlzdCkpKSxcbiAgICAgICAgIHN0YXRSZXBvcnQgPSBtYXAoLnggPSBzdGF0VGVzdCwgI2Zvcm1hdHN1bWxhc3RcbiAgICAgICAgICAgICAgICAgICAgICAgIC5mID0gfiAueCAlPiUgc3VtbWFyeSgpKSkgJT4lXG4gIG11dGF0ZShpc05vcm1hbCA9IG1hcCgueCA9IG5vcm1hbFRlc3QsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAuZiA9IH4gaWZfZWxzZShjb25kaXRpb24gPSAueCRwLnZhbHVlID4gMC4wNSxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRydWUgPSBULCBmYWxzZSA9IEYpKSxcbiAgICAgICAgIGlzSG9tb3NjZWQgPSBtYXAoLnggPSB2YXJpYW5jZVRlc3QsXG4gICAgICAgICAgICAgICAgICAgICAgICAgIC5mID0gfiBpZl9lbHNlKGNvbmRpdGlvbiA9IC54JHAgPiAwLjA1LFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHJ1ZSA9IFQsIGZhbHNlID0gRikpKSAlPiVcbiAgbXV0YXRlKGlzU2lnbmlmID0gbWFwX2lmKC54ID0gc3RhdFJlcG9ydCxcbiAgICAgICAgICAgICAgICAgICAgICAgICAgIC5wID0gfiBpc05vcm1hbCAmIGlzSG9tb3NjZWQsICNidWctbm90bG9naWNhbFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgLmYgPSB+IGlmX2Vsc2UoY29uZGl0aW9uID0gLngkY29lZmZpY2llbnRzW1s4XV0gPCAwLjA1LCAjcFxuICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHJ1ZSA9IFQsIGZhbHNlID0gRikpKSAlPiVcbiAgdW5uZXN0KGNvbHMgPSBpc1NpZ25pZilcbnBsb3RWYXJzU3RhdFRibFxuYGBgIn0= -->
+<pre class="r"><code>plotVarsStatTbl &lt;- plotVarsTbl %&gt;%
+  mutate(statTest = map(.x = vardata,
+                        .f = ~ .x %&gt;%
+                        lm(formula = median ~ dist))) %&gt;%
+  mutate(normalTest = map(.x = statTest, #needstatcol1st
+                         .f = ~ .x %&gt;% 
+                           residuals() %&gt;% shapiro_test()),
+         varianceTest = map(.x = vardata, #OGdata
+                            .f = ~ .x %&gt;%
+                              levene_test(formula = median ~ as.factor(dist))),
+         statReport = map(.x = statTest, #formatsumlast
+                        .f = ~ .x %&gt;% summary())) %&gt;%
+  mutate(isNormal = map(.x = normalTest,
+                           .f = ~ if_else(condition = .x$p.value &gt; 0.05,
+                                          true = T, false = F)),
+         isHomosced = map(.x = varianceTest,
+                          .f = ~ if_else(condition = .x$p &gt; 0.05,
+                                       true = T, false = F))) %&gt;%
+  mutate(isSignif = map_if(.x = statReport,
+                           .p = ~ isNormal &amp; isHomosced, #bug-notlogical
+                           .f = ~ if_else(condition = .x$coefficients[[8]] &lt; 0.05, #p
+                                          true = T, false = F))) %&gt;%
+  unnest(cols = isSignif)
+plotVarsStatTbl</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxucGxvdFZhcnNHcmFwaFRibCA8LSBwbG90VmFyc1N0YXRUYmwgJT4lXG4gIG11dGF0ZShncmFwaCA9IG1hcCgueCA9IHZhcmRhdGEsXG4gICAgICAgICAgICAgICAgICAgICAuZiA9IH4gLnggJT4lXG4gICAgICAgICAgICAgICAgICAgICAgIGdncGxvdChhZXMoeCA9IGRpc3QsIHkgPSBtZWRpYW4pKSArXG4gICAgICAgICAgICAgICAgICAgICAgIGdlb21fcXVhc2lyYW5kb20oKSArXG4gICAgICAgICAgICAgICAgICAgICAgIGdlb21fc21vb3RoKG1ldGhvZCA9IFwibG1cIikgK1xuICAgICAgICAgICAgICAgICAgICAgICBzdGF0X3BvbHlfZXEoZm9ybXVsYSA9IHkgfiB4LCBwYXJzZSA9IFQsXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhZXMobGFiZWwgPSBzdGF0KC4ucC52YWx1ZS5sYWJlbC4uKSkpKSlcbnBsb3RWYXJzR3JhcGhUYmwkZ3JhcGggIyU+JSBnZ2FycmFuZ2UoLltbMV1dLCAuW1syXV0pICNidWdneVxuYGBgIn0= -->
+<pre class="r"><code>plotVarsGraphTbl &lt;- plotVarsStatTbl %&gt;%
+  mutate(graph = map(.x = vardata,
+                     .f = ~ .x %&gt;%
+                       ggplot(aes(x = dist, y = median)) +
+                       geom_quasirandom() +
+                       geom_smooth(method = &quot;lm&quot;) +
+                       stat_poly_eq(formula = y ~ x, parse = T,
+                                    aes(label = stat(..p.value.label..)))))
+plotVarsGraphTbl$graph #%&gt;% ggarrange(.[[1]], .[[2]]) #buggy</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
 <!-- rnb-text-begin -->
 </div>
 <div id="edge-effects" class="section level2">
 <h2>Edge effects</h2>
 <!-- rnb-text-end -->
+<!-- rnb-chunk-begin -->
+<!-- rnb-source-begin eyJkYXRhIjoiYGBgclxudHJlZVZhcnNSZXN1bHRUYmwgPC0gdHJlZVZhcnNUYmwgJT4lXG4gIG11dGF0ZShzdGF0VGVzdCA9IG1hcCgueCA9IHZhcmRhdGEsXG4gICAgICAgICAgICAgICAgICAgICAgICAuZiA9IH4gLnggJT4lXG4gICAgICAgICAgICAgICAgICAgICAgICBsbShmb3JtdWxhID0gbWVkaWFuIH4gZGlzdCkpKSAlPiVcbiAgbXV0YXRlKG5vcm1hbGl0eSA9IG1hcCgueCA9IHN0YXRUZXN0LCAjbmVlZHN0YXRjb2wxc3RcbiAgICAgICAgICAgICAgICAgICAgICAgICAuZiA9IH4gLnggJT4lIHJlc2lkdWFscygpICU+JSBzaGFwaXJvX3Rlc3QoKSksXG4gICAgICAgICB2YXJpYW5jZSA9IG1hcCgueCA9IHZhcmRhdGEsICNvcmlnaW5hbGRhdGFcbiAgICAgICAgICAgICAgICAgICAgICAgIC5mID0gfiAueCAlPiVcbiAgICAgICAgICAgICAgICAgICAgICAgICAgbGV2ZW5lX3Rlc3QoZm9ybXVsYSA9IG1lZGlhbiB+IGFzLmZhY3RvcihkaXN0KSkpLFxuICAgICAgICAgc3RhdFZhbHMgPSBtYXAoLnggPSBzdGF0VGVzdCwgI2Zvcm1hdHN1bWxhc3RcbiAgICAgICAgICAgICAgICAgICAgICAgIC5mID0gfiAueCAlPiUgc3VtbWFyeSgpKSkgJT4lXG4gIG11dGF0ZShzaWduaWYgPSBtYXAoLnggPSBzdGF0VmFscyxcbiAgICAgICAgICAgICAgICAgICAgICAuZiA9IH4gaWZfZWxzZShjb25kaXRpb24gPSAueCRjb2VmZmljaWVudHNbWzhdXSA8IDAuMDUsICNwXG4gICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHJ1ZSA9IFQsIGZhbHNlID0gRikpKSAlPiVcbiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB1bm5lc3QoY29scyA9IHNpZ25pZilcbmBgYCJ9 -->
+<pre class="r"><code>treeVarsResultTbl &lt;- treeVarsTbl %&gt;%
+  mutate(statTest = map(.x = vardata,
+                        .f = ~ .x %&gt;%
+                        lm(formula = median ~ dist))) %&gt;%
+  mutate(normality = map(.x = statTest, #needstatcol1st
+                         .f = ~ .x %&gt;% residuals() %&gt;% shapiro_test()),
+         variance = map(.x = vardata, #originaldata
+                        .f = ~ .x %&gt;%
+                          levene_test(formula = median ~ as.factor(dist))),
+         statVals = map(.x = statTest, #formatsumlast
+                        .f = ~ .x %&gt;% summary())) %&gt;%
+  mutate(signif = map(.x = statVals,
+                      .f = ~ if_else(condition = .x$coefficients[[8]] &lt; 0.05, #p
+                                     true = T, false = F))) %&gt;%
+                                     unnest(cols = signif)</code></pre>
+<!-- rnb-source-end -->
+<!-- rnb-chunk-end -->
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiT3NhIGRhdGEgZXhwbG9yYXRpb24iCm91dHB1dDoKICBodG1sX25vdGVib29rOgogICAgdG9jOiB5ZXMKICAgIGNvZGVfZm9sZGluZzogaGlkZQogICAgdGhlbWU6IHNwYWNlbGFiCiAgICBmaWdfY2FwdGlvbjogeWVzCi0tLQoKYGBge3Igc2V0dXB9CmxpYnJhcnkoa25pdHIpOyBvcHRzX2NodW5rJHNldChlY2hvPUYsIGluY2x1ZGU9RikKbGlicmFyeShoZXJlKTsgc291cmNlKGhlcmUoImFuYWx5c2lzL3N0YXRzLlIiKSk7IHBsb3RWYXJzVGJsOyBwbG90VmFyc1RibCR2YXJkYXRhCmxpYnJhcnkoZ2diZWVzd2FybSkgI3F1YXNpcmFuZG9tKCkKbGlicmFyeShnZ3BtaXNjKSAjc3RhdF9wb2x5X2VxKCkKbGlicmFyeShnZ3B1YnIpICNnZ2FycmFuZ2UoKQpgYGAKCiMgUmVzdWx0cwoKIyMgU2hhZGUgYW5kIHNsb3BlOyBzdGVtcwoKYGBge3Igc3RhdHN9CnBsb3RWYXJzU3RhdFRibCA8LSBwbG90VmFyc1RibCAlPiUKICBtdXRhdGUoc3RhdFRlc3QgPSBtYXAoLnggPSB2YXJkYXRhLAogICAgICAgICAgICAgICAgICAgICAgICAuZiA9IH4gLnggJT4lIGxtKGZvcm11bGEgPSBtZWRpYW4gfiBkaXN0KSkpICU+JQogIG11dGF0ZShub3JtYWxUZXN0ID0gbWFwKC54ID0gc3RhdFRlc3QsICNuZWVkc3RhdGNvbDFzdAogICAgICAgICAgICAgICAgICAgICAgICAgLmYgPSB+IC54ICU+JSByZXNpZHVhbHMoKSAlPiUgc2hhcGlyb190ZXN0KCkpLAogICAgICAgICB2YXJpYW5jZVRlc3QgPSBtYXAoLnggPSB2YXJkYXRhLCAjT0dkYXRhCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAuZiA9IH4gLnggJT4lCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGxldmVuZV90ZXN0KGZvcm11bGEgPSBtZWRpYW4gfiBhcy5mYWN0b3IoZGlzdCkpKSwKICAgICAgICAgc3RhdFByaW50ID0gbWFwKC54ID0gc3RhdFRlc3QsIC5mID0gfiAueCAlPiUgc3VtbWFyeSgpKSkgJT4lICNvcmdsYXN0CiAgbXV0YXRlKGlzTm9ybWFsID0gbWFwKC54ID0gbm9ybWFsVGVzdCwKICAgICAgICAgICAgICAgICAgICAgICAgLmYgPSB+IGlmX2Vsc2UoLngkcC52YWx1ZSA+IDAuMDUsIFQsIEYpKSwKICAgICAgICAgaXNIb21vc2NlZCA9IG1hcCgueCA9IHZhcmlhbmNlVGVzdCwKICAgICAgICAgICAgICAgICAgICAgICAgICAuZiA9IH4gaWZfZWxzZSgueCRwID4gMC4wNSwgVCwgRikpKSAlPiUKICB1bm5lc3QoY29scyA9IGMoaXNOb3JtYWwsIGlzSG9tb3NjZWQpKSAlPiUgI25vd2xvZ2ljYWxub3RsaXN0CiAgbXV0YXRlKGlzTW9kZWxPSyA9IGlmX2Vsc2UoaXNOb3JtYWwgJiYgaXNIb21vc2NlZCwgVCwgRikpICU+JQogIG11dGF0ZShpc1NpZ25pZiA9IG1hcF9pZigueCA9IHN0YXRQcmludCwgLnAgPSBpc01vZGVsT0ssCiAgICAgICAgICAgICAgICAgICAgICAgICAgIC5mID0gfiBpZl9lbHNlKC54JGNvZWZmaWNpZW50c1tbOF1dIDwgMC4wNSwgI3AKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHJ1ZSA9IFQsIGZhbHNlID0gRikpKSAlPiUKICB1bm5lc3QoY29scyA9IGlzU2lnbmlmKQpwbG90VmFyc1N0YXRUYmw7IHBsb3RWYXJzU3RhdFRibCRpc1NpZ25pZgpgYGAKCmBgYHtyIGdyYXBoc30KcGxvdFZhcnNHcmFwaFRibCA8LSBwbG90VmFyc1N0YXRUYmwgJT4lCiAgbXV0YXRlKGdyYXBoID0gbWFwKC54ID0gdmFyZGF0YSwKICAgICAgICAgICAgICAgICAgICAgLmYgPSB+IC54ICU+JQogICAgICAgICAgICAgICAgICAgICAgIGdncGxvdChhZXMoeCA9IGRpc3QsIHkgPSBtZWRpYW4pKSArCiAgICAgICAgICAgICAgICAgICAgICAgZ2VvbV9xdWFzaXJhbmRvbSgpICsKICAgICAgICAgICAgICAgICAgICAgICBnZW9tX3Ntb290aChtZXRob2QgPSAibG0iKSArCiAgICAgICAgICAgICAgICAgICAgICAgc3RhdF9wb2x5X2VxKGZvcm11bGEgPSB5IH4geCwgcGFyc2UgPSBULAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICBhZXMobGFiZWwgPSBzdGF0KC4ucC52YWx1ZS5sYWJlbC4uKSkpKSkKcGxvdFZhcnNHcmFwaFRibCRncmFwaCAjJT4lIGdnYXJyYW5nZSguW1sxXV0sIC5bWzJdXSkgI2J1Z2d5CmBgYAoKIyMgRWRnZSBlZmZlY3RzCgpgYGB7ciBiaW9tYXNzfQp0cmVlVmFyc1Jlc3VsdFRibCA8LSB0cmVlVmFyc1RibCAlPiUKICBtdXRhdGUoc3RhdFRlc3QgPSBtYXAoLnggPSB2YXJkYXRhLCAKICAgICAgICAgICAgICAgICAgICAgICAgLmYgPSB+IC54ICU+JSBsbShmb3JtdWxhID0gbWVkaWFuIH4gZGlzdCkpKSAlPiUKICBtdXRhdGUobm9ybWFsaXR5ID0gbWFwKC54ID0gc3RhdFRlc3QsIAogICAgICAgICAgICAgICAgICAgICAgICAgLmYgPSB+IC54ICU+JSByZXNpZHVhbHMoKSAlPiUgc2hhcGlyb190ZXN0KCkpLAogICAgICAgICB2YXJpYW5jZSA9IG1hcCgueCA9IHZhcmRhdGEsICNPR2RhdGEKICAgICAgICAgICAgICAgICAgICAgICAgLmYgPSB+IC54ICU+JQogICAgICAgICAgICAgICAgICAgICAgICAgIGxldmVuZV90ZXN0KGZvcm11bGEgPSBtZWRpYW4gfiBhcy5mYWN0b3IoZGlzdCkpKSwKICAgICAgICAgc3RhdFZhbHMgPSBtYXAoLnggPSBzdGF0VGVzdCwuZiA9IH4gLnggJT4lIHN1bW1hcnkoKSkpICU+JQogIG11dGF0ZShzaWduaWYgPSBtYXAoLnggPSBzdGF0VmFscywKICAgICAgICAgICAgICAgICAgICAgIC5mID0gfiBpZl9lbHNlKGNvbmRpdGlvbiA9IC54JGNvZWZmaWNpZW50c1tbOF1dIDwgMC4wNSwgI3AKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRydWUgPSBULCBmYWxzZSA9IEYpKSkgJT4lCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB1bm5lc3QoY29scyA9IHNpZ25pZikKYGBgCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiT3NhIGRhdGEgZXhwbG9yYXRpb24iCm91dHB1dDoKICBodG1sX25vdGVib29rOgogICAgdG9jOiB5ZXMKICAgIGNvZGVfZm9sZGluZzogaGlkZQogICAgdGhlbWU6IHNwYWNlbGFiCiAgICBmaWdfY2FwdGlvbjogeWVzCi0tLQoKYGBge3Igc2V0dXB9CmxpYnJhcnkoa25pdHIpOyBvcHRzX2NodW5rJHNldChlY2hvPUYsIGluY2x1ZGU9RikKbGlicmFyeShoZXJlKTsgc291cmNlKGhlcmUoImFuYWx5c2lzL3N0YXRzLlIiKSkKbGlicmFyeShnZ2JlZXN3YXJtKSAjcXVhc2lyYW5kb20oKQpsaWJyYXJ5KGdncG1pc2MpICNzdGF0X3BvbHlfZXEoKQpsaWJyYXJ5KGdncHVicikgI2dnYXJyYW5nZSgpCmBgYAoKYGBge3IgZGF0YX0KcGxvdFZhcnNUYmw7IHBsb3RWYXJzVGJsJHZhcmRhdGEKYGBgCgojIFJlc3VsdHMKCiMjIFNoYWRlIGFuZCBzbG9wZQoKYGBge3Igc3RhdHN9CnBsb3RWYXJzU3RhdFRibCA8LSBwbG90VmFyc1RibCAlPiUKICBtdXRhdGUoc3RhdFRlc3QgPSBtYXAoLnggPSB2YXJkYXRhLAogICAgICAgICAgICAgICAgICAgICAgICAuZiA9IH4gLnggJT4lCiAgICAgICAgICAgICAgICAgICAgICAgIGxtKGZvcm11bGEgPSBtZWRpYW4gfiBkaXN0KSkpICU+JQogIG11dGF0ZShub3JtYWxUZXN0ID0gbWFwKC54ID0gc3RhdFRlc3QsICNuZWVkc3RhdGNvbDFzdAogICAgICAgICAgICAgICAgICAgICAgICAgLmYgPSB+IC54ICU+JSAKICAgICAgICAgICAgICAgICAgICAgICAgICAgcmVzaWR1YWxzKCkgJT4lIHNoYXBpcm9fdGVzdCgpKSwKICAgICAgICAgdmFyaWFuY2VUZXN0ID0gbWFwKC54ID0gdmFyZGF0YSwgI09HZGF0YQogICAgICAgICAgICAgICAgICAgICAgICAgICAgLmYgPSB+IC54ICU+JQogICAgICAgICAgICAgICAgICAgICAgICAgICAgICBsZXZlbmVfdGVzdChmb3JtdWxhID0gbWVkaWFuIH4gYXMuZmFjdG9yKGRpc3QpKSksCiAgICAgICAgIHN0YXRSZXBvcnQgPSBtYXAoLnggPSBzdGF0VGVzdCwgI2Zvcm1hdHN1bWxhc3QKICAgICAgICAgICAgICAgICAgICAgICAgLmYgPSB+IC54ICU+JSBzdW1tYXJ5KCkpKSAlPiUKICBtdXRhdGUoaXNOb3JtYWwgPSBtYXAoLnggPSBub3JtYWxUZXN0LAogICAgICAgICAgICAgICAgICAgICAgICAgICAuZiA9IH4gaWZfZWxzZShjb25kaXRpb24gPSAueCRwLnZhbHVlID4gMC4wNSwKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHJ1ZSA9IFQsIGZhbHNlID0gRikpLAogICAgICAgICBpc0hvbW9zY2VkID0gbWFwKC54ID0gdmFyaWFuY2VUZXN0LAogICAgICAgICAgICAgICAgICAgICAgICAgIC5mID0gfiBpZl9lbHNlKGNvbmRpdGlvbiA9IC54JHAgPiAwLjA1LAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICB0cnVlID0gVCwgZmFsc2UgPSBGKSkpICU+JQogIG11dGF0ZShpc1NpZ25pZiA9IG1hcF9pZigueCA9IHN0YXRSZXBvcnQsCiAgICAgICAgICAgICAgICAgICAgICAgICAgIC5wID0gfiBpc05vcm1hbCAmIGlzSG9tb3NjZWQsICNidWctbm90bG9naWNhbAogICAgICAgICAgICAgICAgICAgICAgICAgICAuZiA9IH4gaWZfZWxzZShjb25kaXRpb24gPSAueCRjb2VmZmljaWVudHNbWzhdXSA8IDAuMDUsICNwCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRydWUgPSBULCBmYWxzZSA9IEYpKSkgJT4lCiAgdW5uZXN0KGNvbHMgPSBpc1NpZ25pZikKcGxvdFZhcnNTdGF0VGJsCmBgYAoKYGBge3IgZ3JhcGhzfQpwbG90VmFyc0dyYXBoVGJsIDwtIHBsb3RWYXJzU3RhdFRibCAlPiUKICBtdXRhdGUoZ3JhcGggPSBtYXAoLnggPSB2YXJkYXRhLAogICAgICAgICAgICAgICAgICAgICAuZiA9IH4gLnggJT4lCiAgICAgICAgICAgICAgICAgICAgICAgZ2dwbG90KGFlcyh4ID0gZGlzdCwgeSA9IG1lZGlhbikpICsKICAgICAgICAgICAgICAgICAgICAgICBnZW9tX3F1YXNpcmFuZG9tKCkgKwogICAgICAgICAgICAgICAgICAgICAgIGdlb21fc21vb3RoKG1ldGhvZCA9ICJsbSIpICsKICAgICAgICAgICAgICAgICAgICAgICBzdGF0X3BvbHlfZXEoZm9ybXVsYSA9IHkgfiB4LCBwYXJzZSA9IFQsCiAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIGFlcyhsYWJlbCA9IHN0YXQoLi5wLnZhbHVlLmxhYmVsLi4pKSkpKQpwbG90VmFyc0dyYXBoVGJsJGdyYXBoICMlPiUgZ2dhcnJhbmdlKC5bWzFdXSwgLltbMl1dKSAjYnVnZ3kKYGBgCgojIyBFZGdlIGVmZmVjdHMKCmBgYHtyIGJpb21hc3N9CnRyZWVWYXJzUmVzdWx0VGJsIDwtIHRyZWVWYXJzVGJsICU+JQogIG11dGF0ZShzdGF0VGVzdCA9IG1hcCgueCA9IHZhcmRhdGEsCiAgICAgICAgICAgICAgICAgICAgICAgIC5mID0gfiAueCAlPiUKICAgICAgICAgICAgICAgICAgICAgICAgbG0oZm9ybXVsYSA9IG1lZGlhbiB+IGRpc3QpKSkgJT4lCiAgbXV0YXRlKG5vcm1hbGl0eSA9IG1hcCgueCA9IHN0YXRUZXN0LCAjbmVlZHN0YXRjb2wxc3QKICAgICAgICAgICAgICAgICAgICAgICAgIC5mID0gfiAueCAlPiUgcmVzaWR1YWxzKCkgJT4lIHNoYXBpcm9fdGVzdCgpKSwKICAgICAgICAgdmFyaWFuY2UgPSBtYXAoLnggPSB2YXJkYXRhLCAjb3JpZ2luYWxkYXRhCiAgICAgICAgICAgICAgICAgICAgICAgIC5mID0gfiAueCAlPiUKICAgICAgICAgICAgICAgICAgICAgICAgICBsZXZlbmVfdGVzdChmb3JtdWxhID0gbWVkaWFuIH4gYXMuZmFjdG9yKGRpc3QpKSksCiAgICAgICAgIHN0YXRWYWxzID0gbWFwKC54ID0gc3RhdFRlc3QsICNmb3JtYXRzdW1sYXN0CiAgICAgICAgICAgICAgICAgICAgICAgIC5mID0gfiAueCAlPiUgc3VtbWFyeSgpKSkgJT4lCiAgbXV0YXRlKHNpZ25pZiA9IG1hcCgueCA9IHN0YXRWYWxzLAogICAgICAgICAgICAgICAgICAgICAgLmYgPSB+IGlmX2Vsc2UoY29uZGl0aW9uID0gLngkY29lZmZpY2llbnRzW1s4XV0gPCAwLjA1LCAjcAogICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgdHJ1ZSA9IFQsIGZhbHNlID0gRikpKSAlPiUKICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIHVubmVzdChjb2xzID0gc2lnbmlmKQpgYGAK</div>
 
 
 
