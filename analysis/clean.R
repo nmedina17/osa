@@ -1,35 +1,23 @@
 library(here) #fromprojdir
 library(vroom) #loadastbl
-
-dat <- vroom(here("data/raw/osa.csv"))
-
-
-#updatetaxa2017
+library(tidyverse)
 library(BIOMASS)
 
-taxasp <- correctTaxo(genus = dat$gen,
-                      species = dat$sp, #notneeded
-                      useCache = T)
+rawData <- vroom(here("data/raw/osa.csv")) %>%
+  filter(!is.na(dist)) %>% #gen!=na,sp!=sp.?
+  mutate(fixedNames = correctTaxo(genus = gen,
+                                  species = sp,
+                                  useCache = T)) %>%
+  mutate(fam = getTaxonomy(gen)$family) %>% #useful
+  mutate(spg = getWoodDensity(genus = gen,
+                              species = sp,
+                              family = fam,
+                              stand = plot)$meanWD) %>%
+  mutate(kg14 = 0.0673 * (spg * dap^2 * h)^0.976) %>%
+  mutate(kg17 = computeAGB(D = dap, WD = spg, H = h) * 1000)
 
-taxa <- getTaxonomy(dat$gen)  #useful
-dat$fam <- taxa$family
-getWD <- getWoodDensity(genus = dat$gen,
-                        species = dat$sp,
-                        family = dat$fam,
-                        stand = dat$plot)
-dat$spg <- getWD$meanWD
-dat <- subset(dat, dist != "NA")#&gen!="-")#&sp!="sp.")
-dat$kg17 <- computeAGB(D = dat$dap, WD = dat$spg,
-                       H = dat$h) * 1000
-
-
-#chave2014
-
-attach(dat)
-dat$kg14 <- 0.0673 * (spg * dap^2 * h)^0.976
-
-#updatefams--old
-for (name in dat$fam) {
+#attic--newfams
+for (name in rawData$fam) {
   #if (name == "Bombacaceae" |
   #name == "Sterculiaceae") {
   #name <- "Malvaceae"
@@ -38,6 +26,4 @@ for (name in dat$fam) {
   #name <- "Urticaceae"
   #}
 }
-detach(dat)
-
-# both methods do seem equal
+# both fam methods do seem equal

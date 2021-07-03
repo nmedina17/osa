@@ -10,7 +10,7 @@ output:
 
 ```{r setup}
 library(knitr); opts_chunk$set(echo=F, include=F)
-library(here); source(here("analysis/stats.R")); plotVarsTbl; plotVarsTbl$vardata
+library(here); source(here("analysis/stats.R")); plotVarsTbl; plotVarsTbl$varData
 library(ggbeeswarm) #quasirandom()
 library(ggpmisc) #stat_poly_eq()
 library(ggpubr) #ggarrange()
@@ -18,57 +18,72 @@ library(ggpubr) #ggarrange()
 
 # Results
 
-## Shade and slope; stems
+## Shade, *biomass*, *richness*
 
-```{r stats}
-plotVarsStatTbl <- plotVarsTbl %>%
-  mutate(statTest = map(.x = vardata,
-                        .f = ~ .x %>% lm(formula = median ~ dist))) %>%
-  mutate(normalTest = map(.x = statTest, #needstatcol1st
+```{r plots}
+plotResultsTbl <- plotVarsTbl %>%
+  mutate(statTest = map(.x = varData,
+                        .f = ~ .x %>% lm(formula = median ~ dist)),
+         normalTest = map(.x = statTest, #needstatcol1st
                          .f = ~ .x %>% residuals() %>% shapiro_test()),
-         varianceTest = map(.x = vardata, #OGdata
+         varianceTest = map(.x = varData, #OGdata
                             .f = ~ .x %>%
                               levene_test(formula = median ~ as.factor(dist))),
-         statPrint = map(.x = statTest, .f = ~ .x %>% summary())) %>% #orglast
-  mutate(isNormal = map(.x = normalTest,
+         statPrint = map(.x = statTest, .f = ~ .x %>% summary()), #orglast
+         isNormal = map(.x = normalTest,
                         .f = ~ if_else(.x$p.value > 0.05, T, F)),
          isHomosced = map(.x = varianceTest,
                           .f = ~ if_else(.x$p > 0.05, T, F))) %>%
   unnest(cols = c(isNormal, isHomosced)) %>% #nowlogicalnotlist
-  mutate(isModelOK = if_else(isNormal && isHomosced, T, F)) %>%
-  mutate(isSignif = map_if(.x = statPrint, .p = isModelOK,
-                           .f = ~ if_else(.x$coefficients[[8]] < 0.05, #p
-                                          true = T, false = F))) %>%
-  unnest(cols = isSignif)
-plotVarsStatTbl; plotVarsStatTbl$isSignif
-```
-
-```{r graphs}
-plotVarsGraphTbl <- plotVarsStatTbl %>%
-  mutate(graph = map(.x = vardata,
+  mutate(isModelOK = if_else(isNormal && isHomosced, T, F), #bug-notjoint?
+         isSignif = map_if(.x = statPrint, .p = isModelOK,
+                           .f = ~ if_else(.x$coefficients[[8]] < 0.11, #p
+                                          true = T, false = F),
+                           .else = ~ NA)) %>%
+  unnest(cols = isSignif) %>%
+  mutate(graph = map(.x = varData,
                      .f = ~ .x %>%
                        ggplot(aes(x = dist, y = median)) +
-                       geom_quasirandom() +
+                       geom_quasirandom() + 
                        geom_smooth(method = "lm") +
                        stat_poly_eq(formula = y ~ x, parse = T,
                                     aes(label = stat(..p.value.label..)))))
-plotVarsGraphTbl$graph #%>% ggarrange(.[[1]], .[[2]]) #buggy
+plotResultsTbl; plotResultsTbl$graph #ggarrange(.[[1]], .[[2]]) #buggy
 ```
 
-## Edge effects
+- re-model biomass, height
+- spg et al. vars at tree or plot level?
 
-```{r biomass}
-treeVarsResultTbl <- treeVarsTbl %>%
-  mutate(statTest = map(.x = vardata, 
-                        .f = ~ .x %>% lm(formula = median ~ dist))) %>%
-  mutate(normality = map(.x = statTest, 
+## Taxa
+
+```{r trees}
+treeVarsTbl$varData
+treeResultsTbl <- treeVarsTbl %>%
+  mutate(statTest = map(.x = varData,
+                        .f = ~ .x %>% lm(formula = median1 ~ dist)),
+         normalTest = map(.x = statTest, #needstatcol1st
                          .f = ~ .x %>% residuals() %>% shapiro_test()),
-         variance = map(.x = vardata, #OGdata
-                        .f = ~ .x %>%
-                          levene_test(formula = median ~ as.factor(dist))),
-         statVals = map(.x = statTest,.f = ~ .x %>% summary())) %>%
-  mutate(signif = map(.x = statVals,
-                      .f = ~ if_else(condition = .x$coefficients[[8]] < 0.05, #p
-                                     true = T, false = F))) %>%
-                                     unnest(cols = signif)
+         varianceTest = map(.x = varData, #OGdata
+                            .f = ~ .x %>%
+                              levene_test(formula = median1 ~ as.factor(dist))),
+         statPrint = map(.x = statTest, .f = ~ .x %>% summary()), #orglast
+         isNormal = map(.x = normalTest,
+                        .f = ~ if_else(.x$p.value > 0.05, T, F)),
+         isHomosced = map(.x = varianceTest,
+                          .f = ~ if_else(.x$p > 0.05, T, F))) %>%
+  unnest(cols = c(isNormal, isHomosced)) %>% #nowlogicalnotlist
+  mutate(isModelOK = if_else((isNormal && isHomosced), T, F), #bug-notjoint?
+         isSignif = map_if(.x = statPrint, .p = isModelOK,
+                           .f = ~ if_else(.x$coefficients[[8]] < 0.11, #p
+                                          true = T, false = F),
+                           .else = ~ NA)) %>%
+  unnest(cols = isSignif) %>%
+  mutate(graph = map(.x = varData,
+                     .f = ~ .x %>%
+                       ggplot(aes(x = dist, y = median1)) +
+                       geom_quasirandom() + 
+                       geom_smooth(method = "lm") +
+                       stat_poly_eq(formula = y ~ x, parse = T,
+                                    aes(label = stat(..p.value.label..)))))
+treeResultsTbl; treeResultsTbl$graph #ggarrange(.[[1]], .[[2]]) #buggy
 ```

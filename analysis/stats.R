@@ -1,19 +1,19 @@
-source(here("analysis/clean.R"))
-library(tidyverse)
-library(rstatix)
+library(here); source(here("analysis/clean.R"))
+library(tidyverse); library(rstatix)
 
-plotVarsTbl <- dat %>%
+plotVarsTbl <- rawData %>%
   group_by(dist, plot) %>%
+  mutate(richness = n_distinct(sp)) %>%
   select(luz, incl, #abiotic
-         dap, h, spg, kg17) %>%
+         dap, h, spg, kg17, #biotic
+         richness) %>% #taxonomic
   get_summary_stats(type = "median") %>%
-  nest(vardata = -variable)
+  nest(varData = -variable)
 
 
-treeVarsTbl <- dat %>%
+treeVarsTbl <- rawData %>%
   group_by(dist, plot, fam, gen, sp) %>%
   select(dap, h, spg, kg17) %>%
-  #mutate(richness?) #maybevegan
   get_summary_stats(type = "median_mad") %>%
-  nest(vardata = -variable)
-
+  mutate(median1 = log10(median + 1)) %>% #4statTests
+  nest(varData = -variable)
