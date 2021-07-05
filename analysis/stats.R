@@ -10,7 +10,6 @@ plotVarsTbl <- rawData %>%
   get_summary_stats(type = "median") %>%
   nest(varData = -variable)
 
-
 treeVarsTbl <- rawData %>%
   group_by(dist, plot, fam, gen, sp) %>%
   select(dap, h, spg, kg17) %>%

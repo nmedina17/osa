@@ -10,7 +10,7 @@ output:
 
 ```{r setup}
 library(knitr); opts_chunk$set(echo=F, include=F)
-library(here); source(here("analysis/stats.R")); plotVarsTbl; plotVarsTbl$varData
+library(here);source(here("analysis/stats.R"));plotVarsTbl; plotVarsTbl$varData
 library(ggbeeswarm) #quasirandom()
 library(ggpmisc) #stat_poly_eq()
 library(ggpubr) #ggarrange()
@@ -21,31 +21,43 @@ library(ggpubr) #ggarrange()
 ## Shade, *biomass*, *richness*
 
 ```{r plots}
+mainModel <- median ~ dist
 plotResultsTbl <- plotVarsTbl %>%
-  mutate(statTest = map(.x = varData,
-                        .f = ~ .x %>% lm(formula = median ~ dist)),
-         normalTest = map(.x = statTest, #needstatcol1st
-                         .f = ~ .x %>% residuals() %>% shapiro_test()),
-         varianceTest = map(.x = varData, #OGdata
-                            .f = ~ .x %>%
-                              levene_test(formula = median ~ as.factor(dist))),
-         statPrint = map(.x = statTest, .f = ~ .x %>% summary()), #orglast
-         isNormal = map(.x = normalTest,
-                        .f = ~ if_else(.x$p.value > 0.05, T, F)),
-         isHomosced = map(.x = varianceTest,
-                          .f = ~ if_else(.x$p > 0.05, T, F))) %>%
-  unnest(cols = c(isNormal, isHomosced)) %>% #nowlogicalnotlist
-  mutate(isModelOK = if_else(isNormal && isHomosced, T, F), #bug-notjoint?
-         isSignif = map_if(.x = statPrint, .p = isModelOK,
-                           .f = ~ if_else(.x$coefficients[[8]] < 0.11, #p
-                                          true = T, false = F),
-                           .else = ~ NA)) %>%
-  unnest(cols = isSignif) %>%
+  mutate(statTest = varData %>% map(~ .x %>% lm(formula = mainModel)),
+         normalTest = statTest %>% map(~ .x %>% residuals() %>% shapiro_test()),
+         varianceTest = varData %>% #OGdata
+           map(~ .x %>% levene_test(formula = median ~ as.factor(dist))),
+         statPrint = statTest %>% map(~ .x %>% summary()), #orglast
+         isNormal = normalTest %>% map(~ if_else(.x$p.value > 0.05, T, F)),
+         isHomosced = varianceTest %>% map(~ if_else(.x$p > 0.05, T, F))) %>%
+  unnest(cols = c(isNormal, isHomosced)) %>% #logical,!list
+  mutate(isModelOK = if_else(isNormal & isHomosced, T, F), #bug-notjoint?
+         isSignif = statPrint %>%
+           map_if(isModelOK, ~ if_else(.x$coefficients[[8]] < 0.11, T, F),
+                  .else = ~ NA)) %>% unnest(isSignif) %>%
+  mutate(hists = varData %>% map(~ hist(.x$median)),
+         statTestPois = varData %>% 
+           map_if(!isModelOK, 
+                  ~ .x %>% glm(formula = mainModel, family = poisson()) %>%
+                    summary(), .else = ~ NULL),
+         statTestGamma = varData %>% 
+           map_if(!isModelOK, 
+                  ~ .x %>% glm(formula = mainModel, family = Gamma()) %>%
+                    summary(), .else = ~ NULL),
+         poisAIC = statTestPois %>% map(~ .x$aic),
+         gammaAIC = statTestGamma %>% map(~ .x$aic)) %>%
+  mutate(pickAIC = min(poisAIC, gammaAIC)), #NAok #pause/bughere
+         pickTestPval = pickTestAIC %>%
+           map_if(pickTestAIC == statTestPois$aic,
+                  statTestPois$coefficients[[8]],
+                  .else = map_if(pickTestAIC == statTestGamma$aic,
+                                 statTestGamma$coefficients[[8]], 
+                                 .else = NA))) %>% unnest(pickTestPval) %>%
+  mutate(isSignif1 = pickTestPval %>% map_if(.x < 0.11,T,F),NA)) %>%
   mutate(graph = map(.x = varData,
                      .f = ~ .x %>%
                        ggplot(aes(x = dist, y = median)) +
-                       geom_quasirandom() + 
-                       geom_smooth(method = "lm") +
+                       geom_quasirandom() + geom_smooth(method = "lm") +
                        stat_poly_eq(formula = y ~ x, parse = T,
                                     aes(label = stat(..p.value.label..)))))
 plotResultsTbl; plotResultsTbl$graph #ggarrange(.[[1]], .[[2]]) #buggy
@@ -53,11 +65,12 @@ plotResultsTbl; plotResultsTbl$graph #ggarrange(.[[1]], .[[2]]) #buggy
 
 - re-model biomass, height
 - spg et al. vars at tree or plot level?
+- otherwise richness, spg appear signif
 
 ## Taxa
 
 ```{r trees}
-treeVarsTbl$varData
+treeVarsTbl$varData[[1]]
 treeResultsTbl <- treeVarsTbl %>%
   mutate(statTest = map(.x = varData,
                         .f = ~ .x %>% lm(formula = median1 ~ dist)),
@@ -76,8 +89,7 @@ treeResultsTbl <- treeVarsTbl %>%
          isSignif = map_if(.x = statPrint, .p = isModelOK,
                            .f = ~ if_else(.x$coefficients[[8]] < 0.11, #p
                                           true = T, false = F),
-                           .else = ~ NA)) %>%
-  unnest(cols = isSignif) %>%
+                           .else = ~ NA)) %>% unnest(cols = isSignif) %>%
   mutate(graph = map(.x = varData,
                      .f = ~ .x %>%
                        ggplot(aes(x = dist, y = median1)) +
@@ -87,3 +99,11 @@ treeResultsTbl <- treeVarsTbl %>%
                                     aes(label = stat(..p.value.label..)))))
 treeResultsTbl; treeResultsTbl$graph #ggarrange(.[[1]], .[[2]]) #buggy
 ```
+- no vars are normal even when transformed --> glm method
+- but spg appears signif--explanation will be relevant
+
+# Discussion
+
+- spg and richness change likely reflects shift in community (--> add NMDS/PCoA, with closer plots dominated by pioneering species in dense stands
+- i think inference about dispersal strategies could be in discussion, or later figure, no need to be oriiginally embedded in analysis
+-- but would probably make  story more ecological, and study more unique to presen, though
