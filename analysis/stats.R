@@ -16,3 +16,5 @@ treeVarsTbl <- rawData %>%
   get_summary_stats(type = "median_mad") %>%
   mutate(median1 = log10(median + 1)) %>% #4statTests
   nest(varData = -variable)
+
+#funcw/formulahard

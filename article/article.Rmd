@@ -43,7 +43,12 @@ output:
 1.  biomass x distance + timber sp
 
     -   can break down biomass by component
+
     -   maybe system-level curve (e.g. biomass hist) + timber sp
+
+        -   metric hist, vs. sp-abund/diversity hist below
+
+    -   max DAP as trait?
 
 2.  diversity x distance [+ 1 timber sp]
 

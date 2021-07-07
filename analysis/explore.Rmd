@@ -23,84 +23,111 @@ library(ggpubr) #ggarrange()
 ```{r plots}
 mainModel <- median ~ dist
 plotResultsTbl <- plotVarsTbl %>%
-  mutate(statTest = varData %>% map(~ .x %>% lm(formula = mainModel)),
-         normalTest = statTest %>% map(~ .x %>% residuals() %>% shapiro_test()),
-         varianceTest = varData %>% #OGdata
-           map(~ .x %>% levene_test(formula = median ~ as.factor(dist))),
-         statPrint = statTest %>% map(~ .x %>% summary()), #orglast
-         isNormal = normalTest %>% map(~ if_else(.x$p.value > 0.05, T, F)),
-         isHomosced = varianceTest %>% map(~ if_else(.x$p > 0.05, T, F))) %>%
-  unnest(cols = c(isNormal, isHomosced)) %>% #logical,!list
-  mutate(isModelOK = if_else(isNormal & isHomosced, T, F), #bug-notjoint?
-         isSignif = statPrint %>%
-           map_if(isModelOK, ~ if_else(.x$coefficients[[8]] < 0.11, T, F),
-                  .else = ~ NA)) %>% unnest(isSignif) %>%
-  mutate(hists = varData %>% map(~ hist(.x$median)),
-         statTestPois = varData %>% 
-           map_if(!isModelOK, 
-                  ~ .x %>% glm(formula = mainModel, family = poisson()) %>%
-                    summary(), .else = ~ NULL),
-         statTestGamma = varData %>% 
-           map_if(!isModelOK, 
-                  ~ .x %>% glm(formula = mainModel, family = Gamma()) %>%
-                    summary(), .else = ~ NULL),
-         poisAIC = statTestPois %>% map(~ .x$aic),
-         gammaAIC = statTestGamma %>% map(~ .x$aic)) %>%
-  mutate(pickAIC = min(poisAIC, gammaAIC)), #NAok #pause/bughere
-         pickTestPval = pickTestAIC %>%
-           map_if(pickTestAIC == statTestPois$aic,
-                  statTestPois$coefficients[[8]],
-                  .else = map_if(pickTestAIC == statTestGamma$aic,
-                                 statTestGamma$coefficients[[8]], 
-                                 .else = NA))) %>% unnest(pickTestPval) %>%
-  mutate(isSignif1 = pickTestPval %>% map_if(.x < 0.11,T,F),NA)) %>%
-  mutate(graph = map(.x = varData,
-                     .f = ~ .x %>%
-                       ggplot(aes(x = dist, y = median)) +
-                       geom_quasirandom() + geom_smooth(method = "lm") +
-                       stat_poly_eq(formula = y ~ x, parse = T,
-                                    aes(label = stat(..p.value.label..)))))
+    mutate("statTest" = varData %>% modify(~ .x %>% lm(formula = mainModel)),
+           normalTest = statTest %>% 
+             modify(~ .x %>% residuals() %>% shapiro_test()),
+           varianceTest = varData %>% #OGdata
+             modify(~ .x %>% levene_test(formula = median ~ as.factor(dist))),
+           statPrint = statTest %>% modify(~ .x %>% summary()), #orglast
+           "isNormal" = normalTest %>% modify(~ if_else(.x$p.value > 0.05,T,F)),
+           "isHomosced" = varianceTest %>% 
+             modify(~ if_else(.x$p > 0.05, T, F))) %>%
+    unnest(c(isNormal, isHomosced)) %>% #logical,!list
+    mutate("isModelOK" = if_else(isNormal & isHomosced, T, F),
+           "isSignif" = statPrint %>% 
+             modify_if(isModelOK, ~ if_else(.x$coefficients[[8]] < 0.11, T, F),
+                    .else = ~ NA)) %>% unnest(isSignif) %>%
+  #nonnormalstats
+  mutate(hists = varData %>% modify(~ hist(.x$median, plot = T)),
+         "statTestPois" = varData %>% 
+           modify_if(!isModelOK, 
+                     ~ .x %>% glm(formula = mainModel, family = poisson()) %>%
+                       summary(), .else = ~ NA),
+         "statTestGamma" = varData %>% 
+           modify_if(!isModelOK, 
+                     ~ .x %>% glm(formula = mainModel, family = Gamma()) %>%
+                       summary(), .else = ~ NA), #nestedmodifyishard
+         poisAIC = statTestPois %>% modify_if(!isModelOK, ~ .x$aic),
+         gammaAIC = statTestGamma %>% modify_if(!isModelOK, ~ .x$aic),
+         poisPval = statTestPois %>% 
+           modify_if(!isModelOK, ~ .x$coefficients[[8]]),
+         gammaPval = statTestGamma %>% 
+           modify_if(!isModelOK, ~ .x$coefficients[[8]])) %>% 
+  unnest(c(poisAIC, gammaAIC, poisPval, gammaPval)) %>%
+  mutate("pickAIC" = pmin(poisAIC, gammaAIC)) %>%
+  mutate(graph = varData %>% 
+           modify(~ .x %>% ggplot(aes(x = dist, y = median)) +
+                    geom_quasirandom() + geom_smooth(method = "lm") +
+                    stat_poly_eq(formula = y ~ x, parse = T,
+                                 aes(label = stat(..p.value.label..)))))
 plotResultsTbl; plotResultsTbl$graph #ggarrange(.[[1]], .[[2]]) #buggy
 ```
 
-- re-model biomass, height
 - spg et al. vars at tree or plot level?
 - otherwise richness, spg appear signif
 
-## Taxa
+## Trees
 
 ```{r trees}
 treeVarsTbl$varData[[1]]
+mainModel1 <- median1 ~ dist
 treeResultsTbl <- treeVarsTbl %>%
-  mutate(statTest = map(.x = varData,
-                        .f = ~ .x %>% lm(formula = median1 ~ dist)),
-         normalTest = map(.x = statTest, #needstatcol1st
-                         .f = ~ .x %>% residuals() %>% shapiro_test()),
-         varianceTest = map(.x = varData, #OGdata
-                            .f = ~ .x %>%
-                              levene_test(formula = median1 ~ as.factor(dist))),
-         statPrint = map(.x = statTest, .f = ~ .x %>% summary()), #orglast
-         isNormal = map(.x = normalTest,
-                        .f = ~ if_else(.x$p.value > 0.05, T, F)),
-         isHomosced = map(.x = varianceTest,
-                          .f = ~ if_else(.x$p > 0.05, T, F))) %>%
-  unnest(cols = c(isNormal, isHomosced)) %>% #nowlogicalnotlist
-  mutate(isModelOK = if_else((isNormal && isHomosced), T, F), #bug-notjoint?
-         isSignif = map_if(.x = statPrint, .p = isModelOK,
-                           .f = ~ if_else(.x$coefficients[[8]] < 0.11, #p
-                                          true = T, false = F),
-                           .else = ~ NA)) %>% unnest(cols = isSignif) %>%
-  mutate(graph = map(.x = varData,
-                     .f = ~ .x %>%
-                       ggplot(aes(x = dist, y = median1)) +
-                       geom_quasirandom() + 
-                       geom_smooth(method = "lm") +
-                       stat_poly_eq(formula = y ~ x, parse = T,
-                                    aes(label = stat(..p.value.label..)))))
+  mutate("statTest" = varData %>% modify(~ .x %>% lm(formula = mainModel1)),
+         normalTest = statTest %>% 
+           modify(~ .x %>% residuals() %>% shapiro_test()),
+         varianceTest = varData %>% #OGdata
+           modify(~ .x %>% levene_test(formula = median1 ~ as.factor(dist))),
+         statPrint = statTest %>% modify(~ .x %>% summary()), #orglast
+         "isNormal" = normalTest %>% modify(~ if_else(.x$p.value > 0.05,T,F)),
+         "isHomosced" = varianceTest %>% 
+           modify(~ if_else(.x$p > 0.05, T, F))) %>%
+  unnest(c(isNormal, isHomosced)) %>% #logical,!list
+  mutate("isModelOK" = if_else(isNormal & isHomosced, T, F),
+         "isSignif" = statPrint %>% 
+           modify_if(isModelOK, ~ if_else(.x$coefficients[[8]] < 0.11, T, F),
+                     .else = ~ NA)) %>% unnest(isSignif) %>%
+  #nonnormalstats
+  mutate("statTestPois" = varData %>% 
+           modify_if(!isModelOK, 
+                     ~ .x %>% glm(formula = mainModel1, family = poisson()) %>%
+                       summary(), .else = ~ NA),
+         "statTestGamma" = varData %>% 
+           modify_if(!isModelOK, 
+                     ~ .x %>% glm(formula = mainModel1, family = Gamma()) %>%
+                       summary(), .else = ~ NA), #nestedmodifyishard
+         poisAIC = statTestPois %>% modify_if(!isModelOK, ~ .x$aic),
+         gammaAIC = statTestGamma %>% modify_if(!isModelOK, ~ .x$aic),
+         poisPval = statTestPois %>% 
+           modify_if(!isModelOK, ~ .x$coefficients[[8]]),
+         gammaPval = statTestGamma %>% 
+           modify_if(!isModelOK, ~ .x$coefficients[[8]])) %>% 
+  unnest(c(poisAIC, gammaAIC, poisPval, gammaPval)) %>%
+  mutate("pickAIC" = pmin(poisAIC, gammaAIC)) %>%
+  mutate(graph = varData %>% 
+           modify(~ .x %>% ggplot(aes(x = dist, y = median1)) +
+                    geom_quasirandom() + geom_smooth(method = "lm") +
+                    stat_poly_eq(formula = y ~ x, parse = T,
+                                 aes(label = stat(..p.value.label..)))))
+#nonormalmetrics
+treeResultsTbl1 <- treeResultsTbl %>%
+  mutate(hists = varData %>% modify(~ hist(.x$median1, plot = F)),
+         histsTbl = hists %>% modify(~ tibble(value = .x$mids, p = .x$ncounts)),
+         histgraphs = histsTbl %>% 
+           modify(~ .x %>% ggplot(aes(value, p)) + stat_smooth(method = "lm")))
+treeResultsTbl1$histsTbl
+
 treeResultsTbl; treeResultsTbl$graph #ggarrange(.[[1]], .[[2]]) #buggy
+plot(treeResultsTbl$hists[[1]]$mids, treeResultsTbl$hists[[1]]$counts)
 ```
-- no vars are normal even when transformed --> glm method
-- but spg appears signif--explanation will be relevant
+- spg appears signif--explanation will be relevant
+- explore historgrams for non-sig vars? (i.e. non-equilibrium stats)
+
+```{r biomass}
+
+```
+
+## Taxa
+
 
 # Discussion
 
