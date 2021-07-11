@@ -10,10 +10,13 @@ output:
 
 ```{r setup}
 library(knitr); opts_chunk$set(echo=F, include=F)
-library(here);source(here("analysis/stats.R"));plotVarsTbl; plotVarsTbl$varData
+library(here);source(here("analysis/stats.R"));
+plotVarsTbl;plotVarsTbl$varData[[1]]
 library(ggbeeswarm) #quasirandom()
 library(ggpmisc) #stat_poly_eq()
 library(ggpubr) #ggarrange()
+source(here("analysis/disfit.R")) #disfit()
+library(vegan)
 ```
 
 # Results
@@ -38,8 +41,7 @@ plotResultsTbl <- plotVarsTbl %>%
              modify_if(isModelOK, ~ if_else(.x$coefficients[[8]] < 0.11, T, F),
                     .else = ~ NA)) %>% unnest(isSignif) %>%
   #nonnormalstats
-  mutate(hists = varData %>% modify(~ hist(.x$median, plot = T)),
-         "statTestPois" = varData %>% 
+  mutate("statTestPois" = varData %>% 
            modify_if(!isModelOK, 
                      ~ .x %>% glm(formula = mainModel, family = poisson()) %>%
                        summary(), .else = ~ NA),
@@ -60,6 +62,10 @@ plotResultsTbl <- plotVarsTbl %>%
                     geom_quasirandom() + geom_smooth(method = "lm") +
                     stat_poly_eq(formula = y ~ x, parse = T,
                                  aes(label = stat(..p.value.label..)))))
+plotResultsTbl %>% #new...?
+  mutate()
+         hist = varData %>% 
+           modify(.x %>% group_by(dist)))
 plotResultsTbl; plotResultsTbl$graph #ggarrange(.[[1]], .[[2]]) #buggy
 ```
 
@@ -110,11 +116,15 @@ treeResultsTbl <- treeVarsTbl %>%
                                  aes(label = stat(..p.value.label..)))))
 #nonormalmetrics
 treeResultsTbl1 <- treeResultsTbl %>%
-  mutate(hists = varData %>% modify(~ hist(.x$median1, plot = F)),
-         histsTbl = hists %>% modify(~ tibble(value = .x$mids, p = .x$ncounts)),
-         histgraphs = histsTbl %>% 
-           modify(~ .x %>% ggplot(aes(value, p)) + stat_smooth(method = "lm")))
-treeResultsTbl1$histsTbl
+  mutate(hist = varData %>% modify(~ hist(.x$median, plot = F)),
+         histTbl = hist %>%
+           modify(~ tibble(value = .x$mids, f = .x$counts, d = varData$dist)),
+         histgraphs = varData %>%
+           modify(~ .x %>% ggplot(aes(x = median)) +
+                    stat_bin(geom = "point"),
+         probs = hists %>% modify(~ disfit(.x$counts + 1))) #1min/variable
+treeResultsTbl1$histgraphs
+treeResultsTbl1$probs
 
 treeResultsTbl; treeResultsTbl$graph #ggarrange(.[[1]], .[[2]]) #buggy
 plot(treeResultsTbl$hists[[1]]$mids, treeResultsTbl$hists[[1]]$counts)
@@ -127,6 +137,15 @@ plot(treeResultsTbl$hists[[1]]$mids, treeResultsTbl$hists[[1]]$counts)
 ```
 
 ## Taxa
+
+```{r entropy}
+treeResultsTbl$varData
+
+test = treeVarsTbl %>%
+  mutate(spTbl = varData %>% 
+           modify(~ .x %>% group_by(dist) %>% pivot_wider(gen, median)))
+test$spTbl
+```
 
 
 # Discussion

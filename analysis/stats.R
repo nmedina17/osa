@@ -7,7 +7,7 @@ plotVarsTbl <- rawData %>%
   select(luz, incl, #abiotic
          dap, h, spg, kg17, #biotic
          richness) %>% #taxonomic
-  get_summary_stats(type = "median") %>%
+  get_summary_stats(type = "median_mad") %>%
   nest(varData = -variable)
 
 treeVarsTbl <- rawData %>%
@@ -15,6 +15,7 @@ treeVarsTbl <- rawData %>%
   select(dap, h, spg, kg17) %>%
   get_summary_stats(type = "median_mad") %>%
   mutate(median1 = log10(median + 1)) %>% #4statTests
+  #mutate(spTbl = rawData %>% pivot_wider(gen, median)) %>%
   nest(varData = -variable)
 
 #funcw/formulahard
