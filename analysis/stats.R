@@ -1,15 +1,21 @@
 library(here); source(here("analysis/clean.R"))
-library(tidyverse); library(rstatix)
+library(tidyverse); library(rstatix);
+library(vegan) #diversity()
+
+spTbl <- rawData %>% #4vegan
+  add_count(gen, plot, name = "n_gen", sort = T) %>%
+  pivot_wider(names_from = gen, values_from = n_gen,
+              values_fn = length, #rmwarn
+              values_fill = 0) %>% #noid_col,leavedups
+  select(-c(ID, dist, rep:kg17)) #keepplot
+#bugeats2rows...
 
 plotVarsTbl <- rawData %>%
+  mutate(entropy = spTbl %>% diversity())
   group_by(dist, plot) %>%
-  mutate(richness = n_distinct(sp)) %>%
-  add_count(gen, name = "n_gen") %>%
-  pivot_wider(names_from = gen, values_from = n_gen,
-              values_fill = 0, values_fn = sum,
-              names_repair = "universal") %>%
-  select(-(ID : richness)) %>%
-  diversity() #mutate
+  mutate(richness = n_distinct(sp))
+length(plotVarsTbl$richness)
+
   select(luz, incl, #abiotic
          dap, h, spg, kg17, #biotic
          richness) %>% #taxonomic

@@ -18,11 +18,7 @@ rawData <- vroom(here("data/raw/osa.csv")) %>%
 #attic--newfams
 for (name in rawData$fam) {
   #if (name == "Bombacaceae" |
-  #name == "Sterculiaceae") {
-  #name <- "Malvaceae"
-  #}
-  #if (name == "Cecropiaceae") {
-  #name <- "Urticaceae"
-  #}
+  #name == "Sterculiaceae") {name <- "Malvaceae" }
+  #if (name == "Cecropiaceae") {name <- "Urticaceae"}
 }
 # both fam methods do seem equal
