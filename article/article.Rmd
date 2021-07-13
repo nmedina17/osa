@@ -117,6 +117,8 @@ output:
 
     -   vegan v\#\#\# = community analysis
 
+        -   justify metrics, i.e. entropy vs. hists
+
 # Acknowledgements
 
 -   osa conservation - max villalobos, [dan student harvard alum], agustín (& annia), manuel director

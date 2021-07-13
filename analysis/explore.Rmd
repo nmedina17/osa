@@ -9,7 +9,7 @@ output:
 ---
 
 ```{r setup}
-library(knitr); opts_chunk$set(echo=F, include=F)
+library(knitr); opts_chunk$set(echo=F)
 library(here);source(here("analysis/stats.R"));
 plotVarsTbl;plotVarsTbl$varData[[1]]
 library(ggbeeswarm) #quasirandom()
@@ -62,15 +62,11 @@ plotResultsTbl <- plotVarsTbl %>%
                     geom_quasirandom() + geom_smooth(method = "lm") +
                     stat_poly_eq(formula = y ~ x, parse = T,
                                  aes(label = stat(..p.value.label..)))))
-plotResultsTbl %>% #new...?
-  mutate()
-         hist = varData %>% 
-           modify(.x %>% group_by(dist)))
 plotResultsTbl; plotResultsTbl$graph #ggarrange(.[[1]], .[[2]]) #buggy
 ```
 
-- spg et al. vars at tree or plot level?
-- otherwise richness, spg appear signif
+-   spg et al. vars at tree or plot level?
+-   otherwise richness, spg appear signif
 
 ## Trees
 
@@ -114,7 +110,7 @@ treeResultsTbl <- treeVarsTbl %>%
                     geom_quasirandom() + geom_smooth(method = "lm") +
                     stat_poly_eq(formula = y ~ x, parse = T,
                                  aes(label = stat(..p.value.label..)))))
-#nonormalmetrics
+#nonormalmetrics #paused
 treeResultsTbl1 <- treeResultsTbl %>%
   mutate(hist = varData %>% modify(~ hist(.x$median, plot = F)),
          histTbl = hist %>%
@@ -129,8 +125,9 @@ treeResultsTbl1$probs
 treeResultsTbl; treeResultsTbl$graph #ggarrange(.[[1]], .[[2]]) #buggy
 plot(treeResultsTbl$hists[[1]]$mids, treeResultsTbl$hists[[1]]$counts)
 ```
-- spg appears signif--explanation will be relevant
-- explore historgrams for non-sig vars? (i.e. non-equilibrium stats)
+
+-   spg appears signif--explanation will be relevant
+-   explore historgrams for non-sig vars? (i.e. non-equilibrium stats)
 
 ```{r biomass}
 
@@ -139,17 +136,12 @@ plot(treeResultsTbl$hists[[1]]$mids, treeResultsTbl$hists[[1]]$counts)
 ## Taxa
 
 ```{r entropy}
-treeResultsTbl$varData
-
-test = treeVarsTbl %>%
+treeVarsTbl %>%
   mutate(spTbl = varData %>% 
-           modify(~ .x %>% group_by(dist) %>% pivot_wider(gen, median)))
-test$spTbl
+           modify(~ .x %>% pivot_wider(names_from = gen, values_from = median)))
 ```
-
 
 # Discussion
 
-- spg and richness change likely reflects shift in community (--> add NMDS/PCoA, with closer plots dominated by pioneering species in dense stands
-- i think inference about dispersal strategies could be in discussion, or later figure, no need to be oriiginally embedded in analysis
--- but would probably make  story more ecological, and study more unique to presen, though
+-   spg and richness change likely reflects shift in community (--\> add NMDS/PCoA, with closer plots dominated by pioneering species in dense stands
+-   i think inference about dispersal strategies could be in discussion, or later figure, no need to be oriiginally embedded in analysis -- but would probably make story more ecological, and study more unique to presen, though
