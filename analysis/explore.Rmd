@@ -10,8 +10,8 @@ output:
 
 ```{r setup}
 library(knitr); opts_chunk$set(echo=F)
-library(here);source(here("analysis/stats.R"));
-plotVarsTbl;plotVarsTbl$varData[[1]]
+library(here);source(here("analysis/stats.R"));plotVarsTbl$varData[[1]]
+library(tidymodels)
 library(ggbeeswarm) #quasirandom()
 library(ggpmisc) #stat_poly_eq()
 library(ggpubr) #ggarrange()
@@ -26,9 +26,11 @@ library(vegan)
 ```{r plots}
 mainModel <- median ~ dist
 plotResultsTbl <- plotVarsTbl %>%
-    mutate("statTest" = varData %>% modify(~ .x %>% lm(formula = mainModel)),
+    mutate("statTest" = varData %>% 
+             modify(~ linear_reg() %>% set_engine("lm") %>% 
+                      fit(mainModel, data = .x) %>% tidy()),
            normalTest = statTest %>% 
-             modify(~ .x %>% residuals() %>% shapiro_test()),
+             modify(~ .x %>% residuals() %>% shapiro_test()), #bug-tidymodel
            varianceTest = varData %>% #OGdata
              modify(~ .x %>% levene_test(formula = median ~ as.factor(dist))),
            statPrint = statTest %>% modify(~ .x %>% summary()), #orglast
@@ -80,7 +82,7 @@ treeResultsTbl <- treeVarsTbl %>%
          varianceTest = varData %>% #OGdata
            modify(~ .x %>% levene_test(formula = median1 ~ as.factor(dist))),
          statPrint = statTest %>% modify(~ .x %>% summary()), #orglast
-         "isNormal" = normalTest %>% modify(~ if_else(.x$p.value > 0.05,T,F)),
+         "isNormal" = normalTest %>% modify(~ if_else(.x$p.value > 0.05, T, F)),
          "isHomosced" = varianceTest %>% 
            modify(~ if_else(.x$p > 0.05, T, F))) %>%
   unnest(c(isNormal, isHomosced)) %>% #logical,!list

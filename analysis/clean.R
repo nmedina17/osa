@@ -15,6 +15,8 @@ rawData <- vroom(here("data/raw/osa.csv")) %>%
          kg14 = 0.0673 * (spg * dap^2 * h)^0.976,
          kg17 = computeAGB(D = dap, WD = spg, H = h) * 1000)
 
+rawData$fixedNames
+
 #attic--newfams
 for (name in rawData$fam) {
   #if (name == "Bombacaceae" |
