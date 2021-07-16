@@ -9,13 +9,16 @@ output:
 ---
 
 ```{r setup}
-library(knitr); opts_chunk$set(echo=F)
-library(here);source(here("analysis/stats.R"));plotVarsTbl$varData[[1]]
+library(knitr); opts_chunk$set(echo = F)
+library(here);
+source(
+  here("analysis/stats.R"))
 library(tidymodels)
 library(ggbeeswarm) #quasirandom()
 library(ggpmisc) #stat_poly_eq()
 library(ggpubr) #ggarrange()
-source(here("analysis/disfit.R")) #disfit()
+source(
+  here("analysis/disfit.R")) #disfit()
 library(vegan)
 ```
 
@@ -25,46 +28,107 @@ library(vegan)
 
 ```{r plots}
 mainModel <- median ~ dist
-plotResultsTbl <- plotVarsTbl %>%
-    mutate("statTest" = varData %>% 
-             modify(~ linear_reg() %>% set_engine("lm") %>% 
-                      fit(mainModel, data = .x) %>% tidy()),
-           normalTest = statTest %>% 
-             modify(~ .x %>% residuals() %>% shapiro_test()), #bug-tidymodel
-           varianceTest = varData %>% #OGdata
-             modify(~ .x %>% levene_test(formula = median ~ as.factor(dist))),
-           statPrint = statTest %>% modify(~ .x %>% summary()), #orglast
-           "isNormal" = normalTest %>% modify(~ if_else(.x$p.value > 0.05,T,F)),
-           "isHomosced" = varianceTest %>% 
-             modify(~ if_else(.x$p > 0.05, T, F))) %>%
-    unnest(c(isNormal, isHomosced)) %>% #logical,!list
-    mutate("isModelOK" = if_else(isNormal & isHomosced, T, F),
-           "isSignif" = statPrint %>% 
-             modify_if(isModelOK, ~ if_else(.x$coefficients[[8]] < 0.11, T, F),
-                    .else = ~ NA)) %>% unnest(isSignif) %>%
+plotResultsTbl <-
+  plotVarsTbl %>%
+  mutate(
+    #fitmodl
+    "statTest" = varData %>% 
+      modify(
+        ~ linear_reg() %>% 
+          set_engine("lm") %>% 
+          fit(mainModel, 
+              data = .x) %>% 
+          tidy()),
+      
+    #evalmodl
+    #bug-tidymodl
+    normalTest = statTest %>% 
+      modify(
+        ~ .x %>%
+          residuals() %>%
+          shapiro_test()), 
+    #OGdata
+    varianceTest = varData %>%
+      modify(
+        ~ .x %>% 
+          levene_test(
+            formula = median ~
+              as.factor(dist))),
+    statPrint = statTest %>% 
+      modify(
+        ~ .x %>%
+          summary()), #orglast
+    "isNormal" = normalTest %>% 
+      modify(
+        ~ if_else(
+          .x$p.value > 0.05,
+          T,F)),
+    "isHomosced" = varianceTest %>% 
+      modify(
+        ~ if_else(
+          .x$p > 0.05, 
+          T, F))) %>%
+  #logical,!list
+  unnest(c(isNormal, isHomosced)) %>% 
+  
+  mutate(
+    "isModelOK" = if_else(
+      isNormal & isHomosced, 
+      T, F),
+         "isSignif" = statPrint %>% 
+           modify_if(
+             isModelOK, 
+             ~ if_else(
+               .x$coefficients[[8]] < 0.11,
+               T,F),
+             .else = ~ NA)) %>% 
+  unnest(isSignif) %>%
   #nonnormalstats
   mutate("statTestPois" = varData %>% 
-           modify_if(!isModelOK, 
-                     ~ .x %>% glm(formula = mainModel, family = poisson()) %>%
-                       summary(), .else = ~ NA),
+           modify_if(
+             !isModelOK, 
+             ~ .x %>% 
+               glm(formula = mainModel, 
+                   family = poisson()) %>%
+               summary(), 
+             .else = ~ NA),
          "statTestGamma" = varData %>% 
-           modify_if(!isModelOK, 
-                     ~ .x %>% glm(formula = mainModel, family = Gamma()) %>%
-                       summary(), .else = ~ NA), #nestedmodifyishard
-         poisAIC = statTestPois %>% modify_if(!isModelOK, ~ .x$aic),
-         gammaAIC = statTestGamma %>% modify_if(!isModelOK, ~ .x$aic),
+           modify_if(
+             !isModelOK, 
+             ~ .x %>% 
+               glm(formula = mainModel, 
+                   family = Gamma()) %>% summary(), 
+             .else = ~ NA), #nestedmodifyishard
+         poisAIC = statTestPois %>%
+           modify_if(
+             !isModelOK, 
+             ~ .x$aic),
+         gammaAIC = statTestGamma %>% 
+           modify_if(
+             !isModelOK, 
+             ~ .x$aic),
          poisPval = statTestPois %>% 
-           modify_if(!isModelOK, ~ .x$coefficients[[8]]),
+           modify_if(
+             !isModelOK, 
+             ~ .x$coefficients[[8]]),
          gammaPval = statTestGamma %>% 
-           modify_if(!isModelOK, ~ .x$coefficients[[8]])) %>% 
+           modify_if(
+             !isModelOK, 
+             ~ .x$coefficients[[8]])) %>% 
   unnest(c(poisAIC, gammaAIC, poisPval, gammaPval)) %>%
   mutate("pickAIC" = pmin(poisAIC, gammaAIC)) %>%
   mutate(graph = varData %>% 
-           modify(~ .x %>% ggplot(aes(x = dist, y = median)) +
-                    geom_quasirandom() + geom_smooth(method = "lm") +
-                    stat_poly_eq(formula = y ~ x, parse = T,
-                                 aes(label = stat(..p.value.label..)))))
-plotResultsTbl; plotResultsTbl$graph #ggarrange(.[[1]], .[[2]]) #buggy
+           modify(
+             ~ .x %>% 
+               ggplot(aes(x = dist, y = median)) +
+               geom_quasirandom() + 
+               geom_smooth(method = "lm") +
+               stat_poly_eq(formula = y ~ x, 
+                            parse = T,
+                            aes(label = stat(..p.value.label..))
+                            )))
+plotResultsTbl; plotResultsTbl$graph 
+#ggarrange(.[[1]], .[[2]]) #buggy
 ```
 
 -   spg et al. vars at tree or plot level?

@@ -1,21 +1,25 @@
 library(here) #fromprojdir
 library(vroom) #loadastbl
-library(tidyverse); library(BIOMASS)
+#library(skimr) #glance
+library(tidyverse);
+library(BIOMASS)
 
-rawData <- vroom(here("data/raw/osa.csv")) %>%
+rawData <- vroom(
+  here("data/raw/osa.csv")) %>%
   filter(!is.na(dist)) %>% #gen!=na,sp!=sp.?
-  mutate(fixedNames = correctTaxo(genus = gen,
-                                  species = sp,
-                                  useCache = T),
-         fam = getTaxonomy(gen)$family, #useful
-         spg = getWoodDensity(genus = gen,
-                              species = sp,
-                              family = fam,
-                              stand = plot)$meanWD,
-         kg14 = 0.0673 * (spg * dap^2 * h)^0.976,
-         kg17 = computeAGB(D = dap, WD = spg, H = h) * 1000)
-
-rawData$fixedNames
+  mutate(
+    fixedNames = correctTaxo(genus = gen, #df
+                             species = sp,
+                             useCache = T),
+    fam = getTaxonomy(gen)$family, #useful
+    spg = getWoodDensity(genus = gen,
+                         species = sp,
+                         family = fam,
+                         stand = plot)$meanWD,
+    kg14 = 0.0673 * (spg * dap^2 * h)^0.976,
+    kg17 = computeAGB(D = dap,
+                      WD = spg,
+                      H = h) * 1000)
 
 #attic--newfams
 for (name in rawData$fam) {
