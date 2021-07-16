@@ -1,3 +1,4 @@
+library(tidyverse)
 library(poweRlaw)
 
 
@@ -9,8 +10,9 @@ disfit <- function(freqData) {
   Pl$setPars(
     estimate_pars(Pl))
   #variance
-  PlVar <- var(
-    bootstrap(Pl)$bootstraps$pars)
+  PlVar <-
+    bootstrap(Pl)$bootstraps$pars %>%
+    var()
   #plot(Pl)
 
   PlP <- bootstrap_p(Pl)$p  #>0.1passes
@@ -18,14 +20,16 @@ disfit <- function(freqData) {
   Exp <- disexp$new(round(freqData))
   Exp$setPars(
     estimate_pars(Exp))
-  ExpVar <- var(
-    bootstrap(Exp)$bootstraps$pars)
+  ExpVar <-
+    bootstrap(Exp)$bootstraps$pars %>%
+    var()
 
   Pois <- dispois$new(round(freqData))
   Pois$setPars(
     estimate_pars(Pois))
-  PoisVar <- var(
-    bootstrap(Pois)$bootstraps$pars)
+  PoisVar <-
+    bootstrap(Pois)$bootstraps$pars %>%
+    var()
 
   Lognorm <- dislnorm$new(round(freqData))
   Lognorm$setPars(
@@ -50,7 +54,7 @@ disfit <- function(freqData) {
                           Pois)$p_one_sided
 
 
-  results <- data.frame(
+  results <- tibble(
     "PlP" = PlP,
     "PlExpP" = PlExpP, #pvals
     "PlLognormP" = PlLognormP,

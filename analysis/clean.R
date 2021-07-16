@@ -6,25 +6,21 @@ library(BIOMASS)
 
 rawData <- vroom(
   here("data/raw/osa.csv")) %>%
-  filter(!is.na(dist)) %>% #gen!=na,sp!=sp.?
+  #gen!=na,sp!=sp.?
+  filter(
+    !is.na(dist)) %>%
   mutate(
-    fixedNames = correctTaxo(genus = gen, #df
-                             species = sp,
-                             useCache = T),
-    fam = getTaxonomy(gen)$family, #useful
-    spg = getWoodDensity(genus = gen,
-                         species = sp,
-                         family = fam,
-                         stand = plot)$meanWD,
-    kg14 = 0.0673 * (spg * dap^2 * h)^0.976,
-    kg17 = computeAGB(D = dap,
-                      WD = spg,
-                      H = h) * 1000)
-
-#attic--newfams
-for (name in rawData$fam) {
-  #if (name == "Bombacaceae" |
-  #name == "Sterculiaceae") {name <- "Malvaceae" }
-  #if (name == "Cecropiaceae") {name <- "Urticaceae"}
-}
-# both fam methods do seem equal
+    "newName" = correctTaxo(genus = gen,
+                            species = sp,
+                            useCache = T),
+    #useful
+    "fam" = getTaxonomy(gen) %>%
+      pull(family),
+    "spg" = getWoodDensity(genus = "gen",
+                           species = "sp",
+                           family = "fam",
+                           stand = plot) %>%
+      pull(meanWD),
+    "kg17" = computeAGB(D = dap,
+                        WD = spg,
+                        H = h) * 1000)
