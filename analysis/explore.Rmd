@@ -1,15 +1,18 @@
 ---
 title: "Osa data exploration"
 output:
-  html_notebook:
+  html_notebook: 
     toc: yes
     code_folding: hide
     theme: spacelab
     fig_caption: yes
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup}
-library(knitr); opts_chunk$set(echo = F)
+library(knitr); 
+opts_chunk$set(echo = F)
 library(here);
 source(
   here("analysis/stats.R"))
@@ -19,7 +22,7 @@ library(ggpmisc) #stat_poly_eq()
 library(ggpubr) #ggarrange()
 source(
   here("analysis/disfit.R")) #disfit()
-library(vegan)
+library(vegan) #adonis()?
 ```
 
 # Results
@@ -31,22 +34,26 @@ mainModel <- median ~ dist
 plotResultsTbl <-
   plotVarsTbl %>%
   mutate(
-    #fitmodl
     "statTest" = varData %>% 
       modify(
-        ~ linear_reg() %>% 
-          set_engine("lm") %>% 
-          fit(mainModel, 
-              data = .x) %>% 
-          tidy()),
-      
-    #evalmodl
-    #bug-tidymodl
+        ~ .x %>%
+          lm(formula = mainModel)),
+    statPrint = statTest %>%
+      modify(
+        ~ .x %>%
+          tidy() %>%
+          full_join(.,
+                    .x %>%
+                      glance()) %>%
+          filter(
+            !is.na(term))),
+    
     normalTest = statTest %>% 
       modify(
         ~ .x %>%
-          residuals() %>%
-          shapiro_test()), 
+          augment() %>%
+          pull(.resid) %>%
+          shapiro_test()),
     #OGdata
     varianceTest = varData %>%
       modify(
@@ -54,79 +61,86 @@ plotResultsTbl <-
           levene_test(
             formula = median ~
               as.factor(dist))),
-    statPrint = statTest %>% 
-      modify(
-        ~ .x %>%
-          summary()), #orglast
     "isNormal" = normalTest %>% 
       modify(
         ~ if_else(
-          .x$p.value > 0.05,
-          T,F)),
+            .x$p.value > 0.055,
+            T,F)),
     "isHomosced" = varianceTest %>% 
       modify(
         ~ if_else(
-          .x$p > 0.05, 
-          T, F))) %>%
-  #logical,!list
+          .x$p > 0.055, 
+          T, F))
+    ) %>%
+  #list2vec
   unnest(c(isNormal, isHomosced)) %>% 
-  
   mutate(
     "isModelOK" = if_else(
       isNormal & isHomosced, 
       T, F),
-         "isSignif" = statPrint %>% 
-           modify_if(
-             isModelOK, 
-             ~ if_else(
-               .x$coefficients[[8]] < 0.11,
-               T,F),
-             .else = ~ NA)) %>% 
+    "isSignif" = statPrint %>% 
+      modify_if(
+        isModelOK, 
+        ~ if_else(
+          #mainterm
+          .x$p.value[2] < 0.105, 
+          T,F),
+        .else = ~ NA)) %>% 
   unnest(isSignif) %>%
   #nonnormalstats
-  mutate("statTestPois" = varData %>% 
-           modify_if(
-             !isModelOK, 
-             ~ .x %>% 
-               glm(formula = mainModel, 
-                   family = poisson()) %>%
-               summary(), 
-             .else = ~ NA),
-         "statTestGamma" = varData %>% 
-           modify_if(
-             !isModelOK, 
-             ~ .x %>% 
-               glm(formula = mainModel, 
-                   family = Gamma()) %>% summary(), 
-             .else = ~ NA), #nestedmodifyishard
-         poisAIC = statTestPois %>%
-           modify_if(
-             !isModelOK, 
-             ~ .x$aic),
-         gammaAIC = statTestGamma %>% 
-           modify_if(
-             !isModelOK, 
-             ~ .x$aic),
-         poisPval = statTestPois %>% 
-           modify_if(
-             !isModelOK, 
-             ~ .x$coefficients[[8]]),
-         gammaPval = statTestGamma %>% 
-           modify_if(
-             !isModelOK, 
-             ~ .x$coefficients[[8]])) %>% 
-  unnest(c(poisAIC, gammaAIC, poisPval, gammaPval)) %>%
-  mutate("pickAIC" = pmin(poisAIC, gammaAIC)) %>%
-  mutate(graph = varData %>% 
-           modify(
-             ~ .x %>% 
-               ggplot(aes(x = dist, y = median)) +
-               geom_quasirandom() + 
-               geom_smooth(method = "lm") +
-               stat_poly_eq(formula = y ~ x, 
-                            parse = T,
-                            aes(label = stat(..p.value.label..))
-                            )))
+  #nestedmodifyishard
+  mutate(
+    "statTestPois" = varData %>% 
+      modify_if(
+        !isModelOK, 
+        ~ .x %>% 
+          glm(formula = mainModel, 
+              family = poisson()) %>%
+          summary(), 
+        .else = ~ NA),
+    "statTestGamma" = varData %>% 
+      modify_if(
+        !isModelOK, 
+        ~ .x %>% 
+          glm(formula = mainModel, 
+              family = Gamma()) %>%
+          summary(), 
+        .else = ~ NA),
+    poisAIC = statTestPois %>%
+      modify_if(
+        !isModelOK, 
+        ~ .x$aic),
+    gammaAIC = statTestGamma %>% 
+      modify_if(
+        !isModelOK, 
+        ~ .x$aic),
+    poisPval = statTestPois %>% 
+      modify_if(
+        !isModelOK, 
+        ~ .x$coefficients[8]),
+    gammaPval = statTestGamma %>% 
+      modify_if(
+        !isModelOK, 
+        ~ .x$coefficients[8])) %>% 
+  unnest(c(poisAIC, gammaAIC, 
+           poisPval, gammaPval)) %>%
+  mutate(
+    "pickAIC" = pmin(poisAIC, 
+                     gammaAIC)) %>%
+  mutate(
+    graph = varData %>% 
+      modify(
+        ~ .x %>% 
+          ggplot(
+            aes(x = dist, 
+                y = median)) +
+          geom_quasirandom() + 
+          geom_smooth(method = "lm") +
+          stat_poly_eq(
+            formula = y ~ x, 
+            parse = T,
+            aes(label = stat(
+              ..p.value.label..)))))
 plotResultsTbl; plotResultsTbl$graph 
 #ggarrange(.[[1]], .[[2]]) #buggy
 ```

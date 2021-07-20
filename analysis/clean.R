@@ -16,9 +16,9 @@ rawData <- vroom(
     #useful
     "fam" = getTaxonomy(gen) %>%
       pull(family),
-    "spg" = getWoodDensity(genus = "gen",
-                           species = "sp",
-                           family = "fam",
+    "spg" = getWoodDensity(genus = gen,
+                           species = sp,
+                           family = fam,
                            stand = plot) %>%
       pull(meanWD),
     "kg17" = computeAGB(D = dap,
