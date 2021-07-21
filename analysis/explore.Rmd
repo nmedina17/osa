@@ -22,18 +22,18 @@ knitr::opts_chunk$set(
   )
 library(here)
 source(
-  here("analysis/checkVars.R")
+  here("analysis/fullstats.R")
   )
 ```
 
 # Results
 
-## Shade, *biomass*, *richness*
+## Shade, biomass, *diversity*
 
 ```{r get}
 mainModel <- median ~ dist
 plotResultsTbl <- plotVarsTbl %>%
-  getStats(
+  getStatsTbl(
     mainModel
   )
 ```
@@ -51,6 +51,7 @@ plotSignifTbl <- plotResultsTbl %>%
     isSignif == T |
       isSignif1 == T
   )
+plotSignifTbl
 ```
 
 ```{r plots}
@@ -65,7 +66,60 @@ plotSignifTbl %>%
 
 -   spg et al. vars at tree or plot level?
 -   richness, entropy [+spg] signif
-- but why reverse relationships?
+- but why reverse relationships from each other?
+
+```{r get2}
+mainModel2 <- median ~ poly(
+  dist,
+  2
+  )
+plotResultsTbl2 <- statFitTbl2(
+  plotVarsTbl,
+  mainModel2
+) %>%
+  addStatEval2(
+    mainModel2
+  ) %>%
+  addStatGraph2(
+    mainModel
+  )
+```
+
+```{r table2}
+plotSignifTbl2 <- plotResultsTbl2 %>%
+  select(
+    variable,
+    curve,
+    pvals,
+    isSignif2,
+    graph2
+  ) %>%
+  unnest(
+    c(
+      curve,
+      pvals,
+      isSignif2
+    )
+  ) %>%
+  filter(
+    isSignif2 == T
+  )
+plotSignifTbl2
+```
+
+```{r plots2}
+plotSignifTbl2 %>%
+  distinct(
+    curve,
+    .keep_all = T
+  ) %>%
+  pull(
+    #buggy
+    graph2
+  )
+```
+
+
 
 ## Trees
 
@@ -81,7 +135,9 @@ mainModel1 <- median1 ~ dist
 
 ```
 
+
 ## Taxa
+
 
 # Discussion
 

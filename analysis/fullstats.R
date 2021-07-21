@@ -11,26 +11,27 @@ source(
 ) #disfit()
 
 
-getStats <- function(
+getStatsTbl <- function(
   ...nestedVarDataTbl,
+  #user's
   ...formula
 ) {
 
   ...nestedVarDataTbl %>%
-    statFit(
+    statFitTbl(
       ...formula
     ) %>%
-    statEval(
+    addStatEval(
       ...formula
     ) %>%
 
     #nonnormaldistr
-    statFitNon(
+    addStatFitNon(
       ...formula
     ) %>%
-    statEvalNon() %>%
+    addStatEvalNon() %>%
 
-    statGraph(
+    addStatGraph(
       ...formula
     ) %>%
 
@@ -39,7 +40,7 @@ getStats <- function(
 
 
 
-statFit <- function(
+statFitTbl <- function(
   ...nestedVarDataTbl,
   ....formula
   ) {
@@ -76,8 +77,18 @@ statFit <- function(
     return()
 }
 
+#wrapper4consistency"-2"
+statFitTbl2 <- function(
+  ...nestedVarDataTbl,
+  ....formula2
+) {
+  statFitTbl(
+    ...nestedVarDataTbl,
+    ....formula2)
+}
 
-statEval <- function(
+
+addStatEval <- function(
   ...statFitTbl,
   ....formula
   ) {
@@ -89,10 +100,7 @@ statEval <- function(
         statTest %>%
         modify(
           ~ .x %>%
-            augment() %>%
-            pull(
-              .resid
-              ) %>%
+            residuals() %>%
             shapiro_test()
           ),
       #OGdata
@@ -167,10 +175,57 @@ statEval <- function(
 }
 
 
+addStatEval2 <- function(
+  ...statFitTbl2,
+  ....formula2
+) {
+
+  ...statFitTbl2 %>%
+
+    mutate(
+      curve =
+        statPrint %>%
+        modify(
+          ~ .x %>%
+            filter(
+              term !=
+                "(Intercept)"
+            ) %>%
+            pull(
+              term
+            )
+        ),
+      "pvals" =
+        statPrint %>%
+        modify(
+          ~ .x %>%
+            filter(
+              term !=
+                "(Intercept)"
+            ) %>%
+            pull(
+              p.value
+            )
+        ),
+      "isSignif2" =
+        pvals %>%
+        modify(
+          ~ if_else(
+            .x <
+              0.055,
+            T, F
+          )
+        )
+    ) %>%
+
+    return()
+}
+
+
 #nonnormalstats
 #nestedmodifyishard
 
-statFitNon <- function(
+addStatFitNon <- function(
   ...statEvalTbl,
   ....formula
 ) {
@@ -210,7 +265,7 @@ statFitNon <- function(
 }
 
 
-statEvalNon <- function(
+addStatEvalNon <- function(
   ...statFitNonTbl
 ) {
 
@@ -290,7 +345,7 @@ statEvalNon <- function(
 }
 
 
-statGraph <- function(
+addStatGraph <- function(
   ...statEvalNonTbl,
   ....formula
 ) {
@@ -323,7 +378,8 @@ statGraph <- function(
               parse = T,
               aes(
                 label = stat(
-                  ..p.value.label..
+                  ..p.value.label..,
+                  ..adj.rr.label..
                   )
                 )
               ) +
@@ -336,6 +392,66 @@ statGraph <- function(
               ),
               title = deparse(
                 variable
+              )
+            )
+        )
+    ) %>%
+
+    return()
+}
+
+
+addStatGraph2 <- function(
+  ...statEvalNonTbl2,
+  ....formula
+) {
+
+  ...statEvalNonTbl2 %>%
+
+    mutate(
+      graph2 =
+        varData %>%
+        modify(
+          ~ .x %>%
+            ggplot(
+              aes(
+                x = {
+                  ....formula[[2]] %>%
+                    eval()
+                },
+                y = {
+                  ....formula[[3]] %>%
+                    eval()
+                }
+              )
+            ) +
+            geom_quasirandom() +
+            geom_smooth(
+              method = "lm"
+            ) +
+            stat_poly_eq(
+              formula = y ~ poly(
+                x,
+                2
+              ),
+              parse = T,
+              aes(
+                label = stat(
+                  ..p.value.label..,
+                  ..adj.rr.label..
+                )
+              )
+            ) +
+            labs(
+              y = deparse(
+                ....formula[[2]]
+              ),
+              x = deparse(
+                ....formula[[3]]
+              ),
+              #fixtitle
+              title = deparse(
+                curve
               )
             )
         )
