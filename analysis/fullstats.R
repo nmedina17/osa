@@ -39,6 +39,24 @@ getStatsTbl <- function(
 }
 
 
+getStatsTbl2 <- function(
+  ...nestedVarDataTbl,
+  #user's
+  ...formula2
+) {
+
+  ...nestedVarDataTbl %>%
+    statFitTbl2(
+      ...formula2
+    ) %>%
+    addStatEval2(
+      ...formula2
+    ) %>%
+
+    return()
+}
+
+
 
 statFitTbl <- function(
   ...nestedVarDataTbl,
@@ -377,9 +395,13 @@ addStatGraph <- function(
               formula = y ~ x,
               parse = T,
               aes(
-                label = stat(
-                  ..p.value.label..,
-                  ..adj.rr.label..
+                label = paste(
+                  after_stat(
+                    p.value.label
+                    ),
+                  after_stat(
+                    adj.rr.label
+                    )
                   )
                 )
               ) +
@@ -427,18 +449,26 @@ addStatGraph2 <- function(
             ) +
             geom_quasirandom() +
             geom_smooth(
-              method = "lm"
+              method = "lm",
+              formula = y ~ poly(
+                x,
+                2
+              )
             ) +
             stat_poly_eq(
               formula = y ~ poly(
                 x,
                 2
               ),
-              parse = T,
+              parse = F,
               aes(
-                label = stat(
-                  ..p.value.label..,
-                  ..adj.rr.label..
+                label = paste(
+                  after_stat(
+                    p.value.label
+                    ),
+                  after_stat(
+                    adj.rr.label
+                  )
                 )
               )
             ) +
@@ -451,7 +481,7 @@ addStatGraph2 <- function(
               ),
               #fixtitle
               title = deparse(
-                curve
+                variable
               )
             )
         )

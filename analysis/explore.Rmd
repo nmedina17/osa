@@ -68,18 +68,17 @@ plotSignifTbl %>%
 -   richness, entropy [+spg] signif
 - but why reverse relationships from each other?
 
+- check curved relationships below
+
 ```{r get2}
 mainModel2 <- median ~ poly(
   dist,
   2
   )
-plotResultsTbl2 <- statFitTbl2(
-  plotVarsTbl,
+plotResultsTbl2 <- plotVarsTbl %>%
+  getStatsTbl2(
   mainModel2
 ) %>%
-  addStatEval2(
-    mainModel2
-  ) %>%
   addStatGraph2(
     mainModel
   )
@@ -109,12 +108,8 @@ plotSignifTbl2
 
 ```{r plots2}
 plotSignifTbl2 %>%
-  distinct(
-    curve,
-    .keep_all = T
-  ) %>%
   pull(
-    #buggy
+    #buggylabel
     graph2
   )
 ```
