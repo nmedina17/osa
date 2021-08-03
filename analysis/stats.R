@@ -115,14 +115,20 @@ distMat <- vegdist(
     spTbl %>%
       select(
         -c(
-          entropy,
-          plot
+          entropy
         )
       )
   }
 )
 
 ordStat <- adonis(
-  distMat ~ plot,
-  cleanData #bug--as.matrix...
+  distMat ~ dist,
+  #bug--as.matrix...
+  {
+    cleanData %>%
+      distinct(
+        plot,
+        dist
+      )
+  }
 )
