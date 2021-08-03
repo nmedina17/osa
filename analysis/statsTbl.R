@@ -11,13 +11,17 @@ source(
 ) #disfit()
 
 
+#main
 getStatsTbl <- function(
+  #has"varData"col
   ...nestedVarDataTbl,
   #user's
-  ...formula
+  ...formula,
+  ...spTbl = NULL
 ) {
 
   ...nestedVarDataTbl %>%
+
     statFitTbl(
       ...formula
     ) %>%
@@ -32,6 +36,10 @@ getStatsTbl <- function(
     addStatEvalNon() %>%
 
     addStatGraph(
+      ...formula
+    ) %>%
+
+    addOrdStat(
       ...formula
     ) %>%
 
@@ -378,11 +386,11 @@ addStatGraph <- function(
             ggplot(
               aes(
                 x = {
-                  ....formula[[2]] %>%
+                  ....formula[[3]] %>%
                     eval()
                 },
                 y = {
-                  ....formula[[3]] %>%
+                  ....formula[[2]] %>%
                     eval()
                 }
               )
@@ -393,7 +401,7 @@ addStatGraph <- function(
               ) +
             stat_poly_eq(
               formula = y ~ x,
-              parse = T,
+              parse = F,
               aes(
                 label = paste(
                   after_stat(
@@ -438,11 +446,11 @@ addStatGraph2 <- function(
             ggplot(
               aes(
                 x = {
-                  ....formula[[2]] %>%
+                  ....formula[[3]] %>%
                     eval()
                 },
                 y = {
-                  ....formula[[3]] %>%
+                  ....formula[[2]] %>%
                     eval()
                 }
               )
@@ -490,3 +498,28 @@ addStatGraph2 <- function(
     return()
 }
 
+
+#loading...
+addOrdStat <- function(
+  ...addStatGraph,
+  ...spTbl,
+  ....formula
+) {
+
+  ...addStatGraph %>%
+
+    mutate(
+      distmat = vegdist(
+        ...spTbl
+      ),
+      ordStat = adonis2(
+        ....formula,
+        {
+          ...addStatGraph %>%
+            pull(
+              varData
+            )
+        }
+      )
+    )
+}

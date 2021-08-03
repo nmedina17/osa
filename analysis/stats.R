@@ -108,3 +108,21 @@ treeVarsTbl <- cleanData %>%
     )
 
 #funcw/formulahard
+
+
+distMat <- vegdist(
+  {
+    spTbl %>%
+      select(
+        -c(
+          entropy,
+          plot
+        )
+      )
+  }
+)
+
+ordStat <- adonis(
+  distMat ~ plot,
+  cleanData #bug--as.matrix...
+)

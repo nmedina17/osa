@@ -9,6 +9,7 @@ rawData <- vroom(
   here("data/raw/osa.csv")
 )
 
+
 cleanData <- function(
   ...rawData
 ) {
@@ -56,6 +57,7 @@ cleanData <- function(
 
     return()
 }
+
 
 cleanData <- rawData %>%
   cleanData()

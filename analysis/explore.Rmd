@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
   )
 library(here)
 source(
-  here("analysis/fullstats.R")
+  here("analysis/statsTbl.R")
   )
 ```
 
@@ -59,14 +59,19 @@ plotSignifTbl %>%
   pull(
     graph
     )
-#fixXaxis
+#buggyLabel
 #ggarrange(.[[1]], .[[2]]) #buggy
 ```
 
 
--   spg et al. vars at tree or plot level?
+-   spg et al. vars at tree or plot level? i think plot level.
 -   richness, entropy [+spg] signif
 - but why reverse relationships from each other?
+
+```{r ordination}
+
+```
+
 
 - check curved relationships below
 
