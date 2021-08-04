@@ -39,10 +39,6 @@ getStatsTbl <- function(
       ...formula
     ) %>%
 
-    addOrdStat(
-      ...formula
-    ) %>%
-
   return()
 }
 
@@ -500,26 +496,43 @@ addStatGraph2 <- function(
 
 
 #loading...
-addOrdStat <- function(
-  ...addStatGraph,
-  ...spTbl,
-  ....formula
+getOrd <- function(
+  ...commTbl,
+  ...metaTbl,
+  ...formula
 ) {
 
-  ...addStatGraph %>%
 
-    mutate(
-      distmat = vegdist(
-        ...spTbl
-      ),
-      ordStat = adonis2(
-        ....formula,
-        {
-          ...addStatGraph %>%
-            pull(
-              varData
-            )
-        }
-      )
+  ordStat = adonis(
+    ...formula,
+    ...metaTbl,
+    99999
+  )
+
+  ord = rda(
+    ...commTbl
+  )
+
+
+  #tblWhenPossible
+  tibble(
+
+    ordTbl = scores(
+      ord
+    )$sites %>%
+      as_tibble(),
+
+    ordFullTbl = cbind(
+      ...metaTbl,
+      ordTbl
     )
+  ) %>%
+
+
+    pull(
+      ordFullTbl
+    ) %>%
+
+
+    return()
 }

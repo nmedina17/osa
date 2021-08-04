@@ -69,14 +69,17 @@ plotSignifTbl %>%
 - but why reverse relationships from each other?
 
 ```{r ordination}
-summary(
-  ord
-) %>%
-  head()
+ordModel <- distMat ~ 
+  dist
+ordData <- getOrd(
+  commTbl,
+  metaTbl,
+  ordModel
+)
 ```
 
 ```{r ordigraph}
-ordFullTbl %>%
+ordData %>%
   ggplot(
     aes(
       x = PC1,

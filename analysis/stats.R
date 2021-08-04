@@ -120,7 +120,7 @@ commTbl <- spTbl %>%
     )
   )
 
-distMat <- vegdist(
+distMat = vegdist(
   commTbl
 )
 
@@ -129,32 +129,3 @@ metaTbl <- cleanData %>%
     plot,
     dist
   )
-
-
-#stat
-
-# set.seed(
-#   079523
-# )
-ordStat <- adonis(
-  distMat ~ dist,
-  metaTbl,
-  99999
-)
-
-
-ord <- rda(
-  commTbl
-)
-
-
-ordTbl <- scores(
-  ord
-)$sites %>%
-  as_tibble()
-
-
-ordFullTbl <- cbind(
-  metaTbl,
-  ordTbl
-)
