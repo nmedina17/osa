@@ -69,7 +69,20 @@ plotSignifTbl %>%
 - but why reverse relationships from each other?
 
 ```{r ordination}
+ordFullTbl %>%
+  ggplot(
+    aes(
+      x = NMDS1,
+      y = NMDS2,
+      color = as_factor(
+        dist
+      )
+    )
+  ) +
+  geom_point() +
+  stat_ellipse()
 
+#library(ggvegan)
 ```
 
 

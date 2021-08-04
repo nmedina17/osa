@@ -110,25 +110,49 @@ treeVarsTbl <- cleanData %>%
 #funcw/formulahard
 
 
+#ordinate
+
+commTbl <- spTbl %>%
+  select(
+    -c(
+      entropy,
+      plot
+    )
+  )
+
 distMat <- vegdist(
-  {
-    spTbl %>%
-      select(
-        -c(
-          entropy
-        )
-      )
-  }
+  commTbl
 )
 
+metaTbl <- cleanData %>%
+  distinct(
+    plot,
+    dist
+  )
+
+
+#stat
+
+# set.seed(
+#   079523
+# )
 ordStat <- adonis(
   distMat ~ dist,
-  #bug--as.matrix...
-  {
-    cleanData %>%
-      distinct(
-        plot,
-        dist
-      )
-  }
+  metaTbl,
+  99999
+)
+
+
+ord <- metaMDS(
+  commTbl
+)
+
+ordTbl <- ord %>%
+  scores() %>%
+  as_tibble()
+
+
+ordFullTbl <- cbind(
+  metaTbl,
+  ordTbl
 )
