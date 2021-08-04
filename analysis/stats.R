@@ -143,12 +143,14 @@ ordStat <- adonis(
 )
 
 
-ord <- metaMDS(
+ord <- rda(
   commTbl
 )
 
-ordTbl <- ord %>%
-  scores() %>%
+
+ordTbl <- scores(
+  ord
+)$sites %>%
   as_tibble()
 
 

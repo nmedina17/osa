@@ -69,11 +69,18 @@ plotSignifTbl %>%
 - but why reverse relationships from each other?
 
 ```{r ordination}
+summary(
+  ord
+) %>%
+  head()
+```
+
+```{r ordigraph}
 ordFullTbl %>%
   ggplot(
     aes(
-      x = NMDS1,
-      y = NMDS2,
+      x = PC1,
+      y = PC2,
       color = as_factor(
         dist
       )
