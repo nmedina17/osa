@@ -1,23 +1,23 @@
 library(here);
 source(
   here("analysis/stats.R")
-)
+) #...$varData
 library(tidymodels) #glance()
 library(ggbeeswarm) #quasirandom()
 library(ggpmisc) #stat_poly_eq()
 library(ggpubr) #ggarrange()
-source(
-  here("analysis/disfit.R")
-) #disfit()
+# source(
+#   here("analysis/disfit.R")
+# ) #disfit()
 
 
 #main
+
 getStatsTbl <- function(
   #has"varData"col
   ...nestedVarDataTbl,
   #user's
-  ...formula,
-  ...spTbl = NULL
+  ...formula
 ) {
 
   ...nestedVarDataTbl %>%
@@ -37,10 +37,9 @@ getStatsTbl <- function(
 
     addStatGraph(
       ...formula
-    ) %>%
-
-  return()
+    )
 }
+
 
 
 getStatsTbl2 <- function(
@@ -55,12 +54,41 @@ getStatsTbl2 <- function(
     ) %>%
     addStatEval2(
       ...formula2
-    ) %>%
-
-    return()
+    )
 }
 
 
+
+getStatsTbl1 <- function(
+  #has"varData"col
+  ...nestedVarDataTbl,
+  #user's
+  ...formula
+) {
+
+  ...nestedVarDataTbl %>%
+
+    statFitTbl(
+      ...formula
+    ) %>%
+    addStatEval1(
+      ...formula
+    ) %>%
+
+    #nonnormaldistr
+    addStatFitNon(
+      ...formula
+    ) %>%
+    addStatEvalNon() %>%
+
+    addStatGraph(
+      ...formula
+    )
+}
+
+
+
+#sub-funcs
 
 statFitTbl <- function(
   ...nestedVarDataTbl,
@@ -94,10 +122,9 @@ statFitTbl <- function(
                 )
               )
           )
-    ) %>%
-
-    return()
+    )
 }
+
 
 #wrapper4consistency"-2"
 statFitTbl2 <- function(
@@ -108,6 +135,7 @@ statFitTbl2 <- function(
     ...nestedVarDataTbl,
     ....formula2)
 }
+
 
 
 addStatEval <- function(
@@ -193,8 +221,20 @@ addStatEval <- function(
       isSignif
       ) %>%
 
-    return()
+    mutate(
+      R2 = statPrint %>%
+        modify(
+          ~ .x %>%
+            pull(
+              adj.r.squared
+            )
+        )
+    ) %>%
+    unnest(
+      R2
+    )
 }
+
 
 
 addStatEval2 <- function(
@@ -237,11 +277,93 @@ addStatEval2 <- function(
               0.055,
             T, F
           )
+        ),
+      "R2" = statPrint %>%
+        modify(
+          ~ .x %>%
+            pull(
+              adj.r.squared
+            )
         )
     ) %>%
-
-    return()
+    unnest(
+      R2
+    )
 }
+
+
+
+#highermedian
+
+addStatEval1 <- function(
+  ...statFitTbl,
+  ....formula
+) {
+
+  ...statFitTbl %>%
+
+    mutate(
+      normalTest =
+        statTest %>%
+        modify(
+          ~ .x %>%
+            residuals() %>%
+            shapiro_test()
+        ),
+      "isNormal" =
+        normalTest %>%
+        modify(
+          ~ if_else(
+            .x$
+              p.value >
+              0.055,
+            T, F
+          )
+        )
+    ) %>%
+    #list2vec
+    unnest(
+      isNormal
+    ) %>%
+
+    mutate(
+      "isModelOK" =
+        if_else(
+          isNormal,
+          T, F
+        ),
+      "isSignif" =
+        statPrint %>%
+        modify_if(
+          isModelOK,
+          ~ if_else(
+            #mainterm
+            .x$
+              p.value[2] <
+              0.105,
+            T, F
+          ),
+          .else = ~ NA
+        )
+    ) %>%
+    unnest(
+      isSignif
+    ) %>%
+
+    mutate(
+      R2 = statPrint %>%
+        modify(
+          ~ .x %>%
+            pull(
+              adj.r.squared
+            )
+        )
+    ) %>%
+    unnest(
+      R2
+    )
+}
+
 
 
 #nonnormalstats
@@ -281,10 +403,9 @@ addStatFitNon <- function(
             summary(),
           .else = ~ NA
           )
-    ) %>%
-
-    return()
+    )
 }
+
 
 
 addStatEvalNon <- function(
@@ -349,11 +470,13 @@ addStatEvalNon <- function(
         if_else(
           pickAIC == poisAIC,
           poisPval,
-          if_else(
-            pickAIC == gammaAIC,
-            gammaPval,
-            9
-          )
+          {
+            if_else(
+              pickAIC == gammaAIC,
+              gammaPval,
+              F
+            )
+          }
         ),
       "isSignif1" =
         if_else(
@@ -361,10 +484,9 @@ addStatEvalNon <- function(
             0.105,
           T, F
         )
-      ) %>%
-
-    return()
+      )
 }
+
 
 
 addStatGraph <- function(
@@ -421,9 +543,7 @@ addStatGraph <- function(
               )
             )
         )
-    ) %>%
-
-    return()
+    )
 }
 
 
@@ -489,50 +609,58 @@ addStatGraph2 <- function(
               )
             )
         )
-    ) %>%
-
-    return()
+    )
 }
 
 
+
 #loading...
-getOrd <- function(
-  ...commTbl,
-  ...metaTbl,
-  ...formula
+pickStatGraph <- function(
+  ...statGraphTbl,
+  ...statGraph2Tbl
 ) {
 
 
-  ordStat = adonis(
-    ...formula,
-    ...metaTbl,
-    99999
-  )
+  lineStat <- ...statGraphTbl %>%
+    pull(
+      R2
+    )
+
+  curveStat <- ...statGraph2Tbl %>%
+    pull(
+      R2
+    )
+
+  tibble() %>%
+    mutate(
+      pickR2 =
+        )
+    )
+}
+
+
+
+#ordinate
+
+getOrdVarTbl <- function(
+  ...commTbl,
+  ...metaTbl
+) {
+
 
   ord = rda(
     ...commTbl
   )
 
+  ordTbl = scores(
+    ord
+  )$sites %>%
+    as_tibble()
 
-  #tblWhenPossible
-  tibble(
 
-    ordTbl = scores(
-      ord
-    )$sites %>%
-      as_tibble(),
-
-    ordFullTbl = cbind(
-      ...metaTbl,
-      ordTbl
-    )
+  cbind(
+    ...metaTbl,
+    ordTbl
   ) %>%
-
-
-    pull(
-      ordFullTbl
-    ) %>%
-
-
-    return()
+    as_tibble()
 }

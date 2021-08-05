@@ -68,18 +68,58 @@ plotSignifTbl %>%
 -   richness, entropy [+spg] signif
 - but why reverse relationships from each other?
 
+- higher medians below
+
+```{r get1}
+plotResultsTbl1 <- plotVarsTbl %>%
+  getStatsTbl1(
+    mainModel
+  )
+```
+
+
+```{r table1}
+plotSignifTbl1 <- plotResultsTbl1 %>%
+  select(
+    variable,
+    isSignif,
+    isSignif1,
+    graph
+  ) %>%
+  filter(
+    isSignif == T |
+      isSignif1 == T
+  )
+plotSignifTbl1
+```
+
+```{r plots}
+plotSignifTbl1 %>%
+  pull(
+    graph
+    )
+```
+
+- check curves
+
+
+
+
+
+## Composition
+
+
 ```{r ordination}
-ordModel <- distMat ~ 
-  dist
-ordData <- getOrd(
+ordStat
+
+ordVarTbl <- getOrdVarTbl(
   commTbl,
-  metaTbl,
-  ordModel
+  metaTbl
 )
 ```
 
 ```{r ordigraph}
-ordData %>%
+ordVarTbl %>%
   ggplot(
     aes(
       x = PC1,
@@ -95,6 +135,19 @@ ordData %>%
 #library(ggvegan)
 ```
 
+- which species cause this diff?
+
+
+```{r taxa}
+# plan:
+# - nest original data tbl by genus
+# - varData = dist & count
+# - run env::getStatsTbl()
+```
+
+
+
+# Appendix
 
 - check curved relationships below
 
@@ -143,23 +196,8 @@ plotSignifTbl2 %>%
 ```
 
 
-
-## Trees
-
-```{r trees}
-mainModel1 <- median1 ~ dist
-#treeVarsTbl %>%
-```
-
 -   spg appears signif--explanation will be relevant
 -   explore historgrams for non-sig vars? (i.e. non-equilibrium stats)
-
-```{r biomass}
-
-```
-
-
-## Taxa
 
 
 # Discussion

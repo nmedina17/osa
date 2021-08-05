@@ -72,8 +72,27 @@ plotVarsTbl <- cleanData %>%
     type = "median_mad"
     ) %>%
   nest(
-    "varData" = -variable
-    )
+    "varData0" = -variable
+    ) %>%
+
+  #nextlevel
+  mutate(
+    "varData" = varData0 %>%
+      modify(
+        ~ .x %>%
+          group_by(
+            dist
+          ) %>%
+          summarize(
+            median = median(
+              median
+            ),
+            mad = mad(
+              median
+            )
+          )
+      )
+  )
 
 
 #rid?
@@ -129,3 +148,13 @@ metaTbl <- cleanData %>%
     plot,
     dist
   )
+
+
+ordModel <- distMat ~
+  dist
+
+ordStat = adonis(
+  ordModel,
+  metaTbl,
+  99999
+)
