@@ -35,7 +35,7 @@ getStatsTbl <- function(
     ) %>%
     addStatEvalNon() %>%
 
-    addStatGraph(
+    addGraph(
       ...formula
     )
 }
@@ -49,7 +49,7 @@ getStatsTbl2 <- function(
 ) {
 
   ...nestedVarDataTbl %>%
-    statFitTbl2(
+    statFitTbl(
       ...formula2
     ) %>%
     addStatEval2(
@@ -68,7 +68,7 @@ getStatsTbl1 <- function(
 
   ...nestedVarDataTbl %>%
 
-    statFitTbl(
+    statFitTbl1(
       ...formula
     ) %>%
     addStatEval1(
@@ -81,7 +81,36 @@ getStatsTbl1 <- function(
     ) %>%
     addStatEvalNon() %>%
 
-    addStatGraph(
+    addGraph(
+      ...formula
+    )
+}
+
+
+
+getStatsTbl1g2 <- function(
+  #has"varData"col
+  ...nestedVarDataTbl,
+  #user's
+  ...formula
+) {
+
+  ...nestedVarDataTbl %>%
+
+    statFitTbl1(
+      ...formula
+    ) %>%
+    addStatEval1(
+      ...formula
+    ) %>%
+
+    #nonnormaldistr
+    addStatFitNon(
+      ...formula
+    ) %>%
+    addStatEvalNon() %>%
+
+    addGraph2(
       ...formula
     )
 }
@@ -103,10 +132,11 @@ statFitTbl <- function(
         modify(
           ~ .x %>%
             lm(
-              formula = ....formula
+              formula =
+                ....formula
               )
           ),
-      statPrint =
+      "statPrint" =
         statTest %>%
         modify(
           ~ .x %>%
@@ -126,14 +156,41 @@ statFitTbl <- function(
 }
 
 
-#wrapper4consistency"-2"
-statFitTbl2 <- function(
+
+statFitTbl1 <- function(
   ...nestedVarDataTbl,
-  ....formula2
+  ....formula
 ) {
-  statFitTbl(
-    ...nestedVarDataTbl,
-    ....formula2)
+
+  ...nestedVarDataTbl %>%
+
+    mutate(
+      "statTest" =
+        varData1 %>%
+        modify(
+          ~ .x %>%
+            lm(
+              formula =
+                ....formula
+            )
+        ),
+      "statPrint" =
+        statTest %>%
+        modify(
+          ~ .x %>%
+            tidy() %>%
+            full_join(
+              .,
+              .x %>%
+                glance()
+            ) %>%
+            filter(
+              !is.na(
+                term
+              )
+            )
+        )
+    )
 }
 
 
@@ -154,7 +211,7 @@ addStatEval <- function(
             shapiro_test()
           ),
       #OGdata
-      varianceTest =
+      varyTest =
         varData %>%
         modify(
           ~ .x %>%
@@ -178,7 +235,7 @@ addStatEval <- function(
             )
           ),
       "isHomosced" =
-        varianceTest %>%
+        varyTest %>%
         modify(
           ~ if_else(
             .x$
@@ -201,8 +258,8 @@ addStatEval <- function(
         if_else(
           isNormal &
             isHomosced,
-        T, F
-          ),
+          T, F
+        ),
       "isSignif" =
         statPrint %>%
         modify_if(
@@ -222,9 +279,14 @@ addStatEval <- function(
       ) %>%
 
     mutate(
-      R2 = statPrint %>%
+      R2 =
+        statPrint %>%
         modify(
           ~ .x %>%
+            filter(
+              term !=
+                "(Intercept)"
+            ) %>%
             pull(
               adj.r.squared
             )
@@ -245,7 +307,7 @@ addStatEval2 <- function(
   ...statFitTbl2 %>%
 
     mutate(
-      curve =
+      curveName =
         statPrint %>%
         modify(
           ~ .x %>%
@@ -278,16 +340,21 @@ addStatEval2 <- function(
             T, F
           )
         ),
-      "R2" = statPrint %>%
+      "R2" =
+        statPrint %>%
         modify(
           ~ .x %>%
+            filter(
+              term !=
+                "(Intercept)"
+            ) %>%
             pull(
               adj.r.squared
             )
         )
     ) %>%
     unnest(
-      R2
+      "R2"
     )
 }
 
@@ -351,9 +418,14 @@ addStatEval1 <- function(
     ) %>%
 
     mutate(
-      R2 = statPrint %>%
+      R2 =
+        statPrint %>%
         modify(
           ~ .x %>%
+            filter(
+              term !=
+                "(Intercept)"
+            ) %>%
             pull(
               adj.r.squared
             )
@@ -470,15 +542,13 @@ addStatEvalNon <- function(
         if_else(
           pickAIC == poisAIC,
           poisPval,
-          {
-            if_else(
-              pickAIC == gammaAIC,
-              gammaPval,
-              F
-            )
-          }
+          if_else(
+            pickAIC == gammaAIC,
+            gammaPval,
+            9
+          )
         ),
-      "isSignif1" =
+      "isSignif9" =
         if_else(
           pickPval <
             0.105,
@@ -489,7 +559,7 @@ addStatEvalNon <- function(
 
 
 
-addStatGraph <- function(
+addGraph <- function(
   ...statEvalNonTbl,
   ....formula
 ) {
@@ -547,7 +617,7 @@ addStatGraph <- function(
 }
 
 
-addStatGraph2 <- function(
+addGraph2 <- function(
   ...statEvalNonTbl2,
   ....formula
 ) {
@@ -615,27 +685,36 @@ addStatGraph2 <- function(
 
 
 #loading...
-pickStatGraph <- function(
-  ...statGraphTbl,
-  ...statGraph2Tbl
+pickGraph <- function(
+  ...graphTbl,
+  ...graph2Tbl
 ) {
 
 
-  lineStat <- ...statGraphTbl %>%
-    pull(
-      R2
-    )
+  #getStat
+  tibble(
+    lineStat = ...graphTbl %>%
+      pull(
+        R2
+      ),
+    curveStat = ...graph2Tbl %>%
+      pull(
+        R2
+      )
+  ) %>%
 
-  curveStat <- ...statGraph2Tbl %>%
-    pull(
-      R2
-    )
-
-  tibble() %>%
+    #evalStat
     mutate(
-      pickR2 =
+      pickGraphStat = . %>%
+        modify(
+          ~ max(
+            lineStat,
+            curveStat
+          )
         )
     )
+
+  #getGraphPick?
 }
 
 

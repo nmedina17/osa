@@ -44,12 +44,12 @@ plotSignifTbl <- plotResultsTbl %>%
   select(
     variable,
     isSignif,
-    isSignif1,
+    isSignif9,
     graph
   ) %>%
   filter(
     isSignif == T |
-      isSignif1 == T
+      isSignif9 == T
   )
 plotSignifTbl
 ```
@@ -63,10 +63,17 @@ plotSignifTbl %>%
 #ggarrange(.[[1]], .[[2]]) #buggy
 ```
 
-
 -   spg et al. vars at tree or plot level? i think plot level.
 -   richness, entropy [+spg] signif
 - but why reverse relationships from each other?
+
+```{r pick}
+pickGraph(
+  plotSignifTbl,
+  plotSignifTbl2
+)
+```
+
 
 - higher medians below
 
@@ -76,7 +83,6 @@ plotResultsTbl1 <- plotVarsTbl %>%
     mainModel
   )
 ```
-
 
 ```{r table1}
 plotSignifTbl1 <- plotResultsTbl1 %>%
@@ -93,17 +99,23 @@ plotSignifTbl1 <- plotResultsTbl1 %>%
 plotSignifTbl1
 ```
 
-```{r plots}
+```{r plots1}
 plotSignifTbl1 %>%
   pull(
     graph
     )
 ```
 
-- check curves
+- check curves at bottom
 
+```{r pick1}
+pickGraph(
+  
+)
+```
 
-
+-   spg appears signif--explanation will be relevant
+-   explore historgrams for non-sig vars? (i.e. non-equilibrium stats)
 
 
 ## Composition
@@ -146,8 +158,13 @@ ordVarTbl %>%
 ```
 
 
+# Discussion
 
-# Appendix
+-   spg and richness change likely reflects shift in community (--\> add NMDS/PCoA, with closer plots dominated by pioneering species in dense stands
+-   i think inference about dispersal strategies could be in discussion, or later figure, no need to be oriiginally embedded in analysis -- but would probably make story more ecological, and study more unique to present, though
+
+
+# Appendix + some dependencies
 
 - check curved relationships below
 
@@ -159,7 +176,7 @@ mainModel2 <- median ~ poly(
 plotResultsTbl2 <- plotVarsTbl %>%
   getStatsTbl2(
   mainModel2
-) %>%
+) %>% 
   addStatGraph2(
     mainModel
   )
@@ -169,14 +186,14 @@ plotResultsTbl2 <- plotVarsTbl %>%
 plotSignifTbl2 <- plotResultsTbl2 %>%
   select(
     variable,
-    curve,
+    curveName,
     pvals,
     isSignif2,
     graph2
   ) %>%
   unnest(
     c(
-      curve,
+      curveName,
       pvals,
       isSignif2
     )
@@ -196,11 +213,50 @@ plotSignifTbl2 %>%
 ```
 
 
--   spg appears signif--explanation will be relevant
--   explore historgrams for non-sig vars? (i.e. non-equilibrium stats)
+
+```{r get12}
+mainModel2 <- median ~ poly(
+  dist,
+  2
+  )
+plotResultsTbl12 <- plotVarsTbl %>%
+  getStatsTbl2(
+  mainModel2
+) %>%
+  addStatGraph2(
+    mainModel
+  )
+```
+
+```{r table12}
+plotSignifTbl12 <- plotResultsTbl12 %>%
+  select(
+    variable,
+    curve,
+    pvals,
+    isSignif2,
+    graph2
+  ) %>%
+  unnest(
+    c(
+      curve,
+      pvals,
+      isSignif2
+    )
+  ) %>%
+  filter(
+    isSignif2 == T
+  )
+plotSignifTbl12
+```
+
+```{r plots12}
+plotSignifTbl12 %>%
+  pull(
+    #buggylabel
+    graph2
+  )
+```
 
 
-# Discussion
 
--   spg and richness change likely reflects shift in community (--\> add NMDS/PCoA, with closer plots dominated by pioneering species in dense stands
--   i think inference about dispersal strategies could be in discussion, or later figure, no need to be oriiginally embedded in analysis -- but would probably make story more ecological, and study more unique to present, though

@@ -72,12 +72,12 @@ plotVarsTbl <- cleanData %>%
     type = "median_mad"
     ) %>%
   nest(
-    "varData0" = -variable
+    "varData" = -variable
     ) %>%
 
   #nextlevel
   mutate(
-    "varData" = varData0 %>%
+    "varData1" = varData %>%
       modify(
         ~ .x %>%
           group_by(
@@ -129,6 +129,9 @@ treeVarsTbl <- cleanData %>%
 #funcw/formulahard
 
 
+
+
+
 #ordinate
 
 commTbl <- spTbl %>%
@@ -150,8 +153,7 @@ metaTbl <- cleanData %>%
   )
 
 
-ordModel <- distMat ~
-  dist
+ordModel <- distMat ~ dist
 
 ordStat = adonis(
   ordModel,
