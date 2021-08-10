@@ -71,24 +71,18 @@ getStatsTbl1 <- function(
     statFitTbl1(
       ...formula
     ) %>%
-    addStatEval1(
+    addStatEval(
       ...formula
     ) %>%
 
-    #nonnormaldistr
-    addStatFitNon(
-      ...formula
-    ) %>%
-    addStatEvalNon() %>%
-
-    addGraph(
+    addGraph1(
       ...formula
     )
 }
 
 
 
-getStatsTbl1g2 <- function(
+getStatsTbl12 <- function(
   #has"varData"col
   ...nestedVarDataTbl,
   #user's
@@ -100,17 +94,7 @@ getStatsTbl1g2 <- function(
     statFitTbl1(
       ...formula
     ) %>%
-    addStatEval1(
-      ...formula
-    ) %>%
-
-    #nonnormaldistr
-    addStatFitNon(
-      ...formula
-    ) %>%
-    addStatEvalNon() %>%
-
-    addGraph2(
+    addStatEval2(
       ...formula
     )
 }
@@ -134,8 +118,8 @@ statFitTbl <- function(
             lm(
               formula =
                 ....formula
-              )
-          ),
+            )
+        ),
       "statPrint" =
         statTest %>%
         modify(
@@ -166,7 +150,7 @@ statFitTbl1 <- function(
 
     mutate(
       "statTest" =
-        varData1 %>%
+        varData1 %>%  #diffhere
         modify(
           ~ .x %>%
             lm(
@@ -279,7 +263,7 @@ addStatEval <- function(
       ) %>%
 
     mutate(
-      R2 =
+      "R2adj" =
         statPrint %>%
         modify(
           ~ .x %>%
@@ -293,7 +277,7 @@ addStatEval <- function(
         )
     ) %>%
     unnest(
-      R2
+      R2adj
     )
 }
 
@@ -307,7 +291,8 @@ addStatEval2 <- function(
   ...statFitTbl2 %>%
 
     mutate(
-      curveName =
+      #diffhere
+      "curveName" =
         statPrint %>%
         modify(
           ~ .x %>%
@@ -339,8 +324,11 @@ addStatEval2 <- function(
               0.055,
             T, F
           )
-        ),
-      "R2" =
+        )
+    ) %>%
+
+    mutate(
+      "R2adj" =
         statPrint %>%
         modify(
           ~ .x %>%
@@ -354,85 +342,7 @@ addStatEval2 <- function(
         )
     ) %>%
     unnest(
-      "R2"
-    )
-}
-
-
-
-#highermedian
-
-addStatEval1 <- function(
-  ...statFitTbl,
-  ....formula
-) {
-
-  ...statFitTbl %>%
-
-    mutate(
-      normalTest =
-        statTest %>%
-        modify(
-          ~ .x %>%
-            residuals() %>%
-            shapiro_test()
-        ),
-      "isNormal" =
-        normalTest %>%
-        modify(
-          ~ if_else(
-            .x$
-              p.value >
-              0.055,
-            T, F
-          )
-        )
-    ) %>%
-    #list2vec
-    unnest(
-      isNormal
-    ) %>%
-
-    mutate(
-      "isModelOK" =
-        if_else(
-          isNormal,
-          T, F
-        ),
-      "isSignif" =
-        statPrint %>%
-        modify_if(
-          isModelOK,
-          ~ if_else(
-            #mainterm
-            .x$
-              p.value[2] <
-              0.105,
-            T, F
-          ),
-          .else = ~ NA
-        )
-    ) %>%
-    unnest(
-      isSignif
-    ) %>%
-
-    mutate(
-      R2 =
-        statPrint %>%
-        modify(
-          ~ .x %>%
-            filter(
-              term !=
-                "(Intercept)"
-            ) %>%
-            pull(
-              adj.r.squared
-            )
-        )
-    ) %>%
-    unnest(
-      R2
+      R2adj
     )
 }
 
@@ -684,37 +594,128 @@ addGraph2 <- function(
 
 
 
-#loading...
-pickGraph <- function(
-  ...graphTbl,
-  ...graph2Tbl
+addGraph1 <- function(
+  ...statEvalNonTbl,
+  ....formula
 ) {
 
+  ...statEvalNonTbl %>%
 
-  #getStat
-  tibble(
-    lineStat = ...graphTbl %>%
-      pull(
-        R2
-      ),
-    curveStat = ...graph2Tbl %>%
-      pull(
-        R2
-      )
-  ) %>%
-
-    #evalStat
     mutate(
-      pickGraphStat = . %>%
+      graph =
+        varData1 %>%  #diffhere
         modify(
-          ~ max(
-            lineStat,
-            curveStat
-          )
+          ~ .x %>%
+            ggplot(
+              aes(
+                x = {
+                  ....formula[[3]] %>%
+                    eval()
+                },
+                y = {
+                  ....formula[[2]] %>%
+                    eval()
+                }
+              )
+            ) +
+            geom_quasirandom() +
+            geom_smooth(
+              method = "lm"
+            ) +
+            stat_poly_eq(
+              formula = y ~ x,
+              parse = F,
+              aes(
+                label = paste(
+                  after_stat(
+                    p.value.label
+                  ),
+                  after_stat(
+                    adj.rr.label
+                  )
+                )
+              )
+            ) +
+            labs(
+              y = deparse(
+                ....formula[[2]]
+              ),
+              x = deparse(
+                ....formula[[3]]
+              ),
+              title = deparse(
+                variable
+              )
+            )
         )
     )
+}
 
-  #getGraphPick?
+
+
+addGraph12 <- function(
+  ...statEvalNonTbl2,
+  ....formula
+) {
+
+  ...statEvalNonTbl2 %>%
+
+    mutate(
+      graph2 =
+        varData1 %>%  #diffhere
+        modify(
+          ~ .x %>%
+            ggplot(
+              aes(
+                x = {
+                  ....formula[[3]] %>%
+                    eval()
+                },
+                y = {
+                  ....formula[[2]] %>%
+                    eval()
+                }
+              )
+            ) +
+            geom_quasirandom() +
+            geom_smooth(
+              method = "lm",
+              formula = y ~ poly(
+                x,
+                2
+              )
+            ) +
+            stat_poly_eq(
+              formula = y ~ poly(
+                x,
+                2
+              ),
+              parse = F,
+              aes(
+                label = paste(
+                  after_stat(
+                    p.value.label
+                  ),
+                  after_stat(
+                    adj.rr.label
+                  )
+                )
+              )
+            ) +
+            labs(
+              y = deparse(
+                ....formula[[2]]
+              ),
+              x = deparse(
+                ....formula[[3]]
+              ),
+              #fixtitle
+              title = deparse(
+                variable
+              )
+            )
+        )
+    )
 }
 
 

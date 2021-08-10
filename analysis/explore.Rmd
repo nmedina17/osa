@@ -45,6 +45,7 @@ plotSignifTbl <- plotResultsTbl %>%
     variable,
     isSignif,
     isSignif9,
+    R2adj,
     graph
   ) %>%
   filter(
@@ -67,11 +68,51 @@ plotSignifTbl %>%
 -   richness, entropy [+spg] signif
 - but why reverse relationships from each other?
 
-```{r pick}
-pickGraph(
-  plotSignifTbl,
-  plotSignifTbl2
-)
+- check curve below
+
+```{r get2}
+mainModel2 <- median ~ poly(
+  dist,
+  2
+  )
+plotResultsTbl2 <- plotVarsTbl %>%
+  getStatsTbl2(
+  mainModel2
+) %>% 
+  addGraph2(
+    mainModel
+  )
+```
+
+```{r table2}
+plotSignifTbl2 <- plotResultsTbl2 %>%
+  select(
+    variable,
+    curveName,
+    pvals,
+    R2adj,
+    isSignif2,
+    graph2
+  ) %>%
+  unnest(
+    c(
+      curveName,
+      pvals,
+      isSignif2
+    )
+  ) %>%
+  filter(
+    isSignif2 == T
+  )
+plotSignifTbl2
+```
+
+```{r plots2}
+plotSignifTbl2 %>%
+  pull(
+    #buggylabel
+    graph2
+  )
 ```
 
 
@@ -89,12 +130,10 @@ plotSignifTbl1 <- plotResultsTbl1 %>%
   select(
     variable,
     isSignif,
-    isSignif1,
     graph
   ) %>%
   filter(
-    isSignif == T |
-      isSignif1 == T
+    isSignif == T
   )
 plotSignifTbl1
 ```
@@ -106,12 +145,50 @@ plotSignifTbl1 %>%
     )
 ```
 
-- check curves at bottom
+- check curve below
 
-```{r pick1}
-pickGraph(
-  
-)
+```{r get12}
+mainModel2 <- median ~ poly(
+  dist,
+  2
+  )
+plotResultsTbl12 <- plotVarsTbl %>%
+  getStatsTbl12(
+  mainModel2
+) %>%
+  addGraph12(
+    mainModel
+  )
+```
+
+```{r table12}
+plotSignifTbl12 <- plotResultsTbl12 %>%
+  select(
+    variable,
+    curveName,
+    pvals,
+    isSignif2,
+    graph2
+  ) %>%
+  unnest(
+    c(
+      curveName,
+      pvals,
+      isSignif2
+    )
+  ) %>%
+  filter(
+    isSignif2 == T
+  )
+plotSignifTbl12
+```
+
+```{r plots12}
+plotSignifTbl12 %>%
+  pull(
+    #buggylabel
+    graph2
+  )
 ```
 
 -   spg appears signif--explanation will be relevant
@@ -168,95 +245,16 @@ ordVarTbl %>%
 
 - check curved relationships below
 
-```{r get2}
-mainModel2 <- median ~ poly(
-  dist,
-  2
-  )
-plotResultsTbl2 <- plotVarsTbl %>%
-  getStatsTbl2(
-  mainModel2
-) %>% 
-  addStatGraph2(
-    mainModel
-  )
-```
-
-```{r table2}
-plotSignifTbl2 <- plotResultsTbl2 %>%
+```{r tryNLS}
+start <- plotVarsTbl$varData[[1]] %>%
   select(
-    variable,
-    curveName,
-    pvals,
-    isSignif2,
-    graph2
+    mainModel[[3]],
+    mainModel[[2]]
   ) %>%
-  unnest(
-    c(
-      curveName,
-      pvals,
-      isSignif2
-    )
-  ) %>%
-  filter(
-    isSignif2 == T
-  )
-plotSignifTbl2
+  .[1,]
+# nls(
+#     formula = mainModel,
+#     data = 
+#     start = start
+#  )
 ```
-
-```{r plots2}
-plotSignifTbl2 %>%
-  pull(
-    #buggylabel
-    graph2
-  )
-```
-
-
-
-```{r get12}
-mainModel2 <- median ~ poly(
-  dist,
-  2
-  )
-plotResultsTbl12 <- plotVarsTbl %>%
-  getStatsTbl2(
-  mainModel2
-) %>%
-  addStatGraph2(
-    mainModel
-  )
-```
-
-```{r table12}
-plotSignifTbl12 <- plotResultsTbl12 %>%
-  select(
-    variable,
-    curve,
-    pvals,
-    isSignif2,
-    graph2
-  ) %>%
-  unnest(
-    c(
-      curve,
-      pvals,
-      isSignif2
-    )
-  ) %>%
-  filter(
-    isSignif2 == T
-  )
-plotSignifTbl12
-```
-
-```{r plots12}
-plotSignifTbl12 %>%
-  pull(
-    #buggylabel
-    graph2
-  )
-```
-
-
-
