@@ -6,6 +6,7 @@ library(rstatix);
 library(vegan) #diversity()
 
 
+
 #4vegan
 spTbl <- cleanData %>%
   add_count(
@@ -28,6 +29,7 @@ spTbl <- cleanData %>%
         .
         )
     )
+
 
 
 plotVarsTbl <- cleanData %>%
@@ -95,6 +97,7 @@ plotVarsTbl <- cleanData %>%
   )
 
 
+
 #rid?
 treeVarsTbl <- cleanData %>%
   group_by(
@@ -130,8 +133,6 @@ treeVarsTbl <- cleanData %>%
 
 
 
-
-
 #ordinate
 
 commTbl <- spTbl %>%
@@ -160,3 +161,59 @@ ordStat = adonis(
   metaTbl,
   99999
 )
+
+
+
+#taxa
+
+# which sp only have 2 dists?
+spStatTbl <- cleanData %>%
+  select(
+    dist,
+    plot,
+    gen
+  ) %>%
+  add_count(
+    gen,
+    plot,
+  ) %>%
+  distinct(
+    gen,
+    plot,
+    .keep_all = T
+  ) %>%
+  nest(
+    "varData" = -gen
+  ) %>%
+
+  #QCshapiro
+  mutate(,
+    nDist = varData %>%
+      modify(
+        ~ .x %>%
+          pull(
+            dist
+          ) %>%
+          n_distinct()
+      ),
+    varN = varData %>%
+      modify(
+        ~ .x %>%
+          pull(
+            n
+          ) %>%
+          var()
+      )
+  ) %>%
+  unnest(
+    c(
+      nDist,
+      varN
+    )
+  ) %>%
+  filter(
+    nDist >=
+      3,
+    varN >
+      0
+  )

@@ -232,6 +232,20 @@ ordVarTbl %>%
 # - nest original data tbl by genus
 # - varData = dist & count
 # - run env::getStatsTbl()
+
+taxModel <- n ~ dist
+
+spStatTbl %>%
+  getStatsTbl(
+    taxModel
+  )
+
+spStatTbl$varData[[5]] %>% 
+  pull(n) %>%
+  var()
+  lm(formula = taxModel) %>%
+  residuals() %>%
+  shapiro_test()
 ```
 
 
