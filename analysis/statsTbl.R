@@ -243,7 +243,11 @@ addStatEval <- function(
           isNormal &
             isHomosced,
           T, F
-        ),
+        )) %>%
+    unnest(
+      isModelOK
+    ) %>%
+    mutate(
       "isSignif" =
         statPrint %>%
         modify_if(

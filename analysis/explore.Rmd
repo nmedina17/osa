@@ -21,6 +21,7 @@ knitr::opts_chunk$set(
   collapse = T
   )
 library(here)
+#.GlobalEnv::
 source(
   here("analysis/statsTbl.R")
   )
@@ -227,7 +228,7 @@ ordVarTbl %>%
 - which species cause this diff?
 
 
-```{r taxa}
+```{r taxa, eval = F}
 # plan:
 # - nest original data tbl by genus
 # - varData = dist & count
@@ -240,12 +241,13 @@ spStatTbl %>%
     taxModel
   )
 
-spStatTbl$varData[[5]] %>% 
-  pull(n) %>%
-  var()
-  lm(formula = taxModel) %>%
-  residuals() %>%
-  shapiro_test()
+d = spStatTbl %>% 
+  statFitTbl(taxModel) %>%
+  addStatEval(taxModel) %>%
+  pull(
+    statPrint,
+    # isModelOK
+  )
 ```
 
 
@@ -259,7 +261,7 @@ spStatTbl$varData[[5]] %>%
 
 - check curved relationships below
 
-```{r tryNLS}
+```{r tryNLS, eval = F}
 start <- plotVarsTbl$varData[[1]] %>%
   select(
     mainModel[[3]],

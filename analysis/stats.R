@@ -187,7 +187,7 @@ spStatTbl <- cleanData %>%
   ) %>%
 
   #QCshapiro
-  mutate(,
+  mutate(
     nDist = varData %>%
       modify(
         ~ .x %>%
