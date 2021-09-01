@@ -166,7 +166,6 @@ ordStat = adonis(
 
 #taxa
 
-# which sp only have 2 dists?
 spStatTbl <- cleanData %>%
   select(
     dist,
@@ -216,4 +215,20 @@ spStatTbl <- cleanData %>%
       3,
     varN >
       0
+  ) %>%
+
+  mutate(
+    "varData1" =
+      varData %>%
+      modify(
+        ~ .x %>%
+          group_by(
+            dist
+          ) %>%
+          summarize(
+            n = median(
+              n
+            )
+          )
+      )
   )

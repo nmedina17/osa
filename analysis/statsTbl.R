@@ -60,7 +60,7 @@ getStatsTbl2 <- function(
 
 
 getStatsTbl1 <- function(
-  #has"varData"col
+  #has"varData1"col
   ...nestedVarDataTbl,
   #user's
   ...formula
@@ -83,7 +83,7 @@ getStatsTbl1 <- function(
 
 
 getStatsTbl12 <- function(
-  #has"varData"col
+  #has"varData1"col
   ...nestedVarDataTbl,
   #user's
   ...formula
@@ -243,28 +243,35 @@ addStatEval <- function(
           isNormal &
             isHomosced,
           T, F
-        )) %>%
+        )
+    ) %>%
     unnest(
       isModelOK
     ) %>%
+# } #de-bug
     mutate(
       "isSignif" =
         statPrint %>%
         modify_if(
-          isModelOK,
+          {
+            isModelOK &
+              !is.na(
+                isModelOK
+              )
+          },
           ~ if_else(
             #mainterm
             .x$
               p.value[2] <
               0.105,
             T, F
-            ),
+          ),
           .else = ~ NA
           )
       ) %>%
     unnest(
       isSignif
-      ) %>%
+    ) %>%
 
     mutate(
       "R2adj" =
@@ -366,29 +373,35 @@ addStatFitNon <- function(
       "statTestPois" =
         varData %>%
         modify_if(
-          !isModelOK,
+          !isModelOK &
+            !is.na(
+              isModelOK
+            ),
           ~ .x %>%
             glm(
               formula = ....formula,
               family = poisson()
-              ) %>%
+            ) %>%
             summary(),
           .else = ~ NA
-          ),
+        ),
       "statTestGamma" =
         varData %>%
         modify_if(
-          !isModelOK,
+          !isModelOK &
+            !is.na(
+              isModelOK
+            ),
           ~ .x %>%
             glm(
-              formula =
-                mainModel,
-              family =
-                Gamma()
-              ) %>%
+              formula = ....formula,
+              family = Gamma(
+                link = "log"
+              )
+            ) %>%
             summary(),
           .else = ~ NA
-          )
+        )
     )
 }
 
@@ -405,28 +418,40 @@ addStatEvalNon <- function(
       poisAIC =
         statTestPois %>%
         modify_if(
-          !isModelOK,
+          !isModelOK &
+            !is.na(
+              isModelOK
+            ),
           ~ .x$
             aic
         ),
       gammaAIC =
         statTestGamma %>%
         modify_if(
-          !isModelOK,
+          !isModelOK &
+            !is.na(
+              isModelOK
+            ),
           ~ .x$
             aic
         ),
       poisPval =
         statTestPois %>%
         modify_if(
-          !isModelOK,
+          !isModelOK &
+            !is.na(
+              isModelOK
+            ),
           ~ .x$
             coefficients[8]
         ),
       gammaPval =
         statTestGamma %>%
         modify_if(
-          !isModelOK,
+          !isModelOK &
+            !is.na(
+              isModelOK
+            ),
           ~ .x$
             coefficients[8]
         )
@@ -452,6 +477,7 @@ addStatEvalNon <- function(
       pickAIC
     ) %>%
     mutate(
+      #morefamilies?
       "pickPval" =
         if_else(
           pickAIC == poisAIC,
@@ -469,6 +495,34 @@ addStatEvalNon <- function(
           T, F
         )
       )
+}
+
+
+
+addStatFitNonNP <- function(
+  ...statEvalTbl,
+  ....formula
+) {
+
+  ...statEvalTbl %>%
+
+    mutate(
+      statTestNP =
+        varData %>%
+        modify_if(
+
+          !isModelOK &
+            !is.na(
+              isModelOK
+            ),
+
+          ~ .x %>%
+            kruskal_test(
+              ....formula
+            )
+        ) %>%
+        summary()
+    )
 }
 
 
@@ -521,9 +575,6 @@ addGraph <- function(
               ),
               x = deparse(
                 ....formula[[3]]
-              ),
-              title = deparse(
-                variable
               )
             )
         )
@@ -586,10 +637,6 @@ addGraph2 <- function(
               ),
               x = deparse(
                 ....formula[[3]]
-              ),
-              #fixtitle
-              title = deparse(
-                variable
               )
             )
         )
@@ -646,9 +693,6 @@ addGraph1 <- function(
               ),
               x = deparse(
                 ....formula[[3]]
-              ),
-              title = deparse(
-                variable
               )
             )
         )
@@ -712,10 +756,6 @@ addGraph12 <- function(
               ),
               x = deparse(
                 ....formula[[3]]
-              ),
-              #fixtitle
-              title = deparse(
-                variable
               )
             )
         )
