@@ -32,15 +32,53 @@ output:
 
         2.  edge effects (i.e. buffer)
 
-Forested areas in the tropics offer many [economic and regulatory] services like timber, fuel, biomass/carbon storage, and biodiversity maintenance. Today, most forested areas in the tropics are secondary (FAO 2020) and show legacy effects of human activity like logging and intensive agriculture.
+Forested areas in the tropics offer many [economic and regulatory] services like timber, fuel, biomass/carbon storage, and biodiversity maintenance.
 
-In more sustainable forestry that maintains multiple functions, forest stand regeneration is likely more predictable, generally mirroring (i.e. near 1:1 replacement) the targeted tree cutting that is done using information collected about the ecological profiles and ages (when possible) of trees (Duah-Gyamfi et al 2014, Edwards et al 2014). However, under intensive silviculture that prioritizes the growth of select tree crop species, forest stands can show high wood production (Ferez et al 2015), but also usually show negative trade-offs between services, like that with biodiversity, due to monoculture planting designs. In some cases where management decisions are made primarily based on regional economic but not local ecological information, often lacking access to funded scientific reporting (Cook et al 2012), forest stands can perform very poorly all-around. After this more extreme type of management, it remains uncertain how natural regeneration in secondary forests will proceed, how local ecosystem services will be restored, and how restoration could be managed locally (Laurance et al 2012), e.g. based on surrounding forest proximity.
+At the same time, most forested areas in the tropics are secondary (FAO 2020), showing legacy effects of human activity like logging and intensive agriculture.
 
-Previous studies show some consistent patterns of secondary forest succession, while others show inconsistent trajectories. For example, syntheses (Finegan 1996) and chronosequence studies show that secondary forests mostly regenerate (\~50-80%, compared to old-growth forests) rather quickly (decades, \< 20 years) with respect to tree height, above-ground biomass (Poorter et al 2016), and also species richness in wetter regions (Rozendaal et al 2019, Onyekwelu & Olabiwonnu 2016). Higher richness may be enough to maintain carbon storage (Liu et al 2018), but lagging changes in composition may contribute to reduced effects of diversity on other forest functions (Griess et al 2012). Unlike richness, changes to species composition likely last up to centuries, showing a strong legacy of early-successional communities that are mostly fast-growing, low-wood-density, shade-intolerant pioneering species (Tabarelli et al 2014, Tabarelli & Lopes 2008). Slower changes in composition can be influenced by seed banks, herbivore communities, and dispersal from the surrounding landscape, which may also be managed, possibly explaining why different tropical forest trajectories diverge over time (Nordon et al 2015, Christensen 2014, Munroe et al 2013, Chazdon et al 2007).
+As a result, tropical reforestation is a widespread ecological process that must be better understood to optimize [local] tradeoffs in ecosystem services [CITE?].
 
-Edge effects, or changes in composition along management gradients, are likely a key variable for the sustainability of neo-tropical landscapes that are heterogenous in management (Wright et al 2009), with underlying arguments based on metapopulation theory in ecology (Levins 1969, MacArthur & Wilson 1967), but edge effects have often been studied as threats to nature reserves, rather than how edges might facilitate secondary succession. Especially for abandoned land that regenerates via various processes (Stanturf et al 2014), the proximity to less disturbed habitat can affect the composition of the regrowing community by changing effective seed dispersal kernels and probability of establishment (Wandrag et al 2017, Guariguata & Ostertag 2001), along with animal disperser communities themselves (Gilroy et al 2014). While dispersal is complicated (Muller-Landau & Hardesty 2005), it can broadly correlate with simpler plant traits such as height and seed mass (Tamme et al 2014, Thomson et al 2011). Edge effects can also operate via the style of management, including logging decisions (Edwards et al 2014, Clark et al 2012) and land-use history generally (Omeja et al 2012), can also affect stand diversity maintenance, with examples of high diversity (compared to older adjacent stands) in agroforests (Oliveira-Neto et al 2017) and native timber plantations (Pryde et al 2015), possibly by changing early tree survival probabilities, growth rates, and/or competition, but surprisingly less likely facilitation by nitrogen-fixing trees (Lai et al 2018). It may also be that due to both high recruitment and mortality (turnover) of pioneering species' stems, transitions from early- to late-successional communities may be more complex than gradual (van Greugel et al 2007). The persistence of early-successional tree communities has been found to lower the standing biomass, likely due to lower wood density (César et al 2021), and could therefore require a switch in focal timber species (Karsten et al 2014).
+Previous studies have shown some general/consistent patterns of secondary forest succession, although other studies show inconsistent trajectories.
 
-Here we study the regeneration of an abandoned timber plantation as a function of distance from surrounding native forest, as means of understanding how these local ecological principles can support forest stewardship (Hulshoff & Powers 2019). We hypothesized the planted canopy species would facilitate regeneration by reducing competitive suppression of more shade-tolerant taxa by pioneering species, having mixed effects on stand diversity. We also considered how the legacy plantation canopy structure mediated forest stand effects via changes in abiotic conditions like light availability and microtopography (Powers & Peréz-Aviles 2012).
+For example, syntheses (Finegan 1996) and chronosequence studies show that secondary forests mostly regenerate (\~50-80%, compared to old-growth forests) rather quickly (decades, \< 20 years) with respect to tree height, above-ground biomass (Poorter et al 2016), and species richness, especially in wetter regions (Rozendaal et al 2019, Onyekwelu & Olabiwonnu 2016).
+
+However, while restoring species richness may be enough to maintain carbon storage (Liu et al 2018), it does not guarantee the restoration of species composition.
+
+Instead, changes to species composition likely last up to centuries, showing a strong legacy of priority effects from early-successional communities that are mostly fast-growing, low-wood-density, shade-intolerant pioneering species (Tabarelli et al 2014, Tabarelli & Lopes 2008).
+
+Slower changes in composition can also be influenced by seed banks, herbivore communities, and dispersal from the surrounding landscape, all of which may affect diverging restoration trajectories among tropical forests (Nordon et al 2015, Christensen 2014, Munroe et al 2013, Chazdon et al 2007).
+
+but lagging changes in composition may contribute to reduced effects of diversity on other forest functions (Griess et al 2012).
+
+Restoring species composition more quickly is likely a place where active forest managers can have the most unique impacts.
+
+For land managers / foresters with interest in conservation, inheriting land affected by past decisions is a reality. One of the legacies is where the land was placed. To best manage it in the future, an initial assessment of the ecological status of the land is important to understand it's likely trajectory, and what it will need in the future for tailed services/conservation/protection.
+
+Edge effects, or changes in composition along management gradients, are likely a key variable for the sustainability of neo-tropical landscapes that are heterogenous in management (Wright et al 2009),
+
+with underlying arguments based on metapopulation theory in ecology (Levins 1969, MacArthur & Wilson 1967), but edge effects have often been studied as threats to nature reserves, rather than how edges might facilitate secondary succession.
+
+Especially for abandoned land that regenerates via various processes (Stanturf et al 2014), the proximity to less disturbed habitat can affect the composition of the regrowing community by changing effective seed dispersal kernels and probability of establishment (Wandrag et al 2017, Guariguata & Ostertag 2001), along with animal disperser communities themselves (Gilroy et al 2014).
+
+While dispersal is complicated (Muller-Landau & Hardesty 2005), it can broadly correlate with simpler plant traits such as height and seed mass (Tamme et al 2014, Thomson et al 2011).
+
+Edge effects can also operate via the style of management, including logging decisions (Edwards et al 2014, Clark et al 2012) and land-use history generally (Omeja et al 2012), can also affect stand diversity maintenance,
+
+with examples of high diversity (compared to older adjacent stands) in agroforests (Oliveira-Neto et al 2017) and native timber plantations (Pryde et al 2015),
+
+possibly by changing early tree survival probabilities, growth rates, and/or competition,
+
+but surprisingly less likely facilitation by nitrogen-fixing trees (Lai et al 2018).
+
+It may also be that due to both high recruitment and mortality (turnover) of pioneering species' stems, transitions from early- to late-successional communities may be more complex than gradual (van Greugel et al 2007).
+
+The persistence of early-successional tree communities has been found to lower the standing biomass, likely due to lower wood density (César et al 2021), and could therefore require a switch in focal timber species (Karsten et al 2014).
+
+To understand the ecological principles behind secondary forest regeneration (Hulshoff & Powers 2019), here we study the regeneration of an abandoned timber plantation as a function of distance from surrounding native forest.
+
+We hypothesized that planted canopy species would facilitate regeneration by reducing competitive suppression of more shade-tolerant taxa by pioneering species, having mixed effects on stand diversity.
+
+We also considered how the legacy plantation canopy structure mediated forest stand effects via changes in abiotic conditions like light availability and microtopography (Powers & Peréz-Aviles 2012).
 
 # Results
 
@@ -74,6 +112,8 @@ Here we study the regeneration of an abandoned timber plantation as a function o
 3.  compare inferences to other studies
 4.  recommend future conservation approaches, ecological studies
 
+In more sustainable forestry that maintains multiple functions, forest stand regeneration is likely more predictable, generally mirroring (i.e. near 1:1 replacement) the targeted tree cutting that is done using information collected about the ecological profiles and ages (when possible) of trees (Duah-Gyamfi et al 2014, Edwards et al 2014). However, under intensive silviculture that prioritizes the growth of select tree crop species, forest stands can show high wood production (Ferez et al 2015), but also usually show negative trade-offs between services, like that with biodiversity, due to monoculture planting designs. In some cases where management decisions are made primarily based on regional economic but not local ecological information, often lacking access to funded scientific reporting (Cook et al 2012), forest stands can perform very poorly all-around. After this more extreme type of management, it remains uncertain how natural regeneration in secondary forests will proceed, how local ecosystem services will be restored, and how restoration could be managed locally (Laurance et al 2012), e.g. based on surrounding forest proximity.
+
 # Methods
 
 ## Statistical analysis
@@ -94,9 +134,7 @@ Here we study the regeneration of an abandoned timber plantation as a function o
 
 ## Study site
 
-This study was done in the lowland wet tropical rainforest of the Osa Peninsula in SW Puntarenas, Costa Rica. The forest fragment used was acquired by the Natural
-Resources Defense Council (nrdc.org) and managed by the local non-profit
-organization Osa Conservation (osaconservation.org), located at their Greg Gund Conservation Center, near the more widely-used Piro research station. The focal parcel was 20 ha in size and was undergoing secondary succession after having been abandoned \~20 years ago as a wood plantation for *Bombacopsis quinata*, which has usually been better suited to the dry forests of Guanacaste and the Nicoya Peninsula (Pérez Cordero & Kanninen 2002). The secondary forest stand was roughly triangular and surrounded by primary forest on the S and NW sides. This census was done in 2013 during the rainy season months between June and August.
+This study was done in the lowland wet tropical rainforest of the Osa Peninsula in SW Puntarenas, Costa Rica. The forest fragment used was acquired by the Natural Resources Defense Council (nrdc.org) and managed by the local non-profit organization Osa Conservation (osaconservation.org), located at their Greg Gund Conservation Center, near the more widely-used Piro research station. The focal parcel was 20 ha in size and was undergoing secondary succession after having been abandoned \~20 years ago as a wood plantation for *Bombacopsis quinata*, which has usually been better suited to the dry forests of Guanacaste and the Nicoya Peninsula (Pérez Cordero & Kanninen 2002). The secondary forest stand was roughly triangular and surrounded by primary forest on the S and NW sides. This census was done in 2013 during the rainy season months between June and August.
 
 ## Census design
 
@@ -106,8 +144,7 @@ Geographic information systems software (QGIS 2.0, qgis.org; ArcGIS 10, arcgis.c
 
 ### Canopy cover & Topography
 
-Light reaching the forest floor was measured at the center of each plot, at chest
-height, using a densiometer (Foresty Suppliers, Inc.). Following manufacturer instructions, the final plot value was the average of 4 different readings taken facing each of the 4 cardinal directions: North, South, East, and West.
+Light reaching the forest floor was measured at the center of each plot, at chest height, using a densiometer (Foresty Suppliers, Inc.). Following manufacturer instructions, the final plot value was the average of 4 different readings taken facing each of the 4 cardinal directions: North, South, East, and West.
 
 ### [Topography]
 
@@ -115,23 +152,13 @@ The slope of the forest floor in each plot was measured using [a rangefinder by 
 
 ### Tree measurements
 
-In each plot, the diameter at breast height (DBH = 2.5 -- 3 m), crown height, and
-taxonomic ID was recorded for every stem ≥10 cm in [diameter/circumference?].
-Following common forestry guidelines, in cases where a tree split into 2 or more
-stems below breast height, each stem was measured separately; in cases where a stem split only above breast height, it was measured as a single stem. Tree
-height was measured by using a rangefinder (Bushnell, Forestry Suppliers, Inc.)
-to measure from an observer to the crown (from where it was visible), and then
-to the trunk at breast height; these 2 distances were then used to triangulate
-and calculate the tree's height using Pythagoras's Theorem.
+In each plot, the diameter at breast height (DBH = 2.5 -- 3 m), crown height, and taxonomic ID was recorded for every stem ≥10 cm in [diameter/circumference?]. Following common forestry guidelines, in cases where a tree split into 2 or more stems below breast height, each stem was measured separately; in cases where a stem split only above breast height, it was measured as a single stem. Tree height was measured by using a rangefinder (Bushnell, Forestry Suppliers, Inc.) to measure from an observer to the crown (from where it was visible), and then to the trunk at breast height; these 2 distances were then used to triangulate and calculate the tree's height using Pythagoras's Theorem.
 
 Trees were distinguished based on local ecological knowledge of common names, followed by matching to Latin binomial taxonomic names using printed local field guides available.
 
 ### Aboveground biomass
 
-Aboveground biomass (AGB) was estimated for each stem using the allometric equation developed by Chave et al. (2014) specific for wet tropical forests,
-which has performed slightly better compared to both pantropical and previous other models by Chave et al. (2005) (Ngomanda et al 2014, Alvarez et al 2012),
-with improved local accuracy adding height (Khan et al 2020, Domke et al 2012)
-and wood density (specific gravity) (van Breugel et al 2011):
+Aboveground biomass (AGB) was estimated for each stem using the allometric equation developed by Chave et al. (2014) specific for wet tropical forests, which has performed slightly better compared to both pantropical and previous other models by Chave et al. (2005) (Ngomanda et al 2014, Alvarez et al 2012), with improved local accuracy adding height (Khan et al 2020, Domke et al 2012) and wood density (specific gravity) (van Breugel et al 2011):
 
 *AGB = 0.0673 x (ρ D^2^ H)^0.976^*
 
@@ -143,21 +170,10 @@ All variables were averaged at the plot level, including biomass converted to a 
 
 All response variables passed Shapiro-Wilk normality and Levene's homogeneity tests before being subject to parametric tests---either multi-way ANOVA or one-way ANOVA and linear regression, or generalized (non-linear) regression.
 
-Correlated variables were grouped into multi-way ANOVAs---namely biomass, wood density, and diameter in one group; and height, stem density, and wood density in a different group. These variables are also shown in figures with their own separate analyses, exclusively one-way ANOVAs with additional relevant parameters from their linear regression counterparts (*i.e.* for *R^2^*and *slope*). Standard one-way ANOVAs were also run for hill slope and canopy
-light availability separately. Non-linear regressions were run as linear
-regressions with slight modifications using the function "poly()" in the
-"stats" package for R software, which was only used for stem density and
-RICHNESS variables. All individual trees censused were included in all
-analyses, including unidentified taxa, but these averaged to only 1 group for
-taxa-related analyses, namely RICHNESS with distance, having a minor effect. All
-tests included only distance to primary forest edge as the dependent variable,
-and all data was analyzed in R v3.6.1 software (R Core Team 2019).
+Correlated variables were grouped into multi-way ANOVAs---namely biomass, wood density, and diameter in one group; and height, stem density, and wood density in a different group. These variables are also shown in figures with their own separate analyses, exclusively one-way ANOVAs with additional relevant parameters from their linear regression counterparts (*i.e.* for *R^2^*and *slope*). Standard one-way ANOVAs were also run for hill slope and canopy light availability separately. Non-linear regressions were run as linear regressions with slight modifications using the function "poly()" in the "stats" package for R software, which was only used for stem density and RICHNESS variables. All individual trees censused were included in all analyses, including unidentified taxa, but these averaged to only 1 group for taxa-related analyses, namely RICHNESS with distance, having a minor effect. All tests included only distance to primary forest edge as the dependent variable, and all data was analyzed in R v3.6.1 software (R Core Team 2019).
 
 -   Allen and Kim (2020) as some justification for family-level analysis (their MI forest site shares \~6 / their 20 families with this site)
 
-```{=html}
-<!-- -->
-```
 -   Neighborhood influence metric (Lorimer 1983, applied in Looney et al 2016)
 -   Data and analytical code available on GitHub.../DRYAD
 
@@ -166,3 +182,4 @@ and all data was analyzed in R v3.6.1 software (R Core Team 2019).
 -   osa conservation - max villalobos, [dan student harvard alum], agustín (& annia), manuel director
 -   lehigh group - don, emma, ?, ?
 -   brandeis WOW funding
+
