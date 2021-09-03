@@ -32,19 +32,47 @@ output:
 
         2.  edge effects (i.e. buffer)
 
-Forested areas in the tropics offer many [economic and regulatory] services like timber, fuel, biomass/carbon storage, and biodiversity maintenance.
+Forest regeneration has the potential to store \#\#C and preserve \#\# diversity globally in the coming decades (UN, Bonn challenge).
 
-At the same time, most forested areas in the tropics are secondary (FAO 2020), showing legacy effects of human activity like logging and intensive agriculture.
+To realize this potential, it is fundamental that we better understand how general ecological processes manifest under widespread conservation contexts.
 
-As a result, tropical reforestation is a widespread ecological process that must be better understood to optimize [local] tradeoffs in ecosystem services [CITE?].
+At local scales, regeneration is strongly affected by landscape [ecological] heterogeneity as well as management history.
 
-Previous studies have shown some general/consistent patterns of secondary forest succession, although other studies show inconsistent trajectories.
+Most tropical forests are secondary (FAO 2020), meaning that forest regeneration is widespread.
 
-For example, syntheses (Finegan 1996) and chronosequence studies show that secondary forests mostly regenerate (\~50-80%, compared to old-growth forests) rather quickly (decades, \< 20 years) with respect to tree height, above-ground biomass (Poorter et al 2016), and species richness, especially in wetter regions (Rozendaal et al 2019, Onyekwelu & Olabiwonnu 2016).
+However, patterns of forest regeneration remain unclear, especially at more local scales (\< \~50 ha).
 
-However, while restoring species richness may be enough to maintain carbon storage (Liu et al 2018), it does not guarantee the restoration of species composition.
+Still, forests provide key functions like wood, carbon storage, and biodiversity maintenance.
 
-Instead, changes to species composition likely last up to centuries, showing a strong legacy of priority effects from early-successional communities that are mostly fast-growing, low-wood-density, shade-intolerant pioneering species (Tabarelli et al 2014, Tabarelli & Lopes 2008).
+Therefore, better understanding forest regeneration is an integral part of achieving more sustainable development.
+
+Some general patterns of forest regeneration have emerged, but this also includes the lack of pattern in some cases.
+
+Syntheses (Finegan 1996) and chronosequence studies show that secondary forests mostly regenerate (\~50-80%, compared to old-growth forests) rather quickly (decades, \< 20 years), mainly with respect to tree height, above-ground biomass (Poorter et al 2016), and species richness, especially in wetter regions (Rozendaal et al 2019, Onyekwelu & Olabiwonnu 2016).
+
+However, while restoring species richness may be enough to maintain some ecosystem functions like carbon storage (Liu et al 2018), it does not guarantee the restoration of species composition.
+
+Instead, changes to species composition likely last up to centuries, showing a strong legacy of priority effects from pioneering, early-successional communities that are mostly fast-growing, low-wood-density, and shade-intolerant (Tabarelli et al 2014, Tabarelli & Lopes 2008).
+
+forests show legacy effects of common human activity, like logging and intensive agriculture/agroforestry/silviculture (FAO 2020).
+
+[High] Regional biodiversity [can] affects/increases the uncertainty about the local occurrences and outcomes of specific species interactions,
+
+such as after dispersal and/or niche overlap [CITE-niche, neutral theory].
+
+[At the same time,] Diverse local management activity modifies demographic states/profiles of various taxa's population dynamics.
+
+For example, active timber plantations strongly promote the population growth of focal taxa at the expense of non-focal taxa.
+
+After abandonment, however, the ecosystem likely reflects how continuous regional ecological processes look different given past management.
+
+such as seed dispersal from nearby primary forest edges.
+
+[These] Interactions between background ecology and human management ultimately have both local and general implications for the potential conservation/stability of ecosystem services/functions
+
+like biomass/carbon storage and biodiversity maintenance,
+
+as well as manager livelihood.
 
 Slower changes in composition can also be influenced by seed banks, herbivore communities, and dispersal from the surrounding landscape, all of which may affect diverging restoration trajectories among tropical forests (Nordon et al 2015, Christensen 2014, Munroe et al 2013, Chazdon et al 2007).
 
@@ -112,7 +140,13 @@ We also considered how the legacy plantation canopy structure mediated forest st
 3.  compare inferences to other studies
 4.  recommend future conservation approaches, ecological studies
 
-In more sustainable forestry that maintains multiple functions, forest stand regeneration is likely more predictable, generally mirroring (i.e. near 1:1 replacement) the targeted tree cutting that is done using information collected about the ecological profiles and ages (when possible) of trees (Duah-Gyamfi et al 2014, Edwards et al 2014). However, under intensive silviculture that prioritizes the growth of select tree crop species, forest stands can show high wood production (Ferez et al 2015), but also usually show negative trade-offs between services, like that with biodiversity, due to monoculture planting designs. In some cases where management decisions are made primarily based on regional economic but not local ecological information, often lacking access to funded scientific reporting (Cook et al 2012), forest stands can perform very poorly all-around. After this more extreme type of management, it remains uncertain how natural regeneration in secondary forests will proceed, how local ecosystem services will be restored, and how restoration could be managed locally (Laurance et al 2012), e.g. based on surrounding forest proximity.
+Under more sustainable forestry that maintains multiple functions, forest stand regeneration is likely more predictable, generally mirroring (i.e. near 1:1 replacement) the targeted tree cutting that is done using information collected about the ecological profiles and ages (when possible) of trees (Duah-Gyamfi et al 2014, Edwards et al 2014).
+
+In contrast, under intensive silviculture that prioritizes the growth of select tree crop species, forest stands can show high wood production (Ferez et al 2015) while also usually showing negative trade-offs with other services, like that with biodiversity given reliance on monoculture planting designs.
+
+In some cases where management decisions are made primarily based on regional economic but not local ecological information, due to limited access to funded scientific reporting (Cook et al 2012), forest stands can perform very poorly all-around.
+
+After this more extreme type of management, it remains uncertain how natural regeneration in secondary forests will proceed, how local ecosystem services will be restored, and how restoration could be managed locally (Laurance et al 2012), e.g. based on surrounding forest proximity.
 
 # Methods
 
@@ -182,4 +216,3 @@ Correlated variables were grouped into multi-way ANOVAs---namely biomass, wood d
 -   osa conservation - max villalobos, [dan student harvard alum], agustín (& annia), manuel director
 -   lehigh group - don, emma, ?, ?
 -   brandeis WOW funding
-
