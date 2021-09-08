@@ -7,18 +7,31 @@ library(vegan) #diversity()
 
 
 
+#userInput
+taxRank <- quote(
+  gen
+)
+
 #4vegan
 spTbl <- cleanData %>%
   add_count(
-    gen,
+    {
+      {
+        taxRank
+      }
+    },
     plot, #group
-    name = "n_gen",
+    name = "n_tax",
     sort = T
-    ) %>%
+    ) #%>%
   pivot_wider(
     id_cols = plot,
-    names_from = gen,
-    values_from = n_gen,
+    names_from = {
+      {
+        taxRank
+      }
+    },
+    values_from = n_tax,
     #rmwarn
     values_fn = length,
     values_fill = 0
@@ -92,6 +105,21 @@ plotVarsTbl <- cleanData %>%
             mad = mad(
               median
             )
+          )
+      )
+  ) %>%
+
+  # hist parms
+  mutate(
+    "sys" = varData %>%
+      modify(
+        ~ .x %>%
+
+          pull(
+            median
+          ) %>%
+          hist(
+            .
           )
       )
   )
@@ -170,19 +198,35 @@ spStatTbl <- cleanData %>%
   select(
     dist,
     plot,
-    gen
+    {
+      {
+        taxRank
+      }
+    }
   ) %>%
   add_count(
-    gen,
+    {
+      {
+        taxRank
+      }
+    },
     plot,
   ) %>%
   distinct(
-    gen,
+    {
+      {
+        taxRank
+      }
+    },
     plot,
     .keep_all = T
   ) %>%
   nest(
-    "varData" = -gen
+    "varData" = -{
+      {
+        taxRank
+      }
+    }
   ) %>%
 
   #QCshapiro

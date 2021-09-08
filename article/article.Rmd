@@ -6,11 +6,12 @@ output:
     code_folding: hide
     theme: spacelab
     fig_caption: yes
+bibliography: references.bib
 ---
 
 # Introduction
 
-1.  importance of reforestation
+1.  importance of reforestation/regeneration/regrowth
 
 2.  patterns of reforestation
 
@@ -32,21 +33,35 @@ output:
 
         2.  edge effects (i.e. buffer)
 
-Forest regeneration has the potential to store \#\#C and preserve \#\# diversity globally in the coming decades (UN, Bonn challenge).
+    2.  How does the forest regenerate by distance to primary forest?
 
-To realize this potential, it is fundamental that we better understand how general ecological processes manifest under widespread conservation contexts.
+        1.  how much [effort] do we need to re-seed? / how much can we leave to nature?
+
+Global forest and landscape regeneration is a key conservation and climate change mitigation strategy, adopted internationally (\@UN14 Paris, Bonn Challenge).
+
+-   Tropical forests store most terrestrial biomass @pan2013 and biodiversity (CITE, but are losing functions, especially in the neotropics @hubau2020, as most tropical forests become secondary (\@FAO20.
+
+Secondary forests can regenerate relatively quickly compared to old-growth forests in some ways, but in other ways remain distinct.
+
+-   Neotropical secondary forests accumulate biomass \>10x faster than old-growth forests @poorter2016, and offset \~10% of carbon emissions from Amazonian deforestation @smith2020 .
+-   They also recover taxonomic richness quite quickly, averaging 80% of old-growth forest levels in 20y @rozendaal2019 .
+-   However, secondary neotropical forests diverge widely in taxonomic composition @norden2015 .
+
+Divergent communities among secondary forests may warrant more localized conservation efforts, studying relative effects of generalized community processes.
+
+Half of all forests lie half of a kilometer from an ecotone @haddad2015, suggesting that edge effects from adjacent habitats are widespread aspects of secondary forest regeneration.
+
+-   Tropical forests lose 22% carbon along edges \>100m, in part due to shorter trees and less leaf mass @ordway2020 .
+
+Here we report the edge effects of an abandoned wet neotropical timber plantation.
+
+-   We hypothesized that remnant timber trees would mediate forest regrowth by maintaining uniform shade that would suppress shade-intolerant / pioneer trees / taxa and allow for more diversity.
+
+Forest regeneration has the potential to store \#\#C and preserve \#\# diversity globally in the coming decades (UN, Bonn challenge).
 
 At local scales, regeneration is strongly affected by landscape [ecological] heterogeneity as well as management history.
 
-Most tropical forests are secondary (FAO 2020), meaning that forest regeneration is widespread.
-
 However, patterns of forest regeneration remain unclear, especially at more local scales (\< \~50 ha).
-
-Still, forests provide key functions like wood, carbon storage, and biodiversity maintenance.
-
-Therefore, better understanding forest regeneration is an integral part of achieving more sustainable development.
-
-Some general patterns of forest regeneration have emerged, but this also includes the lack of pattern in some cases.
 
 Syntheses (Finegan 1996) and chronosequence studies show that secondary forests mostly regenerate (\~50-80%, compared to old-growth forests) rather quickly (decades, \< 20 years), mainly with respect to tree height, above-ground biomass (Poorter et al 2016), and species richness, especially in wetter regions (Rozendaal et al 2019, Onyekwelu & Olabiwonnu 2016).
 
@@ -82,6 +97,14 @@ Restoring species composition more quickly is likely a place where active forest
 
 For land managers / foresters with interest in conservation, inheriting land affected by past decisions is a reality. One of the legacies is where the land was placed. To best manage it in the future, an initial assessment of the ecological status of the land is important to understand it's likely trajectory, and what it will need in the future for tailed services/conservation/protection.
 
+Edge effects are known for degrading primary forest, but they can also be used to assist reforestation.
+
+Traditional edge effects act by mortality of large trees that makes room for pioneer species to enter, but existing interior pioneer species also have dispersal radii that overlap with the adjacent exterior, potentially facilitating regeneration.
+
+Encroachment vs. facilitation relies on a balance between mortality (per area) and dispersal + establishment + stem growth.
+
+So pioneer species can be helpful for reforestation though they are typically seen as bad for old forest conservation.
+
 Edge effects, or changes in composition along management gradients, are likely a key variable for the sustainability of neo-tropical landscapes that are heterogenous in management (Wright et al 2009),
 
 with underlying arguments based on metapopulation theory in ecology (Levins 1969, MacArthur & Wilson 1967), but edge effects have often been studied as threats to nature reserves, rather than how edges might facilitate secondary succession.
@@ -104,6 +127,9 @@ The persistence of early-successional tree communities has been found to lower t
 
 To understand the ecological principles behind secondary forest regeneration (Hulshoff & Powers 2019), here we study the regeneration of an abandoned timber plantation as a function of distance from surrounding native forest.
 
+-   how can we expect it to regrow?
+-   how far/much [effort] do we need to re-seed?
+
 We hypothesized that planted canopy species would facilitate regeneration by reducing competitive suppression of more shade-tolerant taxa by pioneering species, having mixed effects on stand diversity.
 
 We also considered how the legacy plantation canopy structure mediated forest stand effects via changes in abiotic conditions like light availability and microtopography (Powers & Peréz-Aviles 2012).
@@ -112,26 +138,34 @@ We also considered how the legacy plantation canopy structure mediated forest st
 
 ## Shade / Canopy
 
-1.  shade x distance + timber sp
+1.  fig1
+
+    1.  shade x distance @ordway2020 + timber sp?
+
+    2.  height @ordway2020
+
+    3.  wood density @poorter2019
+
+    4.  total biomass x dist @ordway2020 + timber sp?
+
+        -   maybe system-level curve (e.g. biomass hist) + timber sp
+
+            -   metric hist, vs. sp-abund/diversity hist below
+
+        -   max DAP as trait?
 
 ## Edge effects
 
-1.  biomass x distance + timber sp
+1.  fig2
 
-    -   can break down biomass by component
+    1.  richness
 
-    -   maybe system-level curve (e.g. biomass hist) + timber sp
+    2.  diversity x distance [+ 1 timber sp]
 
-        -   metric hist, vs. sp-abund/diversity hist below
+        -   can break down by diversity index
+        -   compare to NMDS?
 
-    -   max DAP as trait?
-
-2.  diversity x distance [+ 1 timber sp]
-
-    -   can break down by diversity index
-    -   compare to NMDS?
-
-    1.  system-level curve (e.g. rank-abund) x distance [+ 1 timber sp]
+        1.  system-level curve (e.g. rank-abund) x distance [+ 1 timber sp]
 
 # Discussion
 
@@ -209,6 +243,7 @@ Correlated variables were grouped into multi-way ANOVAs---namely biomass, wood d
 -   Allen and Kim (2020) as some justification for family-level analysis (their MI forest site shares \~6 / their 20 families with this site)
 
 -   Neighborhood influence metric (Lorimer 1983, applied in Looney et al 2016)
+
 -   Data and analytical code available on GitHub.../DRYAD
 
 # Acknowledgements
