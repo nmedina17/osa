@@ -1,4 +1,14 @@
 library(tidyverse)
+#geom_quasirandom()
+library(ggbeeswarm)
+
+
+style <- theme_bw() +
+  theme()
+
+theme_set(
+  style
+)
 
 
 linePlot <- function(
@@ -11,23 +21,21 @@ linePlot <- function(
 
     ggplot(
       aes(
-        x = ..x,
-        y = ..y
-    )
-  ) +
-    theme_classic() +
-
-    geom_point(
-      aes(
-        color = "gray"
+        x = {
+          ..x %>%
+            eval()
+        },
+        y = {
+          ..y %>%
+            eval()
+        }
       )
     ) +
 
-    geom_smooth(
-      method = "lm",
-      se = F,
-      aes(
-        color = "black"
-      )
+    geom_quasirandom(
+      color = "black",
+      shape = 21,
+      fill = "white",
+      size = 2
     )
 }
