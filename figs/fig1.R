@@ -46,6 +46,8 @@ yAxisLabel4 <- quote(
   "Aboveground biomass (kg)"
 )
 
+
+
 varForm <- median ~ dist
 xAxisLabel <- quote(
   "Distance to secondary forest edge (m)"
@@ -67,7 +69,6 @@ graph1 <-  plotResultsTbl1 %>%
     yAxisLabel1,
     ..addGroups = T
   )
-
 graph1
 
 
@@ -81,10 +82,9 @@ graph2 <- plotResultsTbl1 %>%
     varForm[[2]],
     xAxisLabel,
     yAxisLabel2,
-    underData,
-    ..addGroups = T
+    ..addGroups = T,
+    underData
   )
-
 graph2
 
 
@@ -93,43 +93,14 @@ graph2
 
 graph3 <- plotResultsTbl1 %>%
   dotGraph(
-    measure2,
+    measure3,
     varForm[[3]],
     varForm[[2]],
     xAxisLabel,
-    yAxisLabel2
-  ) +
-
-  geom_point(
-    data = {
-      plotResultsTbl1 %>%
-        filter(
-          variable == measure3
-        ) %>%
-        select(
-          "varData1"
-        ) %>%
-        unnest()
-    },
-    color = graphPointColor,
-    size = graphPointSize
-  ) %>%
-
-
-  #move
-  append_layers(
-    geom_quasirandom(
-      data = cleanData,
-      aes(
-        y = measure3
-      ),
-      color = "gray",
-      size = 1
-    ),
-
-    position = "bottom"
+    yAxisLabel3,
+    underData,
+    ..addGroups = T
   )
-
 graph3
 
 
@@ -138,47 +109,17 @@ graph3
 
 graph4 <- plotResultsTbl1 %>%
   dotGraph(
-    measure2,
+    measure4,
     varForm[[3]],
     varForm[[2]],
     xAxisLabel,
-    yAxisLabel2
+    yAxisLabel4,
+    underData,
+    ..addGroups = T
   ) +
-
-  geom_point(
-    data = {
-      plotResultsTbl1 %>%
-        filter(
-          variable == measure4
-        ) %>%
-        select(
-          "varData1"
-        ) %>%
-        unnest()
-    },
-    color = graphPointColor,
-    size = graphPointSize
-  ) %>%
-
-
-  #move
-  append_layers(
-    geom_quasirandom(
-      data = cleanData,
-      aes(
-        y = measure4
-      ),
-      color = "gray",
-      size = 1
-    ),
-
-    position = "bottom"
-  ) +
-
   scale_y_continuous(
     trans = "log10"
   )
-
 graph4
 
 

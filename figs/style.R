@@ -2,11 +2,11 @@ library(tidyverse)
 #geom_quasirandom()
 library(ggbeeswarm)
 library(here)
-source(
-  here(
-    "analysis/statsTbl.R"
-  )
-)
+# source(
+#   here(
+#     "analysis/statsTbl.R"
+#   )
+# )
 library(gginnards)
 #append_layers()
 
@@ -30,8 +30,8 @@ dotGraph <- function(
   ..y,
   ..xlab,
   ..ylab,
-  ..cleanData = NULL,
-  ..addGroups = F
+  ..addGroups = F,
+  ..cleanData = NULL
 ) {
 
   graph <- ..varData %>%
@@ -100,38 +100,43 @@ dotGraph <- function(
     )
 
 
-    if(
-      !is.null(
-        ..cleanData
+  #toggles
+
+
+  graph <- if(
+    is.null(
+      ..cleanData
       )
     ) {
 
-        graph %>%
-
-          #move
-          append_layers(
-            geom_quasirandom(
-              data = ..cleanData,
-              aes(
-                y = {
-                  ..y %>%
-                    eval()
-                }
-              ),
-              color = "gray",
-              size = 1
-            ),
-
-            position = "bottom"
-          )
+      graph
 
     } else {
-      graph
+
+      graph <- graph %>%
+
+        #move
+        append_layers(
+
+          geom_quasirandom(
+            data = ..cleanData,
+            aes(
+              y = {
+                ..var %>%
+                  eval()
+              }
+            ),
+            color = "gray",
+            size = 1
+          ),
+
+          position = "bottom"
+        )
     }
 
 
-    if(
-      ..addGroups == T
+  graph <- if(
+    ..addGroups == T
     ) {
 
       graph +

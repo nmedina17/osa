@@ -1,7 +1,7 @@
 library(here);
-source(
-  here("analysis/stats.R")
-) #...$varData
+# source(
+#   here("analysis/stats.R")
+# ) #...$varData
 library(tidymodels) #glance()
 library(ggbeeswarm) #quasirandom()
 library(ggpmisc) #stat_poly_eq()
@@ -250,6 +250,23 @@ addStatEval <- function(
     ) %>%
 # } #de-bug
     mutate(
+      "pval" =
+        statPrint %>%
+        modify_if(
+          {
+            isModelOK &
+              !is.na(
+                isModelOK
+              )
+          },
+          ~ .x %>%
+            filter(
+              term != "(Intercept)"
+            ) %>%
+            pull(
+              p.value
+            )
+        ),
       "isSignif" =
         statPrint %>%
         modify_if(
@@ -263,7 +280,7 @@ addStatEval <- function(
             #mainterm
             .x$
               p.value[2] <
-              0.105,
+              0.1055,
             T, F
           ),
           .else = ~ NA
@@ -332,7 +349,7 @@ addStatEval2 <- function(
         modify(
           ~ if_else(
             .x <
-              0.055,
+              0.1055,
             T, F
           )
         )

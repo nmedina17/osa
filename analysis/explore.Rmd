@@ -13,17 +13,16 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r setup}
+```{r setup, echo = F, message = F, warning = F}
 knitr::opts_chunk$set(
   echo = F,
   message = F,
-  warning = F,
-  collapse = T
+  warning = F
 )
 library(here)
 #.GlobalEnv::
 source(
-  here("analysis/statsTbl.R")
+  here("analysis/stats.R")
 )
 ```
 
@@ -31,14 +30,6 @@ source(
 # Results
 
 ## Shade, biomass, *diversity*
-
-```{r get}
-mainModel <- median ~ dist
-plotResultsTbl <- plotVarsTbl %>%
-  getStatsTbl(
-    mainModel
-  )
-```
 
 ```{r table}
 plotSignifTbl <- plotResultsTbl %>%
@@ -60,7 +51,7 @@ plotSignifTbl
 plotSignifTbl %>%
   pull(
     graph
-    )
+  )
 #buggyLabel
 #ggarrange(.[[1]], .[[2]]) #buggy
 ```
@@ -72,20 +63,6 @@ plotSignifTbl %>%
 -   but why reverse relationships from each other?
 
 -   check curve below
-
-```{r get2}
-mainModel2 <- median ~ poly(
-  dist,
-  2
-  )
-plotResultsTbl2 <- plotVarsTbl %>%
-  getStatsTbl2(
-  mainModel2
-) %>% 
-  addGraph2(
-    mainModel
-  )
-```
 
 ```{r table2}
 plotSignifTbl2 <- plotResultsTbl2 %>%
@@ -120,13 +97,6 @@ plotSignifTbl2 %>%
 
 -   higher medians below
 
-```{r get1}
-plotResultsTbl1 <- plotVarsTbl %>%
-  getStatsTbl1(
-    mainModel
-  )
-```
-
 ```{r table1}
 plotSignifTbl1 <- plotResultsTbl1 %>%
   select(
@@ -144,24 +114,10 @@ plotSignifTbl1
 plotSignifTbl1 %>%
   pull(
     graph
-    )
+  )
 ```
 
 -   check curve below
-
-```{r get12}
-mainModel2 <- median ~ poly(
-  dist,
-  2
-  )
-plotResultsTbl12 <- plotVarsTbl %>%
-  getStatsTbl12(
-  mainModel2
-) %>%
-  addGraph12(
-    mainModel
-  )
-```
 
 ```{r table12}
 plotSignifTbl12 <- plotResultsTbl12 %>%
@@ -232,13 +188,6 @@ ordVarTbl %>%
 # - nest original data tbl by genus
 # - varData = dist & count
 # - run env::getStatsTbl()
-
-taxModel <- n ~ dist
-
-taxaResultsTbl <- spStatTbl %>%
-  getStatsTbl(
-    taxModel
-  )
 ```
 
 ```{r tblTaxa}
@@ -265,20 +214,6 @@ taxaSignifTbl %>%
 ```
 
 -   check curve below
-
-```{r getTaxa2}
-taxModel2 <- n ~ poly(
-  dist,
-  2
-  )
-taxaResultsTbl2 <- spStatTbl %>%
-  getStatsTbl2(
-  taxModel2
-) %>% 
-  addGraph2(
-    taxModel
-  )
-```
 
 ```{r tblTaxa2}
 taxaSignifTbl2 <- taxaResultsTbl2 %>%
@@ -313,13 +248,6 @@ taxaSignifTbl2 %>%
 
 -   higher medians below
 
-```{r getTaxa1}
-taxaResultsTbl1 <- spStatTbl %>%
-  getStatsTbl1(
-    taxModel
-  )
-```
-
 ```{r tblTaxa1}
 taxaSignifTbl1 <- taxaResultsTbl1 %>%
   select(
@@ -337,24 +265,10 @@ taxaSignifTbl1
 taxaSignifTbl1 %>%
   pull(
     graph
-    )
+  )
 ```
 
 -   check curve below
-
-```{r getTaxa12}
-taxModel2 <- n ~ poly(
-  dist,
-  2
-  )
-taxaResultsTbl12 <- spStatTbl %>%
-  getStatsTbl12(
-  taxModel2
-) %>%
-  addGraph12(
-    taxModel
-  )
-```
 
 ```{r tblTaxa12}
 taxaSignifTbl12 <- taxaResultsTbl12 %>%

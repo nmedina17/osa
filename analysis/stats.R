@@ -2,6 +2,9 @@ library(here);
 source(
   here("analysis/clean.R")
 )
+source(
+  here("analysis/statsTbl.R")
+)
 library(rstatix);
 library(vegan) #diversity()
 
@@ -23,7 +26,7 @@ spTbl <- cleanData %>%
     plot, #group
     name = "n_tax",
     sort = T
-    ) #%>%
+    ) %>%
   pivot_wider(
     id_cols = plot,
     names_from = {
@@ -40,8 +43,8 @@ spTbl <- cleanData %>%
     "entropy" =
       diversity(
         .
-        )
-    )
+      )
+  )
 
 
 
@@ -52,21 +55,21 @@ plotVarsTbl <- cleanData %>%
       select(
         plot,
         entropy
-        ),
+      ),
     by = "plot",
     copy = T
-    ) %>%
+  ) %>%
 
   group_by(
     dist,
     plot
-    ) %>%
+  ) %>%
   mutate(
     "richness" =
       n_distinct(
         sp
-        )
-    ) %>%
+      )
+  ) %>%
   select(
     #abiotic
     luz,
@@ -81,14 +84,14 @@ plotVarsTbl <- cleanData %>%
     #community
     richness,
     entropy
-    ) %>%
+  ) %>%
 
   get_summary_stats(
     type = "median_mad"
-    ) %>%
+  ) %>%
   nest(
     "varData" = -variable
-    ) %>%
+  ) %>%
 
   #nextlevel
   mutate(
@@ -119,45 +122,11 @@ plotVarsTbl <- cleanData %>%
             median
           ) %>%
           hist(
-            .
+            .,
+            plot = F
           )
       )
   )
-
-
-
-#rid?
-treeVarsTbl <- cleanData %>%
-  group_by(
-    dist,
-    plot,
-
-    fam,
-    gen,
-    sp
-    ) %>%
-  select(
-    dap,
-    h,
-    spg,
-    kg17
-    ) %>%
-  get_summary_stats(
-    type = "median_mad"
-    ) %>%
-  #4statTests
-  mutate(
-    median1 =
-      log10(
-        median + 1
-        )
-    ) %>%
-
-  nest(
-    varData = -variable
-    )
-
-#funcw/formulahard
 
 
 
@@ -275,4 +244,109 @@ spStatTbl <- cleanData %>%
             )
           )
       )
+  )
+
+
+#ORGANIZE
+
+
+#get
+
+mainModel <- median ~ dist
+
+plotResultsTbl <- plotVarsTbl %>%
+  getStatsTbl(
+    mainModel
+  )
+
+
+#get2
+
+mainModel2 <- median ~ poly(
+  dist,
+  2
+)
+
+plotResultsTbl2 <- plotVarsTbl %>%
+  getStatsTbl2(
+    mainModel2
+  ) %>%
+  addGraph2(
+    mainModel
+  )
+
+
+#get1
+plotResultsTbl1 <- plotVarsTbl %>%
+  getStatsTbl1(
+    mainModel
+  )
+
+
+#get12
+
+mainModel2 <- median ~ poly(
+  dist,
+  2
+)
+
+plotResultsTbl12 <- plotVarsTbl %>%
+  getStatsTbl12(
+    mainModel2
+  ) %>%
+  addGraph12(
+    mainModel
+  )
+
+
+
+#TAXA
+
+
+#getTaxa
+
+taxModel <- n ~ dist
+
+taxaResultsTbl <- spStatTbl %>%
+  getStatsTbl(
+    taxModel
+  )
+
+
+#getTaxa2
+
+taxModel2 <- n ~ poly(
+  dist,
+  2
+)
+
+taxaResultsTbl2 <- spStatTbl %>%
+  getStatsTbl2(
+    taxModel2
+  ) %>%
+  addGraph2(
+    taxModel
+  )
+
+
+#getTaxa1
+taxaResultsTbl1 <- spStatTbl %>%
+  getStatsTbl1(
+    taxModel
+  )
+
+
+#getTaxa12
+
+taxModel2 <- n ~ poly(
+  dist,
+  2
+)
+
+taxaResultsTbl12 <- spStatTbl %>%
+  getStatsTbl12(
+    taxModel2
+  ) %>%
+  addGraph12(
+    taxModel
   )

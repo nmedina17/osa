@@ -1,7 +1,10 @@
 ---
 title: "Osa"
-output: 
-  html_notebook: 
+output:
+  html_document:
+    toc: yes
+    df_print: paged
+  html_notebook:
     toc: yes
     code_folding: hide
     theme: spacelab
@@ -39,23 +42,25 @@ bibliography: references.bib
 
 Global forest and landscape regeneration is a key conservation and climate change mitigation strategy, adopted internationally (\@UN14 Paris, Bonn Challenge).
 
--   Tropical forests store most terrestrial biomass @pan2013 and biodiversity (CITE, but are losing functions, especially in the neotropics @hubau2020, as most tropical forests become secondary (\@FAO20.
+-   Tropical forests store most terrestrial biomass ( @pan2013 ) and biodiversity (CITE, but are losing functions, especially in the neotropics ( @hubau2020 ), as most tropical forests become secondary (\@FAO20.
 
 Secondary forests can regenerate relatively quickly compared to old-growth forests in some ways, but in other ways remain distinct.
 
--   Neotropical secondary forests accumulate biomass \>10x faster than old-growth forests @poorter2016, and offset \~10% of carbon emissions from Amazonian deforestation @smith2020 .
--   They also recover taxonomic richness quite quickly, averaging 80% of old-growth forest levels in 20y @rozendaal2019 .
--   However, secondary neotropical forests diverge widely in taxonomic composition @norden2015 .
+-   Neotropical secondary forests accumulate biomass \>10x faster than old-growth forests ( @poorter2016 ), and offset \~10% of carbon emissions from Amazonian deforestation ( @smith2020 ).
+-   They also recover taxonomic richness quite quickly, averaging 80% of old-growth forest levels in 20y ( @rozendaal2019 ).
+-   However, secondary neotropical forests diverge widely in taxonomic composition ( @norden2015 ).
 
 Divergent communities among secondary forests may warrant more localized conservation efforts, studying relative effects of generalized community processes.
 
-Half of all forests lie half of a kilometer from an ecotone @haddad2015, suggesting that edge effects from adjacent habitats are widespread aspects of secondary forest regeneration.
+Half of all forests lie half of a kilometer from an ecotone ( @haddad2015 ), suggesting that edge effects from adjacent habitats are widespread aspects of secondary forest regeneration.
 
--   Tropical forests lose 22% carbon along edges \>100m, in part due to shorter trees and less leaf mass @ordway2020 .
+-   Tropical forests lose 22% carbon along edges \>100m, in part due to shorter trees and less leaf mass ( @ordway2020 ).
 
 Here we report the edge effects of an abandoned wet neotropical timber plantation.
 
 -   We hypothesized that remnant timber trees would mediate forest regrowth by maintaining uniform shade that would suppress shade-intolerant / pioneer trees / taxa and allow for more diversity.
+
+    -   supported by inference?!
 
 Forest regeneration has the potential to store \#\#C and preserve \#\# diversity globally in the coming decades (UN, Bonn challenge).
 
@@ -136,17 +141,26 @@ We also considered how the legacy plantation canopy structure mediated forest st
 
 # Results
 
-## Shade / Canopy
+```{r setup, echo = F, message = F}
+knitr::opts_chunk$set(
+  echo = F,
+  message = F,
+  warning = F
+)
+library(here)
+```
+
+## Biomass
 
 1.  fig1
 
-    1.  shade x distance @ordway2020 + timber sp?
+    1.  shade x distance ( @ordway2020 ) + timber sp?
 
-    2.  height @ordway2020
+    2.  height ( @ordway2020 )
 
-    3.  wood density @poorter2019
+    3.  wood density ( @poorter2019 )
 
-    4.  total biomass x dist @ordway2020 + timber sp?
+    4.  total biomass x dist ( @ordway2020 ) + timber sp?
 
         -   maybe system-level curve (e.g. biomass hist) + timber sp
 
@@ -154,7 +168,18 @@ We also considered how the legacy plantation canopy structure mediated forest st
 
         -   max DAP as trait?
 
-## Edge effects
+[RESULTS TEXT]
+
+```{r fig1}
+source(
+  here(
+    "figs/fig1.R"
+  )
+)
+fig1
+```
+
+## Composition
 
 1.  fig2
 
@@ -166,6 +191,10 @@ We also considered how the legacy plantation canopy structure mediated forest st
         -   compare to NMDS?
 
         1.  system-level curve (e.g. rank-abund) x distance [+ 1 timber sp]
+
+```{r fig2}
+
+```
 
 # Discussion
 
