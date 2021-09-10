@@ -24,7 +24,8 @@ dotGraph <- function(
   # $variable
   # $varData
   # $varData1
-  #pval
+  # $pval
+  # $pickPval
   ..var,
   ..x,
   ..y,
@@ -82,19 +83,46 @@ dotGraph <- function(
       label = glue(
         "P = ",
         {
-          ..varData %>%
+          varResult <- ..varData %>%
             filter(
               variable == ..var
-            ) %>%
+            )
+
+          checkResult <- varResult %>%
             pull(
-              "pval"
-            ) %>%
+              isModelOK
+            )
+
+          #if_else()2strict
+          showP <- ifelse(
+            checkResult &
+              !is.na(
+                checkResult
+              ),
+            {
+              varResult %>%
+              pull(
+                "pval"
+              )
+            },
+            {
+              varResult %>%
+              pull(
+                "pickPval"
+              )
+            }
+          ) %>%
             last() %>%
-            # as_vector() %>%
-            as.double() %>%
+            as.double()
+
+          ifelse(
+            showP >
+              0.001,
             round(
               3
-            )
+            ),
+            "< 0.001"
+          )
         }
       ),
       x = 1,

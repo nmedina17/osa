@@ -75,6 +75,11 @@ getStatsTbl1 <- function(
       ...formula
     ) %>%
 
+    addStatFitNon(
+      ...formula
+    ) %>%
+    addStatEvalNon() %>%
+
     addGraph1(
       ...formula
     )
@@ -106,7 +111,7 @@ getStatsTbl12 <- function(
 statFitTbl <- function(
   ...nestedVarDataTbl,
   ....formula
-  ) {
+) {
 
   ...nestedVarDataTbl %>%
 
@@ -129,13 +134,13 @@ statFitTbl <- function(
               .,
               .x %>%
                 glance()
-              ) %>%
+            ) %>%
             filter(
               !is.na(
                 term
-                )
               )
-          )
+            )
+        )
     )
 }
 
@@ -182,7 +187,7 @@ statFitTbl1 <- function(
 addStatEval <- function(
   ...statFitTbl,
   ....formula
-  ) {
+) {
 
   ...statFitTbl %>%
 
@@ -193,7 +198,7 @@ addStatEval <- function(
           ~ .x %>%
             residuals() %>%
             shapiro_test()
-          ),
+        ),
       #OGdata
       varyTest =
         varData %>%
@@ -216,8 +221,8 @@ addStatEval <- function(
               p.value >
               0.055,
             T, F
-            )
-          ),
+          )
+        ),
       "isHomosced" =
         varyTest %>%
         modify(
@@ -226,16 +231,16 @@ addStatEval <- function(
               p >
               0.055,
             T, F
-            )
           )
+        )
     ) %>%
     #list2vec
     unnest(
       c(
         isNormal,
         isHomosced
-        )
-      ) %>%
+      )
+    ) %>%
 
     mutate(
       "isModelOK" =
@@ -248,7 +253,7 @@ addStatEval <- function(
     unnest(
       isModelOK
     ) %>%
-# } #de-bug
+    # } #de-bug
     mutate(
       "pval" =
         statPrint %>%
@@ -265,7 +270,8 @@ addStatEval <- function(
             ) %>%
             pull(
               p.value
-            )
+            ),
+          .else = ~ NA
         ),
       "isSignif" =
         statPrint %>%
@@ -284,8 +290,8 @@ addStatEval <- function(
             T, F
           ),
           .else = ~ NA
-          )
-      ) %>%
+        )
+    ) %>%
     unnest(
       isSignif
     ) %>%
@@ -332,7 +338,7 @@ addStatEval2 <- function(
               term
             )
         ),
-      "pvals" =
+      "pval" =
         statPrint %>%
         modify(
           ~ .x %>%
@@ -489,7 +495,7 @@ addStatEvalNon <- function(
           poisAIC,
           gammaAIC
         )
-      ) %>%
+    ) %>%
     unnest(
       pickAIC
     ) %>%
@@ -511,7 +517,7 @@ addStatEvalNon <- function(
             0.105,
           T, F
         )
-      )
+    )
 }
 
 
@@ -571,7 +577,7 @@ addGraph <- function(
             geom_quasirandom() +
             geom_smooth(
               method = "lm"
-              ) +
+            ) +
             stat_poly_eq(
               formula = y ~ x,
               parse = F,
@@ -579,13 +585,13 @@ addGraph <- function(
                 label = paste(
                   after_stat(
                     p.value.label
-                    ),
+                  ),
                   after_stat(
                     adj.rr.label
-                    )
                   )
                 )
-              ) +
+              )
+            ) +
             labs(
               y = deparse(
                 ....formula[[2]]
@@ -641,7 +647,7 @@ addGraph2 <- function(
                 label = paste(
                   after_stat(
                     p.value.label
-                    ),
+                  ),
                   after_stat(
                     adj.rr.label
                   )

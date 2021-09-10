@@ -79,13 +79,12 @@ graph2 <- statData12 %>%
     yAxisLabel2,
     ..addGroups = T
   )
-
-#HERE
-
 graph2
 
 
 #panel
+
+#HERE
 
 graph3 <- statData34 %>%
   dotGraph(
