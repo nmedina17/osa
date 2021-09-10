@@ -31,6 +31,7 @@ dotGraph <- function(
   ..xlab,
   ..ylab,
   ..addGroups = F,
+  ..y1 = ..y,
   ..cleanData = NULL
 ) {
 
@@ -88,6 +89,8 @@ dotGraph <- function(
             pull(
               "pval"
             ) %>%
+            last() %>%
+            # as_vector() %>%
             as.double() %>%
             round(
               3
@@ -106,57 +109,64 @@ dotGraph <- function(
   graph <- if(
     is.null(
       ..cleanData
-      )
-    ) {
+    )
+  ) {
 
-      graph
+    graph
 
-    } else {
+  } else {
 
-      graph <- graph %>%
+    graph <- graph %>%
 
-        #move
-        append_layers(
+      #move
+      append_layers(
 
-          geom_quasirandom(
-            data = ..cleanData,
-            aes(
-              y = {
-                ..var %>%
-                  eval()
-              }
-            ),
-            color = "gray",
-            size = 1
+        geom_quasirandom(
+          data = ..cleanData,
+          aes(
+            y = {
+              ..var %>%
+                eval()
+            }
           ),
+          color = "gray",
+          size = 1
+        ),
 
-          position = "bottom"
-        )
-    }
+        position = "bottom"
+      )
+  }
 
 
   graph <- if(
     ..addGroups == T
-    ) {
+  ) {
 
-      graph +
+    graph <- graph +
 
-        geom_point(
-          data = {
-            ..varData %>%
-              filter(
-                variable == ..var
-              ) %>%
-              select(
-                "varData1"
-              ) %>%
-              unnest()
-          },
-          color = "black",
-          size = 3
+      geom_point(
+        data = {
+          ..varData %>%
+            filter(
+              variable == ..var
+            ) %>%
+            select(
+              "varData1"
+            ) %>%
+            unnest()
+        },
+        color = "black",
+        size = 3,
+        aes(
+          y = {
+            ..y1 %>%
+              eval()
+          }
         )
+      )
 
-    } else {
-      graph
-    }
+  } else {
+
+    graph
+  }
 }

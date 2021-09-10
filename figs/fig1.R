@@ -9,28 +9,24 @@ source(
     "analysis/stats.R"
   )
 )
-#.GlobalEnv::plotResultsTbl
+#plotResultsTbl
 library(glue)
-#labs
+#annotate()
 
 
 #userInput
+#sortbyPvals
+
 measure1 <- quote(
-  luz
+  kg17
 )
 yAxisLabel1 <- quote(
-  "Canopy light (%)"
+  "Aboveground biomass (kg)"
 )
 measure2 <- quote(
-  h
-)
-yAxisLabel2 <- quote(
-  "Tree height (m)"
-)
-measure3 <- quote(
   spg
 )
-yAxisLabel3 <- quote(
+yAxisLabel2 <- quote(
   expression(
     paste(
       "Wood density (cm"^3,
@@ -39,20 +35,25 @@ yAxisLabel3 <- quote(
     )
   )
 )
+measure3 <- quote(
+  h
+)
+yAxisLabel3 <- quote(
+  "Tree height (m)"
+)
 measure4 <- quote(
-  kg17
+  luz
 )
 yAxisLabel4 <- quote(
-  "Aboveground biomass (kg)"
+  "Canopy light (%)"
 )
-
 
 
 varForm <- median ~ dist
 xAxisLabel <- quote(
   "Distance to secondary forest edge (m)"
 )
-# statData <- plotResultsTbl1
+statData <- plotResultsTbl1
 underData <- cleanData
 
 
@@ -60,14 +61,18 @@ underData <- cleanData
 
 #panel
 
-graph1 <-  plotResultsTbl1 %>%
+graph1 <-  statData %>%
   dotGraph(
     measure1,
     varForm[[3]],
     varForm[[2]],
     xAxisLabel,
     yAxisLabel1,
-    ..addGroups = T
+    ..addGroups = T,
+    ..cleanData = underData
+  ) +
+  scale_y_continuous(
+    trans = "log10"
   )
 graph1
 
@@ -75,7 +80,7 @@ graph1
 
 #panel
 
-graph2 <- plotResultsTbl1 %>%
+graph2 <- statData %>%
   dotGraph(
     measure2,
     varForm[[3]],
@@ -83,7 +88,7 @@ graph2 <- plotResultsTbl1 %>%
     xAxisLabel,
     yAxisLabel2,
     ..addGroups = T,
-    underData
+    ..cleanData = underData
   )
 graph2
 
@@ -91,15 +96,15 @@ graph2
 
 #panel
 
-graph3 <- plotResultsTbl1 %>%
+graph3 <- statData %>%
   dotGraph(
     measure3,
     varForm[[3]],
     varForm[[2]],
     xAxisLabel,
     yAxisLabel3,
-    underData,
-    ..addGroups = T
+    ..addGroups = T,
+    ..cleanData = underData
   )
 graph3
 
@@ -107,18 +112,14 @@ graph3
 
 #panel
 
-graph4 <- plotResultsTbl1 %>%
+graph4 <- statData %>%
   dotGraph(
     measure4,
     varForm[[3]],
     varForm[[2]],
     xAxisLabel,
     yAxisLabel4,
-    underData,
     ..addGroups = T
-  ) +
-  scale_y_continuous(
-    trans = "log10"
   )
 graph4
 
