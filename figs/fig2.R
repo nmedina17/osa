@@ -4,6 +4,7 @@ source(
     "figs/style.R"
   )
 )
+#taxMetric
 source(
   here(
     "analysis/stats.R"
@@ -36,20 +37,33 @@ yAxisLabel2 <- quote(
 )
 
 measure3 <- quote(
-
+  Vochysia
 )
 yAxisLabel3 <- quote(
-
+  glue(
+    measure3,
+    " prevalence"
+  )
 )
 
 
-varForm <- n ~ dist
-varForm1 <- median ~ dist
+varForm <- {
+  mainMetric %>%
+    eval()
+} ~ dist
+#check.env...
+taxForm <- {
+  taxMetric %>%
+    eval()
+} ~ dist
 xAxisLabel <- quote(
   "Distance to secondary forest edge (m)"
 )
 statData12 <- plotResultsTbl1
-statData34 <- taxaResultsTbl1
+statData34 <- taxaResultsTbl1 %>%
+  rename(
+    "variable" = "gen"
+  )
 underData <- cleanData
 
 
@@ -59,8 +73,8 @@ underData <- cleanData
 graph1 <- statData12 %>%
   dotGraph(
     measure1,
-    varForm1[[3]],
-    varForm1[[2]],
+    varForm[[3]],
+    varForm[[2]],
     xAxisLabel,
     yAxisLabel1,
     ..addGroups = T
@@ -73,29 +87,29 @@ graph1
 graph2 <- statData12 %>%
   dotGraph(
     measure2,
-    varForm1[[3]],
-    varForm1[[2]],
+    varForm[[3]],
+    varForm[[2]],
     xAxisLabel,
     yAxisLabel2,
     ..addGroups = T
   )
+
+#addLine
 graph2
 
 
 #panel
 
-#HERE
-
 graph3 <- statData34 %>%
   dotGraph(
     measure3,
-    varForm[[3]],
-    varForm[[2]],
+    taxForm[[3]],
+    taxForm[[2]],
     xAxisLabel,
     yAxisLabel3,
-    ..addGroups = T,
-    ..y1 = varForm1[[2]]
-  )
+    ..addGroups = T
+  ) +
+  scale_y_log10()
 graph3
 
 
@@ -104,8 +118,8 @@ graph3
 graph4 <- statData34 %>%
   dotGraph(
     measure4,
-    varForm[[3]],
-    varForm[[2]],
+    taxForm[[3]],
+    taxForm[[2]],
     xAxisLabel,
     yAxisLabel4,
     ..addGroups = T

@@ -50,7 +50,7 @@ Secondary forests can regenerate relatively quickly compared to old-growth fores
 -   They also recover taxonomic richness quite quickly, averaging 80% of old-growth forest levels in 20y ( @rozendaal2019 ).
 -   However, secondary neotropical forests diverge widely in taxonomic composition ( @norden2015 ).
 
-Divergent communities among secondary forests may warrant more localized conservation efforts, studying relative effects of generalized community processes.
+Divergent communities among secondary forests may ultimately warrant more localized conservation efforts, studying relative effects of generalized community processes.
 
 Half of all forests lie half of a kilometer from an ecotone ( @haddad2015 ), suggesting that edge effects from adjacent habitats are widespread aspects of secondary forest regeneration.
 

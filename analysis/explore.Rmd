@@ -13,7 +13,7 @@ editor_options:
   chunk_output_type: console
 ---
 
-```{r setup, echo = F, message = F, warning = F}
+```{r setup, echo = F, message = F, warning = F, results = 'hide'}
 knitr::opts_chunk$set(
   echo = F,
   message = F,
@@ -69,7 +69,7 @@ plotSignifTbl2 <- plotResultsTbl2 %>%
   select(
     variable,
     curveName,
-    pvals,
+    pval,
     R2adj,
     isSignif2,
     graph2
@@ -77,7 +77,7 @@ plotSignifTbl2 <- plotResultsTbl2 %>%
   unnest(
     c(
       curveName,
-      pvals,
+      pval,
       isSignif2
     )
   ) %>%
@@ -124,14 +124,14 @@ plotSignifTbl12 <- plotResultsTbl12 %>%
   select(
     variable,
     curveName,
-    pvals,
+    pval,
     isSignif2,
     graph2
   ) %>%
   unnest(
     c(
       curveName,
-      pvals,
+      pval,
       isSignif2
     )
   ) %>%
@@ -220,7 +220,7 @@ taxaSignifTbl2 <- taxaResultsTbl2 %>%
   select(
     gen,
     curveName,
-    pvals,
+    pval,
     R2adj,
     isSignif2,
     graph2
@@ -228,7 +228,7 @@ taxaSignifTbl2 <- taxaResultsTbl2 %>%
   unnest(
     c(
       curveName,
-      pvals,
+      pval,
       isSignif2
     )
   ) %>%
@@ -275,14 +275,14 @@ taxaSignifTbl12 <- taxaResultsTbl12 %>%
   select(
     gen,
     curveName,
-    pvals,
+    pval,
     isSignif2,
     graph2
   ) %>%
   unnest(
     c(
       curveName,
-      pvals,
+      pval,
       isSignif2
     )
   ) %>%

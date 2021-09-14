@@ -163,6 +163,12 @@ ordStat = adonis(
 
 #taxa
 
+#user
+taxMetric <- quote(
+  kg17
+)
+
+
 spStatTbl <- cleanData %>%
   select(
     dist,
@@ -170,6 +176,11 @@ spStatTbl <- cleanData %>%
     {
       {
         taxRank
+      }
+    },
+    {
+      {
+        taxMetric
       }
     }
   ) %>%
@@ -181,6 +192,7 @@ spStatTbl <- cleanData %>%
     },
     plot,
   ) %>%
+  #collapse
   distinct(
     {
       {
@@ -239,8 +251,11 @@ spStatTbl <- cleanData %>%
             dist
           ) %>%
           summarize(
-            n = median(
-              n
+            "taxMetric" = median(
+              {
+                taxMetric %>%
+                  eval()
+              }
             )
           )
       )
@@ -250,9 +265,19 @@ spStatTbl <- cleanData %>%
 #ORGANIZE
 
 
+#user
+mainMetric <- quote(
+  median
+)
+
+
 #get
 
-mainModel <- median ~ dist
+mainModel <- {
+  mainMetric %>%
+    eval()
+} ~ dist
+
 
 plotResultsTbl <- plotVarsTbl %>%
   getStatsTbl(
@@ -262,7 +287,10 @@ plotResultsTbl <- plotVarsTbl %>%
 
 #get2
 
-mainModel2 <- median ~ poly(
+mainModel2 <- {
+  mainMetric %>%
+    eval()
+} ~ poly(
   dist,
   2
 )
@@ -284,12 +312,6 @@ plotResultsTbl1 <- plotVarsTbl %>%
 
 
 #get12
-
-mainModel2 <- median ~ poly(
-  dist,
-  2
-)
-
 plotResultsTbl12 <- plotVarsTbl %>%
   getStatsTbl12(
     mainModel2
@@ -305,7 +327,11 @@ plotResultsTbl12 <- plotVarsTbl %>%
 
 #getTaxa
 
-taxModel <- n ~ dist
+taxModel <- {
+  taxMetric %>%
+    eval()
+} ~ dist
+
 
 taxaResultsTbl <- spStatTbl %>%
   getStatsTbl(
@@ -315,7 +341,10 @@ taxaResultsTbl <- spStatTbl %>%
 
 #getTaxa2
 
-taxModel2 <- n ~ poly(
+taxModel2 <- {
+  taxMetric %>%
+    eval()
+} ~ poly(
   dist,
   2
 )
@@ -337,12 +366,6 @@ taxaResultsTbl1 <- spStatTbl %>%
 
 
 #getTaxa12
-
-taxModel2 <- n ~ poly(
-  dist,
-  2
-)
-
 taxaResultsTbl12 <- spStatTbl %>%
   getStatsTbl12(
     taxModel2

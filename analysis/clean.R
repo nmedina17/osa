@@ -27,7 +27,7 @@ cleanData <- function(
       "newName" = correctTaxo(
         genus = gen,
         species = sp,
-        useCache = T
+        useCache = F
       ),
 
       #useful

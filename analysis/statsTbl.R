@@ -351,7 +351,7 @@ addStatEval2 <- function(
             )
         ),
       "isSignif2" =
-        pvals %>%
+        pval %>%
         modify(
           ~ if_else(
             .x <

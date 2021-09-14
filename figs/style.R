@@ -32,7 +32,6 @@ dotGraph <- function(
   ..xlab,
   ..ylab,
   ..addGroups = F,
-  ..y1 = ..y,
   ..cleanData = NULL
 ) {
 
@@ -119,6 +118,7 @@ dotGraph <- function(
             showP >
               0.001,
             round(
+              showP,
               3
             ),
             "< 0.001"
@@ -184,13 +184,7 @@ dotGraph <- function(
             unnest()
         },
         color = "black",
-        size = 3,
-        aes(
-          y = {
-            ..y1 %>%
-              eval()
-          }
-        )
+        size = 3
       )
 
   } else {
