@@ -46,6 +46,16 @@ yAxisLabel3 <- quote(
   )
 )
 
+measure4 <- quote(
+  Ficus
+)
+yAxisLabel4 <- quote(
+  glue(
+    measure4,
+    " prevalence"
+  )
+)
+
 
 varForm <- {
   mainMetric %>%
@@ -125,6 +135,9 @@ graph4 <- statData34 %>%
     ..addGroups = T
   )
 graph4
+#Ficus2few...
+
+#HERE
 
 
 #panel

@@ -201,17 +201,31 @@ addStatEval <- function(
         ),
       #OGdata
       varyTest =
-        varData %>%
-        modify(
-          ~ .x %>%
-            levene_test(
-              formula =
-                ....formula[[2]] %>%
-                eval() ~
-                ....formula[[3]] %>%
-                eval() %>%
-                as_factor()
+        ifelse(
+          #noLmerYet
+          {
+            ....formula[[3]] %>%
+              length()
+          } == 1,
+          {
+            varData %>%
+              modify(
+                ~ .x %>%
+                  levene_test(
+                    formula =
+                      ....formula[[2]] %>%
+                      eval() ~
+                      ....formula[[3]] %>%
+                      eval() %>%
+                      as_factor()
+                  )
+              )
+          },
+          list(
+            tibble(
+              "p" = NA
             )
+          )
         ),
       "isNormal" =
         normalTest %>%
@@ -223,15 +237,21 @@ addStatEval <- function(
             T, F
           )
         ),
+#     )
+# }
       "isHomosced" =
         varyTest %>%
-        modify(
+        modify_if(
+          !is.na(
+              varyTest
+          ),
           ~ if_else(
-            .x$
-              p >
-              0.055,
-            T, F
-          )
+              .x$
+                p >
+                0.055,
+              T, F
+          ),
+          ~ NA
         )
     ) %>%
     #list2vec
@@ -298,16 +318,30 @@ addStatEval <- function(
 
     mutate(
       "R2adj" =
-        statPrint %>%
-        modify(
-          ~ .x %>%
-            filter(
-              term !=
-                "(Intercept)"
-            ) %>%
-            pull(
-              adj.r.squared
+        #noLmerYet
+        ifelse(
+          {
+            ....formula[[3]] %>%
+              length()
+          } == 1,
+          {
+            statPrint %>%
+            modify(
+              ~ .x %>%
+                filter(
+                  term !=
+                    "(Intercept)"
+                ) %>%
+                pull(
+                  adj.r.squared
+                )
             )
+          },
+          list(
+            tibble(
+              "adj.r.squared" = NA
+            )
+          )
         )
     ) %>%
     unnest(
@@ -502,7 +536,7 @@ addStatEvalNon <- function(
     mutate(
       #morefamilies?
       "pickPval" =
-        if_else(
+        ifelse(
           pickAIC == poisAIC,
           poisPval,
           if_else(

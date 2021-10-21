@@ -20,10 +20,15 @@ knitr::opts_chunk$set(
   warning = F
 )
 library(here)
+i_am(
+  "analysis/explore.Rmd"
+)
 #.GlobalEnv::
 source(
   here("analysis/stats.R")
 )
+library(furrr)
+plan("multisession")
 ```
 
 
