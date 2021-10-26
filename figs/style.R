@@ -9,6 +9,7 @@ library(here)
 # )
 library(gginnards)
 #append_layers()
+library(glue)
 
 
 style <- theme_bw() +
@@ -44,7 +45,9 @@ dotGraph <- function(
     select(
       "varData"
     ) %>%
-    unnest() %>%
+    unnest(
+      everything()
+    ) %>%
 
 
     ggplot(
@@ -182,7 +185,9 @@ dotGraph <- function(
             select(
               "varData1"
             ) %>%
-            unnest()
+            unnest(
+              everything()
+            )
         },
         color = "black",
         size = 3

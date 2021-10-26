@@ -9,11 +9,11 @@ source(
     "analysis/stats.R"
   )
 )
-source(
-  here(
-    "figs/style.R"
-  )
-)
+# source(
+#   here(
+#     "figs/style.R"
+#   )
+# )
 source(
   here(
     "figs/fig1.R"
@@ -36,3 +36,4 @@ underData
 #panel
 
 graph1
+

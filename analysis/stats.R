@@ -1,12 +1,17 @@
 library(here);
-source(
-  here("analysis/clean.R")
+i_am(
+  "analysis/stats.R"
 )
 source(
-  here("analysis/statsTbl.R")
+  here("data/clean.R")
 )
+# source(
+#   here("analysis/statsTbl.R")
+# )
+library(tidyverse)
 library(rstatix);
 library(vegan) #diversity()
+library(oir)
 
 
 
@@ -17,6 +22,12 @@ taxRank <- quote(
 
 #4vegan
 spTbl <- cleanData %>%
+  filter(
+    !is.na(
+      dist |
+        plot
+    )
+  ) %>%
   add_count(
     {
       {
@@ -140,7 +151,7 @@ commTbl <- spTbl %>%
     )
   )
 
-distMat = vegdist(
+distMat <- vegdist(
   commTbl
 )
 
@@ -279,6 +290,7 @@ mainModel <- {
 } ~ dist
 
 
+#OGpackage
 plotResultsTbl <- plotVarsTbl %>%
   getStatsTbl(
     mainModel

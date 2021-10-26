@@ -290,6 +290,7 @@ addStatEval <- function(
             ) %>%
             pull(
               p.value
+              #orOtherLabel
             ),
           .else = ~ NA
         ),
@@ -424,41 +425,52 @@ addStatFitNon <- function(
   ....formula
 ) {
 
-  ...statEvalTbl %>%
+  if_else(
+      {
+        ....formula[[3]] %>%
+          length()
+      } == 1,
+      {
+        ...statEvalTbl %>%
 
-    mutate(
-      "statTestPois" =
-        varData %>%
-        modify_if(
-          !isModelOK &
-            !is.na(
-              isModelOK
-            ),
-          ~ .x %>%
-            glm(
-              formula = ....formula,
-              family = poisson()
-            ) %>%
-            summary(),
-          .else = ~ NA
-        ),
-      "statTestGamma" =
-        varData %>%
-        modify_if(
-          !isModelOK &
-            !is.na(
-              isModelOK
-            ),
-          ~ .x %>%
-            glm(
-              formula = ....formula,
-              family = Gamma(
-                link = "log"
+          mutate(
+            "statTestPois" =
+              varData %>%
+              modify_if(
+                !isModelOK &
+                  !is.na(
+                    isModelOK
+                  ),
+                ~ .x %>%
+                  glm(
+                    formula = ....formula,
+                    family = poisson()
+                  ) %>%
+                  summary(),
+                .else = ~ NA
+              ),
+            "statTestGamma" =
+              varData %>%
+              modify_if(
+                !isModelOK &
+                  !is.na(
+                    isModelOK
+                  ),
+                ~ .x %>%
+                  glm(
+                    formula = ....formula,
+                    family = Gamma(
+                      link = "log"
+                    )
+                  ) %>%
+                  summary(),
+                .else = ~ NA
               )
-            ) %>%
-            summary(),
-          .else = ~ NA
-        )
+          )
+      },
+      {
+        ...statEvalTbl
+      }
     )
 }
 

@@ -1,4 +1,7 @@
 library(here) #fromprojdir
+i_am(
+  "data/clean.R"
+)
 library(vroom) #loadastbl
 #library(skimr) #glance
 library(tidyverse);
@@ -8,6 +11,18 @@ library(BIOMASS)
 rawData <- vroom(
   here("data/raw/osa.csv")
 )
+
+dispersal <- vroom(
+  here(
+    "data/dispersal.csv"
+  )
+) %>%
+  select(
+    fam,
+    gen,
+    sp,
+    mainDispersal
+  )
 
 
 cleanData <- function(
@@ -60,5 +75,8 @@ cleanData <- function(
 
 
 cleanData <- rawData %>%
-  cleanData()
+  cleanData() %>%
+  full_join(
+    dispersal
+  )
 
