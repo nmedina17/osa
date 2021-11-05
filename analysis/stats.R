@@ -12,6 +12,8 @@ library(tidyverse)
 library(rstatix);
 library(vegan) #diversity()
 library(oir)
+library(ggbeeswarm)
+library(ggpmisc)
 
 
 

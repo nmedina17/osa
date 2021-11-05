@@ -1,0 +1,1455 @@
+---
+title: "Tropical wet secondary forest regeneration patterns"
+author: "Nicholas L Medina"
+date: "29/12/2018"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+# Introduction (ideas...)
+
+Primary tropical forests are idolized for their - role/importance of secondary forests
+
+## Community composition
+
+-   factors affecting their aboveground biomass accumulation Aboveground biomass accumulation is likely affected by interspecific interactions, namely among N-fixers and non-N-fixers. While N-fixers are thought to facilitate the growth of other plants (CITATIONS FROM YOUNG AG), recent data suggest that competition, such as for P, may be more important for interspecific interactions than expected facilitation by N supply (Taylor et al 2017). This makes sense, given that P availability, rather than that of N, is more limiting in tropical ecosystems compared to temperate systems, especially given that they are estimated to have sufficient N to support decadal aboveground biomass accumulation (Brookshire et al 2019). Furthermore, with regard to nutrient dynamics, N-fixing trees in tropical forests are also expected to be major sources of N2O (Kou-Giesbrecht & Menge 2019), further offsetting biomass balances.
+
+    -   limiting nutrients likely fluctuating/oscillatory (Sullivan et al 2014)
+    -   interactions and effects sizes are likely variable at species-level (Keller et al 2013; Gei & Powers 2013)
+
+-   factors affecting their species coexistence
+
+    -   relevance of stage structuring by specific gravity? (Nature EE 2019 2ndFOR)
+    -   predicted distributions of species/wood densities
+
+## This study
+
+-   census of \~20yo secondary forest derived from an abandoned [common name for Bombacopsis] plantation. The base species is known to do well in dry forests, but not in the wet lowland forests like on the Osa Peninsula.
+
+## Hypotheses
+
+-   biomass varies with:
+
+    -   distance
+
+        -   species dispersal modes/kernels
+
+    -   light (Max)
+
+-   plantation presence promotes/affects:
+
+    -   growth (biomass)
+
+    -   succession (diversity)
+
+# Methods
+
+## *Study site*
+
+This study was set in the lowland wet tropical rainforest of the Osa Peninsula in SW Puntarenas, Costa Rica. The site is property of Osa Conservation (osaconservation.org) located at the Greg Gund Conservation Center. The censused parcel was 20 ha and undergoing secondary succession for \~20 years after abandonment as a wood plantation using *Bombacopsis quinata*, which unfortunately is better suited to the dry forests of Guanacaste and the Nicoya Peninsula (CITATION). Trees ≥10 cm in diameter were...The study was done during the rainy season months June - August 2013.
+
+## *Census design*
+
+Geographical information systems software (ArcGIS, WEBSITE, and QGIS, [WEBSITE]) were used to create a polygon of the 20-ha parcel, which was divided into six 50-m discrete bands (0-300m) that represented a gradient of distance from the known adjacent primary forest (Fig S1). This distance was made discrete as a simpler alternative to finding the shortest linear distance between the plot and primary forest edge. The number of plots set up in each band was coarsely scaled to the of area each distance bance, such that the progression of plots contained in each band from closest to furthest from primary forest was 10, 8, 5, 3, and 1 respectively. Each plot was 21 *x* 21m and set up June - August 2013.
+
+In each plot, every stem ≥10cm in [diameter/circumference?] was measured for diameter at breast height (DBH, breast height = \~2.5 - 3.1m) and total height. Tree height was measured by using a rangefinder (COMPANY/BRAND Bushnell?) to measure from an observer to the crown (where it was visible), and then to the trunk at breast height; these 2 distances were then used to triangulate and calculate the tree's height using Pythagoras's Theorem. Following typical forestry guidelines, in cases where a tree split into ≥2 stems at breast height, each stem was measured separately; in cases where it only initially split above breast height, it was measured as 1 stem.
+
+## *Aboveground biomass*
+
+Aboveground biomass was estimated for each stem using the allometric equation developed by Chave *et al* (2014), which performed similar to those in Chave *et al* (2005) developed specifically for wet tropical forests:
+
+$$AGB = 0.0673 (p D^2 H) ^.976$$
+
+with *D* in cm, *H* in m, and *p* in g cm\^-3. Measured DBHs and heights were used, along with wood densities ( *p* ) exracted from the literature. In most cases, these values were only available at the genus level, and unrepresented taxa were assumed to be 0.58 as stated by the World Agroforestry Database (CITE). References used for this step are given in *Table S1*.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo=F)
+#loadpacks
+
+
+library(rstatix)
+library(ggpubr)
+library(ggbeeswarm) #jitter/quasi-random
+library(ggpmisc)
+library(car)
+library(vegan)
+#theme
+styleOsa <- theme_bw() +
+  theme(text = element_text(size = 12))
+theme_set(styleOsa)
+
+```
+
+## *Abiotic plot characteristics*
+
+### *Canopy cover*
+
+Light reaching the forest floor was measured at the center of each plot, at chest height, using a densiometer (BRAND). According to manufacturer instructions, the final value used for the plot was an average of 4 different readings taken facing each of the 4 cardinal directions: North, South, East, and West.
+
+### *Topography*
+
+The slope of the forest floor in each plot was measured using [a rangefinder by measuring the distance from one (specifc?) corner of the plot to another (specific?) corner.]
+
+## *Statistical analysis*
+
+```{r QC, include=F}
+#dat <- subset(dat, dist != "NA")#&gen!="-")#&sp!="sp.")
+# most w/ no Genus ID are Tiliaceae
+
+# dat <- subset(dat, kg < 3000)
+#subsets:
+datB <- subset(dat, gen == "Bombacopsis")
+datBno <- subset(dat, gen != "Bombacopsis")
+datV <- subset(dat, gen == "Vochysia")
+```
+
+Analysis ideas from lit: - ...shade species may do better here vs. clear-cutting?
+
+```{r groupSubplots, include=F}
+datp <- group_by(.data = dat,
+                 dist, plot) %>%
+  #summarize_all(list(~mean(.), ~sqrt(length(.))))
+  summarise(dap = mean(dap),
+            h = mean(h),
+            kg14 = mean(kg14),
+            kg17 = mean(kg17),
+            kg = mean(kg),
+            r = mean(length(unique(gen))),
+            rf = mean(length(unique(fam))),
+            h = mean(h),
+            n = n(),
+            spg = mean(spg),
+            W = mean(W),
+            N = mean(N),
+            luz = mean(luz),
+            incl = mean(incl))
+datpB <- group_by(.data = datB,
+                  dist, plot) %>%
+  summarise(dap = mean(dap),
+            h = mean(h),
+            kg14 = mean(kg14),
+            kg17 = mean(kg17),
+            kg = mean(kg),
+            r = mean(length(unique(gen))),
+            rf = mean(length(unique(fam))),
+            h = mean(h),
+            n = n(),
+            spg = mean(spg),
+            W = mean(W),
+            N = mean(N),
+            luz = mean(luz),
+            incl = mean(incl))
+datpBno <- group_by(.data = datBno,
+                    dist, plot) %>%
+  summarise(dap = mean(dap),
+            h = mean(h),
+            kg14 = mean(kg14),
+            kg17 = mean(kg17),
+            kg = mean(kg),
+            r = mean(length(unique(gen))),
+            rf = mean(length(unique(fam))),
+            h = mean(h),
+            n = n(),
+            spg = mean(spg),
+            W = mean(W),
+            N = mean(N),
+            luz = mean(luz),
+            incl = mean(incl))
+
+datpt <- group_by(.data = dat,
+                  dist, fam, gen, plot) %>%
+  summarise(kg17 = mean(kg17),
+            kg14 = mean(kg14),
+            kg = mean(kg),
+            freq = n(),
+            spg = mean(spg),
+            h = mean(h))
+```
+
+```{r QChypoth}
+dat1 <- dat %>% 
+  mutate(Bq = if_else(gen == "Bombacopsis", 
+                      true = "Planted", 
+                      false = "New"))
+datg <- dat1 %>% 
+  group_by(Bq, dist, plot) %>% #groupbyallindepvars
+  get_summary_stats(type = "median_mad")
+datgBno <- datg %>% filter(Bq == "New")
+```
+
+# Results
+
+## Tree biomass
+
+-   also grouped by *Bombacopsis* ID, re-making old polished figures (again) new trendlines and shorter code
+
+-   Bq doesn't seem to help b/c biomass is lower with it
+
+    -   makes sense, since Bq is not adapted...
+
+```{r H1}
+datgBnokg17 <- datgB %>% filter(variable == "kg17")
+datg %>% filter(variable == "kg17") %>%
+  ggplot(aes(x = dist, y = median)) + 
+  geom_quasirandom(color = "gray") +
+  stat_summary(fun = "median", color = "blue") +
+  stat_summary(fun.data = "median_mad", 
+               geom = "errorbar", color = "blue") +
+  
+  stat_summary(data = datgBnokg17, 
+               fun = "median",
+               position = position_dodge()) + #?
+  stat_summary(data = datgBnokg17,
+               fun.data = "median_mad",
+               geom = "errorbar",
+               position = position_dodge()) + #?
+  scale_y_continuous(trans = "log1p")
+```
+
+-   explain the loss w/ wood density panel? (vs. diameter or height)
+
+## Functional/dispersal groups
+
+-   But did Bq provide shade?
+
+    -   or favor other [dispersal] groups of taxa?
+
+```{r H2}
+
+```
+
+# Attic
+
+### *Census structure*
+
+#### Abiotic: Light and slope
+
+```{r envDistStat}
+# measured only @ plot level
+
+#checkmanova
+luzinclmaovcheck <- lm(luz ~ incl, data = datp)
+luzinclmaovcheck %>% residuals() %>% shapiro_test() #pass
+luzinclmaovcheck %>% summary() #no-keepseparate
+# summary(lm(luz ~ n + plot, data = datp))  # noMANOVA
+
+#luz
+plot(datp$dist, datp$luz)
+leveneTest(luz ~ as.factor(dist), data = datp)  #pass
+luzstat <- lm(luz ~ dist, data = datp)
+luzstat %>% residuals() %>% shapiro_test() #pass
+luzstat %>% summary()  #no
+
+#incl
+plot(datp$dist, datp$incl)
+leveneTest(incl ~ as.factor(dist), data = datp)  #pass
+inclstat <- aov(incl ~ dist, data = datp)
+inclstat %>% residuals() %>% shapiro_test() #justpass
+inclstat %>% summary() #no
+summary(lm(luz ~ poly(dist,2), data = datp))  #no
+
+plot(datp$dist, datp$incl)
+summary(aov(incl ~ dist, data = datp))  #no
+summary(lm(incl ~ poly(dist,2), data = datp))  #no
+#plot(datp$dist, datp$incl)
+```
+
+*Table S\#.* ANOVA results for environmental variation in (A) light and (B) terrain slope by distance from primary forest edge.
+
+#### Timber planting
+
+```{r nBdistStat}
+shapiro.test(log1p(datpB$n))  #pass
+# summary(lm(h ~ n, data = datpB))  # noMANOVA
+summary(aov(log1p(n) ~ dist + plot,
+            data = datpB))  # plot
+emmeans()
+```
+
+*Table S\#.* ANOVA results for *B. quinata* plot stem density by distance from primary forest edge.
+
+```{r nBnoDistStat}
+shapiro.test(datpBno$n)  #pass
+summary(aov(n ~ dist + plot,
+            data = datpBno))  # plot
+```
+
+```{r nDistStat}
+shapiro.test(datp$n)  #pass
+summary(aov(n ~ dist + plot,
+            data = datp))  #plot
+```
+
+But does this plot effect on stem density scale up to affect biomass? No, so plot ID doesn't affect function.
+
+```{r kg14stat}
+shapiro.test(log1p(datp$kg14))  #pass
+summary(aov(kg14 ~ n + plot,
+            data = datp))  #no!
+```
+
+```{r kg17stat}
+shapiro.test(log10(datp$kg17))  #pass
+leveneTest(log10(kg17) ~ as.factor(dist), data = datp)  #pass
+summary(aov(log10(kg17) ~ dist + r,
+            data = datp))  #no
+summary(aov(log10(kg17) ~ poly(dist,2) + r,
+            data = datp))  #no
+```
+
+### *Canopy structure*
+
+-   height and [mean] SPG (Díaz et al 2016) by dist, or PCoA
+
+```{r HspgDistStat}
+# check for MANOVA need
+summary(lm(h ~ spg, data = datp))  # yes
+
+# summary(manova(cbind(h, spg) ~ dist + plot,
+#               data = dat))  # dist, plot
+summary(manova(cbind(h, spg) ~ dist,
+               data = datp))  # dist
+
+shapiro.test(datp$spg)  #pass
+summary(lm(spg ~ dist, data = datp))
+
+shapiro.test(datp$h)  #pass
+summary(aov(h ~ dist, data = datp))
+
+
+# check for MANOVA need
+summary(lm(h ~ spg, data = datpBno))  # yes
+summary(manova(cbind(h, spg) ~ dist + plot,
+               data = datpBno))  # dist,plot
+
+# these make sense given h & spg factor into biomass
+```
+
+*Table S\#*. MANOVA results showing effects of distance from primary forest edge and plot ID on mean plot height and wood density.
+
+```{r hBdistStat}
+summary(aov(h ~ dist * plot,
+            data = datB))  # dist, plot
+summary(aov(h ~ dist + plot,
+            data = datpB))  # dist --> why? competition?
+```
+
+*Table S\#.* ANOVA results at (A) tree and (B) plot levels for *B. quinata* height by distance from primary forest edge.
+
+### *Biomass structure*
+
+```{r kgStat}
+shapiro.test(log10(datp$kg17))  #pass
+summary(lm(log10(kg17) ~ dap + h + spg + n, 
+           data = datp))  #dap,spg
+summary(manova(cbind(log10(kg17), dap, spg) ~ dist, 
+               data = datp))  #yes
+
+
+shapiro.test(log10(datp$kg17))  #pass
+leveneTest(kg17 ~ as.factor(dist), data = datp)  #pass
+summary(aov(log10(kg17) ~ poly(dist,2),
+            data = datp))  #close...
+summary(aov(log10(kg17) ~ dist + r,
+            data = datp))  #no--final? 1/6/21
+
+shapiro.test(log1p(datp$kg14))  #pass
+# check MANOVA need
+# summary(lm(kg14 ~ n, data = datpBno))
+shapiro.test(log1p(datpBno$kg14))  #pass
+shapiro.test(log1p(datpB$kg14))  #pass
+
+summary(lm(poly(log1p(kg14),2) ~ dist + rf +
+             n, data = datp))  #yes but wrong
+summary(lm(log1p(kg14) ~ dist + plot + n + rf + N + W + luz + incl,
+           data = datp))  # n
+summary(lm(log1p(kg14) ~ dist + plot + rf + N + W + luz + incl,
+           data = datp))  #none
+summary(lm(log1p(kg14) ~ dist + plot + n + rf + N + W + luz + incl,
+           data = datpBno))  # n,N,W,luz
+summary(lm(log1p(kg14) ~ dist + plot + n + N + W + luz + incl,
+           data = datpB))  #none
+
+summary(lm(poly(kg14, degree = 2) ~ dist + plot,
+            data = dat))  # dist, plot (both weak)
+# which of these 2, above and below?
+summary(lm(poly(kg14, degree = 2) ~ dist + plot,
+            data = datp))  # dist, plot
+summary(aov(kg14 ~ dist + plot,
+            data = datB))  # dist
+# above prob driven by height along dist
+summary(aov(kg14 ~ dist + plot,
+            data = datBno))
+```
+
+*Table S\#*. (A-D) Linear model and (E, F) ANOVA results for (A, D) total mean, (B, E) *B. quinata*, and (C, F) other taxon biomass with respect to (A-C) stem density and (D-F) distance from primary forest edge and plot ID.
+
+```{r nStat}
+shapiro.test(datp$n)  #pass
+
+summary(aov(n ~ poly(dist,2),
+            data = datp))  #yes
+
+summary(lm(n ~ luz + incl + N + W,
+            data = datp))
+summary(aov(n ~ dist + plot,
+            data = datp))  # plot
+summary(aov(n ~ poly(dist, degree = 2) + plot,
+            data = datp))  # dist, plot
+summary(aov(n ~ dist + plot,
+            data = datpB))  # plot
+summary(aov(n ~ dist + plot,
+            data = datpBno))  # plot
+```
+
+*Table S\#*. Linear model and ANOVA results for stem density with respect to distance from primary forest edge and plot ID.
+
+```{r dapstat}
+shapiro.test(datp$dap)  #pass
+leveneTest(dap ~ as.factor(dist), data = datp)  #pass
+summary(lm(dap ~ dist, data = datp))  #marginal
+
+summary(lm(dap ~ h, data = datp))
+summary(manova(cbind(dap, h) ~ dist, data = datp))  #yes
+
+summary(manova(cbind(dap, h, spg) ~ dist, data = datp))  #yes
+```
+
+### *Community structure*
+
+-   diversity predicted by height and/or biomass (Pan et al 2018)
+
+```{r ShStat}
+shapiro.test(datp$rf)  #pass
+summary(lm(rf ~ dist, #+ n + kg14,
+        data = datp))  # why significant w/ some var combos but not others?
+summary(lm(rf ~ poly(dist,2),
+        data = datp))
+
+shapiro.test(datp$rf^2)  #pass
+summary(lm(poly(rf,2) ~ dist,
+        data = datp))  #no
+summary(lm(poly(rf,2) ~ dist,
+        data = datsumd))  #no
+summary(lm(r ~ h + kg14 + n,
+           data = datp))  # h
+#summary(lm(r ~ h + kg14 + n,
+#           data = datpBno))  # h
+```
+
+*Table S\#*. Linear model results showing plot genus richness explained by mean plot height.
+
+-   Other (non-richness) diversity measures, by distance to edge?
+
+```{r SdistStat}
+shapiro.test(datp$r)  #pass
+summary(aov(r ~ poly(dist,2), 
+            data = subset(datp, gen != NA)))  #soclose...
+summary(lm(r ~ poly(dist,2), data = datp))  #soclose...
+
+shapiro.test(datp$rf)  #pass
+summary(lm(rf ~ dist, data = datp))  #marginal
+summary(lm(rf ~ poly(dist,2), data = datp))  #yes
+summary(aov(rf ~ poly(dist,2), data = datp))  #yes
+```
+
+```{r kgSstat_no}
+shapiro.test(log10(dat$kg17))  #no
+kruskal.test(dat$kg17 ~ dat$gen)
+```
+
+# Results
+
+"Large trees increase biomass by reducing richness [density] in a regenerating tropical timber plantation".
+
+```{r groupDist}
+datsumd <- datp %>% group_by(dist) %>%
+  summarise(dap.se = sd(dap)/sqrt(length(dap)),
+            dap = mean(dap),
+            h.se = sd(h)/sqrt(length(h)),
+            h = mean(h),
+            kg14.se = sd(kg14)/sqrt(length(kg14)),
+            kg14 = mean(kg14),
+            kg17.se = sd(kg17)/sqrt(length(kg17)),
+            kg17 = mean(kg17),
+            kg.se = sd(kg)/sqrt(length(kg)),
+            kg = mean(kg),
+            r.se = sd(r)/sqrt(length(r)),
+            r = mean(r),
+            rf.se = sd(rf)/sqrt(length(rf)),
+            rf = mean(rf),
+            n.se = sd(n)/sqrt(length(n)),
+            n = mean(n),
+            spg.se = sd(spg)/sqrt(length(spg)),
+            spg = mean(spg),
+            luz.se = sd(luz)/sqrt(length(luz)),
+            luz = mean(luz),
+            incl.se = sd(incl)/sqrt(length(incl)),
+            incl = mean(incl), na.rm = T)
+datpsum <- group_by(.data = dat, dist) %>%
+  summarize(kg14.se = sd(kg14) / sqrt(length(kg14)),
+            kg14 = mean(kg14))
+```
+
+## Abiotic conditions
+
+```{r luz_incl}
+datp1 <- dat %>% group_by(dist, plot) %>% get_summary_stats(type = "median")
+
+datp1 %>% filter(variable == "luz") %>% 
+  ggplot(aes(x = dist, y = median)) + geom_quasirandom(color = "grey") + 
+  stat_summary(fun = "median") + 
+  stat_summary(fun.data = "median_mad", geom = "errorbar")
+```
+
+## Census structure
+
+### Stem density
+
+Mean total plot stem density was explained by distance from primary forest edge and plot. The relationship with distance from primary forest edge was positively quadratic.
+
+```{r NdistPlot}
+map <- datp %>% ggplot(aes(x = W, y = N, color = n, cex = kg14)) +  # add dist bands?
+  scale_color_gradient(low = "gray", high = "black") + geom_point()
+
+datp %>% ggplot(aes(x = n, y = kg14)) + geom_point() + scale_y_log10()
+
+
+shapiro.test(datsumd$n)  #pass
+
+ndistplot <- ggplot(data = datsumd, aes(x = dist, y = n)) +
+  geom_point(data = datp, color = "gray", position = position_jitter()) +
+  geom_point(cex = 3) +
+  geom_errorbar(aes(ymax = n + n.se, ymin = n - n.se), width = 0.5) +
+  geom_smooth(method = "lm", color = "black",
+              formula = y ~ poly(x, degree = 2)) +
+  stat_poly_eq(formula = y ~ poly(x, degree = 2), parse = T,
+               aes(label = paste(stat(..p.value.label..),
+                                 stat(..adj.rr.label..), 
+                                 stat(..eq.label..), sep = "~~~~~"))) +
+  labs(x = "Distance from primary forest edge",
+       y = expression(paste("Trees (stems 400 m"^-2,")")))
+
+summary(aov(n ~ poly(dist,2), data = datsumd))
+
+
+
+nplot <- ggplot(datp, aes(x = dist, y = n / 400 * 10000)) +
+  geom_quasirandom() +
+  #geom_point(position = position_jitter()) +
+  geom_smooth(method = "lm", formula = y ~ poly(x,2),
+              color = "black", lty = "dashed") +
+  stat_poly_eq(formula = y ~ poly(x,2), parse = T, size = 3,
+               aes(label = paste(stat(..p.value.label..),
+                                 stat(..adj.rr.label..),
+                                 stat(..eq.label..), sep = "~~~~~"))) +
+  labs(x = "Distance from primary forest edge (m)",
+       y = expression(paste("Trees (ha"^-1,")")))
+```
+
+*Fig \#\#*. (A) Map showing total stem density and GPS coordinates of census plots (21 x 21 m), and (B) plot showing stem density by distance from primary forest edge.
+
+Mean plot height was explained by mean plot specific wood density and distance from primary forest edge. These were negative relationships, which were further explained by a positive relationship between distance from primary forest edge and mean plot specific wood density.
+
+## Canopy structure
+
+```{r HspgPlot}
+dat %>% group_by(plot) %>% ggplot(aes(x = spg, y = h)) +
+  geom_quasirandom(color = "gray") + stat_summary(fun = "median") +
+  #scale_y_continuous(trans = "log10") +
+  geom_smooth(method = "lm") +
+  stat_poly_eq(formula = y ~ x, parse = T,
+               aes(label = paste(stat(..p.value.label..), #bug
+                                 stat(..eq.label..),
+                                 stat(..adj.rr.label..), sep = "~~~~~")))
+```
+
+*Fig \#\#*. Plot showing relationship betwen mean plot (black, individual trees in gray) tree heights and specific wood density.
+
+```{r HspgDistPlot}
+shapiro.test(datsumd$h)  #pass
+
+hplot <- ggplot(data = datp, aes(x = dist, y = h)) +
+  geom_point(data = dat, color = "gray", position = position_jitter()) +
+  geom_point(size = 3, position = position_jitter()) +
+  #geom_smooth(method = "lm", formula = y ~ x, color = "black") +
+  stat_poly_eq(formula = y ~ x, parse = T, size = 3,
+               aes(label = paste(stat(..p.value.label..),  #no
+                                 stat(..rr.label..),
+                                 stat(..eq.label..), sep = "~~~~~"))) +
+  labs(x = "Distance from primary forest edge (m)", y = "Height (m)")
+
+summary(aov(h ~ poly(dist,2), data = datsumd))  #no
+
+
+hBplot <- ggplot(data = datpB,
+       aes(x = dist, y = h)) +
+  geom_point(data = datB,
+             color = "gray",
+             position = position_jitter()) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  stat_regline_equation(aes(label = paste(..rr.label..,
+                                          ..eq.label..,
+                                          sep = "~~~~~"))) +
+  #scale_y_continuous(trans = "log1p") +
+  theme_bw() +
+  labs(x = "Distance from edge of primary forest",
+       y = "Height (m)")
+
+
+hBnoplot <- ggplot(data = datpBno,
+       aes(x = dist, y = h)) +
+  geom_point(data = datBno,
+             color = "gray",
+             position = position_jitter()) +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  stat_regline_equation(aes(label = paste(..rr.label..,
+                                          ..eq.label..,
+                                          sep = "~~~~~"))) +
+  #scale_y_continuous(trans = "log1p") +
+  theme_bw() +
+  labs(x = "Distance from edge of primary forest (m)",
+       y = "Height (m)")
+
+
+
+shapiro.test(datsumd$spg)  #pass
+
+spgplot <- ggplot(data = datp,
+       aes(x = dist, y = spg)) +
+  geom_point(data = dat,
+             color = "gray",
+             position = position_jitter()) +
+  geom_point(size = 3, position = position_jitter()) +
+  geom_smooth(method = "lm", color = "black") +
+  stat_poly_eq(formula = y ~ x, parse = T, size = 3,
+               aes(label = paste(stat(..p.value.label..),  #yes
+                                 stat(..adj.rr.label..),
+                                 stat(..eq.label..), sep = "~~~~~"))) +
+  labs(x = "Distance from primary forest edge (m)",
+       y = expression(paste("Wood density (g cm"^"-3",")")))
+summary(aov(spg ~ dist, data = datsumd))  #no
+
+
+ggarrange(spgplot, hplot, 
+          labels = c("a", "b"),
+          nrow = 2)
+```
+
+*Fig \#\#*. Plots showing the relationship between mean plot (black, individual trees shown in gray) (A) heights and (B) specific wood densities.
+
+## Biomass structure
+
+Mean plot biomass was explained by distance from primary forest edge and mean total plot stem density. The trend with edge distance was negatively quadratic, while that with mean total plot stem density was linearly negative. These relationships correspond with that between edge distance and mean plot stem density, which was instead positively quadratic (previous figure).
+
+*Taken together, these data show that mean total plot biomass was lower closer to the primary forest, due to increases in stem density, primarily with trees with low wood density and presumably faster growth and reproduction rates (CITE?).*
+
+Finally, there was an effect of East-West location on mean plot biomass, but despite observing a downward slope on the southwest corner of the parcel, this general East-West co-variation with slope did not statistically explain mean plot biomass variation.
+
+```{r kgnPlot}
+kgnplot <- ggplot(data = datp,
+       aes(x = n, y = kg14)) +
+  scale_y_log10() +
+  geom_point() +
+  geom_smooth(method = "lm") +
+  stat_regline_equation(formula = log10(y) ~ x,
+                        aes(label = paste(..rr.label..,
+                                          ..eq.label..,
+                                          sep = "~~~~~"))) +
+  theme_bw() +
+  labs(x = "Tree stems (per 400 sq m)",
+       y = "Aboveground plot biomass (kg)")
+```
+
+*Fig \#\#*. Plot showing relationship between mean plot biomass and mean plot stem density.
+
+```{r kgDistPlotFig1}
+summary(lm(log10(kg17) ~ dist + rf,
+           data = datp))  #no
+
+shapiro.test(datsumd$kg17)  #pass
+
+agbplot <- ggplot(data = datp,
+       aes(x = dist, y = kg17 / 400 * 10000 / 1000)) +
+  geom_quasirandom(color = "gray") +
+  #geom_point(data = subset(datpt, gen == "Bombacopsis"),
+  #           color = "black", cex = 3, shape = "square") +
+  #geom_smooth(data = subset(datpt, gen == "Bombacopsis"),
+  #            method = "lm", color = "black", se = F,
+  #            lty = "dashed") +
+  #stat_poly_eq(formula = y ~ x,
+  #             data = subset(datpt, gen == "Bombacopsis"),
+  #             aes(label = paste(stat(..p.value.label..),
+  #                               stat(..rr.label..),
+  #                               stat(..eq.label..),
+  #                               sep = "~~~"))) +
+                        #label.y.npc = "bottom",
+                        #color = "red") +
+  geom_point(cex = 3, position = position_jitter()) +
+  #geom_errorbar(aes(ymax = kg14 + kg14.se,
+                    #ymin = kg14 - kg14.se)) +
+  scale_y_continuous(trans = "log10") +
+  #geom_smooth(method = "lm", color = "black", lty = "dashed") +
+  stat_poly_eq(formula = y ~ x, parse = T, size = 3,
+               aes(label = paste(stat(..p.value.label..),
+                                 stat(..rr.label..),
+                                 stat(..eq.label..),
+                                 sep = "~~~~~"))) +
+  labs(x = "Distance from primary forest edge (m)",
+       y = expression(paste("Biomass (Mg ha"^-1,")")))
+  #coord_fixed(ratio = 100)
+
+summary(aov(kg17 ~ poly(dist,2), data = datsumd))  #0.24
+
+ggarrange(agbplot, comp,
+          labels = c("A", "B"),
+          nrow = 2)
+```
+
+```{r trynewfig1}
+group_by(datpt, dist, fam) %>%
+  summarize(kg14se = sd(kg14) / sqrt(length(kg14)),
+            kg14 = mean(kg14)) %>%
+ggplot(aes(x = reorder(fam, -kg14),
+           y = kg14)) +
+  geom_point() +
+  scale_y_continuous(trans = "log10") +
+  geom_errorbar(aes(ymax = kg14 + kg14se,
+                    ymin = kg14 - kg14se)) +
+  facet_wrap( ~ dist) +
+  theme(axis.text.x = element_text(angle = 90,
+                                   size = 6))
+```
+
+```{r newstat}
+hist(log1p(dat$kg14))
+shapiro.test(log1p(dat$kg14))
+stat <- summary(lm(log10(kg14) ~ poly(dist, 2) * fam,
+                   data = dat))
+stat2 <- subset(stat$coefficients,
+                stat$coefficients[,4] <= 0.1)
+```
+
+*Fig \#\#*. Biomass (plot mean in black, individual trees in gray, *B. quinata* in orange) changes at various distance from primary forest edge.
+
+```{r dapPlot}
+dapplot <- ggplot(datp, aes(x = dist, y = dap)) +
+  geom_point(data = dat, color = "gray",
+             position = position_jitter()) +
+  geom_point(size = 3, position = position_jitter()) +
+  geom_smooth(method = "lm", lty = "dashed", color = "black") +
+  stat_poly_eq(formula = y ~ x, parse = T, size = 3,
+               aes(label = paste(stat(..p.value.label..),
+                                 stat(..adj.rr.label..),
+                                 stat(..eq.label..),
+                                 sep = "~~~~~"))) +
+  labs(x = "Distance from primary forest edge (m)",
+       y = "Diameter (cm)") +
+  scale_y_continuous(trans = "log10")
+```
+
+### *Community structure*
+
+-   decide which plot represents anticipated stats...(prob PCoA)
+
+```{r distFamPlot}
+group_by(datpt, dist, fam) %>%
+  summarize(kg17 = mean(kg17)) %>%
+ggplot(aes(x = dist, y = kg17, fill = fam)) +
+  geom_bar(stat = "identity") +
+  scale_y_continuous(trans = "log10")
+```
+
+```{r famDistPlot}
+famdistplot <- ggplot(data = datp,
+       aes(x = dist, y = rf)) +
+  geom_point(position = position_jitter()) +
+  labs(x = "Distance from primary forest edge (m)",
+       y = "Diversity (α, family)") +
+  geom_smooth(method = "lm", color = "black",
+              formula = y ~ poly(x,2)) +
+  stat_poly_eq(formula = y ~ poly(x,2), parse = T, size = 3,
+               aes(label = paste(stat(..p.value.label..),  #yes
+                                 stat(..adj.rr.label..),
+                                 stat(..eq.label..),
+                                 sep = "~~~~~")))
+
+ggplot(data = datpB,
+       aes(x = dist, y = rf)) + geom_point()
+ggplot(data = datpBno,
+       aes(x = dist, y = rf)) + geom_point()
+```
+
+```{r genDistPlot}
+# make PCoA
+
+ggplot(data = datpt,
+       aes(x = dist, y = kg14, fill = fam)) +
+  geom_bar(stat = "identity") +
+  scale_y_continuous(trans = "log10") +
+  # show by plot?
+  theme_bw()
+```
+
+*Fig \#\#*. Plot showing biomass partitioned by genus as a function of distance from primary forest edge.
+
+Plot richness was predicted by mean plot height, which supports previous findings (Pan et al 2018).
+
+```{r ShDistPlot}
+ggplot(data = datp,
+       aes(x = h, y = r)) +
+  geom_point(cex = 3) +
+  geom_smooth(method = "lm") +
+  stat_regline_equation(aes(label = paste(..rr.label..,
+                                          ..eq.label..,
+                                          sep = "~~~~~"))) +
+  theme_bw()
+ggplot(data = datsumd,
+       aes(x = dist, y = r)) +
+  geom_point(data = datp,
+             color = "gray") +
+  geom_point(cex = 3) +
+  geom_errorbar(aes(ymax = r + r.se,
+                    ymin = r - r.se)) +
+  geom_smooth(method = "lm",
+              formula = y ~ poly(x, degree = 2)) +
+  stat_regline_equation(formula = y ~ poly(x, degree = 2),
+                        aes(label = paste(..rr.label..,
+                                          ..eq.label..,
+                                          sep = "~~~~~"))) +
+  theme_bw()
+```
+
+*Fig \#\#*. Plot showing relationship between richness and (A) mean plot tree height and (B) distance from primary forest edge.
+
+```{r fig1mix}
+ggarrange(spgplot, famdistplot,
+          hplot, kgnplot,
+          labels = c("a", "b", "c", "d"),
+          nrow = 2, ncol = 2)
+```
+
+```{r fig1newest}
+fig1 <- ggarrange(agbplot, spgplot, 
+                  dapplot, hplot,
+                  nplot, famdistplot,
+          labels = c("a", "b", "c", "d", "e", "f"),
+          nrow = 3, ncol = 2)
+```
+
+Testing factors affecting divergence of successional trajectories (Norden, Vandermeer et al 2015):
+
+```{r plotTraj}
+datps <- as.data.frame(datp)
+library(plot3D)
+points3D(x = datps$n, y = log10(datps$kg14), z = datps$r,
+         colvar = datps$dist)
+plot(datps$n, datps$r, col = datps$dist)
+
+plot(log10(datps$kg14), datps$r, col = datps$dist)
+summary(lm(r ~ log10(kg14), data = datps))  #no
+
+plot(datps$n, log10(datps$kg14))
+summary(lm(log10(kg14) ~ n, data = datps))  #no
+```
+
+This could be on a downward divergence trajectory, compared to positive [expected] pattern from other [referenced] Costa Rican forests? Actually, statistically, probably no divergence...
+
+### Distributions
+
+```{r SAD}
+ggplot(dat, aes(x = kg17)) +
+                  #color = fam)) +  #toomanycolors
+  stat_bin(geom = "point") +
+  scale_x_continuous(trans = "log10") +
+  facet_wrap(~dist)
+```
+
+```{r SAD2}
+ggplot(datpt, aes(x = reorder(fam,-kg17), y = kg17)) +
+  geom_point() + facet_wrap(~dist) +
+  scale_y_continuous(trans = "log10") +
+  theme(axis.text.x = element_text(angle = -90, vjust = 0.5))
+```
+
+```{r mesa}
+datpt$Mg17 <- datpt$kg17 / 1000 / 400 * 10000
+
+group_by(datpt, dist, fam) %>%
+  summarize(Mg17.se = sd(Mg17) / sqrt(length(Mg17)),
+            Mg17 = mean(Mg17)) %>%
+  ggplot(aes(x = reorder(fam,-Mg17), y = Mg17)) +
+  geom_point() + facet_wrap(~dist) +
+  scale_y_continuous(trans = "log10") +
+  labs(x = "Taxa (family)", 
+       y = expression(paste("Biomass (Mg ha"^-1,")"))) +
+  theme(axis.text.x = element_text(angle = -90, size = 7,
+                                   vjust = 0.5, hjust = 0),
+        panel.grid.minor.y = element_line(color = "gray")) +
+  geom_errorbar(aes(ymax = Mg17 + Mg17.se,
+                    ymin = Mg17 - Mg17.se))
+```
+
+```{r famhist}
+ggplot(datpt, aes(x = fam, y = freq)) +
+  geom_point() + facet_wrap(~dist) +
+  theme(axis.text.x = element_text(angle = -90))
+```
+
+```{r table1mesa}
+datptt <- group_by(datpt, dist, fam) %>%
+  summarize(Mg17.se = sd(kg17 / 1000 / 400 * 10000) / 
+              sqrt(length(kg17 / 1000 / 400 * 10000)),
+            Mg17 = mean(kg17 / 1000 / 400 * 10000))
+```
+
+```{r fig2famsubset}
+datptsub <- subset(datpt, 
+                   fam == "Vochysiaceae" | fam == "Annonaceae" |
+                     fam == "Malvaceae" | fam == "Moraceae" |
+                     fam == "Fabaceae" | fam == "Rubiaceae")
+
+shapiro.test(log10(datptsub$Mg17+1))  #no
+leveneTest(log10(Mg17+1) ~ as.factor(dist), data = datptsub)  #pass
+summary(lm(log10(Mg17+1) ~ dist + fam, data = datptsub))  #?
+
+ggplot(datpt, aes(x = dist, y = kg17)) +
+  geom_point(position = position_jitter()) + 
+  scale_y_continuous(trans = "log10") + facet_wrap(~fam) +
+  geom_smooth(method = "lm", color = "black", se = F) +
+  stat_poly_eq(formula = y ~ x, parse = T,
+               aes(label = paste(stat(..p.value.label..),
+                                 stat(..adj.rr.label..),
+                                 stat(..eq.label..),
+                                 sep = "~~~~~")))
+
+fig2 <- ggplot(datptsub, aes(x = dist, y = (Mg17 + 1))) +
+  geom_point(position = position_jitter()) + 
+  scale_y_continuous(trans = "log10") + facet_wrap(~fam) +
+  geom_smooth(method = "lm", color = "black", 
+              se = F, lty = "dashed") +
+  stat_poly_eq(formula = y ~ x, parse = T, size = 2.25,
+               aes(label = paste(stat(..p.value.label..),
+                                 stat(..rr.label..),
+                                 stat(..eq.label..),
+                                 sep = "~~~~~"))) +
+  labs(x = "Distance from primary forest edge (m)",
+       y = expression(paste("Biomass (Mg ha"^-1,")")))
+```
+
+```{r fig3responsNo}
+datptsubsub <- subset(datptsub, 
+                      fam == "Vochysiaceae" | fam == "Malvaceae")
+ggplot(datptsubsub, aes(x = spg, y = h, shape = fam)) +
+  geom_point() + #facet_wrap(~dist) +
+  geom_smooth(method = "lm", color = "black", lty = "dashed") +
+  stat_poly_eq(formula = y ~ x, parse = T, size = 2,
+               aes(label = paste(stat(..p.value.label..),
+                                 stat(..rr.label..),
+                                 stat(..eq.label..),
+                                 sep = "~~~~~")))
+```
+
+### Composition
+
+```{r tallyMatrix}
+plots <- unique(dat$plot)
+fams <- unique(dat$fam)
+rich <- length(fams)
+tallytable <- matrix(0, nrow = length(plots), ncol = rich)
+colnames(tallytable) <- fams
+rownames(tallytable) <- plots
+for (p in 1:length(rownames(tallytable))) {
+  comm <- subset(dat, plot == plots[p])
+  tally <- count(comm, fam)
+  for (col in 1:length(colnames(tallytable))) {
+    taxon <- fams[col]
+    if (taxon %in% tally$fam) {
+      place <- match(taxon, tally$fam)
+      tallytable[p, col] <- tally$n[place]
+    } else {}
+  }
+}
+```
+
+```{r DAPmatrix}
+DAPtable <- matrix(0, nrow = length(plots), ncol = rich)
+colnames(DAPtable) <- fams
+rownames(DAPtable) <- plots
+for (p in 1:length(rownames(DAPtable))) {
+  comm <- subset(dat, plot == plots[p]) %>%
+    group_by(fam) %>% summarize(dap = mean(dap))
+  for (col in 1:length(colnames(DAPtable))) {
+    taxon <- fams[col]
+    if (taxon %in% comm$fam) {
+      place <- match(taxon, comm$fam)
+      DAPtable[p, col] <- comm$dap[place]
+    } else {}
+  }
+}
+```
+
+```{r MgMatrix}
+MgMatrix <- matrix(0, nrow = length(plots), ncol = rich)
+colnames(MgMatrix) <- fams
+rownames(MgMatrix) <- plots
+for (p in 1:length(rownames(MgMatrix))) {
+  comm <- subset(dat, plot == plots[p]) %>%
+    group_by(fam) %>% summarize(Mg17 = mean(kg17/400/1000*10000))
+  for (col in 1:length(colnames(MgMatrix))) {
+    taxon <- fams[col]
+    if (taxon %in% comm$fam) {
+      place <- match(taxon, comm$fam)
+      MgMatrix[p, col] <- log10(comm$Mg17[place] + 1)  #log?
+    } else {}
+  }
+}
+```
+
+```{r PCA}
+#normalitycheck?
+adonis2(tallytable ~ dist + luz, data = datp)  #yes
+adonis2(DAPtable ~ dist + luz, data = datp)  #yes
+adonis2(MgMatrix ~ dist + luz, data = datp)  #yes4log10matrix
+
+#dists <- vegdist(tallytable)
+pca <- rda(tallytable)
+biplot(pca)
+#ordiplot(pca)
+ordiellipse(pca, datp$dist, conf = 0.95)
+#plot(rda(tallytable ~ dist, data = datp))
+#plot(rda(tallytable ~ 1,))
+
+ggtable <- as.data.frame(cbind(pca$CA$u[,1], pca$CA$u[,2],
+                               datp$dist))
+ggplot(ggtable, aes(x = ggtable[,1], y = ggtable[,2],
+                    shape = as.factor(ggtable[,3]))) +
+  geom_point() + stat_conf_ellipse() ##check
+```
+
+```{r PCA+}
+
+```
+
+#### try Chao?
+
+```{r div}
+datp$div <- diversity(tallytable)
+
+shapiro.test(datp$div)  #pass
+summary(lm(div ~ poly(dist,2), data = datp))  #yes
+plot(datp$dist, datp$div)
+```
+
+### Interactions
+
+```{r index}
+dat$Mg17 <- dat$kg17 /400*1000/10000
+indexes <- c()
+for (p in plots) {
+  subcomm <- subset(dat, plot == p)
+  trees <- length(subcomm$Mg17)
+  for (tree in 1:trees) {
+    focus <- subcomm[tree,]$Mg17
+    index <- 0
+    for (othertree in 1:trees) {
+      neighbor <- subcomm$Mg17[othertree]
+      subindex <- (focus + 1) / (neighbor + 1)
+      index <- index + subindex
+    }
+    indexes <- c(indexes, index)
+  }
+}
+dat$index <- indexes
+```
+
+```{r indexstat}
+datpti <- group_by(dat, dist, fam, plot) %>%
+  summarize(ii.se = sd(index) / sqrt(length(index)),
+            ii = mean(index))
+datptisub <- subset(datpti, 
+                    fam == "Vochysiaceae" | fam == "Malvaceae" | 
+                      fam == "Rubiaceae" | fam == "Fabaceae")
+
+shapiro.test(log10(datpti$ii))  #soclose...
+hist(log10(datpti$ii))
+shapiro.test(log10(datptisub$ii))  #pass
+summary(lm(ii ~ dist, data = datptisub))  #no
+
+ggplot(datptisub, aes(x = dist, y = ii)) +
+  geom_point(position = position_jitter()) + facet_wrap(~fam) +
+  geom_smooth(method = "lm", formula = y ~ poly(x,2),
+              lty = "dashed", color = "black") +
+  stat_poly_eq(formula = y ~ poly(x,2), parse = T,  #yes
+               aes(label = paste(stat(..p.value.label..),
+                                 stat(..adj.rr.label..),
+                                 stat(..eq.label..),
+                                 sep = "~~~~~"))) +
+  
+  labs(x = "Distance from primary forest",
+       y = "Interaction index")
+```
+
+#### Dispersal
+
+```{r dispTable}
+dispTable <- data.frame(fam = dat$fam,
+                        gen = dat$gen,
+                        sp = dat$sp,
+                        plot = dat$plot)
+splist <- dispTable %>%
+  group_by(fam, gen, sp) %>% summarize(count = n()) %>%
+  #group_by(fam, gen, sp) %>% 
+  #summarize(count.se = sd(count+1)/sqrt(length(count+1)),
+  #          count.m = mean(count)) %>% 
+  arrange(desc(count))
+write.csv(splist, file = "splist.csv")
+```
+
+# NEW
+
+```{r new4.20}
+datqc <- subset(dat, dist != "NA" & fam != "-")
+group_by(datqc, dist, fam) %>%
+  summarize(n = n(),
+            kg14 = mean(kg14)) %>%
+  ggplot(aes(x = kg14,
+             fill = fam)) +
+  stat_bin(na.rm = T,
+           binwidth = 0.5,  # min = log(3.7 kg)
+           geom = "bar") +
+  facet_wrap(~dist) +
+  scale_x_continuous(trans = "log10") +
+  theme_classic() +
+  theme(legend.position = "bottom",
+        legend.title.align = 0.5) +
+  labs(x = "Aboveground biomass (kg)",
+       y = "Frequency (stems)",
+       fill = "Family") +
+  coord_fixed(0.5)
+
+comp <- ggplot(data = datpt,
+       aes(x = dist, y = kg14)) +
+  geom_bar(stat = "identity",
+           aes(fill = fam),
+           position = "fill") +
+  theme_classic() +
+  labs(x = "Distance away from primary forest edge (m)",
+       y = "Proportion of aboveground biomass (kg)",
+       fill = "Family") +
+  theme(axis.title = element_text(size = 12),
+        axis.text = element_text(size = 12),
+        legend.position = "right",
+        legend.title.align = 0.5,
+        legend.direction = "vertical",
+        legend.text = element_text(size = 8)) +
+  coord_fixed(ratio = 500)
+```
+
+```{r ecdf_kg14}
+# not yet
+```
+
+```{r community}
+community <- data.frame()
+for (name in 1:length(unique(dat$fam))) {
+  community$name <- c(NA)  # DEBUG HERE
+}
+for (i in unique(dat$plot)) {
+  datplot <- subset(dat)
+}
+tally <- add_count(as.tbl(dat), fam)
+```
+
+```{r NMDS}
+datNMDS <- dat[,c(2,12)]
+```
+
+## *Other ongoing analyses...*
+
+```{r kgDistHist}
+ggplot(data = dat, aes(x = kg14,
+                        color = as.factor(rep))) +
+  stat_bin(geom = "point") +
+  scale_x_continuous(trans = "log10") 
+  facet_wrap(~dist)  # overall is more skewed
+ggplot(data = datB, aes(x = kg14,
+                        color = as.factor(rep))) +
+  stat_bin(geom = "point") +
+  scale_x_continuous(trans = "log10") +
+  facet_wrap(~dist)
+ggplot(data = datBno, aes(x = kg14,
+                        color = as.factor(rep))) +
+  stat_bin(geom = "point") +
+  scale_x_continuous(trans = "log10") +
+  facet_wrap(~dist)
+```
+
+```{r hDistHist}
+ggplot(data = dat,
+       aes(x = h,
+           color = as.factor(rep))) +
+  stat_bin(geom = "point") +
+  #scale_x_continuous(trans = "log10") 
+  facet_wrap(~dist)  # overall is also skewed
+ggplot(data = datB,
+       aes(x = h,
+           color = as.factor(rep))) +
+  stat_bin(geom = "point") +
+  facet_wrap(~dist)  # why are pochote also skewed in height??
+ggplot(data = datBno,
+       aes(x = h,
+           color = as.factor(rep))) +
+  stat_bin(geom = "point") +
+  facet_wrap(~dist)
+```
+
+*Figs \#*. Histograms showing plot (A) biomass and (B) height distributions by distance from primary forest edge.
+
+-   forest biomass is complex (Pan et al 2013)
+-   but biomass distributions here are log-normal?!
+-   check for *power-law fits* of height and biomass histograms among edge plots
+
+# CODE/PLOT ATTIC, DONT READ
+
+```{r supplemental, include=F}
+ggplot(datsumd, aes(x = dist, y = luz)) +
+  geom_point() +
+  geom_errorbar(aes(ymax = luz + luz.se,
+                    ymin = luz - luz.se))
+ggplot(datsumd, aes(x = dist, y = n)) +
+  geom_point() +
+  geom_errorbar(aes(ymax = n + n.se,
+                    ymin = n - n.se))
+ggplot(datsumd, aes(x = dist, y = spg)) +
+  geom_point() +
+  geom_errorbar(aes(ymax = spg + spg.se,
+                    ymin = spg - spg.se))
+```
+
+\#\#Fig1.Biomass,distance,genus
+
+```{r kgdist, include=F}
+##1a
+ggplot(datsumd, aes(x = dist, y = kg)) +
+  geom_bar(stat = "identity") +
+  geom_errorbar(aes(ymax = kg + kg.se,
+                    ymin = kg - kg.se)) +
+  theme_bw() +
+  xlab(label = "Distance from primary forest edge (m)")+
+  ylab(label = "Plot aboveground biomass (kg)")
+
+summary(lm(data = datp, kg ~ poly(dist, degree = 2)))
+
+##1b
+datgt <- group_by(.data = datpt, dist,gen)
+datsumt <- summarise(datgt,
+                     kg.se = sd(kg)/sqrt(length(kg)),
+                     kg = mean(kg),
+                     freq.se = sd(freq)/sqrt(length(freq)),
+                     freq = mean(freq))
+ggplot(datsumt, aes(x = dist, y = kg, color = gen)) +
+  geom_point(stat="identity") +
+  geom_errorbar(aes(ymax = kg + kg.se,
+                    ymin = kg - kg.se)) +
+  #scale_y_continuous(trans = "log10") +
+  theme_bw() +
+  xlab(label = "Distance from primary forest edge (m)") +
+  ylab(label = "Plot aboveground biomass (kg)") +
+  labs(color = "Genus")
+
+subset(datsumt, kg > 3000)  #Lonchocarpus outlier
+```
+
+Fig 1a. Intermediate distances (150m from edge) tended (p=0.26) to show higher biomass.
+
+(Outliers seem to be relevant for variance at intermediate distances...)
+
+```{r fig1bfollowup, include=F}
+##maxkg?
+max(datsumt[datsumt$dist==150,]$kg)
+```
+
+Lonchocarpus individual is huge. Remove?
+
+\#\#FigA1.Vstem,distance
+
+```{r vstem}
+
+```
+
+\#\#Bombacopsis biomass by distance
+
+```{r kgdistBomba, include=F}
+datBgp <- group_by(datB, dist,plot)
+datBp <- summarise(datBgp, kg = mean(kg), freq = n())
+
+datBg <- group_by(datBp, dist)
+datBsumd <- summarise(datBg,
+                      kg.se = sd(kg)/sqrt(length(kg)),
+                      kg = mean(kg),
+                      freq.se = sd(freq)/sqrt(length(freq)),
+                      freq = mean(freq))
+
+ggplot(datBsumd, aes(x = dist, y = kg)) +
+  geom_point() +
+  geom_errorbar(aes(ymax = kg + kg.se,
+                    ymin = kg - kg.se))
+
+summary(lm(kg~dist,data=datBsumd))
+
+ggplot(datBsumd, aes(x = dist, y = freq)) +
+  geom_point() +
+  geom_errorbar(aes(ymax = freq + freq.se,
+                    ymin = freq - freq.se))
+
+summary(lm(freq~dist,data=datBsumd))
+```
+
+Figs 1b and c. (b) Biomass of plantation species significantly increased with distance from undisturbed forest edge (p\<0.05, R2=0.70), with (b) no change in the number of *Bombacopsis* stems (p\>0.05).
+
+Together, Figs 1a and 1b show that biomass was higher in areas where the plantation species *Bombacopsis* stems grew smaller on average.
+
+(This may suggest either competition or facilitation--check biomass ditribution of major contributing genera...)
+
+```{r kgsp, include=F}
+ggplot(datsumt[datsumt$dist==150,],
+       aes(x=reorder(gen,-kg),y=log10(kg)))+
+  geom_point()+
+  theme(axis.text.x=element_text(hjust=0,angle=-45))
+  #facet_wrap(~dist)
+
+summary(lm(data=datsumt, log10(kg)~c(1:length(gen))*dist))
+```
+
+Fig 2a. Rank-biomass curves (by genus) significantly (but weakly) fit a negative exponential (p=0.01, R2=0.05).
+
+From Fig 1, highest biomass was in 150m, which this figure shows mostly comes from 1 *Lonchocarpus*, 1 *Tabebuia*, 1 [/3] *Ficus*, 2 [/10] *Hyeronima*, 1 [/2] *Apeiba*, 4 [/23] *Vochysia*, and 8 [/16] *Bombacopsis* trees (ranked sequentially). Excluding individual outlier tree sizes, it could be
+
+\#\#Vochysia biomass by distance
+
+```{r kgdistVochysia, include=F}
+datVgp <- group_by(datV, dist,plot)
+datVp <- summarise(datVgp, kg = mean(kg), freq = n())
+
+datVg <- group_by(datVp, dist)
+datVsumd <- summarise(datVg,
+                      kg.se = sd(kg)/sqrt(length(kg)),
+                      kg = mean(kg),
+                      freq.se = sd(freq)/sqrt(length(freq)),
+                      freq = mean(freq))
+
+ggplot(datVsumd,aes(x = dist, y = kg)) +
+  geom_point() +
+  geom_errorbar(aes(ymax = kg + kg.se,
+                    ymin = kg - kg.se))
+
+ggplot(datVsumd,aes(x = dist, y = freq)) +
+  geom_point() +
+  geom_errorbar(aes(ymax = freq + freq.se,
+                    ymin = freq - freq.se))
+summary(lm(freq~dist,data=datVsumd))
+```
+
+Fig 2b and c. [...] Actually, it seems like loss of biomass may not due to competition between *Bombacopsis* and any single taxon, given that the trends of lower richness with higher biomass observed here seem to be due to singletons.
+
+\*\*Does this suggest a kind of portfolio effect, but at the level of productive individuals (vs. species), and in the opposite direction due to competition?
+
+This could be due to a lower chance of sampling species in an area with a few big trees. -- What does the stem number distribution look like by distance and/or genus?
+
+```{r stemdist, include=F}
+ggplot(datsumt,aes(x=dist,y=freq,color=gen))+
+  geom_point(stat="identity")+
+  geom_errorbar(aes(ymax=freq+freq.se,
+                    ymin=freq-freq.se))
+  #scale_y_continuous(trans="log10")
+```
+
+Seems like it is true, that fewer individuals of rare species occurred in plots that also had the most massive (and the least massive) individual trees.
+
+```{r rabund, include=F}
+ggplot(datpt,aes(x=reorder(gen,-kg)))+
+  geom_histogram(stat="count")+
+  theme(axis.text.x=element_text(angle=-45,hjust=0))
+  #facet_wrap(~dist)
+```
+
+```{r kghist, include=F}
+ggplot(datp,aes(x=log10(kg)))+
+  geom_histogram(bins=10)
+#testforlog-normal?
+```
+
+Fig \#a. Frequency distribution of biomass tends to appear log-normal.
+
+```{r kghistBomba, include=F}
+ggplot(datBp,aes(x=kg))+
+  geom_histogram(binwidth=log10(15))
+#testforlog-normal?
+```
+
+DISCUSSION - explain hump b/c proximity on road side + -- lower richness b/c earlier-successional (20y) - Vochysia is wind-dispersed; is avg 200m?
+
+### Community composition
+
+#### Shannon diversity
+
+```{r rdist, include=F}
+plot(datp$dist, datp$r)
+
+datsumr <- summarise(.data = datp,
+                     r.se = sd(r)/sqrt(length(r)),
+                     r = mean(r))
+ggplot(data = datsumr, aes(x = dist, y = r)) +
+  geom_point() +
+  geom_errorbar(aes(ymax = r + r.se,
+                    ymin = r - r.se))
+
+summary(lm(r~poly(dist,degree=2),data=datp))
+```
+
+Fig 3. Richness-by-distance relationship significantly fits a negative quadratic model (p\<0.01, R2=0.22).
+
+(Which [rare] species were lost?)
+
+Together, Figs 1 and 3 show that higher biomass tended to occur in plots with lower taxonomic richness.
+
+```{r Skg, include=F}
+Skgsum<-summary(lm(log10(kg)~log10(r),data=datsumd[datsumd$dist!=300,]))
+ggplot(datsumd[datsumd$dist!=300,],aes(x=r,y=kg))+
+  geom_point()+
+  geom_errorbarh(aes(xmax=r+r.se,xmin=r-r.se))+
+  geom_errorbar(aes(ymax=kg+kg.se,ymin=kg-kg.se))+
+  scale_x_continuous(trans="log10")+
+  scale_y_continuous(trans="log10")+
+  geom_abline(intercept=Skgsum$coefficients[1],
+              slope=Skgsum$coefficients[2])
+```
+
+Fig 4. Biomass-richness relationship marginally significantly fits a straight line on a log-log plot (p=0.066, R2=0.63).
+
+\#Conclusions Higher biomass tended to occur in areas that also showed lower taxonomic richness at \>10 years after abandonment of the *Bombacopsis* tree plantation.
+
+\#\#Attic \#\#\#Vochysia
+
+```{r groupV, include=F}
+#datV <- read.csv("~/Documents/u/0/dat/osa/osa.csv")
+#datV <- subset(datV, subset=gen=="Vochysia")
+
+#datV <- group_by(datV, dist,n)
+#datV <- summarise(datV, kg=mean(kg))
+
+#datV <- group_by(datV, dist)
+#datV <- summarise(datV, kg.se=sd(kg)/sqrt(length(kg)),
+#                 kg=mean(kg))
+```
+
+```{r dist_kgV}
+#ggplot(datV, aes(x=dist,y=kg)) +
+#  geom_point(stat='identity', size=3) +
+#  geom_errorbar(aes(ymax=kg+kg.se, ymin=kg-kg.se)) +
+#  theme_classic()
+```

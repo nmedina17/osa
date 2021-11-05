@@ -1,8 +1,6 @@
 library(here)
-source(
-  here(
-  "figs/style.R"
-  )
+i_am(
+  "figs/fig1.R"
 )
 source(
   here(
@@ -12,6 +10,8 @@ source(
 #plotResultsTbl
 library(glue)
 #annotate()
+
+library(oir)
 
 
 #userInput

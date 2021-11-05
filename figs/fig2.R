@@ -1,8 +1,6 @@
 library(here)
-source(
-  here(
-    "figs/style.R"
-  )
+i_am(
+  "figs/fig2.R"
 )
 #taxMetric
 source(
@@ -13,6 +11,8 @@ source(
 #plotResultsTbl
 library(glue)
 #annotate()
+
+library(oir)
 
 
 #plan:

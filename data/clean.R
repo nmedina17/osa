@@ -22,6 +22,11 @@ dispersal <- vroom(
     gen,
     sp,
     mainDispersal
+  ) %>%
+  filter(
+    !is.na(
+      gen
+    )
   )
 
 
@@ -78,5 +83,10 @@ cleanData <- rawData %>%
   cleanData() %>%
   full_join(
     dispersal
+  ) %>%
+  filter(
+    !is.na(
+      dist
+    )
   )
 
