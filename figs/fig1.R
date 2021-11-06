@@ -72,7 +72,7 @@ graph1 <-  statData %>%
     varForm[[2]],
     xAxisLabel,
     yAxisLabel1,
-    ..addGroups = T,
+    ..addBins = T,
     ..cleanData = underData
   ) +
   scale_y_continuous(
@@ -91,7 +91,7 @@ graph2 <- statData %>%
     varForm[[2]],
     xAxisLabel,
     yAxisLabel2,
-    ..addGroups = T,
+    ..addBins = T,
     ..cleanData = underData
   )
 graph2
@@ -107,7 +107,7 @@ graph3 <- statData %>%
     varForm[[2]],
     xAxisLabel,
     yAxisLabel3,
-    ..addGroups = T,
+    ..addBins = T,
     ..cleanData = underData
   )
 graph3
@@ -123,7 +123,7 @@ graph4 <- statData %>%
     varForm[[2]],
     xAxisLabel,
     yAxisLabel4,
-    ..addGroups = T
+    ..addBins = T
   )
 graph4
 
