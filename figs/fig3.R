@@ -2,23 +2,19 @@ library(
   here
 )
 i_am(
-  "analysis/figs/fig3"
+  "figs/fig3"
 )
 source(
   here(
-    "analysis/stats.R"
+    "figs/stats.R"
   )
 )
-# source(
-#   here(
-#     "figs/style.R"
-#   )
-# )
 source(
   here(
     "figs/fig1.R"
   )
 )
+library(oir)
 
 
 #plan:
@@ -35,5 +31,7 @@ underData
 
 #panel
 
-graph1
+graph1 <- dotGraph(
+
+)
 

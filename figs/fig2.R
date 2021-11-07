@@ -13,6 +13,7 @@ library(glue)
 #annotate()
 
 library(oir)
+library(ggpubr)
 
 
 #plan:
@@ -87,7 +88,7 @@ graph1 <- statData12 %>%
     varForm[[2]],
     xAxisLabel,
     yAxisLabel1,
-    ..addGroups = T
+    ..addBins = T
   )
 graph1
 
@@ -101,7 +102,7 @@ graph2 <- statData12 %>%
     varForm[[2]],
     xAxisLabel,
     yAxisLabel2,
-    ..addGroups = T
+    ..addBins = T
   )
 
 #addLine
@@ -117,7 +118,7 @@ graph3 <- statData34 %>%
     taxForm[[2]],
     xAxisLabel,
     yAxisLabel3,
-    ..addGroups = T
+    ..addBins = T
   ) +
   scale_y_log10()
 graph3
@@ -132,7 +133,7 @@ graph4 <- statData34 %>%
     taxForm[[2]],
     xAxisLabel,
     yAxisLabel4,
-    ..addGroups = T
+    ..addBins = T
   )
 graph4
 #Ficus2few...
@@ -149,7 +150,7 @@ graph5 <- statData34 %>%
     varForm[[2]],
     xAxisLabel,
     yAxisLabel5,
-    ..addGroups = T
+    ..addBins = T
   )
 graph5
 
@@ -159,7 +160,7 @@ fig2 <- ggarrange(
   graph1,
   graph2,
   graph3,
-  graph4,
-  graph5
+  graph4
+  # graph5
 )
 fig2
