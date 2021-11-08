@@ -186,41 +186,32 @@ spStatTbl <- cleanData %>%
   select(
     dist,
     plot,
-    {
-      {
-        taxRank
-      }
-    },
-    {
-      {
-        taxMetric
-      }
-    }
+    mainDispersal,
+    {{
+      taxRank
+    }},
+    {{
+      taxMetric
+    }}
   ) %>%
   add_count(
-    {
-      {
-        taxRank
-      }
-    },
+    {{
+      taxRank
+    }},
     plot,
   ) %>%
   #collapse
   distinct(
-    {
-      {
-        taxRank
-      }
-    },
+    {{
+      taxRank
+    }},
     plot,
     .keep_all = T
   ) %>%
   nest(
-    "varData" = -{
-      {
-        taxRank
-      }
-    }
+    "varData" = -{{
+      taxRank
+    }}
   ) %>%
 
   #QCshapiro
@@ -391,3 +382,15 @@ taxaResultsTbl12 <- spStatTbl %>%
 
 
 #DISPERSAL?
+
+taxModel0 <- {
+  taxMetric %>%
+    eval()
+} ~ mainDispersal
+
+
+taxaResultsTbl0 <- spStatTbl %>%
+  getStatsTbl(
+    taxModel0
+  )
+

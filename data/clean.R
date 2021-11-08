@@ -90,3 +90,7 @@ cleanData <- rawData %>%
     )
   )
 
+cleanData$mainDispersal <- cleanData$
+  mainDispersal %>%
+  as_factor()
+levels(cleanData$mainDispersal)
