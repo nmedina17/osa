@@ -75,6 +75,7 @@ plotVarsTbl <- cleanData %>%
 
   group_by(
     dist,
+    # mainDispersal,
     plot
   ) %>%
   mutate(
@@ -113,6 +114,7 @@ plotVarsTbl <- cleanData %>%
         ~ .x %>%
           group_by(
             dist
+            # mainDispersal
           ) %>%
           summarize(
             median = median(
@@ -180,13 +182,16 @@ ordStat = adonis(
 taxMetric <- quote(
   kg17
 )
+#dispersal
+taxRank <- quote(
+  mainDispersal
+)
 
 
 spStatTbl <- cleanData %>%
   select(
     dist,
     plot,
-    mainDispersal,
     {{
       taxRank
     }},
@@ -382,15 +387,15 @@ taxaResultsTbl12 <- spStatTbl %>%
 
 
 #DISPERSAL?
-
-taxModel0 <- {
-  taxMetric %>%
-    eval()
-} ~ mainDispersal
-
-
-taxaResultsTbl0 <- spStatTbl %>%
-  getStatsTbl(
-    taxModel0
-  )
+#
+# mainModel0 <- {
+#   mainMetric %>%
+#     eval()
+# } ~ dist * mainDispersal
+#
+#
+# dispResultsTbl0 <- plotVarsTbl %>%
+#   getStatsTbl(
+#     mainModel0
+#   )
 

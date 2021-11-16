@@ -143,16 +143,16 @@ graph4
 
 #panel
 
-graph5 <- statData34 %>%
-  dotGraph(
-    measure5,
-    varForm[[3]],
-    varForm[[2]],
-    xAxisLabel,
-    yAxisLabel5,
-    ..addBins = T
-  )
-graph5
+# graph5 <- statData34 %>%
+#   dotGraph(
+#     measure5,
+#     varForm[[3]],
+#     varForm[[2]],
+#     xAxisLabel,
+#     yAxisLabel5,
+#     ..addBins = T
+#   )
+# graph5
 
 
 
