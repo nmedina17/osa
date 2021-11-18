@@ -143,7 +143,6 @@ graph4
 
 #panel
 
-<<<<<<< HEAD
 # graph5 <- statData34 %>%
 #   dotGraph(
 #     measure5,
@@ -154,18 +153,6 @@ graph4
 #     ..addBins = T
 #   )
 # graph5
-=======
-graph5 <- statData34 %>%
-  dotGraph(
-    measure5,
-    varForm[[3]],
-    varForm[[2]],
-    xAxisLabel,
-    yAxisLabel5,
-    ..addBins = T
-  )
-graph5
->>>>>>> d64599d (ready pull merge)
 
 
 
