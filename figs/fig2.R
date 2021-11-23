@@ -2,7 +2,11 @@ library(here)
 i_am(
   "figs/fig2.R"
 )
-#taxMetric
+#taxMetric,mainMetric
+#plotResultsTbl1,taxaResultsTbl1
+taxRank <- quote(
+  gen
+)
 source(
   here(
     "analysis/stats.R"
@@ -25,35 +29,42 @@ library(ggpubr)
 #userInput
 
 
-measure1 <- quote(
+measure2a <- quote(
   richness
 )
-yAxisLabel1 <- "Richness"
+yAxisLabel2a <- "Richness"
 
-measure2 <- quote(
+measure2b <- quote(
   entropy
 )
-yAxisLabel2 <- quote(
+yAxisLabel2b <- quote(
   "Diversity"
 )
 
-measure3 <- quote(
+measure2c <- quote(
   Vochysia
 )
-yAxisLabel3 <- quote(
+taxMetricUnit <- "kg"
+yAxisLabel2c <- quote(
   glue(
-    measure3,
-    " prevalence"
+    measure2c,
+    " prevalence",
+    " (",
+    taxMetricUnit,
+    ")"
   )
 )
 
-measure4 <- quote(
+measure2d <- quote(
   Ficus
 )
-yAxisLabel4 <- quote(
+yAxisLabel2d <- quote(
   glue(
-    measure4,
-    " prevalence"
+    measure2d,
+    " prevalence",
+    " (",
+    taxMetricUnit,
+    ")"
   )
 )
 
@@ -70,97 +81,114 @@ taxForm <- {
 xAxisLabel <- quote(
   "Distance to secondary forest edge (m)"
 )
-statData12 <- plotResultsTbl1
-statData34 <- taxaResultsTbl1 %>%
+statData2ab <- plotResultsTbl1
+statData2cd <- taxaResultsTbl1 %>%
   rename(
-    "variable" = "gen"
+    variable = all_of(
+      taxRank
+    )
   )
-underData <- cleanData
+statData2e <- ordTbl
 
 
 
 #panel
 
-graph1 <- statData12 %>%
+graph2a <- statData2ab %>%
   dotGraph(
-    measure1,
+    measure2a,
     varForm[[3]],
     varForm[[2]],
     xAxisLabel,
-    yAxisLabel1,
-    ..addBins = T
+    yAxisLabel2a,
+    ..addCenters = T
   )
-graph1
+graph2a
 
 
 #panel
 
-graph2 <- statData12 %>%
+graph2b <- statData2ab %>%
   dotGraph(
-    measure2,
+    measure2b,
     varForm[[3]],
     varForm[[2]],
     xAxisLabel,
-    yAxisLabel2,
-    ..addBins = T
+    yAxisLabel2b,
+    ..addCenters = T
   )
 
 #addLine
-graph2
+graph2b
 
 
 #panel
 
-graph3 <- statData34 %>%
+graph2c <- statData2cd %>%
   dotGraph(
-    measure3,
+    measure2c,
     taxForm[[3]],
     taxForm[[2]],
     xAxisLabel,
-    yAxisLabel3,
-    ..addBins = T
+    yAxisLabel2c,
+    ..addCenters = T
   ) +
   scale_y_log10()
-graph3
+graph2c
 
 
 #panel
 
-graph4 <- statData34 %>%
+graph2d <- statData2cd %>%
   dotGraph(
-    measure4,
+    measure2d,
     taxForm[[3]],
     taxForm[[2]],
     xAxisLabel,
-    yAxisLabel4,
-    ..addBins = T
+    yAxisLabel2d,
+    ..addCenters = T
   )
-graph4
+graph2d
 #Ficus2few...
-
-#HERE
 
 
 #panel
 
-# graph5 <- statData34 %>%
-#   dotGraph(
-#     measure5,
-#     varForm[[3]],
-#     varForm[[2]],
-#     xAxisLabel,
-#     yAxisLabel5,
-#     ..addBins = T
-#   )
-# graph5
+graph2e <- ordTbl %>%
+  ggplot(
+    aes(
+      x = PC1,
+      y = PC2,
+      color = as_factor(
+        dist
+      )
+    )
+  ) +
+  geom_point() +
+  stat_ellipse() +
+  theme(
+    legend.position = "top"
+  )
+graph2e
 
 
 
 fig2 <- ggarrange(
-  graph1,
-  graph2,
-  graph3,
-  graph4
-  # graph5
+  ggarrange(
+    graph2a,
+    graph2b,
+    graph2c,
+    graph2d,
+    ncol = 2,
+    nrow = 2,
+    labels = c(
+      "a", "b", "c", "d"
+    )
+  ),
+  graph2e,
+  labels = c(
+    "", "e"
+  ),
+  ncol = 2
 )
 fig2

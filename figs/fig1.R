@@ -2,6 +2,8 @@ library(here)
 i_am(
   "figs/fig1.R"
 )
+#median,dist
+#plotResultsTbl,cleanData
 source(
   here(
     "analysis/stats.R"
@@ -21,16 +23,16 @@ library(ggpubr)
 #userInput
 #sortbyPvals
 
-measure1 <- quote(
+measure1a <- quote(
   kg17
 )
-yAxisLabel1 <- quote(
+yAxisLabel1a <- quote(
   "Aboveground biomass (kg)"
 )
-measure2 <- quote(
+measure1b <- quote(
   spg
 )
-yAxisLabel2 <- quote(
+yAxisLabel1b <- quote(
   expression(
     paste(
       "Wood density (cm"^3,
@@ -39,16 +41,16 @@ yAxisLabel2 <- quote(
     )
   )
 )
-measure3 <- quote(
+measure1c <- quote(
   h
 )
-yAxisLabel3 <- quote(
+yAxisLabel1c <- quote(
   "Tree height (m)"
 )
-measure4 <- quote(
+measure1d <- quote(
   luz
 )
-yAxisLabel4 <- quote(
+yAxisLabel1d <- quote(
   "Canopy light (%)"
 )
 
@@ -65,7 +67,7 @@ underData <- cleanData
 
 #panel
 
-graph1 <-  statData %>%
+graph1a <-  statData %>%
   dotGraph(
     measure1,
     varForm[[3]],
@@ -78,13 +80,13 @@ graph1 <-  statData %>%
   scale_y_continuous(
     trans = "log10"
   )
-graph1
+graph1a
 
 
 
 #panel
 
-graph2 <- statData %>%
+graph1b <- statData %>%
   dotGraph(
     measure2,
     varForm[[3]],
@@ -94,13 +96,13 @@ graph2 <- statData %>%
     ..addBins = T,
     ..cleanData = underData
   )
-graph2
+graph1b
 
 
 
 #panel
 
-graph3 <- statData %>%
+graph1c <- statData %>%
   dotGraph(
     measure3,
     varForm[[3]],
@@ -110,13 +112,13 @@ graph3 <- statData %>%
     ..addBins = T,
     ..cleanData = underData
   )
-graph3
+graph1c
 
 
 
 #panel
 
-graph4 <- statData %>%
+graph1d <- statData %>%
   dotGraph(
     measure4,
     varForm[[3]],
@@ -125,15 +127,15 @@ graph4 <- statData %>%
     yAxisLabel4,
     ..addBins = T
   )
-graph4
+graph1d
 
 
 
 fig1 <- ggarrange(
-  graph1,
-  graph2,
-  graph3,
-  graph4,
+  graph1a,
+  graph1b,
+  graph1c,
+  graph1d,
   nrow = 2,
   ncol = 2
 )

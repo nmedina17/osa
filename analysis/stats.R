@@ -17,10 +17,10 @@ library(ggpmisc)
 
 
 
-#userInput
-taxRank <- quote(
-  gen
-)
+#userInput--parentFile
+# taxRank <- quote(
+#   gen
+# )
 
 #4vegan
 spTbl <- cleanData %>%
@@ -31,22 +31,18 @@ spTbl <- cleanData %>%
     )
   ) %>%
   add_count(
-    {
-      {
-        taxRank
-      }
-    },
+    {{
+      taxRank
+    }},
     plot, #group
     name = "n_tax",
     sort = T
     ) %>%
   pivot_wider(
     id_cols = plot,
-    names_from = {
-      {
-        taxRank
-      }
-    },
+    names_from = {{
+      taxRank
+    }},
     values_from = n_tax,
     #rmwarn
     values_fn = length,
@@ -175,16 +171,18 @@ ordStat = adonis(
 )
 
 
+ordTbl <- commTbl %>%
+  getOrdVarTbl(
+    metaTbl
+  )
+
+
 
 #taxa
 
 #user
 taxMetric <- quote(
   kg17
-)
-#dispersal
-taxRank <- quote(
-  mainDispersal
 )
 
 
