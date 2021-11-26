@@ -384,16 +384,16 @@ taxaResultsTbl12 <- spStatTbl %>%
 
 
 
-#DISPERSAL?
+#DISPERSAL
 #
-# mainModel0 <- {
-#   mainMetric %>%
-#     eval()
-# } ~ dist * mainDispersal
-#
-#
-# dispResultsTbl0 <- plotVarsTbl %>%
-#   getStatsTbl(
-#     mainModel0
-#   )
+mainModel0 <- {
+  taxMetric %>%
+    eval()
+} ~ dist # * mainDispersal
+
+
+dispResultsTbl0 <- spStatTbl %>%
+  oir::statFitTbl(
+    mainModel0
+  )
 
