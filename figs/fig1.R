@@ -148,6 +148,9 @@ fig1 <- ggarrange(
     "b",
     "c",
     "d"
+  ),
+  font.label = list(
+    size = 8
   )
 )
 
