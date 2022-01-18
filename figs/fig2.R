@@ -79,7 +79,7 @@ taxForm <- {
     eval()
 } ~ dist
 xAxisLabel <- quote(
-  "Distance to secondary forest edge (m)"
+  "Distance to edge (m)"
 )
 statData2ab <- plotResultsTbl1
 statData2cd <- taxaResultsTbl1 %>%

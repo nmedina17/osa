@@ -2,65 +2,66 @@ library(
   here
 )
 i_am(
-  "figs/fig3"
+  "figs/fig3.R"
 )
 taxRank <- quote(
   mainDispersal
 )
+#re-run
+#taxaResultsTbl1
 source(
   here(
-    "figs/stats.R"
+    "analysis/stats.R"
   )
 )
-# source(
-#   here(
-#     "figs/fig1.R"
-#   )
-# )
-library(oir)
 
 
-#plan:
-#dist-x-Xkernels4dispersalModes
 
-measure31 <- quote(
-  wind
-)
-yAxisLabel1 <- quote(
-  "Aboveground biomass (kg)"
-)
-varForm1 <- {
-  taxMetric %>%
-    eval()
-} ~ dist * mainDispersal
-xAxisLabel <- quote(
+xAxisLabel3 <- quote(
   "Distance to secondary forest edge (m)"
 )
-statData1 <- taxaResultsTbl %>%
-  rename(
-    "variable" = "mainDispersal"
-  ) %>%
+yAxisLabel3 <- quote(
+  "Aboveground biomass (kg)"
+)
+statData3 <- taxaResultsTbl1 %>%
+  unnest(
+    "varData"
+  )
 
-  filter(
-    !is.na(
-      variable
+
+
+theme_set(
+  style
+)
+
+fig3 <- statData3 %>%
+  # dotGraph()
+  ggplot(
+    aes(
+      x = dist,
+      y = {{
+        taxMetric
+      }},
+      color = mainDispersal
     )
-  ) #waterSignif
-# underData <-
-
-
-
-#panel
-
-graph1 <- statData1 %>%
-  dotGraph(
-    measure31,
-    varForm1[[3]][[2]],
-    varForm1[[2]],
-    xAxisLabel,
-    yAxisLabel1
-    # ..useGroups = varForm1[[3]][[3]]
-) +
-  scale_y_log10()
-
-graph1
+  ) +
+  geom_quasirandom() +
+  labs(
+    x = xAxisLabel3,
+    y = yAxisLabel3
+  ) +
+  scale_y_log10() +
+  theme(
+    legend.position = "top"
+  ) +
+  # geom_smooth(
+  #   method = "lm",
+  #   se = F
+  # ) +
+  stat_summary(
+    fun.data = "median_mad",
+    position = position_dodge(
+      width = 25
+    )
+  )
+fig3

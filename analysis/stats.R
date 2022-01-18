@@ -17,7 +17,7 @@ library(ggpmisc)
 
 
 
-#userInput--parentFile
+# #userInput--parentFile
 # taxRank <- quote(
 #   gen
 # )
@@ -393,7 +393,7 @@ mainModel0 <- {
 
 
 dispResultsTbl0 <- spStatTbl %>%
-  oir::statFitTbl(
+  oir::getStatsTbl(
     mainModel0
   )
 

@@ -62,7 +62,8 @@ cleanData <- function(
         genus = gen,
         species = sp,
         family = fam,
-        stand = plot
+        stand = plot,
+        verbose = F
       ) %>%
         pull(
           meanWD
@@ -94,3 +95,9 @@ cleanData$mainDispersal <- cleanData$
   mainDispersal %>%
   as_factor()
 levels(cleanData$mainDispersal)
+
+
+#userInput--parentFile
+taxRank <- quote(
+  gen
+)

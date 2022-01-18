@@ -57,7 +57,7 @@ yAxisLabel1d <- quote(
 
 varForm <- median ~ dist
 xAxisLabel <- quote(
-  "Distance to secondary forest edge (m)"
+  "Distance to edge (m)"
 )
 statData <- plotResultsTbl1
 underData <- cleanData
@@ -69,13 +69,14 @@ underData <- cleanData
 
 graph1a <-  statData %>%
   dotGraph(
-    measure1,
+    measure1a,
     varForm[[3]],
     varForm[[2]],
     xAxisLabel,
-    yAxisLabel1,
+    yAxisLabel1a,
     ..addBins = T,
-    ..cleanData = underData
+    ..cleanData = underData,
+    ..addCenters = T
   ) +
   scale_y_continuous(
     trans = "log10"
@@ -88,13 +89,15 @@ graph1a
 
 graph1b <- statData %>%
   dotGraph(
-    measure2,
+    measure1b,
     varForm[[3]],
     varForm[[2]],
     xAxisLabel,
-    yAxisLabel2,
+    yAxisLabel1b,
     ..addBins = T,
-    ..cleanData = underData
+    ..cleanData = underData,
+    ..addCenters = T,
+    ..addLines = T
   )
 graph1b
 
@@ -104,13 +107,14 @@ graph1b
 
 graph1c <- statData %>%
   dotGraph(
-    measure3,
+    measure1c,
     varForm[[3]],
     varForm[[2]],
     xAxisLabel,
-    yAxisLabel3,
+    yAxisLabel1c,
     ..addBins = T,
-    ..cleanData = underData
+    ..cleanData = underData,
+    ..addCenters = T
   )
 graph1c
 
@@ -120,12 +124,13 @@ graph1c
 
 graph1d <- statData %>%
   dotGraph(
-    measure4,
+    measure1d,
     varForm[[3]],
     varForm[[2]],
     xAxisLabel,
-    yAxisLabel4,
-    ..addBins = T
+    yAxisLabel1d,
+    ..addBins = T,
+    ..addCenters = T
   )
 graph1d
 
@@ -137,7 +142,24 @@ fig1 <- ggarrange(
   graph1c,
   graph1d,
   nrow = 2,
-  ncol = 2
+  ncol = 2,
+  labels = c(
+    "a",
+    "b",
+    "c",
+    "d"
+  )
 )
 
+
 fig1
+
+
+ggsave(
+  "fig1.pdf",
+  fig1,
+  path = "figs",
+  width = 3,
+  height = 3,
+  units = "in"
+)
