@@ -1,0 +1,130 @@
+---
+title: "Introduction"
+output: html_notebook
+---
+
+
+1.  importance of reforestation/regeneration/regrowth
+
+2.  patterns of reforestation
+
+    1.  general
+
+    2.  tropical
+
+3.  things that affect reforestation
+
+    1.  edge effects
+
+    2.  plantation structure?
+
+4.  [for NGO--start biomass census]
+
+    1.  Does leaving the plantation structure help reforestation?
+
+        1.  shade
+
+        2.  edge effects (i.e. buffer)
+
+    2.  How does the forest regenerate by distance to primary forest?
+
+        1.  how much [effort] do we need to re-seed? / how much can we leave to nature?
+
+Global forest and landscape regeneration is a key conservation and climate change mitigation strategy, adopted internationally (\@UN14 Paris, Bonn Challenge).
+
+-   Tropical forests store most terrestrial biomass ( @pan2013 ) and biodiversity (CITE, but are losing functions, especially in the neotropics ( @hubau2020 ), as most tropical forests become secondary (\@FAO20.
+
+Secondary forests can regenerate relatively quickly compared to old-growth forests in some ways, but in other ways remain distinct.
+
+-   Neotropical secondary forests accumulate biomass \>10x faster than old-growth forests ( @poorter2016 ), and offset \~10% of carbon emissions from Amazonian deforestation ( @smith2020 ).
+-   They also recover taxonomic richness quite quickly, averaging 80% of old-growth forest levels in 20y ( @rozendaal2019 ).
+-   However, secondary neotropical forests diverge widely in taxonomic composition ( @norden2015 ).
+
+Divergent communities among secondary forests may ultimately warrant more localized conservation efforts, studying relative effects of generalized community processes.
+
+Half of all forests lie half of a kilometer from an ecotone ( @haddad2015 ), suggesting that edge effects from adjacent habitats are widespread aspects of secondary forest regeneration.
+
+-   Tropical forests lose 22% carbon along edges \>100m, in part due to shorter trees and less leaf mass ( @ordway2020 ).
+
+Here we report the edge effects of an abandoned wet neotropical timber plantation.
+
+-   We hypothesized that remnant timber trees would mediate forest regrowth by maintaining uniform shade that would suppress shade-intolerant / pioneer trees / taxa and allow for more diversity.
+
+    -   supported by inference?!
+
+Forest regeneration has the potential to store \#\#C and preserve \#\# diversity globally in the coming decades (UN, Bonn challenge).
+
+At local scales, regeneration is strongly affected by landscape [ecological] heterogeneity as well as management history.
+
+However, patterns of forest regeneration remain unclear, especially at more local scales (\< \~50 ha).
+
+Syntheses (Finegan 1996) and chronosequence studies show that secondary forests mostly regenerate (\~50-80%, compared to old-growth forests) rather quickly (decades, \< 20 years), mainly with respect to tree height, above-ground biomass (Poorter et al 2016), and species richness, especially in wetter regions (Rozendaal et al 2019, Onyekwelu & Olabiwonnu 2016).
+
+However, while restoring species richness may be enough to maintain some ecosystem functions like carbon storage (Liu et al 2018), it does not guarantee the restoration of species composition.
+
+Instead, changes to species composition likely last up to centuries, showing a strong legacy of priority effects from pioneering, early-successional communities that are mostly fast-growing, low-wood-density, and shade-intolerant (Tabarelli et al 2014, Tabarelli & Lopes 2008).
+
+forests show legacy effects of common human activity, like logging and intensive agriculture/agroforestry/silviculture (FAO 2020).
+
+[High] Regional biodiversity [can] affects/increases the uncertainty about the local occurrences and outcomes of specific species interactions,
+
+such as after dispersal and/or niche overlap [CITE-niche, neutral theory].
+
+[At the same time,] Diverse local management activity modifies demographic states/profiles of various taxa's population dynamics.
+
+For example, active timber plantations strongly promote the population growth of focal taxa at the expense of non-focal taxa.
+
+After abandonment, however, the ecosystem likely reflects how continuous regional ecological processes look different given past management.
+
+such as seed dispersal from nearby primary forest edges.
+
+[These] Interactions between background ecology and human management ultimately have both local and general implications for the potential conservation/stability of ecosystem services/functions
+
+like biomass/carbon storage and biodiversity maintenance,
+
+as well as manager livelihood.
+
+Slower changes in composition can also be influenced by seed banks, herbivore communities, and dispersal from the surrounding landscape, all of which may affect diverging restoration trajectories among tropical forests (Nordon et al 2015, Christensen 2014, Munroe et al 2013, Chazdon et al 2007).
+
+but lagging changes in composition may contribute to reduced effects of diversity on other forest functions (Griess et al 2012).
+
+Restoring species composition more quickly is likely a place where active forest managers can have the most unique impacts.
+
+For land managers / foresters with interest in conservation, inheriting land affected by past decisions is a reality. One of the legacies is where the land was placed. To best manage it in the future, an initial assessment of the ecological status of the land is important to understand it's likely trajectory, and what it will need in the future for tailed services/conservation/protection.
+
+Edge effects are known for degrading primary forest, but they can also be used to assist reforestation.
+
+Traditional edge effects act by mortality of large trees that makes room for pioneer species to enter, but existing interior pioneer species also have dispersal radii that overlap with the adjacent exterior, potentially facilitating regeneration.
+
+Encroachment vs. facilitation relies on a balance between mortality (per area) and dispersal + establishment + stem growth.
+
+So pioneer species can be helpful for reforestation though they are typically seen as bad for old forest conservation.
+
+Edge effects, or changes in composition along management gradients, are likely a key variable for the sustainability of neo-tropical landscapes that are heterogenous in management (Wright et al 2009),
+
+with underlying arguments based on metapopulation theory in ecology (Levins 1969, MacArthur & Wilson 1967), but edge effects have often been studied as threats to nature reserves, rather than how edges might facilitate secondary succession.
+
+Especially for abandoned land that regenerates via various processes (Stanturf et al 2014), the proximity to less disturbed habitat can affect the composition of the regrowing community by changing effective seed dispersal kernels and probability of establishment (Wandrag et al 2017, Guariguata & Ostertag 2001), along with animal disperser communities themselves (Gilroy et al 2014).
+
+While dispersal is complicated (Muller-Landau & Hardesty 2005), it can broadly correlate with simpler plant traits such as height and seed mass (Tamme et al 2014, Thomson et al 2011).
+
+Edge effects can also operate via the style of management, including logging decisions (Edwards et al 2014, Clark et al 2012) and land-use history generally (Omeja et al 2012), can also affect stand diversity maintenance,
+
+with examples of high diversity (compared to older adjacent stands) in agroforests (Oliveira-Neto et al 2017) and native timber plantations (Pryde et al 2015),
+
+possibly by changing early tree survival probabilities, growth rates, and/or competition,
+
+but surprisingly less likely facilitation by nitrogen-fixing trees (Lai et al 2018).
+
+It may also be that due to both high recruitment and mortality (turnover) of pioneering species' stems, transitions from early- to late-successional communities may be more complex than gradual (van Greugel et al 2007).
+
+The persistence of early-successional tree communities has been found to lower the standing biomass, likely due to lower wood density (César et al 2021), and could therefore require a switch in focal timber species (Karsten et al 2014).
+
+To understand the ecological principles behind secondary forest regeneration (Hulshoff & Powers 2019), here we study the regeneration of an abandoned timber plantation as a function of distance from surrounding native forest.
+
+-   how can we expect it to regrow?
+-   how far/much [effort] do we need to re-seed?
+
+We hypothesized that planted canopy species would facilitate regeneration by reducing competitive suppression of more shade-tolerant taxa by pioneering species, having mixed effects on stand diversity.
+
+We also considered how the legacy plantation canopy structure mediated forest stand effects via changes in abiotic conditions like light availability and microtopography (Powers & Peréz-Aviles 2012).

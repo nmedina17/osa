@@ -1,0 +1,18 @@
+---
+title: "Discussion"
+output: html_notebook
+---
+
+
+1.  assess hypotheses
+2.  infer causes of patterns - plantation structure, old legacy trees, or species traits?
+3.  compare inferences to other studies
+4.  recommend future conservation approaches, ecological studies
+
+Under more sustainable forestry that maintains multiple functions, forest stand regeneration is likely more predictable, generally mirroring (i.e. near 1:1 replacement) the targeted tree cutting that is done using information collected about the ecological profiles and ages (when possible) of trees (Duah-Gyamfi et al 2014, Edwards et al 2014).
+
+In contrast, under intensive silviculture that prioritizes the growth of select tree crop species, forest stands can show high wood production (Ferez et al 2015) while also usually showing negative trade-offs with other services, like that with biodiversity given reliance on monoculture planting designs.
+
+In some cases where management decisions are made primarily based on regional economic but not local ecological information, due to limited access to funded scientific reporting (Cook et al 2012), forest stands can perform very poorly all-around.
+
+After this more extreme type of management, it remains uncertain how natural regeneration in secondary forests will proceed, how local ecosystem services will be restored, and how restoration could be managed locally (Laurance et al 2012), e.g. based on surrounding forest proximity.

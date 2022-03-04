@@ -26,28 +26,33 @@ library(ggpubr)
 #-taxaKernels--Vochysia,Guatteria,Virola
 
 
+#defs----
+
+
 #userInput
 
 
 measure2a <- quote(
-  richness
-)
-yAxisLabel2a <- "Richness"
-
-measure2b <- quote(
   entropy
 )
-yAxisLabel2b <- quote(
-  "Diversity"
+yAxisLabel2a <- quote(
+  "Diversity (H')"
 )
 
-measure2c <- quote(
+measure2b <- quote(
+  richness
+)
+yAxisLabel2b <- quote(
+  "Richness"
+)
+
+measure2e <- quote(
   Vochysia
 )
 taxMetricUnit <- "kg"
-yAxisLabel2c <- quote(
+yAxisLabel2e <- quote(
   glue(
-    measure2c,
+    measure2e,
     " prevalence",
     " (",
     taxMetricUnit,
@@ -55,14 +60,25 @@ yAxisLabel2c <- quote(
   )
 )
 
-measure2d <- quote(
+measure2f <- quote(
   Ficus
 )
-yAxisLabel2d <- quote(
+yAxisLabel2f <- quote(
   glue(
-    measure2d,
+    measure2f,
     " prevalence",
     " (",
+    taxMetricUnit,
+    ")"
+  )
+)
+
+measure2c <- quote(
+  kg17
+)
+yAxisLabel2c <- quote(
+  glue(
+    "Biomass (",
     taxMetricUnit,
     ")"
   )
@@ -82,18 +98,22 @@ xAxisLabel <- quote(
   "Distance to edge (m)"
 )
 statData2ab <- plotResultsTbl1
-statData2cd <- taxaResultsTbl1 %>%
+statData2ef <- taxaResultsTbl1 %>%
   rename(
-    variable = all_of(
+    "variable" = all_of(
       taxRank
     )
   )
-statData2e <- ordTbl
+statData2c <- ordTbl
 
 
 
-#panel
+#panel----
 
+plotResultsTbl1$pval[[2]] <-
+  #bug=doublePosition
+  plotResultsTbl12$pval[[2 * 2]] %>%
+  last()
 graph2a <- statData2ab %>%
   dotGraph(
     measure2a,
@@ -101,12 +121,13 @@ graph2a <- statData2ab %>%
     varForm[[2]],
     xAxisLabel,
     yAxisLabel2a,
-    ..addCenters = T
+    ..addCenters = T,
+    ..addCurve = T
   )
 graph2a
 
 
-#panel
+#panel----
 
 graph2b <- statData2ab %>%
   dotGraph(
@@ -115,46 +136,47 @@ graph2b <- statData2ab %>%
     varForm[[2]],
     xAxisLabel,
     yAxisLabel2b,
-    ..addCenters = T
+    ..addCenters = T,
+    ..addLines = T
   )
-
 #addLine
 graph2b
 
 
-#panel
+#panel----
 
-graph2c <- statData2cd %>%
+graph2e <- statData2ef %>%
   dotGraph(
-    measure2c,
+    measure2e,
     taxForm[[3]],
     taxForm[[2]],
     xAxisLabel,
-    yAxisLabel2c,
+    yAxisLabel2e,
     ..addCenters = T
   ) +
   scale_y_log10()
-graph2c
+graph2e
 
 
-#panel
+#panel----
 
-graph2d <- statData2cd %>%
+graph2f <- statData2ef %>%
   dotGraph(
-    measure2d,
+    measure2f,
     taxForm[[3]],
     taxForm[[2]],
     xAxisLabel,
-    yAxisLabel2d,
-    ..addCenters = T
+    yAxisLabel2f,
+    ..addCenters = T,
+    ..addLines = T
   )
-graph2d
+graph2f
 #Ficus2few...
 
 
-#panel
+#panel----
 
-graph2e <- ordTbl %>%
+graph2d <- ordTbl %>%
   ggplot(
     aes(
       x = PC1,
@@ -168,27 +190,128 @@ graph2e <- ordTbl %>%
   stat_ellipse() +
   theme(
     legend.position = "top"
+  ) +
+  labs(
+    color = "Dist (m)"
+  ) +
+  scale_color_brewer(
+    direction = -1
+  ) +
+  annotate(
+    "text",
+    label = glue(
+      "P = ",
+      ordStat$
+        aov.tab$
+        `Pr(>F)` %>%
+        first() %>%
+        round(
+          digits = 2
+        )
+    ),
+    x = -5,
+    y = -5
+  ) +
+  annotate(
+    "text",
+    label = glue(
+      "P = ",
+      ordStat$aov.tab$R2 %>%
+        first() %>%
+        round(
+          digits = 3
+        )
+    ),
+    x = 5,
+    y = 5
   )
-graph2e
+graph2d
 
+
+#panel----
+
+graph2c <- cleanData %>%
+  ggplot(
+    aes(
+      x = reorder(
+        fam,
+        -eval(
+          measure2c
+        )
+      ),
+      y = measure2c %>%
+        eval(),
+      color = as_factor(
+        dist
+      )
+    )
+  ) +
+  geom_quasirandom() +
+  stat_summary(
+    fun.data = "median_mad",
+    color = "black"
+    # size = 1
+  ) +
+  theme(
+    axis.text.x = element_text(
+      angle = -45,
+      hjust = 0
+    ),
+    legend.position = "top"
+  ) +
+  scale_y_log10() +
+  scale_color_brewer(
+    direction = -1
+  ) +
+  labs(
+    color = "Dist (m)",
+    x = "Family",
+    y = yAxisLabel2c %>%
+      eval()
+  )
+graph2c
+
+
+
+#fullfig----
 
 
 fig2 <- ggarrange(
-  ggarrange(
-    graph2a,
-    graph2b,
-    graph2c,
-    graph2d,
-    ncol = 2,
-    nrow = 2,
-    labels = c(
-      "a", "b", "c", "d"
-    )
-  ),
+  graph2a,
+  graph2b,
+  graph2c,
+  graph2d,
   graph2e,
+  graph2f,
+  ncol = 3,
+  nrow = 2,
   labels = c(
-    "", "e"
-  ),
-  ncol = 2
+    "a", "b", "c",
+    "d", "e", "f"
+  )
 )
+
+
 fig2
+
+
+#save----
+
+
+ggsave(
+  "fig2.pdf",
+  fig2,
+  path = "figs",
+  width = 5,
+  height = 3,
+  units = "in"
+)
+
+ggsave(
+  "fig2.png",
+  fig2,
+  path = "figs",
+  width = 5,
+  height = 3,
+  units = "in"
+)

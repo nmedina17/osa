@@ -1,3 +1,5 @@
+# refs ----
+
 library(here)
 i_am(
   "figs/fig1.R"
@@ -20,6 +22,8 @@ library(ggpubr)
 #ggarrange()
 
 
+#
+
 #userInput
 #sortbyPvals
 
@@ -35,17 +39,22 @@ measure1b <- quote(
 yAxisLabel1b <- quote(
   expression(
     paste(
-      "Wood density (cm"^3,
-      " g"^-1,
+      "Wood density (g"^-1,
+      " cm"^-3,
       ")"
     )
   )
 )
 measure1c <- quote(
-  h
+  stems
 )
 yAxisLabel1c <- quote(
-  "Tree height (m)"
+  expression(
+    paste(
+      "Stems (441 m"^-2,
+      ")"
+    )
+  )
 )
 measure1d <- quote(
   luz
@@ -105,6 +114,11 @@ graph1b
 
 #panel
 
+statData$pval[[9]] <-
+  #varsDoubled
+  plotResultsTbl12$pval[[9 * 2]] %>%
+  last()
+
 graph1c <- statData %>%
   dotGraph(
     measure1c,
@@ -113,8 +127,9 @@ graph1c <- statData %>%
     xAxisLabel,
     yAxisLabel1c,
     ..addBins = T,
-    ..cleanData = underData,
-    ..addCenters = T
+    # ..cleanData = underData,
+    ..addCenters = T,
+    ..addCurve = T
   )
 graph1c
 
@@ -152,6 +167,8 @@ fig1 <- ggarrange(
   font.label = list(
     size = 8
   )
+  # widths = 0.25,
+  # heights = 0.25
 )
 
 
@@ -160,6 +177,15 @@ fig1
 
 ggsave(
   "fig1.pdf",
+  fig1,
+  path = "figs",
+  width = 3,
+  height = 3,
+  units = "in"
+)
+
+ggsave(
+  "fig1.png",
   fig1,
   path = "figs",
   width = 3,

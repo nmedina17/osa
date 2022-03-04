@@ -8,6 +8,9 @@ library(tidyverse);
 library(BIOMASS)
 
 
+#import----
+
+##raw----
 rawData <- vroom(
   here("data/raw/osa.csv")
 )
@@ -26,11 +29,76 @@ dispersal <- vroom(
   filter(
     !is.na(
       gen
+    ) &
+      !is.na(
+        mainDispersal
+      )
+  )
+
+##traits----
+traits <- vroom(
+  here(
+    "data/base/try/try19707.csv"
+  )
+) %>% #glimpse()
+  select(
+    AccSpeciesName,
+    TraitName,
+    OrigValueStr,
+    StdValue
+  ) %>%
+
+  ###qc----
+  mutate(
+    StdValue = ifelse(
+      is.na(
+        StdValue
+      ),
+      yes = OrigValueStr,
+      no = StdValue
+    ),
+    "gen" = AccSpeciesName %>%
+      str_split(
+        " "
+      ) %>% #list
+      modify(
+        . %>%
+          first()
+      ) %>%
+      as_vector()
+  ) %>%
+  select(
+    !OrigValueStr
+  ) %>%
+
+  pivot_wider(
+    id_cols = gen,
+    names_from = TraitName,
+    values_from = StdValue
+  )
+
+
+##lifeHist----
+lifeHist <- vroom(
+  here(
+    "data/base/lifeHist.csv"
+  )
+) %>%
+  select(
+    family,
+    genus,
+    dispersalMode,
+    successionalStage
+  ) %>%
+  #qc
+  filter(
+    !is.na(
+      successionalStage
     )
   )
 
 
-cleanData <- function(
+updateRaw <- function(
   ...rawData
 ) {
 
@@ -80,8 +148,11 @@ cleanData <- function(
 }
 
 
+#join----
+
 cleanData <- rawData %>%
-  cleanData() %>%
+  updateRaw() %>%
+
   full_join(
     dispersal
   ) %>%
@@ -89,15 +160,63 @@ cleanData <- rawData %>%
     !is.na(
       dist
     )
-  )
+  ) %>%
+
+  full_join(
+    lifeHist,
+    by = c(
+      "gen" = "genus"
+    )
+  ) %>%
+
+  full_join(
+    traits,
+    by = "gen"
+  ) %>%
+
+  distinct() %>%
+
+  ##qc----
+  rename(
+    "DispersalSyndrome" = "Dispersal syndrome"
+  ) #%>%
+
+#   mutate(
+#     "checkDisp" = DispersalSyndrome %>%
+#       str_detect(
+#         mainDispersal
+#       )
+#   )
+#
+# cleanData %>%
+#   filter(
+#     checkDisp == F &
+#       !is_null(
+#         DispersalSyndrome
+#       )
+#   ) %>%
+#   distinct(
+#     DispersalSyndrome
+#   ) %>%
+#
+#   #ignore
+#   pull()
+
 
 cleanData$mainDispersal <- cleanData$
   mainDispersal %>%
   as_factor()
-levels(cleanData$mainDispersal)
+# levels(cleanData$mainDispersal)
+
+cleanData$successionalStage <- cleanData$
+  successionalStage %>%
+  as_factor()
+
+
+#userStat----
 
 
 #userInput--parentFile
-taxRank <- quote(
-  gen
-)
+# taxRank <- quote(
+#   gen
+# )

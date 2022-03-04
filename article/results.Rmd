@@ -1,0 +1,66 @@
+---
+title: "Results"
+output: html_notebook
+---
+
+
+
+```{r setup, echo = F, message = F}
+knitr::opts_chunk$set(
+  echo = F,
+  message = F,
+  warning = F
+)
+library(here)
+```
+
+
+
+## Biomass
+
+
+
+Distance to primary forest edge was associated with ### more ___, although this did not correlate with ___.
+
+
+<!-- 1.  shade x distance ( @ordway2020 ) + timber sp? -->
+<!-- 2.  height ( @ordway2020 ) -->
+<!-- 3.  wood density ( @poorter2019 ) -->
+<!-- 4.  total biomass x dist ( @ordway2020 ) + timber sp? -->
+<!--   -   maybe system-level curve (e.g. biomass hist) + timber sp -->
+<!--   -   metric hist, vs. sp-abund/diversity hist below -->
+<!--     -   max DAP as trait? -->
+
+<!-- [RESULTS TEXT] -->
+
+
+```{r fig1}
+source(
+  here(
+    "figs/fig1.R"
+  )
+)
+fig1
+```
+
+
+
+## Composition
+
+
+
+<!-- 1.  richness -->
+<!-- 2.  diversity x distance [+ 1 timber sp] -->
+<!--   -   can break down by diversity index -->
+<!--     -   compare to NMDS? -->
+<!--   1.  system-level curve (e.g. rank-abund) x distance [+ 1 timber sp] -->
+
+
+```{r fig2}
+source(
+  here(
+    "figs/fig2.R"
+  )
+)
+fig1
+```

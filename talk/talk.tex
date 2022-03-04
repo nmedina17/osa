@@ -1,0 +1,386 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\title{Natural regeneration of a tropical timber plantation}
+\author{Nicholas Medina}
+\date{}
+
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Natural regeneration of a tropical timber plantation},
+  pdfauthor={Nicholas Medina},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\begin{document}
+\maketitle
+
+\hypertarget{outline}{%
+\section{Outline}\label{outline}}
+
+\begin{itemize}
+\tightlist
+\item
+  Introduction
+\item
+  Methods
+\item
+  Results
+\item
+  Discussion
+\end{itemize}
+
+\hypertarget{iglobal-forests-are-regenerating-but-how}{%
+\section{I--Global forests are regenerating, but
+how?}\label{iglobal-forests-are-regenerating-but-how}}
+
+\begin{itemize}
+\item
+  \textasciitilde Half of forests are tropical, and over half of all
+  forests globally are secondary \emph{(FAO 2020)}
+\item
+  Services like timber and biodiversity depend on natural and managed
+  regeneration patterns
+\item
+  Regeneration dynamics should be better understood
+\end{itemize}
+
+\hypertarget{iregeneration-is-quick-and-inconsistent}{%
+\section{I--Regeneration is quick and
+inconsistent}\label{iregeneration-is-quick-and-inconsistent}}
+
+\begin{itemize}
+\item
+  Biomass recovers 90\% in 66 yrs \emph{(Poorter et al 2016 PNAS)}
+\item
+  Taxonomic richness recovers quickly ()
+\item
+  Community composition may take centuries to recover, if at all
+  \emph{(Norder et al 2010 PNAS)}
+\end{itemize}
+
+\hypertarget{iedges-shape-regeneration}{%
+\section{I--Edges shape regeneration}\label{iedges-shape-regeneration}}
+
+\begin{itemize}
+\item
+  70\% forests are \textless1 km from a habitat edge \emph{(Haddad et al
+  2015 Science)}
+\item
+  Edges effects tend to reduce biodiversity by 13 - 75\% via \ldots{}
+  \emph{(``)}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    stronger in small and isolated fragments
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{iedge-effects-may-differ-in-wet-tropical-plantations}{%
+\section{I--Edge effects may differ in wet tropical
+plantations}\label{iedge-effects-may-differ-in-wet-tropical-plantations}}
+
+\begin{itemize}
+\item
+  7\% of global forests are planted and planted area has increased over
+  last 30 yrs \emph{(FAO 2020)}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Often dense with fast-growing, shade-intolerant taxa
+  \end{itemize}
+\item
+  Wet tropical forest regeneration tends to be light-limited, based on
+  tree functional traits \emph{(Poorter et al 2021)}
+\item
+  Existing plantation demography and shade may skew/buffer edge effects
+  toward net positive instead of negative
+\end{itemize}
+
+\hypertarget{ithis-study}{%
+\section{I--This study}\label{ithis-study}}
+
+\begin{itemize}
+\item
+  Question -- How is wet tropical secondary forest regeneration affected
+  by former plantation status and edges with road and primary forest?
+\item
+  Hypothesis --
+
+  \begin{itemize}
+  \item
+    Former plantation status facilitates succession by allowing
+    shade-intolerant taxa to grow better due to \textbf{denser canopies}
+  \item
+    Forest edges promotes regeneration by faciltating \textbf{dispersal}
+    of shade-tolerant taxa
+  \end{itemize}
+\item
+  Predictions -- Distance away from primary forest edge is associated
+  with --
+
+  \begin{itemize}
+  \item
+    lower stand biomass
+  \item
+    lower tree diversity
+  \item
+    lower shade-tolerant taxa
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{iistudy-site}{%
+\section{II--Study site}\label{iistudy-site}}
+
+\begin{itemize}
+\item
+  Wet tropical rainforest in Osa Peninsula, SW Costa Rica
+\item
+  20 ha plantation of dry forest timber, abandoned in
+  \textasciitilde2003 into NRDC preserve
+\item
+  Area surrounded by primary forest on two sides and road on third
+\end{itemize}
+
+\hypertarget{iicensus-design}{%
+\section{II--Census design}\label{iicensus-design}}
+
+\begin{itemize}
+\item
+  Random stratified forest biomass inventory sampling design --
+
+  \begin{itemize}
+  \item
+    divided 300 m range into six 50 m strata, from forest to road edge,
+    using QGIS and ArcGIS
+  \item
+    30, 21 x 21 m plots randomly distributed, but quantity roughly
+    proportional to stratum area
+  \item
+    All plots covered 1 ha total, 5\% of entire plantation
+  \end{itemize}
+\end{itemize}
+
+\includegraphics{../figs/map.png}
+
+\hypertarget{iicensus-measurements}{%
+\section{II--Census measurements}\label{iicensus-measurements}}
+
+\begin{itemize}
+\item
+  Stems ≥10 cm were measured for DBH and height using rangefinder
+  \emph{(Bushnell, Forestry Suppliers, Inc)}
+\item
+  Taxa were ID'd with help from local field guides
+\item
+  Plot canopy closure was measured with densiometer
+\end{itemize}
+
+\hypertarget{iistatistical-analysis}{%
+\section{II--Statistical analysis}\label{iistatistical-analysis}}
+
+\begin{itemize}
+\item
+  For all variables--
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Trend lines follow median values of all plots in distance stratum
+  \end{itemize}
+\item
+  Traits obtained from literature and compared to TRY database
+  \emph{(Kattge et al 2020)}
+\item
+  Computations done with R \texttt{getRversion()} depending on
+  \emph{BIOMASS} \texttt{packageVersion("BIOMASS")}, \emph{vegan}
+  \texttt{packageVersion("vegan")}, and \emph{tidyverse}
+  \texttt{packageVersion("tidyverse")} packages
+\end{itemize}
+
+\hypertarget{iiistand-regeneration}{%
+\section{III--Stand regeneration}\label{iiistand-regeneration}}
+
+\begin{itemize}
+\item
+  Further from primary forest edge--
+
+  \begin{itemize}
+  \item
+    Biomass and wood density tended to increase
+  \item
+    Stem density decreased then increased
+  \item
+    Neither canopy light nor height (not shown) tended to change
+  \end{itemize}
+\item
+  Distance from forest edge tended to explain variation--
+
+  \begin{itemize}
+  \item
+    10\% in wood density
+  \item
+    \textasciitilde20\% in stem density
+  \end{itemize}
+\end{itemize}
+
+\includegraphics{../figs/fig1.png}
+
+\hypertarget{iiicomposition-regeneration}{%
+\section{III--Composition
+regeneration}\label{iiicomposition-regeneration}}
+
+\begin{itemize}
+\item
+  Further from forest edge--
+
+  \begin{itemize}
+  \item
+    Richness tended to increase
+  \item
+    Diversity decreased steeply
+  \item
+    Composition varied notably, toward PC1
+  \item
+    Of abundant taxa biomass--
+
+    \begin{itemize}
+    \item
+      Vochysia tended to decrease
+    \item
+      Ficus decreased
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\includegraphics{../figs/fig2.png}
+
+\hypertarget{iiifunctional-regeneration}{%
+\section{III--Functional
+regeneration}\label{iiifunctional-regeneration}}
+
+\begin{itemize}
+\tightlist
+\item
+\item
+\item
+\end{itemize}
+
+\includegraphics{../figs/fig3.png}
+
+\hypertarget{ivhypothesis-check}{%
+\section{IV--Hypothesis check}\label{ivhypothesis-check}}
+
+\begin{itemize}
+\item
+  Stand biomass is more resilient than biodiversity
+
+  \begin{itemize}
+  \item
+    Further from forest--
+
+    \begin{itemize}
+    \item
+      No trends in biomass
+    \item
+      Diversity decreased
+    \end{itemize}
+  \end{itemize}
+\item
+  Forest edge associated with tree diversity
+\end{itemize}
+
+\hypertarget{ivprocesses-underlying-patterns}{%
+\section{IV--Processes underlying
+patterns}\label{ivprocesses-underlying-patterns}}
+
+\begin{itemize}
+\item
+  not shade\ldots{}
+\item
+  dispersal\ldots{}
+\item
+\end{itemize}
+
+\hypertarget{ivcompare-to-similar-studies}{%
+\section{IV--Compare to similar
+studies}\label{ivcompare-to-similar-studies}}
+
+\begin{itemize}
+\item
+  aligns well with major recent papers
+\item
+\item
+\end{itemize}
+
+\hypertarget{ivfuture-studies}{%
+\section{IV--Future studies}\label{ivfuture-studies}}
+
+\begin{itemize}
+\item
+  Compare wet tropical plantations at different stages of regeneration
+\item
+  Compare forests with different initial composition but in similar
+  region (i.e.~realized vs.~fundamental niches)
+\item
+  Study ecological dynamics under various management conditions
+\end{itemize}
+
+\end{document}

@@ -1,17 +1,24 @@
+# Refs----
+
+
 library(here);
 i_am(
   "analysis/stats.R"
 )
-source(
-  here("data/clean.R")
-)
+
+#run1----
+
+# source(
+#   here("data/clean.R")
+# )
+
 # source(
 #   here("analysis/statsTbl.R")
 # )
 library(tidyverse)
 library(rstatix);
 library(vegan) #diversity()
-library(oir)
+library(oir) #local
 library(ggbeeswarm)
 library(ggpmisc)
 
@@ -21,6 +28,11 @@ library(ggpmisc)
 # taxRank <- quote(
 #   gen
 # )
+
+
+
+# Species tbl ----
+
 
 #4vegan
 spTbl <- cleanData %>%
@@ -57,6 +69,8 @@ spTbl <- cleanData %>%
 
 
 
+# centers ----
+
 plotVarsTbl <- cleanData %>%
   left_join(
     .,
@@ -69,12 +83,15 @@ plotVarsTbl <- cleanData %>%
     copy = T
   ) %>%
 
+  ## plots ----
+
   group_by(
     dist,
     # mainDispersal,
     plot
   ) %>%
   mutate(
+    "stems" = n(),
     "richness" =
       n_distinct(
         sp
@@ -92,6 +109,7 @@ plotVarsTbl <- cleanData %>%
     kg17,
 
     #community
+    stems,
     richness,
     entropy
   ) %>%
@@ -104,6 +122,9 @@ plotVarsTbl <- cleanData %>%
   ) %>%
 
   #nextlevel
+
+  ## dists ----
+
   mutate(
     "varData1" = varData %>%
       modify(
@@ -141,7 +162,7 @@ plotVarsTbl <- cleanData %>%
 
 
 
-#ordinate
+# ordinate ----
 
 commTbl <- spTbl %>%
   select(
@@ -159,15 +180,24 @@ metaTbl <- cleanData %>%
   distinct(
     plot,
     dist
+  ) %>%
+
+  #qc
+  filter(
+    !is.na(
+      plot |
+        dist
+    )
   )
 
 
 ordModel <- distMat ~ dist
 
-ordStat = adonis(
+ordStat <- adonis(
   ordModel,
   metaTbl,
-  99999
+  # 99999
+  permutations = 99
 )
 
 
@@ -178,7 +208,9 @@ ordTbl <- commTbl %>%
 
 
 
-#taxa
+# statsTbls----
+
+## taxa----
 
 #user
 taxMetric <- quote(
@@ -271,6 +303,10 @@ spStatTbl <- cleanData %>%
 
 #ORGANIZE
 
+## plots----
+
+### linear----
+
 
 #user
 mainMetric <- quote(
@@ -293,6 +329,8 @@ plotResultsTbl <- plotVarsTbl %>%
   )
 
 
+### quad----
+
 #get2
 
 mainModel2 <- {
@@ -312,11 +350,20 @@ plotResultsTbl2 <- plotVarsTbl %>%
   )
 
 
+### centers----
+
+
+#### linear----
+
+
 #get1
 plotResultsTbl1 <- plotVarsTbl %>%
   getStatsTbl1(
     mainModel
   )
+
+
+#### quad----
 
 
 #get12

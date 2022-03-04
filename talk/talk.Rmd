@@ -1,22 +1,38 @@
 ---
-title: "R Notebook"
-output: html_notebook
+title: 
+  "Natural regeneration of a tropical timber plantation"
+author: 
+  "Nicholas Medina"
+output: 
+  # slidy_presentation
+  # oislides_presentation
+  # powerpoint_presentation
+  html_notebook
+  # html_document
+  # pdf_document #no
 ---
 
 
-```{r setup, echo=F}
+```{r setup, echo = F, include = F}
 knitr::opts_chunk$set(
-  echo=F, quiet=T)
+  echo = F,
+  quiet = T
+)
 library(
   here
 )
 i_am(
-  "talk/talk.Rpres"
+  "talk/talk.Rmd"
 )
-#fixRender
-library(
-  httpuv
-)
+# #fixRender
+# library(
+#   httpuv
+# )
+#embed_file()
+# library(
+#   xfun
+# )
+# xfun::pkg_load2(c("htmltools", "mime"))
 ```
 
 
@@ -29,114 +45,240 @@ Outline
 - Discussion
 
 
-Introduction: Tropical reforestation
+I--Global forests are regenerating, but how?
 ===
 
-- Over half are secondary, globally
+- ~Half of forests are tropical, and over half of all forests globally are secondary *(FAO 2020)*
 
-- Managed recovery can help support local communities
+- Services like timber and biodiversity depend on natural and managed regeneration patterns
 
-- To make the most of ongoing natural processes, ecological dynamics should be better understood
+- Regeneration dynamics should be better understood
 
 
-Introduction: Community patterns
+I--Regeneration is quick and inconsistent
 ===
 
-- Species richness recovers quickly
+- Biomass recovers 90% in 66 yrs *(Poorter et al 2016 PNAS)*
 
-- But community composition may take centuries
+- Taxonomic richness recovers quickly ()
 
-- So balance of ecosystem service recovery unclear
+- Community composition may take centuries to recover, if at all *(Norder et al 2010 PNAS)*
 
 
-Introduction: This study
+I--Edges shape regeneration
 ===
 
-- Question:
+- 70% forests are <1 km from a habitat edge *(Haddad et al 2015 Science)*
 
-- Hypothesis:
+- Edges effects tend to reduce biodiversity by 13 - 75% via ... *(")*
 
-- Predictions:
+    - stronger in small and isolated fragments
 
 
-Methods: Study site
+I--Edge effects may differ in wet tropical plantations
 ===
 
-- Wet rainforest, Osa Peninsula, Costa Rica
+- 7% of global forests are planted and planted area has increased over last 30 yrs *(FAO 2020)*
 
-- 20 ha. timber plantation, became NRDC preserve post-abandonment ~2003
+    - Often dense with fast-growing, shade-intolerant taxa
+    
+- Wet tropical forest regeneration tends to be light-limited, based on tree functional traits *(Poorter et al 2021)*
 
-- Surrounded by unmanaged/primary forest on 3 sides, road on other
+- Existing plantation demography and shade may skew/buffer edge effects toward net positive instead of negative
+
+
+I--This study
+===
+
+- Question -- How is wet tropical secondary forest regeneration affected by former plantation status and edges with road and primary forest?
+
+- Hypothesis -- 
+
+    - Former plantation status facilitates succession by allowing shade-intolerant taxa to grow better due to __denser canopies__
+    
+    - Forest edges promotes regeneration by faciltating __dispersal__ of shade-tolerant taxa
+
+- Predictions -- Distance away from primary forest edge is associated with --
+
+    - lower stand biomass
+    
+    - lower tree diversity
+    
+    - lower shade-tolerant taxa
+
+
+II--Study site
+===
+
+- Wet tropical rainforest in Osa Peninsula, SW Costa Rica
+
+- 20 ha plantation of dry forest timber, abandoned in ~2003 into NRDC preserve
+
+- Area surrounded by primary forest on two sides and road on third
 
 ```{r site}
 # nature_img.png
 ```
 
 
-Methods: Study design
+II--Census design
 ===
 
-- 300 m transect from unmanaged forest edge inward
+- Random stratified forest biomass inventory sampling design --
 
-- Divided into 50 m bands using Q-, ArcGIS
+    - divided 300 m range into six 50 m strata, from forest to road edge, using QGIS and ArcGIS
 
-- 30 plots randomly assigned, but weighted by band area
+    - 30, 21 x 21 m plots randomly distributed, but quantity roughly proportional to stratum area
 
-![](map.png)
+    - All plots covered 1 ha total, 5% of entire plantation
+
+![](../figs/map.png)
 
 
-Methods: Census
+II--Census measurements
 ===
 
-- DBH, height stems ≥10 cm using rangefinder
+- Stems ≥10 cm were measured for DBH and height using rangefinder *(Bushnell, Forestry Suppliers, Inc)*
 
-- ID by local field guide personnel and books
+- Taxa were ID'd with help from local field guides
 
-- plot canopy closure w/ densiometer, and ground slope
+- Plot canopy closure was measured with densiometer
 
 
-# Results: Forest traits along edge
+II--Statistical analysis
+===
+
+- For all variables--
+
+    - Trend lines follow median values of all plots in distance stratum
+    
+- Traits obtained from literature and compared to TRY database *(Kattge et al 2020)*
+    
+- Computations done with R `getRversion()` depending on *BIOMASS* `packageVersion("BIOMASS")`, 
+*vegan* `packageVersion("vegan")`, and 
+*tidyverse* `packageVersion("tidyverse")` packages
+
+
+III--Stand regeneration
+===
+
+- Further from primary forest edge--
+
+    - Biomass and wood density tended to increase
+
+    - Stem density decreased then increased 
+
+    - Neither canopy light nor height (not shown) tended to change
+    
+- Distance from forest edge tended to explain variation--
+
+    - 10% in wood density
+    
+    - ~20% in stem density
 
 ```{r fig1}
-source(
-  here(
-    "figs/fig1.R"
-  )
-)
-fig1
+# source(
+#   here(
+#     "figs/fig1.R"
+#   )
+# )
+# fig1
 ```
 
+![](../figs/fig1.png)
 
-Results: Composition along edge
+
+III--Composition regeneration
 ===
+
+- Further from forest edge--
+
+    - Richness tended to increase
+
+    - Diversity decreased steeply
+
+    - Composition varied notably, toward PC1
+    
+    - Of abundant taxa biomass--
+    
+        - Vochysia tended to decrease
+        
+        - Ficus decreased
 
 ```{r fig2}
-source(
-  here(
-    "figs/fig2.R"
-  )
-)
-fig2
+# source(
+#   here(
+#     "figs/fig2.R"
+#   )
+# )
 ```
 
+![](../figs/fig2.png)
 
-Results: Dispersal modes along edge
+
+III--Functional regeneration
 ===
+
+- 
+
+- 
+
+- 
 
 ```{r fig3}
-source(
-  here(
-    "figs/fig3.R"
-  )
-)
-fig3
+# source(
+#   here(
+#     "figs/fig3.R"
+#   )
+# )
+# fig3
 ```
 
+![](../figs/fig3.png)
 
-Discussion
+
+IV--Hypothesis check
 ===
 
+- Stand biomass is more resilient than biodiversity
 
+    - Further from forest--
+    
+        - No trends in biomass
+        
+        - Diversity decreased
+
+- Forest edge associated with tree diversity
+
+
+IV--Processes underlying patterns
+===
+
+- not shade...
+
+- dispersal...
+
+- 
+
+
+IV--Compare to similar studies
+===
+
+- aligns well with major recent papers
+
+-
+
+- 
+
+
+IV--Future studies
+===
+
+- Compare wet tropical plantations at different stages of regeneration
+
+- Compare forests with different initial composition but in similar region (i.e. realized vs. fundamental niches)
+
+- Study ecological dynamics under various management conditions      
 
 
 <!-- For more details on authoring R presentations please visit <https://support.rstudio.com/hc/en-us/articles/200486468>. -->
