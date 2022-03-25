@@ -174,6 +174,13 @@ cleanData <- rawData %>%
     by = "gen"
   ) %>%
 
+
+  filter(
+    !is.na(
+      dist
+    )
+  ) %>%
+
   distinct() %>%
 
   ##qc----

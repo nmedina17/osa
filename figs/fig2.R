@@ -224,6 +224,29 @@ graph2d <- ordTbl %>%
     ),
     x = 5,
     y = 5
+  ) +
+
+  theme(
+    #allsmaller
+    legend.text = element_text(
+      size = 8
+    ),
+    legend.key.size = unit(
+      0.2, "cm"
+    ),
+    legend.text.align = 0,
+    legend.key.width = unit(
+      0.2, "cm"
+    ),
+    legend.title = element_text(
+      size = 8
+    ),
+    legend.margin = margin(
+      l = -5,
+      t = -5,
+      b = -5,
+      r = -5
+    )
   )
 graph2d
 
@@ -268,6 +291,29 @@ graph2c <- cleanData %>%
     x = "Family",
     y = yAxisLabel2c %>%
       eval()
+  ) +
+
+  theme(
+    #allsmaller
+    legend.text = element_text(
+      size = 8
+    ),
+    legend.key.size = unit(
+      0.2, "cm"
+    ),
+    legend.text.align = 0,
+    legend.key.width = unit(
+      0.2, "cm"
+    ),
+    legend.title = element_text(
+      size = 8
+    ),
+    legend.margin = margin(
+      l = -5,
+      t = -5,
+      b = -5,
+      r = -5
+    )
   )
 graph2c
 

@@ -16,6 +16,9 @@ source(
     "analysis/stats.R"
   )
 )
+library(
+  glue
+)
 
 
 
@@ -45,10 +48,13 @@ statData3clean <- taxaResultsTbl1 %>%
   unnest(
     "varData"
   )
+
 statData3 <- taxaResultsTbl1 %>%
   rename(
     #keepConsistent
-    "variable" = mainDispersal
+
+    # "variable" = mainDispersal
+    "variable" = successionalStage
   )
 
 
@@ -57,49 +63,17 @@ theme_set(
   style
 )
 
-#draft----
-
-fig3 <- statData3clean %>%
-  # dotGraph()
-  ggplot(
-    aes(
-      x = dist,
-      y = {{
-        taxMetric
-      }},
-      color = mainDispersal
-    )
-  ) +
-  geom_quasirandom() +
-  labs(
-    x = xAxisLabel3,
-    y = yAxisLabel3
-  ) +
-  scale_y_log10() +
-  theme(
-    legend.position = "top"
-  ) +
-  # geom_smooth(
-  #   method = "lm",
-  #   se = F
-  # ) +
-  stat_summary(
-    fun.data = "median_mad",
-    position = position_dodge(
-      width = 25
-    )
-  )
-fig3
-
 
 #panel----
 
 
 fig3a <- statData3clean %>%
   filter(
-    is.na(
-      mainDispersal
-    )
+    !is.na(
+      # mainDispersal
+      successionalStage
+    ) &
+      successionalStage == "Both"
   ) %>%
 
   # dotGraph()
@@ -112,7 +86,14 @@ fig3a <- statData3clean %>%
     )
   ) +
   geom_quasirandom(
-    data = cleanData,
+    data = cleanData %>%
+      filter(
+        !is.na(
+          # mainDispersal
+          successionalStage
+        ) &
+          successionalStage == "Both"
+      ),
     color = "gray"
   ) +
   geom_quasirandom(
@@ -127,15 +108,11 @@ fig3a <- statData3clean %>%
   # theme(
   #   legend.position = "top"
   # ) +
-  # geom_smooth(
-  #   method = "lm",
-  #   se = F
-  # ) +
   stat_summary(
-    fun.data = "median_mad",
-    position = position_dodge(
-      width = 25
-    )
+    fun = "median"
+    # position = position_dodge(
+    #   width = 25
+    # )
   ) +
   stat_smooth(
     method = "lm",
@@ -187,6 +164,120 @@ fig3a
 #     yAxisLabel3
 #   )
 
+
+
+#userDiff----
+
+
+taxRank <- quote(
+  mainDispersal
+  # successionalStage
+)
+#re-run
+#taxaResultsTbl1
+source(
+  here(
+    "analysis/stats.R"
+  )
+)
+
+
+statData3clean <- taxaResultsTbl1 %>%
+  unnest(
+    "varData"
+  )
+
+
+
+#panel----
+
+
+fig3b <- statData3clean %>%
+  filter(
+    !is.na(
+      mainDispersal
+      # successionalStage
+    )
+  ) %>%
+
+  # dotGraph()
+  ggplot(
+    aes(
+      x = dist,
+      y = {{
+        taxMetric
+      }},
+      shape = mainDispersal
+    )
+  ) +
+  geom_quasirandom(
+    data = cleanData %>%
+      filter(
+        !is.na(
+          mainDispersal
+          # successionalStage
+        )
+      ),
+    color = "gray"
+    # shape = mainDispersal
+  ) +
+  geom_quasirandom(
+    shape = 21,
+    fill = "white"
+  ) +
+  labs(
+    x = xAxisLabel3,
+    y = yAxisLabel3
+  ) +
+  scale_y_log10() +
+  theme(
+    legend.position = "top",
+    #allsmaller
+    legend.text = element_text(
+      size = 8
+    ),
+    legend.key.size = unit(
+      0.2, "cm"
+    ),
+    legend.text.align = 0,
+    legend.key.width = unit(
+      0.2, "cm"
+    ),
+    legend.title = element_text(
+      size = 8
+    ),
+    legend.margin = margin(
+      l = -5,
+      t = -5,
+      b = -5,
+      r = -5
+    )
+  ) +
+  labs(
+    shape = "Dispersal"
+  ) +
+  stat_summary(
+    fun = "median",
+    position = position_dodge(
+      width = 25
+    ),
+    size = 0.25
+  )
+fig3b
+
+
+
+#arrange----
+
+fig3 <- ggarrange(
+  fig3a,
+  fig3b,
+  labels = c(
+    "a", "b"
+  ),
+  ncol = 1
+)
+fig3
 
 
 #save----

@@ -52,7 +52,7 @@ I--Global forests are regenerating, but how?
 
 - Services like timber and biodiversity depend on natural and managed regeneration patterns
 
-- Regeneration dynamics should be better understood
+- Regeneration dynamics (e.g. associated biodiversity) should be better understood
 
 
 I--Regeneration is quick and inconsistent
@@ -219,11 +219,11 @@ III--Composition regeneration
 III--Functional regeneration
 ===
 
-- 
+- Away from forest edge--
 
-- 
+    - Biomass of taxa often found in both successional stages increased then decreased
 
-- 
+    - Biomass based on dispersal mode remained constant
 
 ```{r fig3}
 # source(

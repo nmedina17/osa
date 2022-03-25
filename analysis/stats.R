@@ -8,9 +8,9 @@ i_am(
 
 #run1----
 
-# source(
-#   here("data/clean.R")
-# )
+source(
+  here("data/clean.R")
+)
 
 # source(
 #   here("analysis/statsTbl.R")
