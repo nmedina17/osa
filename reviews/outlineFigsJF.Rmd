@@ -1,0 +1,25 @@
+---
+title: ""
+output: html_notebook
+---
+
+
+
+<!-- # James Fifer, PhD candidate @ Boston Uni -->
+
+
+- I dont have any major concerns with your figures, just some more minor aesthetic stuff
+- map
+    - Like I cant read your map, all the text needs to be way bigger
+    - if those numbers are important, put them in white boxes or something so you can see them
+    - and put a black frame around  the map
+    - I dont know how many taxa you have, but you could add cartoons of the taxa to the map fig in boxes around the map
+- plots
+    - Sometimes your p values overlap with the dots/lines
+    - I think your colors for dist are too similar for such a small figure
+    - Sometimes you put P => when the p value is greater than 0.10 and sometimes you write the actual value when its greater that 0.10, so I would just choose one way and keep it consistent
+    
+<!-- - Im a fan of doing p <0.10 and then writing the p value when its above 0.10 personally -->
+<!-- - Because I am more interested in close non-significance than close significance -->
+<!-- - *I should rephrase- Im more interested in how close it was if it was non-sig than how close it was if it was sig -->
+    - I dont think you need an R2 for your pca, but I would add variance explained by PC1 and PC2

@@ -6,6 +6,9 @@ i_am(
 )
 #median,dist
 #plotResultsTbl,cleanData
+taxRank <- quote(
+  gen
+)
 source(
   here(
     "analysis/stats.R"
@@ -31,7 +34,12 @@ measure1a <- quote(
   kg17
 )
 yAxisLabel1a <- quote(
-  "Aboveground biomass (kg)"
+  expression(
+    paste(
+      "Biomass (kg ha"^-1,
+      ")"
+    )
+  )
 )
 measure1b <- quote(
   spg
@@ -39,7 +47,7 @@ measure1b <- quote(
 yAxisLabel1b <- quote(
   expression(
     paste(
-      "Wood density (g"^-1,
+      "Wood density (g",
       " cm"^-3,
       ")"
     )
@@ -51,7 +59,7 @@ measure1c <- quote(
 yAxisLabel1c <- quote(
   expression(
     paste(
-      "Stems (441 m"^-2,
+      "Stems (0.04 ha"^-1,
       ")"
     )
   )
@@ -74,7 +82,7 @@ underData <- cleanData
 
 
 
-#panel
+#panel----
 
 graph1a <-  statData %>%
   dotGraph(
@@ -88,13 +96,17 @@ graph1a <-  statData %>%
     ..addCenters = T
   ) +
   scale_y_continuous(
-    trans = "log10"
+    trans = "log10",
+    labels = trans_format(
+      "log10",
+      math_format()
+    )
   )
 graph1a
 
 
 
-#panel
+#panel----
 
 graph1b <- statData %>%
   dotGraph(
@@ -112,7 +124,7 @@ graph1b
 
 
 
-#panel
+#panel----
 
 statData$pval[[9]] <-
   #varsDoubled
@@ -135,7 +147,7 @@ graph1c
 
 
 
-#panel
+#panel----
 
 graph1d <- statData %>%
   dotGraph(
@@ -148,6 +160,10 @@ graph1d <- statData %>%
     ..addCenters = T
   )
 graph1d
+
+
+
+#arrange----
 
 
 
@@ -170,6 +186,12 @@ fig1 <- ggarrange(
   # widths = 0.25,
   # heights = 0.25
 )
+
+  # annotate_figure(
+  #   bottom = "
+  #   Regenerating stand properties, specifically (a) aboveground biomass (n = ?), (b) wood density (n = ?), (c) stem density (n = 30), and (d) canopy light availability (n = 30). Raw data (gray) (n = 1200) underly plot medians (white) (n = 3) which underly distance stratum medians (black) ± 1 median absolute deviation (n = 5). Regression lines follow strata medians if marginally significant.
+  #   "
+  # )
 
 
 fig1

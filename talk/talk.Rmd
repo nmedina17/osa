@@ -8,8 +8,9 @@ output:
   # oislides_presentation
   # powerpoint_presentation
   html_notebook
-  # html_document
   # pdf_document #no
+  # word_document
+bibliography: ../../library.bib
 ---
 
 
@@ -36,8 +37,9 @@ i_am(
 ```
 
 
-Outline
-===
+
+# Outline
+
 
 - Introduction
 - Methods
@@ -45,50 +47,55 @@ Outline
 - Discussion
 
 
-I--Global forests are regenerating, but how?
-===
+
+# I--Global forests are regenerating, but how?
+
 
 - ~Half of forests are tropical, and over half of all forests globally are secondary *(FAO 2020)*
 
 - Services like timber and biodiversity depend on natural and managed regeneration patterns
 
-- Regeneration dynamics (e.g. associated biodiversity) should be better understood
+- Regeneration dynamics (e.g. associated biodiversity) should be better understood to optimize sustainable management and service provision
 
 
-I--Regeneration is quick and inconsistent
-===
 
-- Biomass recovers 90% in 66 yrs *(Poorter et al 2016 PNAS)*
-
-- Taxonomic richness recovers quickly ()
-
-- Community composition may take centuries to recover, if at all *(Norder et al 2010 PNAS)*
+# I--Forest regeneration is overall both quick and inconsistent
 
 
-I--Edges shape regeneration
-===
+- Biomass recovers 90% in 66 yrs *[@poorter16]*
 
-- 70% forests are <1 km from a habitat edge *(Haddad et al 2015 Science)*
+- Taxonomic richness recovers quickly *[@rozendaal19]*
 
-- Edges effects tend to reduce biodiversity by 13 - 75% via ... *(")*
-
-    - stronger in small and isolated fragments
+- Community composition may take centuries to recover, if at all *[@norden15]*
 
 
-I--Edge effects may differ in wet tropical plantations
-===
+
+# I--Habitat edges shape regeneration
+
+
+- 70% forests are <1 km from a habitat edge *[@haddad15]*
+
+- Edge effects reduce biodiversity 13 - 75% 
+
+    - more so in small and isolated fragments
+
+
+
+# I--Edge effects may differ in wet tropical plantations
+
 
 - 7% of global forests are planted and planted area has increased over last 30 yrs *(FAO 2020)*
 
     - Often dense with fast-growing, shade-intolerant taxa
     
-- Wet tropical forest regeneration tends to be light-limited, based on tree functional traits *(Poorter et al 2021)*
+- Wet tropical forest regeneration tends to be light-limited, based on tree functional traits *[@poorter21]*
 
 - Existing plantation demography and shade may skew/buffer edge effects toward net positive instead of negative
 
 
-I--This study
-===
+
+# I--This study
+
 
 - Question -- How is wet tropical secondary forest regeneration affected by former plantation status and edges with road and primary forest?
 
@@ -107,8 +114,9 @@ I--This study
     - lower shade-tolerant taxa
 
 
-II--Study site
-===
+
+# II--Study site
+
 
 - Wet tropical rainforest in Osa Peninsula, SW Costa Rica
 
@@ -116,13 +124,15 @@ II--Study site
 
 - Area surrounded by primary forest on two sides and road on third
 
+
 ```{r site}
 # nature_img.png
 ```
 
 
-II--Census design
-===
+
+# II--Census design
+
 
 - Random stratified forest biomass inventory sampling design --
 
@@ -132,11 +142,13 @@ II--Census design
 
     - All plots covered 1 ha total, 5% of entire plantation
 
+
 ![](../figs/map.png)
 
 
-II--Census measurements
-===
+
+# II--Census measurements
+
 
 - Stems ≥10 cm were measured for DBH and height using rangefinder *(Bushnell, Forestry Suppliers, Inc)*
 
@@ -145,22 +157,24 @@ II--Census measurements
 - Plot canopy closure was measured with densiometer
 
 
-II--Statistical analysis
-===
+
+# II--Statistical analysis
+
 
 - For all variables--
 
     - Trend lines follow median values of all plots in distance stratum
     
-- Traits obtained from literature and compared to TRY database *(Kattge et al 2020)*
+- Traits obtained from literature and compared to TRY database *[@kattge19]*
     
-- Computations done with R `getRversion()` depending on *BIOMASS* `packageVersion("BIOMASS")`, 
-*vegan* `packageVersion("vegan")`, and 
-*tidyverse* `packageVersion("tidyverse")` packages
+- Computations done with R `r getRversion()` depending on *BIOMASS* `r packageVersion("BIOMASS")`, 
+*vegan* `r packageVersion("vegan")`, and 
+*tidyverse* `r packageVersion("tidyverse")` packages
 
 
-III--Stand regeneration
-===
+
+# III--Stand regeneration
+
 
 - Further from primary forest edge--
 
@@ -176,6 +190,7 @@ III--Stand regeneration
     
     - ~20% in stem density
 
+
 ```{r fig1}
 # source(
 #   here(
@@ -185,11 +200,13 @@ III--Stand regeneration
 # fig1
 ```
 
+
 ![](../figs/fig1.png)
 
 
-III--Composition regeneration
-===
+
+# III--Composition regeneration
+
 
 - Further from forest edge--
 
@@ -201,9 +218,10 @@ III--Composition regeneration
     
     - Of abundant taxa biomass--
     
-        - Vochysia tended to decrease
+        - *Vochysia* tended to decrease
         
-        - Ficus decreased
+        - *Ficus* decreased
+
 
 ```{r fig2}
 # source(
@@ -213,17 +231,20 @@ III--Composition regeneration
 # )
 ```
 
+
 ![](../figs/fig2.png)
 
 
-III--Functional regeneration
-===
+
+# III--Functional regeneration
+
 
 - Away from forest edge--
 
-    - Biomass of taxa often found in both successional stages increased then decreased
+    - Biomass of taxa often found in both successional stages decreased
 
     - Biomass based on dispersal mode remained constant
+
 
 ```{r fig3}
 # source(
@@ -234,11 +255,13 @@ III--Functional regeneration
 # fig3
 ```
 
+
 ![](../figs/fig3.png)
 
 
-IV--Hypothesis check
-===
+
+# IV--Hypothesis check
+
 
 - Stand biomass is more resilient than biodiversity
 
@@ -247,38 +270,64 @@ IV--Hypothesis check
         - No trends in biomass
         
         - Diversity decreased
+        
+        - Composition tended to change
 
 - Forest edge associated with tree diversity
 
 
-IV--Processes underlying patterns
-===
 
-- not shade...
-
-- dispersal...
-
-- 
+# IV--Processes underlying patterns
 
 
-IV--Compare to similar studies
-===
+- Not shade, perhaps given high absolute value and/or evenness of original timber planting
 
-- aligns well with major recent papers
+- Forest edge may associate with faster succession, given drop in generalist tree taxa with distance
 
--
-
-- 
+- No signal of dispersal mode detected
 
 
-IV--Future studies
-===
+
+# IV--Compare to similar studies
+
+
+- Aligns well with several recent studies suggesting that--
+
+    - Tree diversity regenerates quicker than taxonomic composition *[@poorter16]*
+
+    - Habitat edges lower diversity and generally slow regeneration, like via less seed consumption *[@hohlenwerger22]*
+    
+    - Taxa indiscriminate to successional stage are minimally affected by disturbance, like from edges *[@bongers09]*
+
+
+
+# IV--Future studies
+
 
 - Compare wet tropical plantations at different stages of regeneration
 
 - Compare forests with different initial composition but in similar region (i.e. realized vs. fundamental niches)
 
 - Study ecological dynamics under various management conditions      
+
+
+
+# Acknowledgements
+
+
+- James Fifer for initial review
+
+- Lehigh group Don Morris and undergrads for field help
+
+- Brandeis University for funding
+
+
+
+\pagebreak
+
+
+
+# References
 
 
 <!-- For more details on authoring R presentations please visit <https://support.rstudio.com/hc/en-us/articles/200486468>. -->

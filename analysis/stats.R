@@ -202,7 +202,7 @@ ordStat <- adonis(
 
 
 ordTbl <- commTbl %>%
-  getOrdVarTbl(
+  oir::getOrdVarTbl(
     metaTbl
   )
 

@@ -7,7 +7,7 @@ autosize: true
 
 ```{r setup, echo=F}
 knitr::opts_chunk$set(
-  echo=F, quiet=T)
+  echo=F, quiet=T, hide=T)
 library(
   here
 )
@@ -100,39 +100,45 @@ Results: Forest traits along edge
 ===
 
 ```{r fig1}
-source(
-  here(
-    "figs/fig1.R"
-  )
-)
-fig1
+# source(
+#   here(
+#     "figs/fig1.R"
+#   )
+# )
+# fig1
 ```
+
+![](../figs/fig1.png)
 
 
 Results: Composition along edge
 ===
 
 ```{r fig2}
-source(
-  here(
-    "figs/fig2.R"
-  )
-)
-fig2
+# source(
+#   here(
+#     "figs/fig2.R"
+#   )
+# )
+# fig2
 ```
+
+![](../figs/fig2.png)
 
 
 Results: Dispersal modes along edge
 ===
 
 ```{r fig3}
-source(
-  here(
-    "figs/fig3.R"
-  )
-)
-fig3
+# source(
+#   here(
+#     "figs/fig3.R"
+#   )
+# )
+# fig3
 ```
+
+![](../figs/fig3.png)
 
 
 Discussion

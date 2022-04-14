@@ -41,7 +41,10 @@ xAxisLabel3 <- quote(
   "Distance to edge (m)"
 )
 yAxisLabel3 <- quote(
-  "Aboveground biomass (kg)"
+  paste(
+    "Biomass (kg ha^-1",
+    ")"
+  )
 )
 
 statData3clean <- taxaResultsTbl1 %>%
@@ -82,7 +85,8 @@ fig3a <- statData3clean %>%
       x = dist,
       y = {{
         taxMetric
-      }}
+      }},
+      shape = successionalStage
     )
   ) +
   geom_quasirandom(
@@ -91,8 +95,8 @@ fig3a <- statData3clean %>%
         !is.na(
           # mainDispersal
           successionalStage
-        ) &
-          successionalStage == "Both"
+        ) # &
+    #       successionalStage == "Both"
       ),
     color = "gray"
   ) +
@@ -109,7 +113,8 @@ fig3a <- statData3clean %>%
   #   legend.position = "top"
   # ) +
   stat_summary(
-    fun = "median"
+    fun.data = "median_mad",
+    size = 0.25
     # position = position_dodge(
     #   width = 25
     # )
@@ -150,6 +155,35 @@ fig3a <- statData3clean %>%
     y = 1.1,
     hjust = -0.5,
     size = 2
+  ) +
+  theme(
+    legend.position = "top"
+  ) +
+  labs(
+    shape = "Successional stage"
+  ) +
+
+  theme(
+    #allsmaller
+    legend.text = element_text(
+      size = 6
+    ),
+    legend.key.size = unit(
+      0.2, "cm"
+    ),
+    legend.text.align = 0,
+    legend.key.width = unit(
+      0.2, "cm"
+    ),
+    legend.title = element_text(
+      size = 6
+    ),
+    legend.margin = margin(
+      l = -5,
+      t = -5,
+      b = -5,
+      r = -5
+    )
   )
 fig3a
 
@@ -234,7 +268,7 @@ fig3b <- statData3clean %>%
     legend.position = "top",
     #allsmaller
     legend.text = element_text(
-      size = 8
+      size = 6
     ),
     legend.key.size = unit(
       0.2, "cm"
@@ -244,7 +278,7 @@ fig3b <- statData3clean %>%
       0.2, "cm"
     ),
     legend.title = element_text(
-      size = 8
+      size = 6
     ),
     legend.margin = margin(
       l = -5,
@@ -257,7 +291,7 @@ fig3b <- statData3clean %>%
     shape = "Dispersal"
   ) +
   stat_summary(
-    fun = "median",
+    fun.data = "median_mad",
     position = position_dodge(
       width = 25
     ),

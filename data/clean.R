@@ -153,6 +153,15 @@ updateRaw <- function(
 cleanData <- rawData %>%
   updateRaw() %>%
 
+  mutate(
+    #perHa
+    kg17 = kg17 / (
+      21 * 21
+    ) * (
+      10000 / 1
+    )
+  ) %>%
+
   full_join(
     dispersal
   ) %>%

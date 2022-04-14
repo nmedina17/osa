@@ -4,10 +4,6 @@
 %
 \documentclass[
 ]{article}
-\title{Natural regeneration of a tropical timber plantation}
-\author{Nicholas Medina}
-\date{}
-
 \usepackage{amsmath,amssymb}
 \usepackage{lmodern}
 \usepackage{iftex}
@@ -63,9 +59,36 @@
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newlength{\cslentryspacingunit} % times entry-spacing
+\setlength{\cslentryspacingunit}{\parskip}
+\newenvironment{CSLReferences}[2] % #1 hanging-ident, #2 entry spacing
+ {% don't indent paragraphs
+  \setlength{\parindent}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+  \let\oldpar\par
+  \def\par{\hangindent=\cslhangindent\oldpar}
+  \fi
+  % set entry spacing
+  \setlength{\parskip}{#2\cslentryspacingunit}
+ }%
+ {}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{#1\hfill\break}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{#1}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{#1}\break}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 \ifLuaTeX
   \usepackage{selnolig}  % disable illegal ligatures
 \fi
+
+\title{Natural regeneration of a tropical timber plantation}
+\author{Nicholas Medina}
+\date{}
 
 \begin{document}
 \maketitle
@@ -97,38 +120,39 @@ how?}\label{iglobal-forests-are-regenerating-but-how}}
   Services like timber and biodiversity depend on natural and managed
   regeneration patterns
 \item
-  Regeneration dynamics should be better understood
+  Regeneration dynamics (e.g.~associated biodiversity) should be better
+  understood to optimize sustainable management and service provision
 \end{itemize}
 
-\hypertarget{iregeneration-is-quick-and-inconsistent}{%
-\section{I--Regeneration is quick and
-inconsistent}\label{iregeneration-is-quick-and-inconsistent}}
+\hypertarget{iforest-regeneration-is-overall-both-quick-and-inconsistent}{%
+\section{I--Forest regeneration is overall both quick and
+inconsistent}\label{iforest-regeneration-is-overall-both-quick-and-inconsistent}}
 
 \begin{itemize}
 \item
-  Biomass recovers 90\% in 66 yrs \emph{(Poorter et al 2016 PNAS)}
+  Biomass recovers 90\% in 66 yrs \emph{(Poorter et al. 2016)}
 \item
-  Taxonomic richness recovers quickly ()
+  Taxonomic richness recovers quickly \emph{(Rozendaal et al. 2019)}
 \item
   Community composition may take centuries to recover, if at all
-  \emph{(Norder et al 2010 PNAS)}
+  \emph{(Norden et al. 2015)}
 \end{itemize}
 
-\hypertarget{iedges-shape-regeneration}{%
-\section{I--Edges shape regeneration}\label{iedges-shape-regeneration}}
+\hypertarget{ihabitat-edges-shape-regeneration}{%
+\section{I--Habitat edges shape
+regeneration}\label{ihabitat-edges-shape-regeneration}}
 
 \begin{itemize}
 \item
-  70\% forests are \textless1 km from a habitat edge \emph{(Haddad et al
-  2015 Science)}
+  70\% forests are \textless1 km from a habitat edge \emph{(Haddad et
+  al. 2015)}
 \item
-  Edges effects tend to reduce biodiversity by 13 - 75\% via \ldots{}
-  \emph{(``)}
+  Edge effects reduce biodiversity 13 - 75\%
 
   \begin{itemize}
   \tightlist
   \item
-    stronger in small and isolated fragments
+    more so in small and isolated fragments
   \end{itemize}
 \end{itemize}
 
@@ -148,7 +172,7 @@ plantations}\label{iedge-effects-may-differ-in-wet-tropical-plantations}}
   \end{itemize}
 \item
   Wet tropical forest regeneration tends to be light-limited, based on
-  tree functional traits \emph{(Poorter et al 2021)}
+  tree functional traits \emph{(Poorter et al. 2021)}
 \item
   Existing plantation demography and shade may skew/buffer edge effects
   toward net positive instead of negative
@@ -247,12 +271,10 @@ plantations}\label{iedge-effects-may-differ-in-wet-tropical-plantations}}
   \end{itemize}
 \item
   Traits obtained from literature and compared to TRY database
-  \emph{(Kattge et al 2020)}
+  \emph{(Kattge and Str 2019)}
 \item
-  Computations done with R \texttt{getRversion()} depending on
-  \emph{BIOMASS} \texttt{packageVersion("BIOMASS")}, \emph{vegan}
-  \texttt{packageVersion("vegan")}, and \emph{tidyverse}
-  \texttt{packageVersion("tidyverse")} packages
+  Computations done with R 4.1.3 depending on \emph{BIOMASS} 2.1.7,
+  \emph{vegan} 2.5.7, and \emph{tidyverse} 1.3.1 packages
 \end{itemize}
 
 \hypertarget{iiistand-regeneration}{%
@@ -317,10 +339,15 @@ regeneration}\label{iiicomposition-regeneration}}
 regeneration}\label{iiifunctional-regeneration}}
 
 \begin{itemize}
-\tightlist
 \item
-\item
-\item
+  Away from forest edge--
+
+  \begin{itemize}
+  \item
+    Biomass of taxa often found in both successional stages decreased
+  \item
+    Biomass based on dispersal mode remained constant
+  \end{itemize}
 \end{itemize}
 
 \includegraphics{../figs/fig3.png}
@@ -341,6 +368,8 @@ regeneration}\label{iiifunctional-regeneration}}
       No trends in biomass
     \item
       Diversity decreased
+    \item
+      Composition tended to change
     \end{itemize}
   \end{itemize}
 \item
@@ -353,10 +382,13 @@ patterns}\label{ivprocesses-underlying-patterns}}
 
 \begin{itemize}
 \item
-  not shade\ldots{}
+  Not shade, perhaps given high absolute value and/or evenness of
+  original timber planting
 \item
-  dispersal\ldots{}
+  Forest edge may associate with faster succession, given drop in
+  generalist tree taxa with distance
 \item
+  No signal of dispersal mode detected
 \end{itemize}
 
 \hypertarget{ivcompare-to-similar-studies}{%
@@ -365,9 +397,20 @@ studies}\label{ivcompare-to-similar-studies}}
 
 \begin{itemize}
 \item
-  aligns well with major recent papers
-\item
-\item
+  Aligns well with several recent studies suggesting that--
+
+  \begin{itemize}
+  \item
+    Tree diversity regenerates quicker than taxonomic composition
+    \emph{(Poorter et al. 2016)}
+  \item
+    Habitat edges lower diversity and generally slow regeneration, like
+    via less seed consumption \emph{(Hohlenwerger, Tambosi, and Metzger
+    2022)}
+  \item
+    Taxa indiscriminate to successional stage are minimally affected by
+    disturbance, like from edges \emph{(Bongers et al. 2009)}
+  \end{itemize}
 \end{itemize}
 
 \hypertarget{ivfuture-studies}{%
@@ -382,5 +425,65 @@ studies}\label{ivcompare-to-similar-studies}}
 \item
   Study ecological dynamics under various management conditions
 \end{itemize}
+
+\hypertarget{references}{%
+\section{References}\label{references}}
+
+\hypertarget{refs}{}
+\begin{CSLReferences}{1}{0}
+\leavevmode\vadjust pre{\hypertarget{ref-bongers09}{}}%
+Bongers, Frans, Lourens Poorter, William D. Hawthorne, and Douglas
+Sheil. 2009. {``The Intermediate Disturbance Hypothesis Applies to
+Tropical Forests, but Disturbance Contributes Little to Tree
+Diversity.''} \emph{Ecology Letters} 12 (8): 798--805.
+\url{https://doi.org/10.1111/j.1461-0248.2009.01329.x}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-haddad15}{}}%
+Haddad, Nick M., Lars A. Brudvig, Jean Clobert, Kendi F. Davies, Andrew
+Gonzalez, Robert D. Holt, Thomas E. Lovejoy, et al. 2015. {``Habitat
+Fragmentation and Its Lasting Impact on {Earth}'s Ecosystems.''}
+\emph{Science Advances} 1 (2): e1500052.
+\url{https://doi.org/10.1126/sciadv.1500052}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-hohlenwerger22}{}}%
+Hohlenwerger, Camila, Leandro Reverberi Tambosi, and Jean Paul Metzger.
+2022. {``Forest Cover and Proximity to Forest Affect Predation by
+Natural Enemies in Pasture and Coffee Plantations Differently.''}
+\emph{Agriculture, Ecosystems \& Environment} 333 (August): 107958.
+\url{https://doi.org/10.1016/j.agee.2022.107958}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-kattge19}{}}%
+Kattge, Jens, and Hans Knöll Str. 2019. {``{TRY} Plant Trait Database
+\textendash{} Enhanced Coverage and Open Access,''} 70.
+
+\leavevmode\vadjust pre{\hypertarget{ref-norden15}{}}%
+Norden, Natalia, Héctor A. Angarita, Frans Bongers, Miguel
+Martínez-Ramos, Iñigo Granzow-de la Cerda, Michiel van Breugel, Edwin
+Lebrija-Trejos, et al. 2015. {``Successional Dynamics in {Neotropical}
+Forests Are as Uncertain as They Are Predictable.''} \emph{Proceedings
+of the National Academy of Sciences} 112 (26): 8013--18.
+\url{https://doi.org/10.1073/pnas.1500403112}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-poorter16}{}}%
+Poorter, Lourens, Frans Bongers, T. Mitchell Aide, Angélica M. Almeyda
+Zambrano, Patricia Balvanera, Justin M. Becknell, Vanessa Boukili, et
+al. 2016. {``Biomass Resilience of {Neotropical} Secondary Forests.''}
+\emph{Nature} 530 (7589): 211--14.
+\url{https://doi.org/10.1038/nature16512}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-poorter21}{}}%
+Poorter, Lourens, Dylan Craven, Catarina C. Jakovac, Masha T. van der
+Sande, Lucy Amissah, Frans Bongers, Robin L. Chazdon, et al. 2021.
+{``Multidimensional Tropical Forest Recovery.''} \emph{Science} 374
+(6573): 1370--76. \url{https://doi.org/10.1126/science.abh3629}.
+
+\leavevmode\vadjust pre{\hypertarget{ref-rozendaal19}{}}%
+Rozendaal, Danaë M. A., Frans Bongers, T. Mitchell Aide, Esteban
+Alvarez-Dávila, Nataly Ascarrunz, Patricia Balvanera, Justin M.
+Becknell, et al. 2019. {``Biodiversity Recovery of {Neotropical}
+Secondary Forests.''} \emph{Science Advances} 5 (3).
+\url{https://doi.org/10.1126/sciadv.aau3114}.
+
+\end{CSLReferences}
 
 \end{document}
