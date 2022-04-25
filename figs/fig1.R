@@ -1,19 +1,12 @@
 # refs ----
 
-library(here)
-i_am(
-  "figs/fig1.R"
-)
+library(here); i_am("figs/fig1.R")
 #median,dist
 #plotResultsTbl,cleanData
 taxRank <- quote(
   gen
 )
-source(
-  here(
-    "analysis/stats.R"
-  )
-)
+source(here("analysis/stats.R"))
 #plotResultsTbl
 library(glue)
 #annotate()
@@ -98,8 +91,7 @@ graph1a <-  statData %>%
   scale_y_continuous(
     trans = "log10",
     labels = trans_format(
-      "log10",
-      math_format()
+      "log10", math_format()
     )
   )
 graph1a
@@ -142,6 +134,7 @@ graph1c <- statData %>%
     # ..cleanData = underData,
     ..addCenters = T,
     ..addCurve = T
+   # ..addLines = T
   )
 graph1c
 

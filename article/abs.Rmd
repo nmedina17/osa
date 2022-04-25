@@ -48,7 +48,7 @@ In wet tropical forests specifically, succession tends to depend on light availa
 
 
 This study addresses how wet tropical secondary forest regeneration is affected by distance to habitat edge in a former timber plantation context, and
-addresses the hypothesis that old plantations facilitate regeneration by favoring shade tolorant or late successional taxa, and that habitat edges affect regenerating community composition.
+addresses the hypothesis that old plantations facilitate regeneration by favoring shade tolerant or late successional taxa, and that habitat edges affect regenerating community composition.
 
 
 
@@ -94,3 +94,18 @@ community
 composition
 function
 trait
+
+
+
+# SACNAS
+
+
+About half of all forests are tropical and secondary, making tropical forest regeneration integral to future forests. 
+Tree stand biomass and taxonomic richness can recover in a few decades, but relative abundances may lag indefinitely. 
+Since most forests are within a km of a habitat edge, edge effects likely affect community composition regeneration, medaited by shade tolerance and dispersal traits, along with management history. 
+This study addresses how wet tropical secondary forest regeneration is affected by distance to habitat edge, and hypothesizes that old timber plantations facilitate regeneration by favoring shade tolerant or late successional taxa, and adjacent forest edges mediate community composition. 
+An abandoned neotropical timber plantation adjacent to primary forest was censused for trees along a 300 m edge distance gradient, and analysis matched taxa to traits using relevant literature. 
+As distance from primary forest edge increased, biomass and stem and wood density tended to increase, with ca 10% variation explained, while canopy light and stand height tended to stay the same. 
+Stand tree richness also tended to increase, but diversity decreased steeply and non-linearly, and composition varied notably. 
+Finally, tree taxa associated with both early and late successional stages increased, but biomass by dispersal mode did not tend to change. 
+Overall this study supports that stand composition is less resilient and more subject to edge effects than biomass and richness, suggesting that global forests will likely be distinctly new assemblages in the future, with timber and biodiversity trade-offs occurring based on local and regional management activity.

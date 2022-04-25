@@ -1,9 +1,4 @@
-library(
-  here
-)
-i_am(
-  "figs/fig3.R"
-)
+library(here); i_am("figs/fig3.R")
 #userDiff----
 taxRank <- quote(
   # mainDispersal
@@ -11,14 +6,9 @@ taxRank <- quote(
 )
 #re-run
 #taxaResultsTbl1
-source(
-  here(
-    "analysis/stats.R"
-  )
-)
-library(
-  glue
-)
+source(here("analysis/stats.R"))
+library(glue)
+library(ggpubr)
 
 
 
@@ -41,9 +31,11 @@ xAxisLabel3 <- quote(
   "Distance to edge (m)"
 )
 yAxisLabel3 <- quote(
-  paste(
-    "Biomass (kg ha^-1",
-    ")"
+  expression(
+    paste(
+      "Biomass (kg ha"^-1,
+      ")"
+    )
   )
 )
 
@@ -106,9 +98,15 @@ fig3a <- statData3clean %>%
   ) +
   labs(
     x = xAxisLabel3,
-    y = yAxisLabel3
+    y = eval(yAxisLabel3)
   ) +
-  scale_y_log10() +
+  # scale_y_log10() +
+  scale_y_continuous(
+    trans = "log10",
+    label = trans_format(
+      "log10", math_format()
+    )
+  ) +
   # theme(
   #   legend.position = "top"
   # ) +
@@ -121,21 +119,13 @@ fig3a <- statData3clean %>%
   ) +
   stat_smooth(
     method = "lm",
-    formula = y ~
-      poly(
-        x,
-        2
-      ),
+    formula = y ~ poly(x, 2),
     color = "black",
     size = 0.5,
     se = F
   ) +
   stat_poly_eq(
-    formula = y ~
-      poly(
-        x,
-        2
-      ),
+    formula = y ~ poly(x, 2),
     size = 2,
     label.x = "right",
     label.y = 1.1
@@ -146,10 +136,7 @@ fig3a <- statData3clean %>%
       "P = ",
       taxaResultsTbl12$
         pval[[2 * 2]] %>%
-        last() %>%
-        round(
-          digits = 3
-        )
+        last() %>% round(3)
     ),
     x = 1,
     y = 1.1,
@@ -209,11 +196,7 @@ taxRank <- quote(
 )
 #re-run
 #taxaResultsTbl1
-source(
-  here(
-    "analysis/stats.R"
-  )
-)
+source(here("analysis/stats.R"))
 
 
 statData3clean <- taxaResultsTbl1 %>%
@@ -261,9 +244,14 @@ fig3b <- statData3clean %>%
   ) +
   labs(
     x = xAxisLabel3,
-    y = yAxisLabel3
+    y = yAxisLabel3 %>% eval()
   ) +
-  scale_y_log10() +
+  # scale_y_log10() +
+  scale_y_continuous(
+    trans = "log10",
+    label = trans_format(
+      "log10", math_format())
+  ) +
   theme(
     legend.position = "top",
     #allsmaller
@@ -317,20 +305,20 @@ fig3
 #save----
 
 
-ggsave(
-  "fig3.pdf",
-  fig3,
-  path = "figs",
-  width = 3,
-  height = 3,
-  units = "in"
-)
-
-ggsave(
-  "fig3.png",
-  fig3,
-  path = "figs",
-  width = 3,
-  height = 3,
-  units = "in"
-)
+# ggsave(
+#   "fig3.pdf",
+#   fig3,
+#   path = "figs",
+#   width = 3,
+#   height = 3,
+#   units = "in"
+# )
+#
+# ggsave(
+#   "fig3.png",
+#   fig3,
+#   path = "figs",
+#   width = 3,
+#   height = 3,
+#   units = "in"
+# )

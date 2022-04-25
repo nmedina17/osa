@@ -1,17 +1,10 @@
-library(here)
-i_am(
-  "figs/fig2.R"
-)
+library(here); i_am("figs/fig2.R")
 #taxMetric,mainMetric
 #plotResultsTbl1,taxaResultsTbl1
 taxRank <- quote(
   gen
 )
-source(
-  here(
-    "analysis/stats.R"
-  )
-)
+source(here("analysis/stats.R"))
 #plotResultsTbl
 library(glue)
 #annotate()
@@ -157,7 +150,7 @@ graph2e <- statData2ef %>%
     taxForm[[3]],
     taxForm[[2]],
     xAxisLabel,
-    yAxisLabel2e,
+    eval(yAxisLabel2e),
     ..addCenters = T
   ) +
   scale_y_log10()
@@ -172,7 +165,7 @@ graph2f <- statData2ef %>%
     taxForm[[3]],
     taxForm[[2]],
     xAxisLabel,
-    yAxisLabel2f,
+    eval(yAxisLabel2f),
     ..addCenters = T,
     ..addLines = T,
     ..addPxy = c(
@@ -187,11 +180,9 @@ graph2f
 
 graph2d <- ordTbl %>%
   ggplot(
-    aes(
-      x = PC1,
-      y = PC2,
-      color = as_factor(
-        dist
+    aes(x = PC1, y = PC2,
+        color = as_factor(
+          dist
       )
     )
   ) +
@@ -219,13 +210,8 @@ graph2d <- ordTbl %>%
     "text",
     label = glue(
       "P = ",
-      ordStat$
-        aov.tab$
-        `Pr(>F)` %>%
-        first() %>%
-        round(
-          digits = 2
-        )
+      ordStat$aov.tab$`Pr(>F)` %>%
+        first() %>% round(2)
     ),
     x = -5,
     y = -5,
@@ -234,12 +220,10 @@ graph2d <- ordTbl %>%
   annotate(
     "text",
     label = glue(
-      "R2 = ",
+      "R2",
+      " = ",
       ordStat$aov.tab$R2 %>%
-        first() %>%
-        round(
-          digits = 2
-        )
+        first() %>% round(2)
     ),
     x = 5,
     y = 5,
@@ -393,20 +377,20 @@ fig2
 #save----
 
 
-ggsave(
-  "fig2.pdf",
-  fig2,
-  path = "figs",
-  width = 5,
-  height = 3,
-  units = "in"
-)
-
-ggsave(
-  "fig2.png",
-  fig2,
-  path = "figs",
-  width = 5,
-  height = 3,
-  units = "in"
-)
+# ggsave(
+#   "fig2.pdf",
+#   fig2,
+#   path = "figs",
+#   width = 5,
+#   height = 3,
+#   units = "in"
+# )
+#
+# ggsave(
+#   "fig2.png",
+#   fig2,
+#   path = "figs",
+#   width = 5,
+#   height = 3,
+#   units = "in"
+# )

@@ -15,16 +15,8 @@ bibliography: ../../library.bib
 
 
 ```{r setup, echo = F, include = F}
-knitr::opts_chunk$set(
-  echo = F,
-  quiet = T
-)
-library(
-  here
-)
-i_am(
-  "talk/talk.Rmd"
-)
+knitr::opts_chunk$set(echo = F, quiet = T)
+library(here); i_am("talk/talk.Rmd")
 # #fixRender
 # library(
 #   httpuv
@@ -78,6 +70,8 @@ i_am(
 - Edge effects reduce biodiversity 13 - 75% 
 
     - more so in small and isolated fragments
+
+- Edge effects may shape diversity via dispersal overlap, possibly peaking at intermediate values *[@yamaguchi22]*
 
 
 

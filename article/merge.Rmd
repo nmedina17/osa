@@ -1,0 +1,57 @@
+---
+title: ""
+output: 
+  html_notebook
+  bookdown::html_document2
+    number_sections: false
+bibliography: ../../library.bib
+---
+
+
+
+# Abstract
+
+
+
+```{r child='abstract.Rmd'}
+```
+
+
+
+# Intro
+
+
+
+```{r child="intro.Rmd"}
+```
+
+
+
+# Meth
+
+
+
+```{r child="methods.Rmd"}
+```
+
+
+
+# Res
+
+
+
+```{r child="results.Rmd"}
+```
+
+
+
+# Disc
+
+
+
+```{r child="disc.Rmd"}
+```
+
+
+
+# Refs

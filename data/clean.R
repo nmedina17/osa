@@ -1,7 +1,5 @@
 library(here) #fromprojdir
-i_am(
-  "data/clean.R"
-)
+i_am("data/clean.R")
 library(vroom) #loadastbl
 #library(skimr) #glance
 library(tidyverse);
@@ -16,9 +14,7 @@ rawData <- vroom(
 )
 
 dispersal <- vroom(
-  here(
-    "data/dispersal.csv"
-  )
+  here("data/dispersal.csv")
 ) %>%
   select(
     fam,
@@ -37,9 +33,7 @@ dispersal <- vroom(
 
 ##traits----
 traits <- vroom(
-  here(
-    "data/base/try/try19707.csv"
-  )
+  here("data/base/try/try19707.csv")
 ) %>% #glimpse()
   select(
     AccSpeciesName,
@@ -80,9 +74,7 @@ traits <- vroom(
 
 ##lifeHist----
 lifeHist <- vroom(
-  here(
-    "data/base/lifeHist.csv"
-  )
+  here("data/base/lifeHist.csv")
 ) %>%
   select(
     family,
