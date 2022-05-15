@@ -103,18 +103,14 @@ Original values found and recorded were later updated to modern values using the
 
 
 
-For all response variables, data were analyzed using plot medians and subject to linear regression with the distance to forest edge variable after checks for residual normality and equal variance assumptions using `r version$version.string`.
-
+For all response variables, data were analyzed using plot medians and subject to linear regression with distance to forest edge as the only independent variable, after checks for residual normality and equal variance assumptions, using `r version$version.string`.
  <!-- including biomass converted to a per hectare basis,  -->
 
-
 <!-- Correlated variables were grouped into multi-way ANOVAs---namely biomass, wood density, and diameter in one group; and height, stem density, and wood density in a different group.  -->
-
-
 Non-linear regressions were run using the function *poly()* in the *stats* `r packageVersion("stats")` R package *(R Core Team 2022)*, 
 which was only recorded for stem density and richness variables. 
 All trees censused were included in each analysis including unidentified taxa that represented a single group in taxa-specific analyses.
-Community analysis and ordination was done as a PERMANOVA with the *vegan* `r packageVersion("vegan")` R package *[@dixon03]*.
+Community analysis and ordination was done as a PERMANOVA with the *adonis()* function from the *vegan* `r packageVersion("vegan")` R package *[@dixon03]*.
 Data and code are available at [nmedina17.github.com/osa](nmedina17.github.com/osa).
 
 

@@ -9,6 +9,22 @@
     ]
   },
   "Packages": {
+    "BIOMASS": {
+      "Package": "BIOMASS",
+      "Version": "2.1.8",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "86a434257dca5919f0ab08a058856fd6",
+      "Requirements": [
+        "data.table",
+        "jsonlite",
+        "minpack.lm",
+        "proj4",
+        "rappdirs",
+        "raster",
+        "sp"
+      ]
+    },
     "DBI": {
       "Package": "DBI",
       "Version": "1.1.2",
@@ -1415,6 +1431,14 @@
       "Hash": "18e9c28c1d3ca1560ce30658b22ce104",
       "Requirements": []
     },
+    "minpack.lm": {
+      "Package": "minpack.lm",
+      "Version": "1.2-2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "cb909f5986d8804bfc9ac0b96012a068",
+      "Requirements": []
+    },
     "minqa": {
       "Package": "minqa",
       "Version": "1.2.4",
@@ -1785,6 +1809,14 @@
         "digest"
       ]
     },
+    "proj4": {
+      "Package": "proj4",
+      "Version": "1.0-11",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "1dc246e456885b1c652dfaafe97e93f6",
+      "Requirements": []
+    },
     "ps": {
       "Package": "ps",
       "Version": "1.7.0",
@@ -1825,6 +1857,18 @@
       "Repository": "CRAN",
       "Hash": "5e3c5dc0b071b21fa128676560dbe94d",
       "Requirements": []
+    },
+    "raster": {
+      "Package": "raster",
+      "Version": "3.5-15",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "70cf51235e017702ed77427797572ef0",
+      "Requirements": [
+        "Rcpp",
+        "sp",
+        "terra"
+      ]
     },
     "rcmdcheck": {
       "Package": "rcmdcheck",
@@ -2225,6 +2269,16 @@
       "Repository": "CRAN",
       "Hash": "b227d13e29222b4574486cfcbde077fa",
       "Requirements": []
+    },
+    "terra": {
+      "Package": "terra",
+      "Version": "1.5-21",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "a713f0d9f9a2b68af112a991adbfe5d5",
+      "Requirements": [
+        "Rcpp"
+      ]
     },
     "testthat": {
       "Package": "testthat",

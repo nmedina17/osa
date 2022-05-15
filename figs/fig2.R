@@ -1,10 +1,10 @@
-library(here); i_am("figs/fig2.R")
+here::i_am("figs/fig2.R")
 #taxMetric,mainMetric
 #plotResultsTbl1,taxaResultsTbl1
 taxRank <- quote(
   gen
 )
-source(here("analysis/stats.R"))
+source(here::here("analysis/stats.R"))
 #plotResultsTbl
 library(glue)
 #annotate()
@@ -355,7 +355,7 @@ graph2c
 #fullfig----
 
 
-fig2 <- ggarrange(
+fig2 <- ggpubr::ggarrange(
   graph2a,
   graph2b,
   graph2c,

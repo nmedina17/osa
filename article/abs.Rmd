@@ -131,3 +131,19 @@ As distance from primary forest edge increased, stem and wood density tended to 
 Stand tree richness also tended to increase significantly, but diversity decreased steeply and non-linearly, and taxonomic composition varied notably. 
 Finally, tree taxa associated with both early and late successional stages decreased significantly, but biomass by dispersal mode did not tend to change.
 Overall this study supports that stand composition is less resilient and more subject to edge effects than biomass and richness, suggesting that global forests will likely be distinctly new assemblages in the future, with timber and biodiversity trade-offs occurring based on local and regional management activity.
+
+
+
+# Esp
+
+
+Más de la mitad de bosques son tropicales y secundarios, indicando que la regeneración de bosques tropicales es integral al futuro de bosques, globalmente.
+Biomasa arboreal y *riqueza* taxonomica pueden recuperarse en algunas décadas, pero abundancias relativas pueden durar más de un siglo.
+Dado que la mayoría de bosques están entre un km de su orilla, *efectos de orilla* probablemente afectan la regeneración de composición de comnuidad, mediado por tolerancia a sombra y "traits"/characterísticas de *disperso*, y también historia de manejamiento.
+Este estudio *investiga* cómo regeneración de bosque secundario tropical húmedo es afectado por distancia a *orilla de habitat*, y *"hypothesizes"* que plantaciones de madera viejos facilitan regeneración porque favoran taxa tolerante a sombra o de *"succession"* tarde, y que orillas de bosque cercanos/*"adjacent"* *median* composición de comunidad.
+Una plantación de madera neotropical *al lado de* bosque primario fue *"censused"* por árboles siguiendo un transecto de 300 m midiendo un gradiente de distancia de orilla, y análisis combino taxa con characterísticas/*"traits"* usando literatura relevante.
+
+Mientras distancia de bosque primario aumentó, densidad de madera y *"stems"* *"tended to"* aumentó *signifantemente*, con 10% variación explicado, mientras tanto biomasa y luz de dócel *"tended to"* quedarse igual.
+*Riquesa* de árboles también *"tended to"* aumentar *significantemente*, pero diversidad bajó profundamente y no-linearmente, y composición taxonomica varió notablemente.
+Finalmente, taxa de árboles asociado *etapas* de *"succession"* ambos temprano y tarde  bajó *significativamente*, pero biomasa por modo de *disperso* no *"tended to"* cambiar.
+*Entre todo* este estudio apoya que composición es menos resiliente y más sujeto a *efectos de orilla* que biomasa y *riqueza*, sugeriendo que bosques globales probablemente serán *asemblajes* nuevos distintos en el futuro, con *"trade-offs"* entre producción de madera y biodiversidad *ocuriendo* basado en actividad de manejamiento local y regional.

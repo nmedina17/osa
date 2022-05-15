@@ -1,11 +1,11 @@
 # Refs----
 
 
-library(here); i_am("analysis/stats.R")
+here::i_am("analysis/stats.R")
 
 #run1----
 
-source(here("data/clean.R"))
+source(here::here("data/clean.R"))
 
 # source(
 #   here("analysis/statsTbl.R")
@@ -188,7 +188,7 @@ metaTbl <- cleanData %>%
 
 ordModel <- distMat ~ dist
 
-ordStat <- adonis(
+ordStat <- vegan::adonis2(
   ordModel,
   metaTbl,
   # 99999
