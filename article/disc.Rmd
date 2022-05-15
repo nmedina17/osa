@@ -1,6 +1,8 @@
 ---
 title: "Discussion"
 output: html_notebook
+bibliography: ../../library.bib
+link-citations: TRUE
 ---
 
 
@@ -16,3 +18,6 @@ In contrast, under intensive silviculture that prioritizes the growth of select 
 In some cases where management decisions are made primarily based on regional economic but not local ecological information, due to limited access to funded scientific reporting (Cook et al 2012), forest stands can perform very poorly all-around.
 
 After this more extreme type of management, it remains uncertain how natural regeneration in secondary forests will proceed, how local ecosystem services will be restored, and how restoration could be managed locally (Laurance et al 2012), e.g. based on surrounding forest proximity.
+
+
+The persistence of early-successional tree communities has been found to lower the standing biomass, likely due to lower wood density *[@césar21]*, and could therefore require a switch in focal timber species *[@karsten14]*.

@@ -1,16 +1,11 @@
 # Refs----
 
 
-library(here);
-i_am(
-  "analysis/stats.R"
-)
+library(here); i_am("analysis/stats.R")
 
 #run1----
 
-source(
-  here("data/clean.R")
-)
+source(here("data/clean.R"))
 
 # source(
 #   here("analysis/statsTbl.R")

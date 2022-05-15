@@ -1,10 +1,17 @@
 ---
 title: ""
+author: 
+  name: Nicholas Medina
+  affilitation: Brandeis University
+address:
+  code: Brandeis University
+  address: 415 South St, Waltham, MA 02453
 output: 
-  html_notebook
-  bookdown::html_document2
-    number_sections: false
+  # html_notebook
+  bookdown::html_document2:
+    number_sections: FALSE
 bibliography: ../../library.bib
+link-citations: TRUE
 ---
 
 
@@ -13,12 +20,12 @@ bibliography: ../../library.bib
 
 
 
-```{r child='abstract.Rmd'}
+```{r child='abs.Rmd'}
 ```
 
 
 
-# Intro
+# Introduction
 
 
 
@@ -27,7 +34,7 @@ bibliography: ../../library.bib
 
 
 
-# Meth
+# Methods
 
 
 
@@ -36,16 +43,16 @@ bibliography: ../../library.bib
 
 
 
-# Res
+# Results
 
 
 
-```{r child="results.Rmd"}
-```
+<!-- # ```{r child="results.Rmd"} -->
+<!-- # ``` -->
 
 
 
-# Disc
+# Discussion
 
 
 
@@ -54,4 +61,4 @@ bibliography: ../../library.bib
 
 
 
-# Refs
+# References

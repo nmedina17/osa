@@ -3,15 +3,15 @@ title: "Methods"
 output: 
   # html_notebook
   bookdown::html_document2:
-    number_sections: false
+    number_sections: FALSE
 bibliography: ../../library.bib
+link-citations: TRUE
 ---
 
 
 
-```{r echo=F, results='hide', warning=F}
-knitr::opts_chunk$set(echo = F, warning=F)
-library(here)
+```{r echo=F, results='hide', warning=F, message=F}
+knitr::opts_chunk$set(echo = F, warning = F, message = F); here::i_am("article/methods.Rmd")
 ```
 
 
@@ -20,14 +20,10 @@ library(here)
 
 
 
-This study was done in a neotropical lowland rainforest on the Osa Peninsula at the Greg Gund Conservation Center **(GPS)** near the Piro Biological Station run by Osa Conservation.
-
+This study was done in a neotropical lowland rainforest on the Osa Peninsula at the Greg Gund Conservation Center (approx. `r RgoogleMaps::getGeoCode("cabo matapalo")`) near the Piro Biological Station run by Osa Conservation.
 (See *@taylor15* for a broader ecosystem description of the region.)
-
-The study site was a regrowing 20 ha timber plantation of *Bombacompsis quinata* abandoned in ~1990 after the dry-adapted species from the Guanacaste region *(Pérez Cordero & Kanninen 2002)* grew poorly in very wet conditions.
-
-This focal secondary forest area was roughly triangular, surrounded by primary forest on the two S and NW sides *(Fig \@ref(fig:map))* and a wide service road on the third NE border, with primary forest beyond it.
-
+The study site was a regrowing 20 ha timber plantation of *Bombacompsis quinata* abandoned in ~1990 after the dry-adapted species from the Guanacaste region *[@perezcordero02; @hulshof20]* grew poorly in very wet conditions.
+This focal secondary forest area was roughly triangular, surrounded by primary forest on the two S and NW sides (Fig \@ref(fig:map)) and a wide service road on the third NE border, with primary forest beyond it.
 This census was done in 2013 during the rainy season months between June and August.
 
 
@@ -36,16 +32,14 @@ This census was done in 2013 during the rainy season months between June and Aug
 
 
 
-Edge effects were studied by dividing the secondary forest area into six 50 m strata spanning 0 - 300 m away from the primary forest edge on the S and NW sides, going inward to the E *(Fig \@ref(fig:map))*, using GIS software *(ArcGIS, QGIS)*.
-
+Edge effects were studied by dividing the secondary forest area into six 50 m strata spanning 0 - 300 m away from the primary forest edge on the S and NW sides, going inward to the E (Fig \@ref(fig:map)), using available GIS software (*ArcGIS 10 from 2010*, [esri.com](esri.com), and *QGIS 2 from 2013*, [qgis.org](qgis.org)).
 Each stratum was randomly filled with a number of 21 x 21 m square census plots oriented N that was proportional to its area--specifically with 11, eight, five, three, two, and one plot(s), respectively, as distance away from primary forest increased.
-
 The total area of the 30 census plots equaled ~1 ha or 5% of the total secondary forest stand area, which is comparable to similar studies *[@onyekwelu16]*.
 
 
 
 ```{r map, fig.cap="Map of conservation area on Osa Peninsula, Costa Rica."}
-knitr::include_graphics(here("figs/map.png"))
+knitr::include_graphics(here::here("figs/map.png"))
 # magick::image_read(path = "../figs/map.png") %>% plot()
 ```
 <!-- ![**Fig 1**](../figs/map.png) -->
@@ -78,11 +72,8 @@ The slope of the forest floor was measured using a rangefinder *(Bushnell, Fores
 
 
 The diameter of all stems >10 cm wide were recorded in each census plot.
-
 Following common forestry guidelines, in cases where a tree split into 2 or more stems below breast height, each stem was measured separately; in cases where a stem split only above breast height, it was measured as a single stem. 
-
 Tree height was recorded by measuring distances to both the crown and the stem at chest height *(~2.7 m)* using a rangefinder *(Bushnell, Forestry Suppliers, Inc.)* and triangulating the missing side length.
-
 Taxa were identified with localized knowledge and field guides matching common names to Latin binomials, 
 and trait information was gathered from the literature.
 
@@ -92,29 +83,17 @@ and trait information was gathered from the literature.
 
 
 
-Aboveground biomass (AGB) was estimated per stem using the allometric equation by ... *[@chave15]*.
+Aboveground biomass (AGB) was estimated per stem using the allometric equation by *@chave15*.
+The equation specifically for wet tropical forests was used, which has performed slightly better compared to both pantropical and previous other models by *@chave05 [@alvarez12; @ngomanda14]*.
+The equation version with height was used since height was accessibly measurable and has shown improved local accuracy *[@domke12; @khan20]*.
+Wood density (or specific gravity) values when available also improve biomass estimates even more than height *[@vanbreugel11]*.
+The equation used was: $$ {AGB} = 0.0673 (ρ D^2 H)^{0.976} $$ with diameter *D* in cm, height *H* in m, and wood density or specific gravity *p* in *g cm^-3^*.
+DBHs and heights were measured in the field and wood densities were extracted from available literature. 
+Where information was limited, values at the genus level were used and unrepresented taxa were assumed to be *0.58* following World Agroforestry Database guidelines [(worldagroforestry.org)](worldagroforestry.org).
 
-The equation specifically for wet tropical forests was used, which has performed slightly better compared to both pantropical and previous other models by ... *[@chave05] (Ngomanda et al 2014, Alvarez et al 2012)*.
+<!-- *[References used for this step are given in *Table S1*.] * -->
 
-The equation version with height was used since height was accessibly measurable and has shown improved local accuracy *(Khan et al 2020, Domke et al 2012)*.
-
-Wood density (or specific gravity) values when available also improve biomass estimates even more than height *(van Breugel et al 2011)*.
-
-The equation used was:
-
-
-*AGB = 0.0673 x (ρ D^2 H)^0.976*
-
-
-with *D* in cm, *H* in m, and *p* in g cm^-3.
-
-Measured DBHs and heights were used and wood densities (*ρ*) extracted from available literature. 
-
-Where information was limited, values at the genus level were used and unrepresented taxa were assumed to be 0.58 following World Agroforestry Database quidelines *(worldagroforestry.org)*.
-
-<!-- *[References used for this step are given in *Table S1*.] * -->
-
-Original values from 2013 were later updated to modern values using the pipeline developed in the *BIOMASS* `r packageVersion("BIOMASS")` R software package by ... *[@réjou-méchain17]*, which notably replaced unknown wood density values with plot-level averages instead during stem biomass calculations. 
+Original values found and recorded were later updated to modern values using the pipeline developed in the *BIOMASS* `r packageVersion("BIOMASS")` R software package by *@rejou-mechain17*, which notably replaced unknown wood density values with plot-level averages instead during stem biomass calculations. 
 
 <!-- However, these updates did not appear to change the main results of this study. -->
 
@@ -134,13 +113,9 @@ For all response variables, data were analyzed using plot medians and subject to
 
 Non-linear regressions were run using the function *poly()* in the *stats* `r packageVersion("stats")` R package *(R Core Team 2022)*, 
 which was only recorded for stem density and richness variables. 
-
-
 All trees censused were included in each analysis including unidentified taxa that represented a single group in taxa-specific analyses.
-
 Community analysis and ordination was done as a PERMANOVA with the *vegan* `r packageVersion("vegan")` R package *[@dixon03]*.
-
-Data and code are available at *nmedina17.github.com/osa*.
+Data and code are available at [nmedina17.github.com/osa](nmedina17.github.com/osa).
 
 
 <!-- `r citation()` -->

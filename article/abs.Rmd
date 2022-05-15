@@ -5,107 +5,129 @@ output: html_notebook
 
 
 
-# ATBC *(400 wds)*
+<!-- # ATBC *(400 wds)* -->
 
 
 
-## REVIEW CRITERIA
-​
-All abstracts will be evaluated and scored by the ATBC2022 Scientific Committee. The Scientific Committee may accept, decline, or offer an opportunity for a revised abstract submission. Proposals will be assessed using the following criteria: 
+<!-- ## REVIEW CRITERIA -->
+<!-- ​ -->
+<!-- All abstracts will be evaluated and scored by the ATBC2022 Scientific Committee. The Scientific Committee may accept, decline, or offer an opportunity for a revised abstract submission. Proposals will be assessed using the following criteria:  -->
 
-- *Scientific merit*: Likelihood of promoting a significant advancement in our understanding of tropical biology and conservation, innovative or interdisciplinary approaches, or likelihood of novel conceptual synthesis. 
+<!-- - *Scientific merit*: Likelihood of promoting a significant advancement in our understanding of tropical biology and conservation, innovative or interdisciplinary approaches, or likelihood of novel conceptual synthesis.  -->
 
-- *Broader impacts*: Integration of science with conservation issues, impact on policy, and potential utility for conservation, among others. 
+<!-- - *Broader impacts*: Integration of science with conservation issues, impact on policy, and potential utility for conservation, among others.  -->
 
-- *Appeal to participants of ATBC2022*: Abstract should target topics that will be of interest to the ATBC community. 
+<!-- - *Appeal to participants of ATBC2022*: Abstract should target topics that will be of interest to the ATBC community.  -->
 
-- Relevance to the meeting's theme: We encourage submission of abstracts that are relevant to the meeting’s theme.
+<!-- - Relevance to the meeting's theme: We encourage submission of abstracts that are relevant to the meeting’s theme. -->
 
-- A clearly written and compelling abstract.
-
-
-
-# Draft = Habitat edges affect tree diversity more than biomass regeneration in a wet tropical forest
+<!-- - A clearly written and compelling abstract. -->
 
 
 
-## Introduction / Background / Justification *(50-80 wds)*
+<!-- # Draft = Habitat edges affect tree diversity more than biomass regeneration in a wet tropical forest -->
 
 
 
-About half of all forests are tropical and secondary, making tropical forest regeneration processes integral to the future of forests globally.
-
-However, syntheses find forest regeneration to be quick yet inconsistent--stand biomass and taxonomic richness recovers almost completely in about half a century, but relative abundances may take centuries to recover or instead may diverge entirely.
-
-Given that three quarters of all forests are within a km of a habitat edge, nearby habitat edges also likely affect biomass and taxonomic regeneration trends, as well as management history legacies.
-
-In wet tropical forests specifically, succession tends to depend on light availability, compared to water availability and hydraulic traits like more open or dry forests, which may also extend to mediate edge effects.
+<!-- ## Introduction / Background / Justification *(50-80 wds)* -->
 
 
 
-## Objective(s)/Hypothesis(es) *(50-80 wds)*
+<!-- About half of all forests are tropical and secondary, making tropical forest regeneration processes integral to the future of forests globally. -->
+
+<!-- However, syntheses find forest regeneration to be quick yet inconsistent--stand biomass and taxonomic richness recovers almost completely in about half a century, but relative abundances may take centuries to recover or instead may diverge entirely. -->
+
+<!-- Given that three quarters of all forests are within a km of a habitat edge, nearby habitat edges also likely affect biomass and taxonomic regeneration trends, as well as management history legacies. -->
+
+<!-- In wet tropical forests specifically, succession tends to depend on light availability, compared to water availability and hydraulic traits like more open or dry forests, which may also extend to mediate edge effects. -->
 
 
 
-This study addresses how wet tropical secondary forest regeneration is affected by distance to habitat edge in a former timber plantation context, and
-addresses the hypothesis that old plantations facilitate regeneration by favoring shade tolerant or late successional taxa, and that habitat edges affect regenerating community composition.
+<!-- ## Objective(s)/Hypothesis(es) *(50-80 wds)* -->
 
 
 
-## Methods *(50-80 wds)*
+<!-- This study addresses how wet tropical secondary forest regeneration is affected by distance to habitat edge in a former timber plantation context, and -->
+<!-- addresses the hypothesis that old plantations facilitate regeneration by favoring shade tolerant or late successional taxa, and that habitat edges affect regenerating community composition. -->
 
 
 
-A 20 ha timber plantation abandoned ca 20 years ago surrounded by primary forest on two sides and a main service road on a third was censused for over a thousand trees using random stratified sampling plots representing 5% of total parcel area along a 300 m edge distance gradient in the Osa Peninsula, SW Costa Rica, and analysis used relevant databases from the literature.
+<!-- ## Methods *(50-80 wds)* -->
 
 
 
-## Results *(50-80 wds)*
+<!-- A 20 ha timber plantation abandoned ca 20 years ago surrounded by primary forest on two sides and a main service road on a third was censused for over a thousand trees using random stratified sampling plots representing 5% of total parcel area along a 300 m edge distance gradient in the Osa Peninsula, SW Costa Rica, and analysis used relevant databases from the literature. -->
 
 
 
-As distance from primary forest edge increased, biomass and stem and wood density tended to increase, with ca 10% variation explained, while canopy light and stand height tended to stay the same.
-
-Stand tree richness also tended to increase, but diversity decreased steeply and non-linearly, and composition varied notably.
-
-Tree taxa associated with both early and late successional stages increased, but biomass by dispersal mode did not tend to change.
+<!-- ## Results *(50-80 wds)* -->
 
 
 
-## Implications/Conclusions *(50-80 wds)*
+<!-- As distance from primary forest edge increased, biomass and stem and wood density tended to increase, with ca 10% variation explained, while canopy light and stand height tended to stay the same. -->
+
+<!-- Stand tree richness also tended to increase, but diversity decreased steeply and non-linearly, and composition varied notably. -->
+
+<!-- Tree taxa associated with both early and late successional stages increased, but biomass by dispersal mode did not tend to change. -->
 
 
 
-Overall this study supports main ideas about forest regeneration that stand composition is less resilient and more subject to edge effects than biomass and richness, suggesting that global forests will likely be distinctly new assemblages in the future with timber and diversity trade-offs based on local and regional management activity.
+<!-- ## Implications/Conclusions *(50-80 wds)* -->
 
 
 
-## Keywords (10)
+<!-- Overall this study supports main ideas about forest regeneration that stand composition is less resilient and more subject to edge effects than biomass and richness, suggesting that global forests will likely be distinctly new assemblages in the future with timber and diversity trade-offs based on local and regional management activity. -->
 
 
 
-forest
-secondary
-regeneration
-edge
-biomass
-diversity
-community
-composition
-function
-trait
+<!-- ## Keywords (10) -->
 
 
 
-# SACNAS
+<!-- forest -->
+<!-- secondary -->
+<!-- regeneration -->
+<!-- edge -->
+<!-- biomass -->
+<!-- diversity -->
+<!-- community -->
+<!-- composition -->
+<!-- function -->
+<!-- trait -->
 
+
+
+<!-- # SACNAS -- Habitat edges affect tree diversity more than biomass regeneration in a wet neotropical secondary forest -->
+
+
+<!-- About half of all forests are tropical and secondary, making tropical forest regeneration integral to future forests.  -->
+<!-- Tree stand biomass and taxonomic richness can recover in a few decades, but relative abundances may lag indefinitely.  -->
+<!-- Since most forests are within a km of a habitat edge, edge effects likely affect community composition regeneration, mediated by shade tolerance and dispersal traits, along with management history. -->
+<!-- This study addresses how wet tropical secondary forest regeneration is affected by distance to habitat edge, and hypothesizes that old timber plantations facilitate regeneration by favoring shade tolerant or late successional taxa, and adjacent forest edges mediate community composition. -->
+<!-- An abandoned neotropical timber plantation adjacent to primary forest was censused for trees along a 300 m edge distance gradient, and analysis matched taxa to traits using relevant literature. -->
+<!-- As distance from primary forest edge increased, biomass and stem and wood density tended to increase, with ca 10% variation explained, while canopy light and stand height tended to stay the same. -->
+<!-- Stand tree richness also tended to increase, but diversity decreased steeply and non-linearly, and composition varied notably.  -->
+<!-- Finally, tree taxa associated with both early and late successional stages increased, but biomass by dispersal mode did not tend to change. -->
+<!-- Overall this study supports that stand composition is less resilient and more subject to edge effects than biomass and richness, suggesting that global forests will likely be distinctly new assemblages in the future, with timber and biodiversity trade-offs occurring based on local and regional management activity. -->
+
+
+
+# ESA -- Habitat edges affect tree diversity more than biomass regeneration in a wet neotropical secondary forest
+
+
+
+<!-- # Background/Question/Methods -->
 
 About half of all forests are tropical and secondary, making tropical forest regeneration integral to future forests. 
-Tree stand biomass and taxonomic richness can recover in a few decades, but relative abundances may lag indefinitely. 
-Since most forests are within a km of a habitat edge, edge effects likely affect community composition regeneration, medaited by shade tolerance and dispersal traits, along with management history. 
-This study addresses how wet tropical secondary forest regeneration is affected by distance to habitat edge, and hypothesizes that old timber plantations facilitate regeneration by favoring shade tolerant or late successional taxa, and adjacent forest edges mediate community composition. 
-An abandoned neotropical timber plantation adjacent to primary forest was censused for trees along a 300 m edge distance gradient, and analysis matched taxa to traits using relevant literature. 
-As distance from primary forest edge increased, biomass and stem and wood density tended to increase, with ca 10% variation explained, while canopy light and stand height tended to stay the same. 
-Stand tree richness also tended to increase, but diversity decreased steeply and non-linearly, and composition varied notably. 
-Finally, tree taxa associated with both early and late successional stages increased, but biomass by dispersal mode did not tend to change. 
+Tree stand biomass and taxonomic richness can recover in a few decades, but relative abundances may lag indefinitely. 
+Since most forests are within a km of a habitat edge, edge effects likely affect community composition regeneration, mediated by shade tolerance and dispersal traits, along with management history.
+This study addresses how wet tropical secondary forest regeneration is affected by distance to habitat edge, and hypothesizes that old timber plantations facilitate regeneration by favoring shade tolerant or late successional taxa, and adjacent forest edges mediate community composition.
+An abandoned neotropical timber plantation adjacent to primary forest was censused for trees along a 300 m edge distance gradient, and analysis matched taxa to traits using relevant literature.
+
+
+<!-- # Results/Conclusions -->
+
+As distance from primary forest edge increased, stem and wood density tended to increase significantly, with ca 10% variation explained, while biomass and canopy light tended to stay the same.
+Stand tree richness also tended to increase significantly, but diversity decreased steeply and non-linearly, and taxonomic composition varied notably. 
+Finally, tree taxa associated with both early and late successional stages decreased significantly, but biomass by dispersal mode did not tend to change.
 Overall this study supports that stand composition is less resilient and more subject to edge effects than biomass and richness, suggesting that global forests will likely be distinctly new assemblages in the future, with timber and biodiversity trade-offs occurring based on local and regional management activity.

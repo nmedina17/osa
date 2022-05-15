@@ -1499,6 +1499,8 @@ window.initializeCodeFolding = function(show) {
   // select all R code blocks
   var rCodeBlocks = $('pre.r, pre.python, pre.bash, pre.sql, pre.cpp, pre.stan, pre.julia, pre.foldable');
   rCodeBlocks.each(function() {
+    // skip if the block has fold-none class
+    if ($(this).hasClass('fold-none')) return;
 
     // create a collapsable div to wrap the code in
     var div = $('<div class="collapse r-code-collapse"></div>');
@@ -1788,191 +1790,267 @@ pre code {
 
 
 <!-- rnb-text-begin -->
-<div id="outline" class="section level1">
-<h1>Outline</h1>
-<ol style="list-style-type: decimal">
-<li>importance of reforestation/regeneration/regrowth</li>
-<li>patterns of reforestation
-<ol style="list-style-type: decimal">
-<li>general</li>
-<li>tropical</li>
-</ol></li>
-<li>things that affect reforestation
-<ol style="list-style-type: decimal">
-<li>edge effects</li>
-<li>plantation structure?</li>
-</ol></li>
-<li>[for NGO–start biomass census]
-<ol style="list-style-type: decimal">
-<li>Does leaving the plantation structure help reforestation?
-<ol style="list-style-type: decimal">
-<li>shade</li>
-<li>edge effects (i.e. buffer)</li>
-</ol></li>
-<li>How does the forest regenerate by distance to primary forest?
-<ol style="list-style-type: decimal">
-<li>how much [effort] do we need to re-seed? / how much can we leave to
-nature?</li>
-</ol></li>
-</ol></li>
-</ol>
-</div>
-<div id="draft" class="section level1">
-<h1>Draft</h1>
-<p>Global forest and landscape regeneration is a key conservation and
-climate change mitigation strategy, adopted internationally (@UN14
-Paris, Bonn Challenge).</p>
-<pre><code>- Tropical forests store most terrestrial biomass *[@pan13]* and biodiversity (CITE, but are losing functions, especially in the neotropics *[@hubau2020]*, as most tropical forests become secondary *[@FAO20]*.</code></pre>
-<p>Secondary forests can regenerate relatively quickly compared to
-old-growth forests in some ways, but in other ways remain distinct.</p>
-<pre><code>- Neotropical secondary forests accumulate biomass &gt;10x faster than old-growth forests ( @poorter2016 ), and offset ~10% of carbon emissions from Amazonian deforestation *[@smith20]*.
-- They also recover taxonomic richness quite quickly, averaging 80% of old-growth forest levels in 20y *[@rozendaal19]*.
-- However, secondary neotropical forests diverge widely in taxonomic composition *[@norden15]*.</code></pre>
-<p>Divergent communities among secondary forests may ultimately warrant
-more localized conservation efforts, studying relative effects of
-generalized community processes.</p>
-<p>Half of all forests lie half of a kilometer from an ecotone <em><span class="citation">(Haddad et al. 2015)</span></em>, suggesting that edge
-effects from adjacent habitats are widespread aspects of secondary
-forest regeneration.</p>
-<pre><code>- Tropical forests lose 22% carbon along edges &gt;100m, in part due to shorter trees and less leaf mass *[@ordway20]*.</code></pre>
-<p>Here we report the edge effects of an abandoned wet neotropical
-timber plantation.</p>
-<ul>
-<li><p>We hypothesized that remnant timber trees would mediate forest
-regrowth by maintaining uniform shade that would suppress
-shade-intolerant / pioneer trees / taxa and allow for more
-diversity.</p>
-<ul>
-<li>supported by inference?!</li>
-</ul></li>
-</ul>
-</div>
-<div id="attic" class="section level1">
-<h1>attic</h1>
-<p>Forest regeneration has the potential to store ##C and preserve ##
-diversity globally in the coming decades (UN, Bonn challenge).</p>
-<p>At local scales, regeneration is strongly affected by landscape
-[ecological] heterogeneity as well as management history.</p>
-<p>However, patterns of forest regeneration remain unclear, especially
-at more local scales (&lt; ~50 ha).</p>
-<p>Syntheses (Finegan 1996) and chronosequence studies show that
-secondary forests mostly regenerate (~50-80%, compared to old-growth
-forests) rather quickly (decades, &lt; 20 years), mainly with respect to
-tree height, above-ground biomass (Poorter et al 2016), and species
-richness, especially in wetter regions <em><span class="citation">(Rozendaal et al. 2019; Onyekwelu and Olabiwonnu
-2016)</span></em>.</p>
-<p>However, while restoring species richness may be enough to maintain
-some ecosystem functions like carbon storage (Liu et al 2018), it does
-not guarantee the restoration of species composition.</p>
-<p>Instead, changes to species composition likely last up to centuries,
-showing a strong legacy of priority effects from pioneering,
-early-successional communities that are mostly fast-growing,
-low-wood-density, and shade-intolerant (Tabarelli et al 2014, Tabarelli
-&amp; Lopes 2008).</p>
-<p>forests show legacy effects of common human activity, like logging
-and intensive agriculture/agroforestry/silviculture (FAO 2020).</p>
-<p>[High] Regional biodiversity [can] affects/increases the uncertainty
-about the local occurrences and outcomes of specific species
-interactions,</p>
-<p>such as after dispersal and/or niche overlap [CITE-niche, neutral
-theory].</p>
-<p>[At the same time,] Diverse local management activity modifies
-demographic states/profiles of various taxa’s population dynamics.</p>
-<p>For example, active timber plantations strongly promote the
-population growth of focal taxa at the expense of non-focal taxa.</p>
-<p>After abandonment, however, the ecosystem likely reflects how
-continuous regional ecological processes look different given past
-management.</p>
-<p>such as seed dispersal from nearby primary forest edges.</p>
-<p>[These] Interactions between background ecology and human management
-ultimately have both local and general implications for the potential
-conservation/stability of ecosystem services/functions</p>
-<p>like biomass/carbon storage and biodiversity maintenance,</p>
-<p>as well as manager livelihood.</p>
-<p>Slower changes in composition can also be influenced by seed banks,
-herbivore communities, and dispersal from the surrounding landscape, all
-of which may affect diverging restoration trajectories among tropical
-forests <em>(<span class="citation">(<strong>nordon15?</strong>)</span>,
-Christensen 2014, Munroe et al 2013, Chazdon et al 2007)</em>.</p>
-<p>but lagging changes in composition may contribute to reduced effects
-of diversity on other forest functions (Griess et al 2012).</p>
-<p>Restoring species composition more quickly is likely a place where
-active forest managers can have the most unique impacts.</p>
-<p>For land managers / foresters with interest in conservation,
-inheriting land affected by past decisions is a reality. One of the
-legacies is where the land was placed. To best manage it in the future,
-an initial assessment of the ecological status of the land is important
-to understand it’s likely trajectory, and what it will need in the
-future for tailed services/conservation/protection.</p>
-<p>Edge effects are known for degrading primary forest, but they can
-also be used to assist reforestation.</p>
-<p>Traditional edge effects act by mortality of large trees that makes
-room for pioneer species to enter, but existing interior pioneer species
-also have dispersal radii that overlap with the adjacent exterior,
-potentially facilitating regeneration.</p>
-<p>Encroachment vs. facilitation relies on a balance between mortality
-(per area) and dispersal + establishment + stem growth.</p>
-<p>So pioneer species can be helpful for reforestation though they are
-typically seen as bad for old forest conservation.</p>
-<p>Edge effects, or changes in composition along management gradients,
-are likely a key variable for the sustainability of neo-tropical
-landscapes that are heterogenous in management <em><span class="citation">(<strong>wright09?</strong>)</span></em>,</p>
-<p>with underlying arguments based on metapopulation theory in ecology
-<em><span class="citation">(<strong>levins69?</strong>;
-<strong>macarthur67?</strong>)</span></em>, but edge effects have often
-been studied as threats to nature reserves, rather than how edges might
-facilitate secondary succession.</p>
-<p>Especially for abandoned land that regenerates via various processes
-(Stanturf et al 2014), the proximity to less disturbed habitat can
-affect the composition of the regrowing community by changing effective
-seed dispersal kernels and probability of establishment (Wandrag et al
-2017, Guariguata &amp; Ostertag 2001), along with animal disperser
-communities themselves (Gilroy et al 2014).</p>
-<p>While dispersal is complicated (Muller-Landau &amp; Hardesty 2005),
-it can broadly correlate with simpler plant traits such as height and
-seed mass (Tamme et al 2014, Thomson et al 2011).</p>
-<p>Edge effects can also operate via the style of management, including
-logging decisions (Edwards et al 2014, Clark et al 2012) and land-use
-history generally (Omeja et al 2012), can also affect stand diversity
-maintenance,</p>
-<p>with examples of high diversity (compared to older adjacent stands)
-in agroforests <em><span class="citation">(Oliveira-Neto, Nascimento,
-and Carvalho 2017)</span></em> and native timber plantations (Pryde et
-al 2015),</p>
-<p>possibly by changing early tree survival probabilities, growth rates,
-and/or competition,</p>
-<p>but surprisingly less likely facilitation by nitrogen-fixing trees
-(Lai et al 2018).</p>
-<p>It may also be that due to both high recruitment and mortality
-(turnover) of pioneering species’ stems, transitions from early- to
-late-successional communities may be more complex than gradual (van
-Greugel et al 2007).</p>
-<p>The persistence of early-successional tree communities has been found
-to lower the standing biomass, likely due to lower wood density (César
-et al 2021), and could therefore require a switch in focal timber
-species (Karsten et al 2014).</p>
-<p>To understand the ecological principles behind secondary forest
-regeneration (Hulshoff &amp; Powers 2019), here we study the
-regeneration of an abandoned timber plantation as a function of distance
-from surrounding native forest.</p>
-<ul>
-<li>how can we expect it to regrow?</li>
-<li>how far/much [effort] do we need to re-seed?</li>
-</ul>
-<p>We hypothesized that planted canopy species would facilitate
-regeneration by reducing competitive suppression of more shade-tolerant
-taxa by pioneering species, having mixed effects on stand diversity.</p>
-<p>We also considered how the legacy plantation canopy structure
-mediated forest stand effects via changes in abiotic conditions like
-light availability and microtopography (Powers &amp; Peréz-Aviles
-2012).</p>
+<!-- # Outline -->
+<!-- 1.  importance of reforestation/regeneration/regrowth -->
+<!-- 2.  patterns of reforestation -->
+<!--     1.  general -->
+<!--     2.  tropical -->
+<!-- 3.  things that affect reforestation -->
+<!--     1.  edge effects -->
+<!--     2.  plantation structure? -->
+<!-- 4.  [for NGO--start biomass census] -->
+<!--     1.  Does leaving the plantation structure help reforestation? -->
+<!--         1.  shade -->
+<!--         2.  edge effects (i.e. buffer) -->
+<!--     2.  How does the forest regenerate by distance to primary forest? -->
+<!--         1.  how much [effort] do we need to re-seed? / how much can we leave to nature? -->
+<!-- # Draft -->
+<p>Forest and landscape restoration is a key international conservation
+and climate change adaptation strategy <em><span class="citation">(<a href="#ref-depinto20" role="doc-biblioref">De Pinto et al.
+2020</a>)</span></em>, and while tropical forests specifically store
+most land biomass <em><span class="citation">(<a href="#ref-pan13" role="doc-biblioref">Pan et al. 2013</a>)</span></em>, most are now
+secondary <em><span class="citation">(<a href="#ref-fao20" role="doc-biblioref">FAO 2020</a>)</span></em> and regenerating degraded
+functions <em><span class="citation">(<a href="#ref-hubau20" role="doc-biblioref">Hubau et al. 2020</a>)</span></em> amid
+insufficient policy support <em><span class="citation">(<a href="#ref-chazdon18" role="doc-biblioref">Robin L. Chazdon
+2018</a>)</span></em>. Secondary forests can regenerate relatively
+quickly compared to old-growth forests in some ways, but in other ways
+remain distinct. Neotropical secondary forests can grow quickly enough
+to accumulate biomass &gt;10x faster than old-growth forests <em><span class="citation">(<a href="#ref-finegan96" role="doc-biblioref">Finegan
+1996</a>; <a href="#ref-poorter16" role="doc-biblioref">Poorter et al.
+2016</a>)</span></em>, and substantially offset carbon emissions, with
+estimates ranging from ~10% from Amazonian deforestation <em><span class="citation">(<a href="#ref-smith20" role="doc-biblioref">Smith et
+al. 2020</a>)</span></em> to a decade of fossil fuel emissions from all
+of Latin American and the Caribbean <em><span class="citation">(<a href="#ref-chazdon16" role="doc-biblioref">R. L. Chazdon et al.
+2016</a>)</span></em>. They also recover taxonomic richness and biomass
+quite quickly, as well as tree height, averaging 80% of old-growth
+forest levels in just 20 years, especially in wetter regions <em><span class="citation">(<a href="#ref-rozendaal19" role="doc-biblioref">Rozendaal et al. 2019</a>)</span></em>. The
+recovery of species richness alone is beneficial in that it also tends
+to correlate with the recovery of some ecosystem services <em><span class="citation">(<a href="#ref-guariguata01" role="doc-biblioref">Guariguata and Ostertag 2001</a>; <a href="#ref-stanturf14" role="doc-biblioref">Stanturf, Palik, and
+Dumroese 2014</a>)</span></em> like biomass and carbon storage <em><span class="citation">(<a href="#ref-liu18" role="doc-biblioref">Liu et al.
+2018</a>)</span></em>. However, secondary neotropical forests diverge
+widely in taxonomic composition <em><span class="citation">(<a href="#ref-norden15" role="doc-biblioref">Norden et al.
+2015</a>)</span></em>, potentially taking over a century to recover
+<em><span class="citation">(<a href="#ref-poorter21" role="doc-biblioref">Poorter et al. 2021</a>)</span></em>. Despite being
+one of the slowest ecosystem properties to recover, restoring recovering
+community composition is often important for preserving rare taxa
+<em><span class="citation">(<a href="#ref-carlo16" role="doc-biblioref">Carlo and Morales 2016</a>)</span></em>, which can
+be keystone to locally-adapted food webs, including birds <em><span class="citation">(<a href="#ref-maas16" role="doc-biblioref">Maas et al.
+2016</a>)</span></em>. As a result, understanding secondary forest
+regeneration remains important…</p>
+<p>Secondary forest regeneration is often affected by edge effects, or
+changes near an ecosystem boundary, as well as land-use history,
+especially in heterogeneously-managed landscapes <em><span class="citation">(<a href="#ref-perfecto09" role="doc-biblioref">Perfecto, Vandermeer, and Wright 2009</a>; <a href="#ref-melo13" role="doc-biblioref">Melo et al.
+2013</a>)</span></em>. About 70% of all forests have been estimated to
+be within a km of their edge <em><span class="citation">(<a href="#ref-haddad15" role="doc-biblioref">Haddad et al.
+2015</a>)</span></em>, resulting in tropical forests having been
+estimated to lose ~22% aboveground carbon along heavily-managed edges
+&gt;100m, in part due to shortening trees and lighter leaf mass
+<em><span class="citation">(<a href="#ref-ordway20" role="doc-biblioref">Ordway and Asner 2020</a>)</span></em>. Edge
+effects also have the potential to shape community composition, based on
+the local dispersal kernel patterns of existing taxa <em><span class="citation">(<a href="#ref-wandrag17" role="doc-biblioref">Wandrag
+et al. 2017</a>)</span></em>, which while complicated <em><span class="citation">(<a href="#ref-muller-landau09" role="doc-biblioref">Muller-Landau and Hardesty 2009</a>)</span></em>,
+can also correlate with simpler plant traits like height and seed mass
+<em><span class="citation">(<a href="#ref-thomson11" role="doc-biblioref">Thomson et al. 2011</a>; <a href="#ref-tamme14" role="doc-biblioref">Tamme et al. 2014</a>)</span></em>. The traits of
+existing taxa also depend on land-use history and previous management
+<em><span class="citation">(<a href="#ref-omeja12" role="doc-biblioref">Omeja et al. 2012</a>)</span></em>, which
+historically has favored tree taxa that tend to pioneering, or be
+faster-growing, have lower wood densities, and be less shade-tolerant
+<em><span class="citation">(<a href="#ref-tabarelli08" role="doc-biblioref">Tabarelli, Lopes, and Peres 2008</a>)</span></em>.
+Legacy effects from management like intensive timber planting could in
+theory delay or result in non-linear changes between successional stages
+<em><span class="citation">(<a href="#ref-albrich20" role="doc-biblioref">Albrich, Rammer, and Seidl 2020</a>; <a href="#ref-gough21" role="doc-biblioref">Gough et al.
+2021</a>)</span></em>, which would make future management more
+uncertain, unlike more sustainable thinning practices and agroforestry
+<em><span class="citation">(<a href="#ref-lefland18" role="doc-biblioref">Lefland, Huff, and Donahue 2018</a>)</span></em>.
+Overall, while edge effects near degraded habitat edges are often
+negative, meta-population <em><span class="citation">(<a href="#ref-levins79" role="doc-biblioref">Levins 1979</a>)</span></em>
+and -community <em><span class="citation">(<a href="#ref-leibold04" role="doc-biblioref">Leibold et al. 2004</a>; <a href="#ref-warren15" role="doc-biblioref">Warren et al. 2015</a>)</span></em> theories
+highlight dispersal as a key process for offsetting extinction debt and
+thus maintaining biodiversity. Near primary forest, dispersal may
+facilitate secondary forest regeneration, and help explain relatively
+high biodiversity compared to adjacent stands that can be found in
+agroforests <em><span class="citation">(<a href="#ref-oliveira-neto17" role="doc-biblioref">Oliveira-Neto, Nascimento, and Carvalho
+2017</a>)</span></em>, forests affected by logging <em><span class="citation">(<a href="#ref-clark12" role="doc-biblioref">Clark and
+Covey 2012</a>; <a href="#ref-edwards14" role="doc-biblioref">Edwards et
+al. 2014</a>)</span></em>, and timber plantations <em><span class="citation">(<a href="#ref-pryde15" role="doc-biblioref">Pryde et
+al. 2015</a>)</span></em>.
+<!-- role of N-fixing trees... *[@lai18]* --></p>
+<p>This study reports tree regeneration patterns of an abandoned wet
+neotropical timber plantation, highlighting edge effects from an
+adjacent primary forest. We hypothesized that remaining timber trees
+would mediate forest regrowth by maintaining shade that would suppress
+less shade-tolerant pioneer tree taxa and allow for more tree diversity
+closer to the primary forest edge. <!-- - supported by inference?! -->
+Accordingly, we predicted that further from the primary forest edge,
+canopy light availability would increase, while stand biomass and
+diversity would decrease.</p>
+<!-- # attic -->
+<!-- Forest regeneration has the potential to store *## C* and preserve *## diversity* globally in the coming decades (UN, Bonn challenge). -->
+<!-- At local scales, regeneration is strongly affected by landscape [ecological] heterogeneity as well as management history. -->
+<!-- However, patterns of forest regeneration remain unclear, especially at more local scales (< ~50 ha). -->
+<!-- Syntheses (Finegan 1996) and chronosequence studies show that secondary forests mostly regenerate (~50-80%, compared to old-growth forests) rather quickly (decades, < 20 years), mainly with respect to tree height, above-ground biomass (Poorter et al 2016), and species richness, especially in wetter regions *[@rozendaal19; @onyekwelu16]*. -->
+<!-- However, while restoring species richness may be enough to maintain some ecosystem functions like carbon storage (Liu et al 2018), it does not guarantee the restoration of species composition. -->
+<!-- Instead, changes to species composition likely last up to centuries,  -->
+<!-- [High] Regional biodiversity [can] affects/increases the uncertainty about the local occurrences and outcomes of specific species interactions, -->
+<!-- such as after dispersal and/or niche overlap [CITE-niche, neutral theory]. -->
+<!-- [At the same time,] Diverse local management activity modifies demographic states/profiles of various taxa's population dynamics. -->
+<!-- For example, active timber plantations strongly promote the population growth of focal taxa at the expense of non-focal taxa. -->
+<!-- After abandonment, however, the ecosystem likely reflects how continuous regional ecological processes look different given past management. -->
+<!-- such as seed dispersal from nearby primary forest edges. -->
+<!-- [These] Interactions between background ecology and human management ultimately have both local and general implications for the potential conservation/stability of ecosystem services/functions -->
+<!-- like biomass/carbon storage and biodiversity maintenance, -->
+<!-- as well as manager livelihood. -->
+<!-- Slower changes in composition can also be influenced by seed banks, herbivore communities, and dispersal from the surrounding landscape, all of which may affect diverging restoration trajectories among tropical forests *(@nordon15, Christensen 2014, Munroe et al 2013, Chazdon et al 2007)*. -->
+<!-- but lagging changes in composition may contribute to reduced effects of diversity on other forest functions (Griess et al 2012). -->
+<!-- Restoring species composition more quickly is likely a place where active forest managers can have the most unique impacts. -->
+<!-- For land managers / foresters with interest in conservation, inheriting land affected by past decisions is a reality. One of the legacies is where the land was placed. To best manage it in the future, an initial assessment of the ecological status of the land is important to understand it's likely trajectory, and what it will need in the future for tailed services/conservation/protection. -->
+<!-- Edge effects are known for degrading primary forest, but they can also be used to assist reforestation. -->
+<!-- Traditional edge effects act by mortality of large trees that makes room for pioneer species to enter, but existing interior pioneer species also have dispersal radii that overlap with the adjacent exterior, potentially facilitating regeneration. -->
+<!-- Encroachment vs. facilitation relies on a balance between mortality (per area) and dispersal + establishment + stem growth. -->
+<!-- So pioneer species can be helpful for reforestation though they are typically seen as bad for old forest conservation. -->
+<!-- Especially for abandoned land that regenerates via various processes (Stanturf et al 2014), the proximity to less disturbed habitat can affect the composition of the regrowing community by changing effective seed dispersal kernels and probability of establishment (Wandrag et al 2017, Guariguata & Ostertag 2001), along with animal disperser communities themselves (Gilroy et al 2014). -->
+<!-- Edge effects can also operate via the style of management, including logging decisions (Edwards et al 2014, Clark et al 2012) and land-use history generally (Omeja et al 2012), can also affect stand diversity maintenance, -->
+<!-- possibly by changing early tree survival probabilities, growth rates, and/or competition, -->
+<!-- but surprisingly less likely facilitation by nitrogen-fixing trees (Lai et al 2018). -->
+<!-- It may also be that due to both high recruitment and mortality (turnover) of pioneering species' stems, transitions from early- to late-successional communities may be more complex than gradual (van Greugel et al 2007). -->
+<!-- To understand the ecological principles behind secondary forest regeneration (Hulshoff & Powers 2019), here we study the regeneration of an abandoned timber plantation as a function of distance from surrounding native forest. -->
+<!-- -   how can we expect it to regrow? -->
+<!-- -   how far/much [effort] do we need to re-seed? -->
+<!-- We hypothesized that planted canopy species would facilitate regeneration by reducing competitive suppression of more shade-tolerant taxa by pioneering species, having mixed effects on stand diversity. -->
+<!-- We also considered how the legacy plantation canopy structure mediated forest stand effects via changes in abiotic conditions like light availability and microtopography (Powers & Peréz-Aviles 2012). -->
 <!-- rnb-text-end -->
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-albrich20" class="csl-entry">
+Albrich, Katharina, Werner Rammer, and Rupert Seidl. 2020.
+<span>“Climate Change Causes Critical Transitions and Irreversible
+Alterations of Mountain Forests.”</span> <em>Global Change Biology</em>
+26 (7): 4013–27. <a href="https://doi.org/10.1111/gcb.15118">https://doi.org/10.1111/gcb.15118</a>.
+</div>
+<div id="ref-carlo16" class="csl-entry">
+Carlo, Tomás A., and Juan M. Morales. 2016. <span>“Generalist Birds
+Promote Tropical Forest Regeneration and Increase Plant Diversity via
+Rare-Biased Seed Dispersal.”</span> <em>Ecology</em> 97 (7): 1819–31. <a href="https://doi.org/10.1890/15-2147.1">https://doi.org/10.1890/15-2147.1</a>.
+</div>
+<div id="ref-chazdon16" class="csl-entry">
+Chazdon, R. L., E. N. Broadbent, D. M. A. Rozendaal, F. Bongers, A. M.
+A. Zambrano, T. M. Aide, P. Balvanera, et al. 2016. <span>“Carbon
+Sequestration Potential of Second-Growth Forest Regeneration in the
+<span>Latin American</span> Tropics.”</span> <em>Science Advances</em>.
+<a href="https://doi.org/10.1126/sciadv.1501639">https://doi.org/10.1126/sciadv.1501639</a>.
+</div>
+<div id="ref-chazdon18" class="csl-entry">
+Chazdon, Robin L. 2018. <span>“Protecting Intact Forests Requires
+Holistic Approaches.”</span> <em>Nature Ecology and Evolution</em> 2
+(6): 915. <a href="https://doi.org/10.1038/s41559-018-0546-y">https://doi.org/10.1038/s41559-018-0546-y</a>.
+</div>
+<div id="ref-clark12" class="csl-entry">
+Clark, Jason A., and Kristofer R. Covey. 2012. <span>“Tree Species
+Richness and the Logging of Natural Forests: <span>A</span>
+Meta-Analysis.”</span> <em>Forest Ecology and Management</em> 276:
+146–53. <a href="https://doi.org/10.1016/j.foreco.2012.04.001">https://doi.org/10.1016/j.foreco.2012.04.001</a>.
+</div>
+<div id="ref-depinto20" class="csl-entry">
+De Pinto, Alessandro, Nicola Cenacchi, Richard Robertson, Ho-Young Kwon,
+Timothy Thomas, Jawoo Koo, Salome Begeladze, and Chetan Kumar. 2020.
+<span>“The <span>Role</span> of <span>Crop Production</span> in the
+<span>Forest Landscape Restoration Approach</span> the <span>Potential
+Benefits</span> of <span>Meeting</span> the <span>Bonn
+Challenge</span>.”</span> <em>Frontiers in Sustainable Food Systems</em>
+4 (May): 61. <a href="https://doi.org/10.3389/fsufs.2020.00061">https://doi.org/10.3389/fsufs.2020.00061</a>.
+</div>
+<div id="ref-edwards14" class="csl-entry">
+Edwards, David P., Joseph A. Tobias, Douglas Sheil, Erik Meijaard, and
+William F. Laurance. 2014. <span>“Maintaining Ecosystem Function and
+Services in Logged Tropical Forests.”</span> <em>Trends in Ecology and
+Evolution</em> 29 (9): 511–20. <a href="https://doi.org/10.1016/j.tree.2014.07.003">https://doi.org/10.1016/j.tree.2014.07.003</a>.
+</div>
+<div id="ref-fao20" class="csl-entry">
+FAO. 2020. <em>The <span>State</span> of the <span>World</span>’s
+<span>Forests</span> 2020</em>. <span>FAO and UNEP</span>. <a href="https://doi.org/10.4060/ca8642en">https://doi.org/10.4060/ca8642en</a>.
+</div>
+<div id="ref-finegan96" class="csl-entry">
+Finegan, Bryan. 1996. <span>“Pattern and Process in Neotropical
+Secondary Rain Forests: The First 100 Years of Succession.”</span>
+<em>Trends in Ecology &amp; Evolution</em>.
+</div>
+<div id="ref-gough21" class="csl-entry">
+Gough, Christopher M., Gil Bohrer, Brady S. Hardiman, Lucas E. Nave,
+Christoph S. Vogel, Jeff W. Atkins, Ben Bond-Lamberty, et al. 2021.
+<span>“Disturbance-Accelerated Succession Increases the Production of a
+Temperate Forest.”</span> <em>Ecological Applications</em> 31 (7). <a href="https://doi.org/10.1002/eap.2417">https://doi.org/10.1002/eap.2417</a>.
+</div>
+<div id="ref-guariguata01" class="csl-entry">
+Guariguata, Manuel R., and Rebecca Ostertag. 2001. <span>“Neotropical
+Secondary Forest Succession: <span>Changes</span> in Structural and
+Functional Characteristics.”</span> <em>Forest Ecology and
+Management</em> 148 (1-3): 185–206. <a href="https://doi.org/10.1016/S0378-1127(00)00535-1">https://doi.org/10.1016/S0378-1127(00)00535-1</a>.
+</div>
 <div id="ref-haddad15" class="csl-entry">
 Haddad, Nick M., Lars A. Brudvig, Jean Clobert, Kendi F. Davies, Andrew
 Gonzalez, Robert D. Holt, Thomas E. Lovejoy, et al. 2015. <span>“Habitat
 Fragmentation and Its Lasting Impact on <span>Earth</span>’s
 Ecosystems.”</span> <em>Science Advances</em> 1 (2): e1500052. <a href="https://doi.org/10.1126/sciadv.1500052">https://doi.org/10.1126/sciadv.1500052</a>.
+</div>
+<div id="ref-hubau20" class="csl-entry">
+Hubau, Wannes, Simon L. Lewis, Oliver L. Phillips, Kofi Affum-Baffoe,
+Hans Beeckman, Aida Cuní-Sanchez, Armandu K. Daniels, et al. 2020.
+<span>“Asynchronous Carbon Sink Saturation in <span>African</span> and
+<span>Amazonian</span> Tropical Forests.”</span> <em>Nature</em> 579
+(7797): 80–87. <a href="https://doi.org/10.1038/s41586-020-2035-0">https://doi.org/10.1038/s41586-020-2035-0</a>.
+</div>
+<div id="ref-lefland18" class="csl-entry">
+Lefland, Aaron B., Emily S. Huff, and Brian Donahue. 2018. <span>“A
+<span>Community Forestry Model Linking Research</span>,
+<span>Management</span>, <span>Education</span>, and <span>Stakeholder
+Engagement</span>: <span>Case Study Results</span> from the
+<span>Town</span> of <span>Weston</span>, <span>Massachusetts</span>,
+<span>USA</span>.”</span> <em>Small-Scale Forestry</em> 17 (2): 191–210.
+<a href="https://doi.org/10.1007/s11842-017-9382-1">https://doi.org/10.1007/s11842-017-9382-1</a>.
+</div>
+<div id="ref-leibold04" class="csl-entry">
+Leibold, M. A., M. Holyoak, N. Mouquet, P. Amarasekare, J. M. Chase, M.
+F. Hoopes, R. D. Holt, et al. 2004. <span>“The Metacommunity Concept:
+<span>A</span> Framework for Multi-Scale Community Ecology.”</span>
+<em>Ecology Letters</em> 7 (7): 601–13. <a href="https://doi.org/10.1111/j.1461-0248.2004.00608.x">https://doi.org/10.1111/j.1461-0248.2004.00608.x</a>.
+</div>
+<div id="ref-levins79" class="csl-entry">
+Levins, Richard. 1979. <span>“Coexistence in a <span>Variable
+Environment</span>.”</span> <em>The American Naturalist</em> 114 (6):
+765–83. <a href="https://doi.org/10.1086/283527">https://doi.org/10.1086/283527</a>.
+</div>
+<div id="ref-liu18" class="csl-entry">
+Liu, Xiaojuan, Stefan Trogisch, Jin-Sheng He, Pascal A. Niklaus, Helge
+Bruelheide, Zhiyao Tang, Alexandra Erfmeier, et al. 2018. <span>“Tree
+Species Richness Increases Ecosystem Carbon Storage in Subtropical
+Forests.”</span> <em>Proceedings of the Royal Society B: Biological
+Sciences</em> 285 (1885): 20181240. <a href="https://doi.org/10.1098/rspb.2018.1240">https://doi.org/10.1098/rspb.2018.1240</a>.
+</div>
+<div id="ref-maas16" class="csl-entry">
+Maas, Bea, Daniel S. Karp, Sara Bumrungsri, Kevin Darras, David
+Gonthier, Joe C.-C. Huang, Catherine A. Lindell, et al. 2016.
+<span>“Bird and Bat Predation Services in Tropical Forests and
+Agroforestry Landscapes.”</span> <em>Biological Reviews</em> 91 (4):
+1081–101. <a href="https://doi.org/10.1111/brv.12211">https://doi.org/10.1111/brv.12211</a>.
+</div>
+<div id="ref-melo13" class="csl-entry">
+Melo, Felipe P. L., Víctor Arroyo-Rodríguez, Lenore Fahrig, Miguel
+Martínez-Ramos, and Marcelo Tabarelli. 2013. <span>“On the Hope for
+Biodiversity-Friendly Tropical Landscapes.”</span> <em>Trends in Ecology
+and Evolution</em> 28 (8): 462–68. <a href="https://doi.org/10.1016/j.tree.2013.01.001">https://doi.org/10.1016/j.tree.2013.01.001</a>.
+</div>
+<div id="ref-muller-landau09" class="csl-entry">
+Muller-Landau, Helene C., and Britta Denise Hardesty. 2009. <span>“Seed
+Dispersal of Woody Plants in Tropical Forests: Concepts, Examples and
+Future Directions.”</span> <em>Biotic Interactions in the Tropics</em>,
+267–309. <a href="https://doi.org/10.1017/cbo9780511541971.012">https://doi.org/10.1017/cbo9780511541971.012</a>.
+</div>
+<div id="ref-norden15" class="csl-entry">
+Norden, Natalia, Héctor A. Angarita, Frans Bongers, Miguel
+Martínez-Ramos, Iñigo Granzow-de la Cerda, Michiel van Breugel, Edwin
+Lebrija-Trejos, et al. 2015. <span>“Successional Dynamics in
+<span>Neotropical</span> Forests Are as Uncertain as They Are
+Predictable.”</span> <em>Proceedings of the National Academy of
+Sciences</em> 112 (26): 8013–18. <a href="https://doi.org/10.1073/pnas.1500403112">https://doi.org/10.1073/pnas.1500403112</a>.
 </div>
 <div id="ref-oliveira-neto17" class="csl-entry">
 Oliveira-Neto, Norberto Emídio, Diego Raymundo Nascimento, and Fabrício
@@ -1980,11 +2058,49 @@ Alvim Carvalho. 2017. <span>“Biodiversity Inventory of Trees in a
 Neotropical Secondary Forest After Abandonment of Shaded Coffee
 Plantation.”</span> <em>IForest</em> 10 (1): 303–8. <a href="https://doi.org/10.3832/ifor1901-009">https://doi.org/10.3832/ifor1901-009</a>.
 </div>
-<div id="ref-onyekwelu16" class="csl-entry">
-Onyekwelu, Jonathan C., and Adeola A. Olabiwonnu. 2016. <span>“Can
-Forest Plantations Harbour Biodiversity Similar to Natural Forest
-Ecosystems over Time?”</span> <em>International Journal of Biodiversity
-Science, Ecosystem Services and Management</em> 12 (1-2): 108–15. <a href="https://doi.org/10.1080/21513732.2016.1162199">https://doi.org/10.1080/21513732.2016.1162199</a>.
+<div id="ref-omeja12" class="csl-entry">
+Omeja, Patrick A., Joseph Obua, Aggrey Rwetsiba, and Colin A. Chapman.
+2012. <span>“Biomass Accumulation in Tropical Lands with Different
+Disturbance Histories: <span>Contrasts</span> Within One Landscape and
+Across Regions.”</span> <em>Forest Ecology and Management</em> 269:
+293–300. <a href="https://doi.org/10.1016/j.foreco.2011.12.044">https://doi.org/10.1016/j.foreco.2011.12.044</a>.
+</div>
+<div id="ref-ordway20" class="csl-entry">
+Ordway, Elsa M., and Gregory P. Asner. 2020. <span>“Carbon Declines
+Along Tropical Forest Edges Correspond to Heterogeneous Effects on
+Canopy Structure and Function.”</span> <em>Proceedings of the National
+Academy of Sciences</em> 117 (14): 7863–70. <a href="https://doi.org/10.1073/pnas.1914420117">https://doi.org/10.1073/pnas.1914420117</a>.
+</div>
+<div id="ref-pan13" class="csl-entry">
+Pan, Yude, Richard A. Birdsey, Oliver L. Phillips, and Robert B.
+Jackson. 2013. <span>“The <span>Structure</span>,
+<span>Distribution</span>, and <span>Biomass</span> of the
+<span>World</span>’s <span>Forests</span>.”</span> <em>Annual Review of
+Ecology, Evolution, and Systematics</em> 44 (1): 593–622. <a href="https://doi.org/10.1146/annurev-ecolsys-110512-135914">https://doi.org/10.1146/annurev-ecolsys-110512-135914</a>.
+</div>
+<div id="ref-perfecto09" class="csl-entry">
+Perfecto, Ivette, John H. Vandermeer, and Angus Lindsay Wright. 2009.
+<em>Nature’s Matrix: Linking Agriculture, Conservation and Food
+Sovereignty</em>. <span>London ; Sterling, VA</span>:
+<span>Earthscan</span>.
+</div>
+<div id="ref-poorter16" class="csl-entry">
+Poorter, Lourens, Frans Bongers, T. Mitchell Aide, Angélica M. Almeyda
+Zambrano, Patricia Balvanera, Justin M. Becknell, Vanessa Boukili, et
+al. 2016. <span>“Biomass Resilience of <span>Neotropical</span>
+Secondary Forests.”</span> <em>Nature</em> 530 (7589): 211–14. <a href="https://doi.org/10.1038/nature16512">https://doi.org/10.1038/nature16512</a>.
+</div>
+<div id="ref-poorter21" class="csl-entry">
+Poorter, Lourens, Dylan Craven, Catarina C. Jakovac, Masha T. van der
+Sande, Lucy Amissah, Frans Bongers, Robin L. Chazdon, et al. 2021.
+<span>“Multidimensional Tropical Forest Recovery.”</span>
+<em>Science</em> 374 (6573): 1370–76. <a href="https://doi.org/10.1126/science.abh3629">https://doi.org/10.1126/science.abh3629</a>.
+</div>
+<div id="ref-pryde15" class="csl-entry">
+Pryde, Elizabeth C., Greg J. Holland, Simon J. Watson, Stephen M.
+Turton, and Dale G. Nimmo. 2015. <span>“Conservation of Tropical Forest
+Tree Species in a Native Timber Plantation Landscape.”</span> <em>Forest
+Ecology and Management</em> 339: 96–104. <a href="https://doi.org/10.1016/j.foreco.2014.11.028">https://doi.org/10.1016/j.foreco.2014.11.028</a>.
 </div>
 <div id="ref-rozendaal19" class="csl-entry">
 Rozendaal, Danaë M. A., Frans Bongers, T. Mitchell Aide, Esteban
@@ -1993,10 +2109,54 @@ Becknell, et al. 2019. <span>“Biodiversity Recovery of
 <span>Neotropical</span> Secondary Forests.”</span> <em>Science
 Advances</em> 5 (3). <a href="https://doi.org/10.1126/sciadv.aau3114">https://doi.org/10.1126/sciadv.aau3114</a>.
 </div>
+<div id="ref-smith20" class="csl-entry">
+Smith, Charlotte C., Fernando D. B. Espírito-Santo, John R. Healey, Paul
+J. Young, Gareth D. Lennox, Joice Ferreira, and Jos Barlow. 2020.
+<span>“Secondary Forests Offset Less Than 10% of Deforestation-Mediated
+Carbon Emissions in the <span>Brazilian Amazon</span>.”</span>
+<em>Global Change Biology</em> 26 (12): 7006–20. <a href="https://doi.org/10.1111/gcb.15352">https://doi.org/10.1111/gcb.15352</a>.
+</div>
+<div id="ref-stanturf14" class="csl-entry">
+Stanturf, John A., Brian J. Palik, and R. Kasten Dumroese. 2014.
+<span>“Contemporary Forest Restoration: <span>A</span> Review
+Emphasizing Function.”</span> <em>Forest Ecology and Management</em>
+331: 292–323. <a href="https://doi.org/10.1016/j.foreco.2014.07.029">https://doi.org/10.1016/j.foreco.2014.07.029</a>.
+</div>
+<div id="ref-tabarelli08" class="csl-entry">
+Tabarelli, Marcelo, Ariadna V. Lopes, and Carlos A. Peres. 2008.
+<span>“Edge-Effects Drive Tropical Forest Fragments Towards an
+Early-Successional System.”</span> <em>Biotropica</em> 40 (6): 657–61.
+<a href="https://doi.org/10.1111/j.1744-7429.2008.00454.x">https://doi.org/10.1111/j.1744-7429.2008.00454.x</a>.
+</div>
+<div id="ref-tamme14" class="csl-entry">
+Tamme, Riin, Lars Götzenberger, Martin Zobel, James M. Bullock, Danny A.
+P. Hooftman, Ants Kaasik, and Meelis Pärtel. 2014. <span>“Predicting
+Species’ Maximum Dispersal Distances from Simple Plant Traits.”</span>
+<em>Ecology</em> 95 (2): 505–13. <a href="https://doi.org/10.1890/13-1000.1">https://doi.org/10.1890/13-1000.1</a>.
+</div>
+<div id="ref-thomson11" class="csl-entry">
+Thomson, Fiona J., Angela T. Moles, Tony D. Auld, and Richard T.
+Kingsford. 2011. <span>“Seed Dispersal Distance Is More Strongly
+Correlated with Plant Height Than with Seed Mass.”</span> <em>Journal of
+Ecology</em> 99 (6): 1299–1307. <a href="https://doi.org/10.1111/j.1365-2745.2011.01867.x">https://doi.org/10.1111/j.1365-2745.2011.01867.x</a>.
+</div>
+<div id="ref-wandrag17" class="csl-entry">
+Wandrag, Elizabeth M., Amy E. Dunham, Richard P. Duncan, and Haldre S.
+Rogers. 2017. <span>“Seed Dispersal Increases Local Species Richness and
+Reduces Spatial Turnover of Tropical Tree Seedlings.”</span>
+<em>Proceedings of the National Academy of Sciences of the United States
+of America</em> 114 (40): 10689–94. <a href="https://doi.org/10.1073/pnas.1709584114">https://doi.org/10.1073/pnas.1709584114</a>.
+</div>
+<div id="ref-warren15" class="csl-entry">
+Warren, Ben H., Daniel Simberloff, Robert E. Ricklefs, Robin Aguilée,
+Fabien L. Condamine, Dominique Gravel, Hélène Morlon, et al. 2015.
+<span>“Islands as Model Systems in Ecology and Evolution: Prospects
+Fifty Years After <span>MacArthur-Wilson</span>.”</span> Edited by
+Franck Courchamp. <em>Ecology Letters</em> 18 (2): 200–217. <a href="https://doi.org/10.1111/ele.12398">https://doi.org/10.1111/ele.12398</a>.
 </div>
 </div>
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiSW50cm9kdWN0aW9uIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKYmlibGlvZ3JhcGh5OiAuLi8uLi9saWJyYXJ5LmJpYgotLS0KCgoKIyBPdXRsaW5lCgoKMS4gIGltcG9ydGFuY2Ugb2YgcmVmb3Jlc3RhdGlvbi9yZWdlbmVyYXRpb24vcmVncm93dGgKMi4gIHBhdHRlcm5zIG9mIHJlZm9yZXN0YXRpb24KICAgIDEuICBnZW5lcmFsCiAgICAyLiAgdHJvcGljYWwKMy4gIHRoaW5ncyB0aGF0IGFmZmVjdCByZWZvcmVzdGF0aW9uCiAgICAxLiAgZWRnZSBlZmZlY3RzCiAgICAyLiAgcGxhbnRhdGlvbiBzdHJ1Y3R1cmU/CjQuICBbZm9yIE5HTy0tc3RhcnQgYmlvbWFzcyBjZW5zdXNdCiAgICAxLiAgRG9lcyBsZWF2aW5nIHRoZSBwbGFudGF0aW9uIHN0cnVjdHVyZSBoZWxwIHJlZm9yZXN0YXRpb24/CiAgICAgICAgMS4gIHNoYWRlCiAgICAgICAgMi4gIGVkZ2UgZWZmZWN0cyAoaS5lLiBidWZmZXIpCiAgICAyLiAgSG93IGRvZXMgdGhlIGZvcmVzdCByZWdlbmVyYXRlIGJ5IGRpc3RhbmNlIHRvIHByaW1hcnkgZm9yZXN0PwogICAgICAgIDEuICBob3cgbXVjaCBbZWZmb3J0XSBkbyB3ZSBuZWVkIHRvIHJlLXNlZWQ/IC8gaG93IG11Y2ggY2FuIHdlIGxlYXZlIHRvIG5hdHVyZT8KCgoKIyBEcmFmdAoKCgpHbG9iYWwgZm9yZXN0IGFuZCBsYW5kc2NhcGUgcmVnZW5lcmF0aW9uIGlzIGEga2V5IGNvbnNlcnZhdGlvbiBhbmQgY2xpbWF0ZSBjaGFuZ2UgbWl0aWdhdGlvbiBzdHJhdGVneSwgYWRvcHRlZCBpbnRlcm5hdGlvbmFsbHkgKFxAVU4xNCBQYXJpcywgQm9ubiBDaGFsbGVuZ2UpLgoKICAgIC0gVHJvcGljYWwgZm9yZXN0cyBzdG9yZSBtb3N0IHRlcnJlc3RyaWFsIGJpb21hc3MgKltAcGFuMTNdKiBhbmQgYmlvZGl2ZXJzaXR5IChDSVRFLCBidXQgYXJlIGxvc2luZyBmdW5jdGlvbnMsIGVzcGVjaWFsbHkgaW4gdGhlIG5lb3Ryb3BpY3MgKltAaHViYXUyMDIwXSosIGFzIG1vc3QgdHJvcGljYWwgZm9yZXN0cyBiZWNvbWUgc2Vjb25kYXJ5ICpbQEZBTzIwXSouCgpTZWNvbmRhcnkgZm9yZXN0cyBjYW4gcmVnZW5lcmF0ZSByZWxhdGl2ZWx5IHF1aWNrbHkgY29tcGFyZWQgdG8gb2xkLWdyb3d0aCBmb3Jlc3RzIGluIHNvbWUgd2F5cywgYnV0IGluIG90aGVyIHdheXMgcmVtYWluIGRpc3RpbmN0LgoKICAgIC0gTmVvdHJvcGljYWwgc2Vjb25kYXJ5IGZvcmVzdHMgYWNjdW11bGF0ZSBiaW9tYXNzID4xMHggZmFzdGVyIHRoYW4gb2xkLWdyb3d0aCBmb3Jlc3RzICggQHBvb3J0ZXIyMDE2ICksIGFuZCBvZmZzZXQgfjEwJSBvZiBjYXJib24gZW1pc3Npb25zIGZyb20gQW1hem9uaWFuIGRlZm9yZXN0YXRpb24gKltAc21pdGgyMF0qLgogICAgLSBUaGV5IGFsc28gcmVjb3ZlciB0YXhvbm9taWMgcmljaG5lc3MgcXVpdGUgcXVpY2tseSwgYXZlcmFnaW5nIDgwJSBvZiBvbGQtZ3Jvd3RoIGZvcmVzdCBsZXZlbHMgaW4gMjB5ICpbQHJvemVuZGFhbDE5XSouCiAgICAtIEhvd2V2ZXIsIHNlY29uZGFyeSBuZW90cm9waWNhbCBmb3Jlc3RzIGRpdmVyZ2Ugd2lkZWx5IGluIHRheG9ub21pYyBjb21wb3NpdGlvbiAqW0Bub3JkZW4xNV0qLgoKCkRpdmVyZ2VudCBjb21tdW5pdGllcyBhbW9uZyBzZWNvbmRhcnkgZm9yZXN0cyBtYXkgdWx0aW1hdGVseSB3YXJyYW50IG1vcmUgbG9jYWxpemVkIGNvbnNlcnZhdGlvbiBlZmZvcnRzLCBzdHVkeWluZyByZWxhdGl2ZSBlZmZlY3RzIG9mIGdlbmVyYWxpemVkIGNvbW11bml0eSBwcm9jZXNzZXMuCgoKSGFsZiBvZiBhbGwgZm9yZXN0cyBsaWUgaGFsZiBvZiBhIGtpbG9tZXRlciBmcm9tIGFuIGVjb3RvbmUgKltAaGFkZGFkMTVdKiwgc3VnZ2VzdGluZyB0aGF0IGVkZ2UgZWZmZWN0cyBmcm9tIGFkamFjZW50IGhhYml0YXRzIGFyZSB3aWRlc3ByZWFkIGFzcGVjdHMgb2Ygc2Vjb25kYXJ5IGZvcmVzdCByZWdlbmVyYXRpb24uCgogICAgLSBUcm9waWNhbCBmb3Jlc3RzIGxvc2UgMjIlIGNhcmJvbiBhbG9uZyBlZGdlcyA+MTAwbSwgaW4gcGFydCBkdWUgdG8gc2hvcnRlciB0cmVlcyBhbmQgbGVzcyBsZWFmIG1hc3MgKltAb3Jkd2F5MjBdKi4KCgpIZXJlIHdlIHJlcG9ydCB0aGUgZWRnZSBlZmZlY3RzIG9mIGFuIGFiYW5kb25lZCB3ZXQgbmVvdHJvcGljYWwgdGltYmVyIHBsYW50YXRpb24uCgotICAgV2UgaHlwb3RoZXNpemVkIHRoYXQgcmVtbmFudCB0aW1iZXIgdHJlZXMgd291bGQgbWVkaWF0ZSBmb3Jlc3QgcmVncm93dGggYnkgbWFpbnRhaW5pbmcgdW5pZm9ybSBzaGFkZSB0aGF0IHdvdWxkIHN1cHByZXNzIHNoYWRlLWludG9sZXJhbnQgLyBwaW9uZWVyIHRyZWVzIC8gdGF4YSBhbmQgYWxsb3cgZm9yIG1vcmUgZGl2ZXJzaXR5LgoKICAgIC0gICBzdXBwb3J0ZWQgYnkgaW5mZXJlbmNlPyEKCgoKIyBhdHRpYwoKCgpGb3Jlc3QgcmVnZW5lcmF0aW9uIGhhcyB0aGUgcG90ZW50aWFsIHRvIHN0b3JlIFwjXCNDIGFuZCBwcmVzZXJ2ZSBcI1wjIGRpdmVyc2l0eSBnbG9iYWxseSBpbiB0aGUgY29taW5nIGRlY2FkZXMgKFVOLCBCb25uIGNoYWxsZW5nZSkuCgpBdCBsb2NhbCBzY2FsZXMsIHJlZ2VuZXJhdGlvbiBpcyBzdHJvbmdseSBhZmZlY3RlZCBieSBsYW5kc2NhcGUgW2Vjb2xvZ2ljYWxdIGhldGVyb2dlbmVpdHkgYXMgd2VsbCBhcyBtYW5hZ2VtZW50IGhpc3RvcnkuCgpIb3dldmVyLCBwYXR0ZXJucyBvZiBmb3Jlc3QgcmVnZW5lcmF0aW9uIHJlbWFpbiB1bmNsZWFyLCBlc3BlY2lhbGx5IGF0IG1vcmUgbG9jYWwgc2NhbGVzIChcPCBcfjUwIGhhKS4KClN5bnRoZXNlcyAoRmluZWdhbiAxOTk2KSBhbmQgY2hyb25vc2VxdWVuY2Ugc3R1ZGllcyBzaG93IHRoYXQgc2Vjb25kYXJ5IGZvcmVzdHMgbW9zdGx5IHJlZ2VuZXJhdGUgKFx+NTAtODAlLCBjb21wYXJlZCB0byBvbGQtZ3Jvd3RoIGZvcmVzdHMpIHJhdGhlciBxdWlja2x5IChkZWNhZGVzLCBcPCAyMCB5ZWFycyksIG1haW5seSB3aXRoIHJlc3BlY3QgdG8gdHJlZSBoZWlnaHQsIGFib3ZlLWdyb3VuZCBiaW9tYXNzIChQb29ydGVyIGV0IGFsIDIwMTYpLCBhbmQgc3BlY2llcyByaWNobmVzcywgZXNwZWNpYWxseSBpbiB3ZXR0ZXIgcmVnaW9ucyAqW0Byb3plbmRhYWwxOTsgQG9ueWVrd2VsdTE2XSouCgpIb3dldmVyLCB3aGlsZSByZXN0b3Jpbmcgc3BlY2llcyByaWNobmVzcyBtYXkgYmUgZW5vdWdoIHRvIG1haW50YWluIHNvbWUgZWNvc3lzdGVtIGZ1bmN0aW9ucyBsaWtlIGNhcmJvbiBzdG9yYWdlIChMaXUgZXQgYWwgMjAxOCksIGl0IGRvZXMgbm90IGd1YXJhbnRlZSB0aGUgcmVzdG9yYXRpb24gb2Ygc3BlY2llcyBjb21wb3NpdGlvbi4KCkluc3RlYWQsIGNoYW5nZXMgdG8gc3BlY2llcyBjb21wb3NpdGlvbiBsaWtlbHkgbGFzdCB1cCB0byBjZW50dXJpZXMsIHNob3dpbmcgYSBzdHJvbmcgbGVnYWN5IG9mIHByaW9yaXR5IGVmZmVjdHMgZnJvbSBwaW9uZWVyaW5nLCBlYXJseS1zdWNjZXNzaW9uYWwgY29tbXVuaXRpZXMgdGhhdCBhcmUgbW9zdGx5IGZhc3QtZ3Jvd2luZywgbG93LXdvb2QtZGVuc2l0eSwgYW5kIHNoYWRlLWludG9sZXJhbnQgKFRhYmFyZWxsaSBldCBhbCAyMDE0LCBUYWJhcmVsbGkgJiBMb3BlcyAyMDA4KS4KCmZvcmVzdHMgc2hvdyBsZWdhY3kgZWZmZWN0cyBvZiBjb21tb24gaHVtYW4gYWN0aXZpdHksIGxpa2UgbG9nZ2luZyBhbmQgaW50ZW5zaXZlIGFncmljdWx0dXJlL2Fncm9mb3Jlc3RyeS9zaWx2aWN1bHR1cmUgKEZBTyAyMDIwKS4KCltIaWdoXSBSZWdpb25hbCBiaW9kaXZlcnNpdHkgW2Nhbl0gYWZmZWN0cy9pbmNyZWFzZXMgdGhlIHVuY2VydGFpbnR5IGFib3V0IHRoZSBsb2NhbCBvY2N1cnJlbmNlcyBhbmQgb3V0Y29tZXMgb2Ygc3BlY2lmaWMgc3BlY2llcyBpbnRlcmFjdGlvbnMsCgpzdWNoIGFzIGFmdGVyIGRpc3BlcnNhbCBhbmQvb3IgbmljaGUgb3ZlcmxhcCBbQ0lURS1uaWNoZSwgbmV1dHJhbCB0aGVvcnldLgoKW0F0IHRoZSBzYW1lIHRpbWUsXSBEaXZlcnNlIGxvY2FsIG1hbmFnZW1lbnQgYWN0aXZpdHkgbW9kaWZpZXMgZGVtb2dyYXBoaWMgc3RhdGVzL3Byb2ZpbGVzIG9mIHZhcmlvdXMgdGF4YSdzIHBvcHVsYXRpb24gZHluYW1pY3MuCgpGb3IgZXhhbXBsZSwgYWN0aXZlIHRpbWJlciBwbGFudGF0aW9ucyBzdHJvbmdseSBwcm9tb3RlIHRoZSBwb3B1bGF0aW9uIGdyb3d0aCBvZiBmb2NhbCB0YXhhIGF0IHRoZSBleHBlbnNlIG9mIG5vbi1mb2NhbCB0YXhhLgoKQWZ0ZXIgYWJhbmRvbm1lbnQsIGhvd2V2ZXIsIHRoZSBlY29zeXN0ZW0gbGlrZWx5IHJlZmxlY3RzIGhvdyBjb250aW51b3VzIHJlZ2lvbmFsIGVjb2xvZ2ljYWwgcHJvY2Vzc2VzIGxvb2sgZGlmZmVyZW50IGdpdmVuIHBhc3QgbWFuYWdlbWVudC4KCnN1Y2ggYXMgc2VlZCBkaXNwZXJzYWwgZnJvbSBuZWFyYnkgcHJpbWFyeSBmb3Jlc3QgZWRnZXMuCgpbVGhlc2VdIEludGVyYWN0aW9ucyBiZXR3ZWVuIGJhY2tncm91bmQgZWNvbG9neSBhbmQgaHVtYW4gbWFuYWdlbWVudCB1bHRpbWF0ZWx5IGhhdmUgYm90aCBsb2NhbCBhbmQgZ2VuZXJhbCBpbXBsaWNhdGlvbnMgZm9yIHRoZSBwb3RlbnRpYWwgY29uc2VydmF0aW9uL3N0YWJpbGl0eSBvZiBlY29zeXN0ZW0gc2VydmljZXMvZnVuY3Rpb25zCgpsaWtlIGJpb21hc3MvY2FyYm9uIHN0b3JhZ2UgYW5kIGJpb2RpdmVyc2l0eSBtYWludGVuYW5jZSwKCmFzIHdlbGwgYXMgbWFuYWdlciBsaXZlbGlob29kLgoKU2xvd2VyIGNoYW5nZXMgaW4gY29tcG9zaXRpb24gY2FuIGFsc28gYmUgaW5mbHVlbmNlZCBieSBzZWVkIGJhbmtzLCBoZXJiaXZvcmUgY29tbXVuaXRpZXMsIGFuZCBkaXNwZXJzYWwgZnJvbSB0aGUgc3Vycm91bmRpbmcgbGFuZHNjYXBlLCBhbGwgb2Ygd2hpY2ggbWF5IGFmZmVjdCBkaXZlcmdpbmcgcmVzdG9yYXRpb24gdHJhamVjdG9yaWVzIGFtb25nIHRyb3BpY2FsIGZvcmVzdHMgKihAbm9yZG9uMTUsIENocmlzdGVuc2VuIDIwMTQsIE11bnJvZSBldCBhbCAyMDEzLCBDaGF6ZG9uIGV0IGFsIDIwMDcpKi4KCmJ1dCBsYWdnaW5nIGNoYW5nZXMgaW4gY29tcG9zaXRpb24gbWF5IGNvbnRyaWJ1dGUgdG8gcmVkdWNlZCBlZmZlY3RzIG9mIGRpdmVyc2l0eSBvbiBvdGhlciBmb3Jlc3QgZnVuY3Rpb25zIChHcmllc3MgZXQgYWwgMjAxMikuCgpSZXN0b3Jpbmcgc3BlY2llcyBjb21wb3NpdGlvbiBtb3JlIHF1aWNrbHkgaXMgbGlrZWx5IGEgcGxhY2Ugd2hlcmUgYWN0aXZlIGZvcmVzdCBtYW5hZ2VycyBjYW4gaGF2ZSB0aGUgbW9zdCB1bmlxdWUgaW1wYWN0cy4KCkZvciBsYW5kIG1hbmFnZXJzIC8gZm9yZXN0ZXJzIHdpdGggaW50ZXJlc3QgaW4gY29uc2VydmF0aW9uLCBpbmhlcml0aW5nIGxhbmQgYWZmZWN0ZWQgYnkgcGFzdCBkZWNpc2lvbnMgaXMgYSByZWFsaXR5LiBPbmUgb2YgdGhlIGxlZ2FjaWVzIGlzIHdoZXJlIHRoZSBsYW5kIHdhcyBwbGFjZWQuIFRvIGJlc3QgbWFuYWdlIGl0IGluIHRoZSBmdXR1cmUsIGFuIGluaXRpYWwgYXNzZXNzbWVudCBvZiB0aGUgZWNvbG9naWNhbCBzdGF0dXMgb2YgdGhlIGxhbmQgaXMgaW1wb3J0YW50IHRvIHVuZGVyc3RhbmQgaXQncyBsaWtlbHkgdHJhamVjdG9yeSwgYW5kIHdoYXQgaXQgd2lsbCBuZWVkIGluIHRoZSBmdXR1cmUgZm9yIHRhaWxlZCBzZXJ2aWNlcy9jb25zZXJ2YXRpb24vcHJvdGVjdGlvbi4KCkVkZ2UgZWZmZWN0cyBhcmUga25vd24gZm9yIGRlZ3JhZGluZyBwcmltYXJ5IGZvcmVzdCwgYnV0IHRoZXkgY2FuIGFsc28gYmUgdXNlZCB0byBhc3Npc3QgcmVmb3Jlc3RhdGlvbi4KClRyYWRpdGlvbmFsIGVkZ2UgZWZmZWN0cyBhY3QgYnkgbW9ydGFsaXR5IG9mIGxhcmdlIHRyZWVzIHRoYXQgbWFrZXMgcm9vbSBmb3IgcGlvbmVlciBzcGVjaWVzIHRvIGVudGVyLCBidXQgZXhpc3RpbmcgaW50ZXJpb3IgcGlvbmVlciBzcGVjaWVzIGFsc28gaGF2ZSBkaXNwZXJzYWwgcmFkaWkgdGhhdCBvdmVybGFwIHdpdGggdGhlIGFkamFjZW50IGV4dGVyaW9yLCBwb3RlbnRpYWxseSBmYWNpbGl0YXRpbmcgcmVnZW5lcmF0aW9uLgoKRW5jcm9hY2htZW50IHZzLiBmYWNpbGl0YXRpb24gcmVsaWVzIG9uIGEgYmFsYW5jZSBiZXR3ZWVuIG1vcnRhbGl0eSAocGVyIGFyZWEpIGFuZCBkaXNwZXJzYWwgKyBlc3RhYmxpc2htZW50ICsgc3RlbSBncm93dGguCgpTbyBwaW9uZWVyIHNwZWNpZXMgY2FuIGJlIGhlbHBmdWwgZm9yIHJlZm9yZXN0YXRpb24gdGhvdWdoIHRoZXkgYXJlIHR5cGljYWxseSBzZWVuIGFzIGJhZCBmb3Igb2xkIGZvcmVzdCBjb25zZXJ2YXRpb24uCgpFZGdlIGVmZmVjdHMsIG9yIGNoYW5nZXMgaW4gY29tcG9zaXRpb24gYWxvbmcgbWFuYWdlbWVudCBncmFkaWVudHMsIGFyZSBsaWtlbHkgYSBrZXkgdmFyaWFibGUgZm9yIHRoZSBzdXN0YWluYWJpbGl0eSBvZiBuZW8tdHJvcGljYWwgbGFuZHNjYXBlcyB0aGF0IGFyZSBoZXRlcm9nZW5vdXMgaW4gbWFuYWdlbWVudCAqW0B3cmlnaHQwOV0qLAoKd2l0aCB1bmRlcmx5aW5nIGFyZ3VtZW50cyBiYXNlZCBvbiBtZXRhcG9wdWxhdGlvbiB0aGVvcnkgaW4gZWNvbG9neSAqW0BsZXZpbnM2OTsgQG1hY2FydGh1cjY3XSosIGJ1dCBlZGdlIGVmZmVjdHMgaGF2ZSBvZnRlbiBiZWVuIHN0dWRpZWQgYXMgdGhyZWF0cyB0byBuYXR1cmUgcmVzZXJ2ZXMsIHJhdGhlciB0aGFuIGhvdyBlZGdlcyBtaWdodCBmYWNpbGl0YXRlIHNlY29uZGFyeSBzdWNjZXNzaW9uLgoKRXNwZWNpYWxseSBmb3IgYWJhbmRvbmVkIGxhbmQgdGhhdCByZWdlbmVyYXRlcyB2aWEgdmFyaW91cyBwcm9jZXNzZXMgKFN0YW50dXJmIGV0IGFsIDIwMTQpLCB0aGUgcHJveGltaXR5IHRvIGxlc3MgZGlzdHVyYmVkIGhhYml0YXQgY2FuIGFmZmVjdCB0aGUgY29tcG9zaXRpb24gb2YgdGhlIHJlZ3Jvd2luZyBjb21tdW5pdHkgYnkgY2hhbmdpbmcgZWZmZWN0aXZlIHNlZWQgZGlzcGVyc2FsIGtlcm5lbHMgYW5kIHByb2JhYmlsaXR5IG9mIGVzdGFibGlzaG1lbnQgKFdhbmRyYWcgZXQgYWwgMjAxNywgR3VhcmlndWF0YSAmIE9zdGVydGFnIDIwMDEpLCBhbG9uZyB3aXRoIGFuaW1hbCBkaXNwZXJzZXIgY29tbXVuaXRpZXMgdGhlbXNlbHZlcyAoR2lscm95IGV0IGFsIDIwMTQpLgoKV2hpbGUgZGlzcGVyc2FsIGlzIGNvbXBsaWNhdGVkIChNdWxsZXItTGFuZGF1ICYgSGFyZGVzdHkgMjAwNSksIGl0IGNhbiBicm9hZGx5IGNvcnJlbGF0ZSB3aXRoIHNpbXBsZXIgcGxhbnQgdHJhaXRzIHN1Y2ggYXMgaGVpZ2h0IGFuZCBzZWVkIG1hc3MgKFRhbW1lIGV0IGFsIDIwMTQsIFRob21zb24gZXQgYWwgMjAxMSkuCgpFZGdlIGVmZmVjdHMgY2FuIGFsc28gb3BlcmF0ZSB2aWEgdGhlIHN0eWxlIG9mIG1hbmFnZW1lbnQsIGluY2x1ZGluZyBsb2dnaW5nIGRlY2lzaW9ucyAoRWR3YXJkcyBldCBhbCAyMDE0LCBDbGFyayBldCBhbCAyMDEyKSBhbmQgbGFuZC11c2UgaGlzdG9yeSBnZW5lcmFsbHkgKE9tZWphIGV0IGFsIDIwMTIpLCBjYW4gYWxzbyBhZmZlY3Qgc3RhbmQgZGl2ZXJzaXR5IG1haW50ZW5hbmNlLAoKd2l0aCBleGFtcGxlcyBvZiBoaWdoIGRpdmVyc2l0eSAoY29tcGFyZWQgdG8gb2xkZXIgYWRqYWNlbnQgc3RhbmRzKSBpbiBhZ3JvZm9yZXN0cyAqW0BvbGl2ZWlyYS1uZXRvMTddKiBhbmQgbmF0aXZlIHRpbWJlciBwbGFudGF0aW9ucyAoUHJ5ZGUgZXQgYWwgMjAxNSksCgpwb3NzaWJseSBieSBjaGFuZ2luZyBlYXJseSB0cmVlIHN1cnZpdmFsIHByb2JhYmlsaXRpZXMsIGdyb3d0aCByYXRlcywgYW5kL29yIGNvbXBldGl0aW9uLAoKYnV0IHN1cnByaXNpbmdseSBsZXNzIGxpa2VseSBmYWNpbGl0YXRpb24gYnkgbml0cm9nZW4tZml4aW5nIHRyZWVzIChMYWkgZXQgYWwgMjAxOCkuCgpJdCBtYXkgYWxzbyBiZSB0aGF0IGR1ZSB0byBib3RoIGhpZ2ggcmVjcnVpdG1lbnQgYW5kIG1vcnRhbGl0eSAodHVybm92ZXIpIG9mIHBpb25lZXJpbmcgc3BlY2llcycgc3RlbXMsIHRyYW5zaXRpb25zIGZyb20gZWFybHktIHRvIGxhdGUtc3VjY2Vzc2lvbmFsIGNvbW11bml0aWVzIG1heSBiZSBtb3JlIGNvbXBsZXggdGhhbiBncmFkdWFsICh2YW4gR3JldWdlbCBldCBhbCAyMDA3KS4KClRoZSBwZXJzaXN0ZW5jZSBvZiBlYXJseS1zdWNjZXNzaW9uYWwgdHJlZSBjb21tdW5pdGllcyBoYXMgYmVlbiBmb3VuZCB0byBsb3dlciB0aGUgc3RhbmRpbmcgYmlvbWFzcywgbGlrZWx5IGR1ZSB0byBsb3dlciB3b29kIGRlbnNpdHkgKEPDqXNhciBldCBhbCAyMDIxKSwgYW5kIGNvdWxkIHRoZXJlZm9yZSByZXF1aXJlIGEgc3dpdGNoIGluIGZvY2FsIHRpbWJlciBzcGVjaWVzIChLYXJzdGVuIGV0IGFsIDIwMTQpLgoKVG8gdW5kZXJzdGFuZCB0aGUgZWNvbG9naWNhbCBwcmluY2lwbGVzIGJlaGluZCBzZWNvbmRhcnkgZm9yZXN0IHJlZ2VuZXJhdGlvbiAoSHVsc2hvZmYgJiBQb3dlcnMgMjAxOSksIGhlcmUgd2Ugc3R1ZHkgdGhlIHJlZ2VuZXJhdGlvbiBvZiBhbiBhYmFuZG9uZWQgdGltYmVyIHBsYW50YXRpb24gYXMgYSBmdW5jdGlvbiBvZiBkaXN0YW5jZSBmcm9tIHN1cnJvdW5kaW5nIG5hdGl2ZSBmb3Jlc3QuCgotICAgaG93IGNhbiB3ZSBleHBlY3QgaXQgdG8gcmVncm93PwotICAgaG93IGZhci9tdWNoIFtlZmZvcnRdIGRvIHdlIG5lZWQgdG8gcmUtc2VlZD8KCldlIGh5cG90aGVzaXplZCB0aGF0IHBsYW50ZWQgY2Fub3B5IHNwZWNpZXMgd291bGQgZmFjaWxpdGF0ZSByZWdlbmVyYXRpb24gYnkgcmVkdWNpbmcgY29tcGV0aXRpdmUgc3VwcHJlc3Npb24gb2YgbW9yZSBzaGFkZS10b2xlcmFudCB0YXhhIGJ5IHBpb25lZXJpbmcgc3BlY2llcywgaGF2aW5nIG1peGVkIGVmZmVjdHMgb24gc3RhbmQgZGl2ZXJzaXR5LgoKV2UgYWxzbyBjb25zaWRlcmVkIGhvdyB0aGUgbGVnYWN5IHBsYW50YXRpb24gY2Fub3B5IHN0cnVjdHVyZSBtZWRpYXRlZCBmb3Jlc3Qgc3RhbmQgZWZmZWN0cyB2aWEgY2hhbmdlcyBpbiBhYmlvdGljIGNvbmRpdGlvbnMgbGlrZSBsaWdodCBhdmFpbGFiaWxpdHkgYW5kIG1pY3JvdG9wb2dyYXBoeSAoUG93ZXJzICYgUGVyw6l6LUF2aWxlcyAyMDEyKS4KCg==</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiSW50cm9kdWN0aW9uIgpvdXRwdXQ6IGh0bWxfbm90ZWJvb2sKYmlibGlvZ3JhcGh5OiAuLi8uLi9saWJyYXJ5LmJpYgpsaW5rLWNpdGF0aW9uczogVFJVRQotLS0KCgoKPCEtLSAjIE91dGxpbmUgLS0+CgoKPCEtLSAxLiAgaW1wb3J0YW5jZSBvZiByZWZvcmVzdGF0aW9uL3JlZ2VuZXJhdGlvbi9yZWdyb3d0aCAtLT4KPCEtLSAyLiAgcGF0dGVybnMgb2YgcmVmb3Jlc3RhdGlvbiAtLT4KPCEtLSAgICAgMS4gIGdlbmVyYWwgLS0+CjwhLS0gICAgIDIuICB0cm9waWNhbCAtLT4KPCEtLSAzLiAgdGhpbmdzIHRoYXQgYWZmZWN0IHJlZm9yZXN0YXRpb24gLS0+CjwhLS0gICAgIDEuICBlZGdlIGVmZmVjdHMgLS0+CjwhLS0gICAgIDIuICBwbGFudGF0aW9uIHN0cnVjdHVyZT8gLS0+CjwhLS0gNC4gIFtmb3IgTkdPLS1zdGFydCBiaW9tYXNzIGNlbnN1c10gLS0+CjwhLS0gICAgIDEuICBEb2VzIGxlYXZpbmcgdGhlIHBsYW50YXRpb24gc3RydWN0dXJlIGhlbHAgcmVmb3Jlc3RhdGlvbj8gLS0+CjwhLS0gICAgICAgICAxLiAgc2hhZGUgLS0+CjwhLS0gICAgICAgICAyLiAgZWRnZSBlZmZlY3RzIChpLmUuIGJ1ZmZlcikgLS0+CjwhLS0gICAgIDIuICBIb3cgZG9lcyB0aGUgZm9yZXN0IHJlZ2VuZXJhdGUgYnkgZGlzdGFuY2UgdG8gcHJpbWFyeSBmb3Jlc3Q/IC0tPgo8IS0tICAgICAgICAgMS4gIGhvdyBtdWNoIFtlZmZvcnRdIGRvIHdlIG5lZWQgdG8gcmUtc2VlZD8gLyBob3cgbXVjaCBjYW4gd2UgbGVhdmUgdG8gbmF0dXJlPyAtLT4KCgoKPCEtLSAjIERyYWZ0IC0tPgoKCkZvcmVzdCBhbmQgbGFuZHNjYXBlIHJlc3RvcmF0aW9uIGlzIGEga2V5IGludGVybmF0aW9uYWwgY29uc2VydmF0aW9uIGFuZCBjbGltYXRlIGNoYW5nZSBhZGFwdGF0aW9uIHN0cmF0ZWd5ICpbQGRlcGludG8yMF0qLCBhbmQgd2hpbGUgdHJvcGljYWwgZm9yZXN0cyBzcGVjaWZpY2FsbHkgc3RvcmUgbW9zdCBsYW5kIGJpb21hc3MgKltAcGFuMTNdKiwgbW9zdCBhcmUgbm93IHNlY29uZGFyeSAqW0BmYW8yMF0qIGFuZCByZWdlbmVyYXRpbmcgZGVncmFkZWQgZnVuY3Rpb25zICpbQGh1YmF1MjBdKiBhbWlkIGluc3VmZmljaWVudCBwb2xpY3kgc3VwcG9ydCAqW0BjaGF6ZG9uMThdKi4KU2Vjb25kYXJ5IGZvcmVzdHMgY2FuIHJlZ2VuZXJhdGUgcmVsYXRpdmVseSBxdWlja2x5IGNvbXBhcmVkIHRvIG9sZC1ncm93dGggZm9yZXN0cyBpbiBzb21lIHdheXMsIGJ1dCBpbiBvdGhlciB3YXlzIHJlbWFpbiBkaXN0aW5jdC4KTmVvdHJvcGljYWwgc2Vjb25kYXJ5IGZvcmVzdHMgY2FuIGdyb3cgcXVpY2tseSBlbm91Z2ggdG8gYWNjdW11bGF0ZSBiaW9tYXNzID4xMHggZmFzdGVyIHRoYW4gb2xkLWdyb3d0aCBmb3Jlc3RzICpbQGZpbmVnYW45NjsgQHBvb3J0ZXIxNl0qLCBhbmQgc3Vic3RhbnRpYWxseSBvZmZzZXQgY2FyYm9uIGVtaXNzaW9ucywgd2l0aCBlc3RpbWF0ZXMgcmFuZ2luZyBmcm9tIH4xMCUgZnJvbSBBbWF6b25pYW4gZGVmb3Jlc3RhdGlvbiAqW0BzbWl0aDIwXSogdG8gYSBkZWNhZGUgb2YgZm9zc2lsIGZ1ZWwgZW1pc3Npb25zIGZyb20gYWxsIG9mIExhdGluIEFtZXJpY2FuIGFuZCB0aGUgQ2FyaWJiZWFuICpbQGNoYXpkb24xNl0qLgpUaGV5IGFsc28gcmVjb3ZlciB0YXhvbm9taWMgcmljaG5lc3MgYW5kIGJpb21hc3MgcXVpdGUgcXVpY2tseSwgYXMgd2VsbCBhcyB0cmVlIGhlaWdodCwgYXZlcmFnaW5nIDgwJSBvZiBvbGQtZ3Jvd3RoIGZvcmVzdCBsZXZlbHMgaW4ganVzdCAyMCB5ZWFycywgZXNwZWNpYWxseSBpbiB3ZXR0ZXIgcmVnaW9ucyAqW0Byb3plbmRhYWwxOV0qLgpUaGUgcmVjb3Zlcnkgb2Ygc3BlY2llcyByaWNobmVzcyBhbG9uZSBpcyBiZW5lZmljaWFsIGluIHRoYXQgaXQgYWxzbyB0ZW5kcyB0byBjb3JyZWxhdGUgd2l0aCB0aGUgcmVjb3Zlcnkgb2Ygc29tZSBlY29zeXN0ZW0gc2VydmljZXMgKltAZ3VhcmlndWF0YTAxOyBAc3RhbnR1cmYxNF0qIGxpa2UgYmlvbWFzcyBhbmQgY2FyYm9uIHN0b3JhZ2UgKltAbGl1MThdKi4KSG93ZXZlciwgc2Vjb25kYXJ5IG5lb3Ryb3BpY2FsIGZvcmVzdHMgZGl2ZXJnZSB3aWRlbHkgaW4gdGF4b25vbWljIGNvbXBvc2l0aW9uICpbQG5vcmRlbjE1XSosIHBvdGVudGlhbGx5IHRha2luZyBvdmVyIGEgY2VudHVyeSB0byByZWNvdmVyICpbQHBvb3J0ZXIyMV0qLgpEZXNwaXRlIGJlaW5nIG9uZSBvZiB0aGUgc2xvd2VzdCBlY29zeXN0ZW0gcHJvcGVydGllcyB0byByZWNvdmVyLCByZXN0b3JpbmcgcmVjb3ZlcmluZyBjb21tdW5pdHkgY29tcG9zaXRpb24gaXMgb2Z0ZW4gaW1wb3J0YW50IGZvciBwcmVzZXJ2aW5nIHJhcmUgdGF4YSAqW0BjYXJsbzE2XSosIHdoaWNoIGNhbiBiZSBrZXlzdG9uZSB0byBsb2NhbGx5LWFkYXB0ZWQgZm9vZCB3ZWJzLCBpbmNsdWRpbmcgYmlyZHMgKltAbWFhczE2XSouCkFzIGEgcmVzdWx0LCB1bmRlcnN0YW5kaW5nIHNlY29uZGFyeSBmb3Jlc3QgcmVnZW5lcmF0aW9uIHJlbWFpbnMgaW1wb3J0YW50Li4uCgpTZWNvbmRhcnkgZm9yZXN0IHJlZ2VuZXJhdGlvbiBpcyBvZnRlbiBhZmZlY3RlZCBieSBlZGdlIGVmZmVjdHMsIG9yIGNoYW5nZXMgbmVhciBhbiBlY29zeXN0ZW0gYm91bmRhcnksIGFzIHdlbGwgYXMgbGFuZC11c2UgaGlzdG9yeSwgZXNwZWNpYWxseSBpbiBoZXRlcm9nZW5lb3VzbHktbWFuYWdlZCBsYW5kc2NhcGVzICpbQHBlcmZlY3RvMDk7IEBtZWxvMTNdKi4KQWJvdXQgNzAlIG9mIGFsbCBmb3Jlc3RzIGhhdmUgYmVlbiBlc3RpbWF0ZWQgdG8gYmUgd2l0aGluIGEga20gb2YgdGhlaXIgZWRnZSAqW0BoYWRkYWQxNV0qLCByZXN1bHRpbmcgaW4gdHJvcGljYWwgZm9yZXN0cyBoYXZpbmcgYmVlbiBlc3RpbWF0ZWQgdG8gbG9zZSB+MjIlIGFib3ZlZ3JvdW5kIGNhcmJvbiBhbG9uZyBoZWF2aWx5LW1hbmFnZWQgZWRnZXMgPjEwMG0sIGluIHBhcnQgZHVlIHRvIHNob3J0ZW5pbmcgdHJlZXMgYW5kIGxpZ2h0ZXIgbGVhZiBtYXNzICpbQG9yZHdheTIwXSouCkVkZ2UgZWZmZWN0cyBhbHNvIGhhdmUgdGhlIHBvdGVudGlhbCB0byBzaGFwZSBjb21tdW5pdHkgY29tcG9zaXRpb24sIGJhc2VkIG9uIHRoZSBsb2NhbCBkaXNwZXJzYWwga2VybmVsIHBhdHRlcm5zIG9mIGV4aXN0aW5nIHRheGEgKltAd2FuZHJhZzE3XSosIHdoaWNoIHdoaWxlIGNvbXBsaWNhdGVkICpbQG11bGxlci1sYW5kYXUwOV0qLCBjYW4gYWxzbyBjb3JyZWxhdGUgd2l0aCBzaW1wbGVyIHBsYW50IHRyYWl0cyBsaWtlIGhlaWdodCBhbmQgc2VlZCBtYXNzICpbQHRob21zb24xMTsgQHRhbW1lMTRdKi4KVGhlIHRyYWl0cyBvZiBleGlzdGluZyB0YXhhIGFsc28gZGVwZW5kIG9uIGxhbmQtdXNlIGhpc3RvcnkgYW5kIHByZXZpb3VzIG1hbmFnZW1lbnQgKltAb21lamExMl0qLCB3aGljaCBoaXN0b3JpY2FsbHkgaGFzIGZhdm9yZWQgdHJlZSB0YXhhIHRoYXQgdGVuZCB0byBwaW9uZWVyaW5nLCBvciBiZSBmYXN0ZXItZ3Jvd2luZywgaGF2ZSBsb3dlciB3b29kIGRlbnNpdGllcywgYW5kIGJlIGxlc3Mgc2hhZGUtdG9sZXJhbnQgKltAdGFiYXJlbGxpMDhdKi4KTGVnYWN5IGVmZmVjdHMgZnJvbSBtYW5hZ2VtZW50IGxpa2UgaW50ZW5zaXZlIHRpbWJlciBwbGFudGluZyBjb3VsZCBpbiB0aGVvcnkgZGVsYXkgb3IgcmVzdWx0IGluIG5vbi1saW5lYXIgY2hhbmdlcyBiZXR3ZWVuIHN1Y2Nlc3Npb25hbCBzdGFnZXMgKltAYWxicmljaDIwOyBAZ291Z2gyMV0qLCB3aGljaCB3b3VsZCBtYWtlIGZ1dHVyZSBtYW5hZ2VtZW50IG1vcmUgdW5jZXJ0YWluLCB1bmxpa2UgbW9yZSBzdXN0YWluYWJsZSB0aGlubmluZyBwcmFjdGljZXMgYW5kIGFncm9mb3Jlc3RyeSAqW0BsZWZsYW5kMThdKi4KT3ZlcmFsbCwgd2hpbGUgZWRnZSBlZmZlY3RzIG5lYXIgZGVncmFkZWQgaGFiaXRhdCBlZGdlcyBhcmUgb2Z0ZW4gbmVnYXRpdmUsIG1ldGEtcG9wdWxhdGlvbiAqW0BsZXZpbnM3OV0qIGFuZCAtY29tbXVuaXR5ICpbQGxlaWJvbGQwNDsgQHdhcnJlbjE1XSogdGhlb3JpZXMgaGlnaGxpZ2h0IGRpc3BlcnNhbCBhcyBhIGtleSBwcm9jZXNzIGZvciBvZmZzZXR0aW5nIGV4dGluY3Rpb24gZGVidCBhbmQgdGh1cyBtYWludGFpbmluZyBiaW9kaXZlcnNpdHkuCk5lYXIgcHJpbWFyeSBmb3Jlc3QsIGRpc3BlcnNhbCBtYXkgZmFjaWxpdGF0ZSBzZWNvbmRhcnkgZm9yZXN0IHJlZ2VuZXJhdGlvbiwgYW5kIGhlbHAgZXhwbGFpbiByZWxhdGl2ZWx5IGhpZ2ggYmlvZGl2ZXJzaXR5IGNvbXBhcmVkIHRvIGFkamFjZW50IHN0YW5kcyB0aGF0IGNhbiBiZSBmb3VuZCBpbiBhZ3JvZm9yZXN0cyAqW0BvbGl2ZWlyYS1uZXRvMTddKiwgZm9yZXN0cyBhZmZlY3RlZCBieSBsb2dnaW5nICpbQGNsYXJrMTI7IEBlZHdhcmRzMTRdKiwgYW5kIHRpbWJlciBwbGFudGF0aW9ucyAqW0BwcnlkZTE1XSouCjwhLS0gcm9sZSBvZiBOLWZpeGluZyB0cmVlcy4uLiAqW0BsYWkxOF0qIC0tPgoKVGhpcyBzdHVkeSByZXBvcnRzIHRyZWUgcmVnZW5lcmF0aW9uIHBhdHRlcm5zIG9mIGFuIGFiYW5kb25lZCB3ZXQgbmVvdHJvcGljYWwgdGltYmVyIHBsYW50YXRpb24sIGhpZ2hsaWdodGluZyBlZGdlIGVmZmVjdHMgZnJvbSBhbiBhZGphY2VudCBwcmltYXJ5IGZvcmVzdC4KV2UgaHlwb3RoZXNpemVkIHRoYXQgcmVtYWluaW5nIHRpbWJlciB0cmVlcyB3b3VsZCBtZWRpYXRlIGZvcmVzdCByZWdyb3d0aCBieSBtYWludGFpbmluZyBzaGFkZSB0aGF0IHdvdWxkIHN1cHByZXNzIGxlc3Mgc2hhZGUtdG9sZXJhbnQgcGlvbmVlciB0cmVlIHRheGEgYW5kIGFsbG93IGZvciBtb3JlIHRyZWUgZGl2ZXJzaXR5IGNsb3NlciB0byB0aGUgcHJpbWFyeSBmb3Jlc3QgZWRnZS4KICAgIDwhLS0gLSBzdXBwb3J0ZWQgYnkgaW5mZXJlbmNlPyEgLS0+CkFjY29yZGluZ2x5LCB3ZSBwcmVkaWN0ZWQgdGhhdCBmdXJ0aGVyIGZyb20gdGhlIHByaW1hcnkgZm9yZXN0IGVkZ2UsIGNhbm9weSBsaWdodCBhdmFpbGFiaWxpdHkgd291bGQgaW5jcmVhc2UsIHdoaWxlIHN0YW5kIGJpb21hc3MgYW5kIGRpdmVyc2l0eSB3b3VsZCBkZWNyZWFzZS4KCgoKPCEtLSAjIGF0dGljIC0tPgoKCgo8IS0tIEZvcmVzdCByZWdlbmVyYXRpb24gaGFzIHRoZSBwb3RlbnRpYWwgdG8gc3RvcmUgKiMjIEMqIGFuZCBwcmVzZXJ2ZSAqIyMgZGl2ZXJzaXR5KiBnbG9iYWxseSBpbiB0aGUgY29taW5nIGRlY2FkZXMgKFVOLCBCb25uIGNoYWxsZW5nZSkuIC0tPgoKPCEtLSBBdCBsb2NhbCBzY2FsZXMsIHJlZ2VuZXJhdGlvbiBpcyBzdHJvbmdseSBhZmZlY3RlZCBieSBsYW5kc2NhcGUgW2Vjb2xvZ2ljYWxdIGhldGVyb2dlbmVpdHkgYXMgd2VsbCBhcyBtYW5hZ2VtZW50IGhpc3RvcnkuIC0tPgoKPCEtLSBIb3dldmVyLCBwYXR0ZXJucyBvZiBmb3Jlc3QgcmVnZW5lcmF0aW9uIHJlbWFpbiB1bmNsZWFyLCBlc3BlY2lhbGx5IGF0IG1vcmUgbG9jYWwgc2NhbGVzICg8IH41MCBoYSkuIC0tPgoKPCEtLSBTeW50aGVzZXMgKEZpbmVnYW4gMTk5NikgYW5kIGNocm9ub3NlcXVlbmNlIHN0dWRpZXMgc2hvdyB0aGF0IHNlY29uZGFyeSBmb3Jlc3RzIG1vc3RseSByZWdlbmVyYXRlICh+NTAtODAlLCBjb21wYXJlZCB0byBvbGQtZ3Jvd3RoIGZvcmVzdHMpIHJhdGhlciBxdWlja2x5IChkZWNhZGVzLCA8IDIwIHllYXJzKSwgbWFpbmx5IHdpdGggcmVzcGVjdCB0byB0cmVlIGhlaWdodCwgYWJvdmUtZ3JvdW5kIGJpb21hc3MgKFBvb3J0ZXIgZXQgYWwgMjAxNiksIGFuZCBzcGVjaWVzIHJpY2huZXNzLCBlc3BlY2lhbGx5IGluIHdldHRlciByZWdpb25zICpbQHJvemVuZGFhbDE5OyBAb255ZWt3ZWx1MTZdKi4gLS0+Cgo8IS0tIEhvd2V2ZXIsIHdoaWxlIHJlc3RvcmluZyBzcGVjaWVzIHJpY2huZXNzIG1heSBiZSBlbm91Z2ggdG8gbWFpbnRhaW4gc29tZSBlY29zeXN0ZW0gZnVuY3Rpb25zIGxpa2UgY2FyYm9uIHN0b3JhZ2UgKExpdSBldCBhbCAyMDE4KSwgaXQgZG9lcyBub3QgZ3VhcmFudGVlIHRoZSByZXN0b3JhdGlvbiBvZiBzcGVjaWVzIGNvbXBvc2l0aW9uLiAtLT4KCjwhLS0gSW5zdGVhZCwgY2hhbmdlcyB0byBzcGVjaWVzIGNvbXBvc2l0aW9uIGxpa2VseSBsYXN0IHVwIHRvIGNlbnR1cmllcywgIC0tPgoKCjwhLS0gW0hpZ2hdIFJlZ2lvbmFsIGJpb2RpdmVyc2l0eSBbY2FuXSBhZmZlY3RzL2luY3JlYXNlcyB0aGUgdW5jZXJ0YWludHkgYWJvdXQgdGhlIGxvY2FsIG9jY3VycmVuY2VzIGFuZCBvdXRjb21lcyBvZiBzcGVjaWZpYyBzcGVjaWVzIGludGVyYWN0aW9ucywgLS0+Cgo8IS0tIHN1Y2ggYXMgYWZ0ZXIgZGlzcGVyc2FsIGFuZC9vciBuaWNoZSBvdmVybGFwIFtDSVRFLW5pY2hlLCBuZXV0cmFsIHRoZW9yeV0uIC0tPgoKPCEtLSBbQXQgdGhlIHNhbWUgdGltZSxdIERpdmVyc2UgbG9jYWwgbWFuYWdlbWVudCBhY3Rpdml0eSBtb2RpZmllcyBkZW1vZ3JhcGhpYyBzdGF0ZXMvcHJvZmlsZXMgb2YgdmFyaW91cyB0YXhhJ3MgcG9wdWxhdGlvbiBkeW5hbWljcy4gLS0+Cgo8IS0tIEZvciBleGFtcGxlLCBhY3RpdmUgdGltYmVyIHBsYW50YXRpb25zIHN0cm9uZ2x5IHByb21vdGUgdGhlIHBvcHVsYXRpb24gZ3Jvd3RoIG9mIGZvY2FsIHRheGEgYXQgdGhlIGV4cGVuc2Ugb2Ygbm9uLWZvY2FsIHRheGEuIC0tPgoKPCEtLSBBZnRlciBhYmFuZG9ubWVudCwgaG93ZXZlciwgdGhlIGVjb3N5c3RlbSBsaWtlbHkgcmVmbGVjdHMgaG93IGNvbnRpbnVvdXMgcmVnaW9uYWwgZWNvbG9naWNhbCBwcm9jZXNzZXMgbG9vayBkaWZmZXJlbnQgZ2l2ZW4gcGFzdCBtYW5hZ2VtZW50LiAtLT4KCjwhLS0gc3VjaCBhcyBzZWVkIGRpc3BlcnNhbCBmcm9tIG5lYXJieSBwcmltYXJ5IGZvcmVzdCBlZGdlcy4gLS0+Cgo8IS0tIFtUaGVzZV0gSW50ZXJhY3Rpb25zIGJldHdlZW4gYmFja2dyb3VuZCBlY29sb2d5IGFuZCBodW1hbiBtYW5hZ2VtZW50IHVsdGltYXRlbHkgaGF2ZSBib3RoIGxvY2FsIGFuZCBnZW5lcmFsIGltcGxpY2F0aW9ucyBmb3IgdGhlIHBvdGVudGlhbCBjb25zZXJ2YXRpb24vc3RhYmlsaXR5IG9mIGVjb3N5c3RlbSBzZXJ2aWNlcy9mdW5jdGlvbnMgLS0+Cgo8IS0tIGxpa2UgYmlvbWFzcy9jYXJib24gc3RvcmFnZSBhbmQgYmlvZGl2ZXJzaXR5IG1haW50ZW5hbmNlLCAtLT4KCjwhLS0gYXMgd2VsbCBhcyBtYW5hZ2VyIGxpdmVsaWhvb2QuIC0tPgoKPCEtLSBTbG93ZXIgY2hhbmdlcyBpbiBjb21wb3NpdGlvbiBjYW4gYWxzbyBiZSBpbmZsdWVuY2VkIGJ5IHNlZWQgYmFua3MsIGhlcmJpdm9yZSBjb21tdW5pdGllcywgYW5kIGRpc3BlcnNhbCBmcm9tIHRoZSBzdXJyb3VuZGluZyBsYW5kc2NhcGUsIGFsbCBvZiB3aGljaCBtYXkgYWZmZWN0IGRpdmVyZ2luZyByZXN0b3JhdGlvbiB0cmFqZWN0b3JpZXMgYW1vbmcgdHJvcGljYWwgZm9yZXN0cyAqKEBub3Jkb24xNSwgQ2hyaXN0ZW5zZW4gMjAxNCwgTXVucm9lIGV0IGFsIDIwMTMsIENoYXpkb24gZXQgYWwgMjAwNykqLiAtLT4KCjwhLS0gYnV0IGxhZ2dpbmcgY2hhbmdlcyBpbiBjb21wb3NpdGlvbiBtYXkgY29udHJpYnV0ZSB0byByZWR1Y2VkIGVmZmVjdHMgb2YgZGl2ZXJzaXR5IG9uIG90aGVyIGZvcmVzdCBmdW5jdGlvbnMgKEdyaWVzcyBldCBhbCAyMDEyKS4gLS0+Cgo8IS0tIFJlc3RvcmluZyBzcGVjaWVzIGNvbXBvc2l0aW9uIG1vcmUgcXVpY2tseSBpcyBsaWtlbHkgYSBwbGFjZSB3aGVyZSBhY3RpdmUgZm9yZXN0IG1hbmFnZXJzIGNhbiBoYXZlIHRoZSBtb3N0IHVuaXF1ZSBpbXBhY3RzLiAtLT4KCjwhLS0gRm9yIGxhbmQgbWFuYWdlcnMgLyBmb3Jlc3RlcnMgd2l0aCBpbnRlcmVzdCBpbiBjb25zZXJ2YXRpb24sIGluaGVyaXRpbmcgbGFuZCBhZmZlY3RlZCBieSBwYXN0IGRlY2lzaW9ucyBpcyBhIHJlYWxpdHkuIE9uZSBvZiB0aGUgbGVnYWNpZXMgaXMgd2hlcmUgdGhlIGxhbmQgd2FzIHBsYWNlZC4gVG8gYmVzdCBtYW5hZ2UgaXQgaW4gdGhlIGZ1dHVyZSwgYW4gaW5pdGlhbCBhc3Nlc3NtZW50IG9mIHRoZSBlY29sb2dpY2FsIHN0YXR1cyBvZiB0aGUgbGFuZCBpcyBpbXBvcnRhbnQgdG8gdW5kZXJzdGFuZCBpdCdzIGxpa2VseSB0cmFqZWN0b3J5LCBhbmQgd2hhdCBpdCB3aWxsIG5lZWQgaW4gdGhlIGZ1dHVyZSBmb3IgdGFpbGVkIHNlcnZpY2VzL2NvbnNlcnZhdGlvbi9wcm90ZWN0aW9uLiAtLT4KCjwhLS0gRWRnZSBlZmZlY3RzIGFyZSBrbm93biBmb3IgZGVncmFkaW5nIHByaW1hcnkgZm9yZXN0LCBidXQgdGhleSBjYW4gYWxzbyBiZSB1c2VkIHRvIGFzc2lzdCByZWZvcmVzdGF0aW9uLiAtLT4KCjwhLS0gVHJhZGl0aW9uYWwgZWRnZSBlZmZlY3RzIGFjdCBieSBtb3J0YWxpdHkgb2YgbGFyZ2UgdHJlZXMgdGhhdCBtYWtlcyByb29tIGZvciBwaW9uZWVyIHNwZWNpZXMgdG8gZW50ZXIsIGJ1dCBleGlzdGluZyBpbnRlcmlvciBwaW9uZWVyIHNwZWNpZXMgYWxzbyBoYXZlIGRpc3BlcnNhbCByYWRpaSB0aGF0IG92ZXJsYXAgd2l0aCB0aGUgYWRqYWNlbnQgZXh0ZXJpb3IsIHBvdGVudGlhbGx5IGZhY2lsaXRhdGluZyByZWdlbmVyYXRpb24uIC0tPgoKPCEtLSBFbmNyb2FjaG1lbnQgdnMuIGZhY2lsaXRhdGlvbiByZWxpZXMgb24gYSBiYWxhbmNlIGJldHdlZW4gbW9ydGFsaXR5IChwZXIgYXJlYSkgYW5kIGRpc3BlcnNhbCArIGVzdGFibGlzaG1lbnQgKyBzdGVtIGdyb3d0aC4gLS0+Cgo8IS0tIFNvIHBpb25lZXIgc3BlY2llcyBjYW4gYmUgaGVscGZ1bCBmb3IgcmVmb3Jlc3RhdGlvbiB0aG91Z2ggdGhleSBhcmUgdHlwaWNhbGx5IHNlZW4gYXMgYmFkIGZvciBvbGQgZm9yZXN0IGNvbnNlcnZhdGlvbi4gLS0+CgoKCjwhLS0gRXNwZWNpYWxseSBmb3IgYWJhbmRvbmVkIGxhbmQgdGhhdCByZWdlbmVyYXRlcyB2aWEgdmFyaW91cyBwcm9jZXNzZXMgKFN0YW50dXJmIGV0IGFsIDIwMTQpLCB0aGUgcHJveGltaXR5IHRvIGxlc3MgZGlzdHVyYmVkIGhhYml0YXQgY2FuIGFmZmVjdCB0aGUgY29tcG9zaXRpb24gb2YgdGhlIHJlZ3Jvd2luZyBjb21tdW5pdHkgYnkgY2hhbmdpbmcgZWZmZWN0aXZlIHNlZWQgZGlzcGVyc2FsIGtlcm5lbHMgYW5kIHByb2JhYmlsaXR5IG9mIGVzdGFibGlzaG1lbnQgKFdhbmRyYWcgZXQgYWwgMjAxNywgR3VhcmlndWF0YSAmIE9zdGVydGFnIDIwMDEpLCBhbG9uZyB3aXRoIGFuaW1hbCBkaXNwZXJzZXIgY29tbXVuaXRpZXMgdGhlbXNlbHZlcyAoR2lscm95IGV0IGFsIDIwMTQpLiAtLT4KCgoKPCEtLSBFZGdlIGVmZmVjdHMgY2FuIGFsc28gb3BlcmF0ZSB2aWEgdGhlIHN0eWxlIG9mIG1hbmFnZW1lbnQsIGluY2x1ZGluZyBsb2dnaW5nIGRlY2lzaW9ucyAoRWR3YXJkcyBldCBhbCAyMDE0LCBDbGFyayBldCBhbCAyMDEyKSBhbmQgbGFuZC11c2UgaGlzdG9yeSBnZW5lcmFsbHkgKE9tZWphIGV0IGFsIDIwMTIpLCBjYW4gYWxzbyBhZmZlY3Qgc3RhbmQgZGl2ZXJzaXR5IG1haW50ZW5hbmNlLCAtLT4KCgoKPCEtLSBwb3NzaWJseSBieSBjaGFuZ2luZyBlYXJseSB0cmVlIHN1cnZpdmFsIHByb2JhYmlsaXRpZXMsIGdyb3d0aCByYXRlcywgYW5kL29yIGNvbXBldGl0aW9uLCAtLT4KCjwhLS0gYnV0IHN1cnByaXNpbmdseSBsZXNzIGxpa2VseSBmYWNpbGl0YXRpb24gYnkgbml0cm9nZW4tZml4aW5nIHRyZWVzIChMYWkgZXQgYWwgMjAxOCkuIC0tPgoKPCEtLSBJdCBtYXkgYWxzbyBiZSB0aGF0IGR1ZSB0byBib3RoIGhpZ2ggcmVjcnVpdG1lbnQgYW5kIG1vcnRhbGl0eSAodHVybm92ZXIpIG9mIHBpb25lZXJpbmcgc3BlY2llcycgc3RlbXMsIHRyYW5zaXRpb25zIGZyb20gZWFybHktIHRvIGxhdGUtc3VjY2Vzc2lvbmFsIGNvbW11bml0aWVzIG1heSBiZSBtb3JlIGNvbXBsZXggdGhhbiBncmFkdWFsICh2YW4gR3JldWdlbCBldCBhbCAyMDA3KS4gLS0+CgoKCjwhLS0gVG8gdW5kZXJzdGFuZCB0aGUgZWNvbG9naWNhbCBwcmluY2lwbGVzIGJlaGluZCBzZWNvbmRhcnkgZm9yZXN0IHJlZ2VuZXJhdGlvbiAoSHVsc2hvZmYgJiBQb3dlcnMgMjAxOSksIGhlcmUgd2Ugc3R1ZHkgdGhlIHJlZ2VuZXJhdGlvbiBvZiBhbiBhYmFuZG9uZWQgdGltYmVyIHBsYW50YXRpb24gYXMgYSBmdW5jdGlvbiBvZiBkaXN0YW5jZSBmcm9tIHN1cnJvdW5kaW5nIG5hdGl2ZSBmb3Jlc3QuIC0tPgoKPCEtLSAtICAgaG93IGNhbiB3ZSBleHBlY3QgaXQgdG8gcmVncm93PyAtLT4KPCEtLSAtICAgaG93IGZhci9tdWNoIFtlZmZvcnRdIGRvIHdlIG5lZWQgdG8gcmUtc2VlZD8gLS0+Cgo8IS0tIFdlIGh5cG90aGVzaXplZCB0aGF0IHBsYW50ZWQgY2Fub3B5IHNwZWNpZXMgd291bGQgZmFjaWxpdGF0ZSByZWdlbmVyYXRpb24gYnkgcmVkdWNpbmcgY29tcGV0aXRpdmUgc3VwcHJlc3Npb24gb2YgbW9yZSBzaGFkZS10b2xlcmFudCB0YXhhIGJ5IHBpb25lZXJpbmcgc3BlY2llcywgaGF2aW5nIG1peGVkIGVmZmVjdHMgb24gc3RhbmQgZGl2ZXJzaXR5LiAtLT4KCjwhLS0gV2UgYWxzbyBjb25zaWRlcmVkIGhvdyB0aGUgbGVnYWN5IHBsYW50YXRpb24gY2Fub3B5IHN0cnVjdHVyZSBtZWRpYXRlZCBmb3Jlc3Qgc3RhbmQgZWZmZWN0cyB2aWEgY2hhbmdlcyBpbiBhYmlvdGljIGNvbmRpdGlvbnMgbGlrZSBsaWdodCBhdmFpbGFiaWxpdHkgYW5kIG1pY3JvdG9wb2dyYXBoeSAoUG93ZXJzICYgUGVyw6l6LUF2aWxlcyAyMDEyKS4gLS0+Cgo=</div>
 
 
 
