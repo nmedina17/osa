@@ -11,11 +11,9 @@ source(here::here("data/clean.R"))
 #   here("analysis/statsTbl.R")
 # )
 library(tidyverse)
-library(rstatix);
-library(vegan) #diversity()
+library(rstatix); library(vegan) #diversity()
 library(oir) #local
-library(ggbeeswarm)
-library(ggpmisc)
+library(ggbeeswarm); library(ggpmisc)
 
 
 
@@ -372,7 +370,7 @@ plotResultsTbl12 <- plotVarsTbl %>%
 
 
 
-#TAXA
+##TAXA----
 
 
 #getTaxa

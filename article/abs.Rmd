@@ -112,7 +112,7 @@ output: html_notebook
 
 
 
-# ESA -- Habitat edges affect tree diversity more than biomass regeneration in a wet neotropical secondary forest
+<!-- # ESA -- Habitat edges affect tree diversity more than biomass regeneration in a wet neotropical secondary forest -->
 
 
 
@@ -124,17 +124,17 @@ Since most forests are within a km of a habitat edge, edge effects likely affect
 This study addresses how wet tropical secondary forest regeneration is affected by distance to habitat edge, and hypothesizes that old timber plantations facilitate regeneration by favoring shade tolerant or late successional taxa, and adjacent forest edges mediate community composition.
 An abandoned neotropical timber plantation adjacent to primary forest was censused for trees along a 300 m edge distance gradient, and analysis matched taxa to traits using relevant literature.
 
-
 <!-- # Results/Conclusions -->
-
 As distance from primary forest edge increased, stem and wood density tended to increase significantly, with ca 10% variation explained, while biomass and canopy light tended to stay the same.
 Stand tree richness also tended to increase significantly, but diversity decreased steeply and non-linearly, and taxonomic composition varied notably. 
 Finally, tree taxa associated with both early and late successional stages decreased significantly, but biomass by dispersal mode did not tend to change.
 Overall this study supports that stand composition is less resilient and more subject to edge effects than biomass and richness, suggesting that global forests will likely be distinctly new assemblages in the future, with timber and biodiversity trade-offs occurring based on local and regional management activity.
 
 
+\newpage
 
-# Esp
+
+# Abstracto{-}
 
 
 Más de la mitad de bosques son tropicales y secundarios, indicando que la regeneración de bosques tropicales es integral al futuro de bosques, globalmente.

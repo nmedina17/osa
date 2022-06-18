@@ -190,20 +190,5 @@ fig1 <- ggarrange(
 fig1
 
 
-ggsave(
-  "fig1.pdf",
-  fig1,
-  path = "figs",
-  width = 3,
-  height = 3,
-  units = "in"
-)
-
-ggsave(
-  "fig1.png",
-  fig1,
-  path = "figs",
-  width = 3,
-  height = 3,
-  units = "in"
-)
+# ggpubr::ggsave("fig1.pdf", fig1, path = "figs", width = 3, height = 3, units = "in")
+# ggpubr::ggsave("fig1.png", fig1, path = "figs", width = 3, height = 3, units = "in")

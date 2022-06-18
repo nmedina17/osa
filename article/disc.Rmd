@@ -1,15 +1,34 @@
 ---
 title: "Discussion"
-output: html_notebook
+output: 
+  # html_notebook
+  bookdown::html_document2:
+    # number_sections: FALSE
 bibliography: ../../library.bib
 link-citations: TRUE
 ---
 
 
+# outline{-}
 1.  assess hypotheses
 2.  infer causes of patterns - plantation structure, old legacy trees, or species traits?
 3.  compare inferences to other studies
 4.  recommend future conservation approaches, ecological studies
+
+
+# draft{-}
+
+
+This study found significant edge effects on tree diversity and community composition, but not aboveground biomass...functional diversity?
+These results were shown in Figs \@ref(fig:biomass), \@ref(fig:taxa), and \@ref(fig:traits)...
+It was initially hypothesized that community regeneration would vary with distance to edge, favoring more shade-tolerant taxa, due to light availability and dispersal potential -- evidence from this study's results supported edge effects on community composition and biomass of taxa associated with both early- and late-successional stages, but without detectable roles for light availability or general dispersal mode.
+...
+
+Aboveground biomass represents aboveground carbon stores... is a measure of ..., and responds variably to secondary succession and edge effects
+
+
+# attic{-}
+
 
 Under more sustainable forestry that maintains multiple functions, forest stand regeneration is likely more predictable, generally mirroring (i.e. near 1:1 replacement) the targeted tree cutting that is done using information collected about the ecological profiles and ages (when possible) of trees (Duah-Gyamfi et al 2014, Edwards et al 2014).
 

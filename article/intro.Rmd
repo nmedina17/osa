@@ -29,12 +29,12 @@ link-citations: TRUE
 <!-- # Draft -->
 
 
-Forest and landscape restoration is a key international conservation and climate change adaptation strategy *[@depinto20]*, and while tropical forests specifically store most land biomass *[@pan13]*, most are now secondary *[@fao20]* and regenerating degraded functions *[@hubau20]* amid insufficient policy support *[@chazdon18]*.
+Forest and landscape restoration is a key international conservation and climate change adaptation strategy *[@depinto20]*, and while tropical forests specifically store most land biomass *[@pan13]*, most are now secondary *[@fao20]* and regenerating degraded functions *[@hubau20]* amid increasing climate stressors *[@anderegg22]* yet insufficient policy support *[@chazdon18]* via skewed priorities *[@pyron22]*.
 Secondary forests can regenerate relatively quickly compared to old-growth forests in some ways, but in other ways remain distinct.
 Neotropical secondary forests can grow quickly enough to accumulate biomass >10x faster than old-growth forests *[@finegan96; @poorter16]*, and substantially offset carbon emissions, with estimates ranging from ~10% from Amazonian deforestation *[@smith20]* to a decade of fossil fuel emissions from all of Latin American and the Caribbean *[@chazdon16]*.
 They also recover taxonomic richness and biomass quite quickly, as well as tree height, averaging 80% of old-growth forest levels in just 20 years, especially in wetter regions *[@rozendaal19]*.
 The recovery of species richness alone is beneficial in that it also tends to correlate with the recovery of some ecosystem services *[@guariguata01; @stanturf14]* like biomass and carbon storage *[@liu18]*.
-However, secondary neotropical forests diverge widely in taxonomic composition *[@norden15]*, potentially taking over a century to recover *[@poorter21]*.
+However, secondary neotropical forests diverge widely in taxonomic composition *[@norden15]*, potentially taking over a century to recover *[@poorter21]* with added variability *[@atkinson22]*.
 Despite being one of the slowest ecosystem properties to recover, restoring recovering community composition is often important for preserving rare taxa *[@carlo16]*, which can be keystone to locally-adapted food webs, including birds *[@maas16]*.
 As a result, understanding secondary forest regeneration remains important...
 

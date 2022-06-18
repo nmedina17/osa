@@ -1,64 +1,127 @@
 ---
-title: ""
+title: "Habitat edges affect tree diversity more than biomass regeneration in a wet neotropical secondary forest"
 author: 
-  name: Nicholas Medina
-  affilitation: Brandeis University
-address:
-  code: Brandeis University
-  address: 415 South St, Waltham, MA 02453
+  - Nicholas Medina ^a^*
+  - Max Villalobos ^b^
+  - Andrea Johnson ^b^
+date: scriptsize\
+  ^a^ Biology and Environmental Studies, Brandeis University, 415 South St, Waltham, MA, USA 02453; ^b^ Land Stewardship, Osa Conservation, Puerto Jiménez, Golfito, Costa Rica
+# author: 
+#   - name: "Nicholas Medina"
+#     email: nmedina@umich.edu
+#     affiliation: Brandeis University
+#     orcid_id: 0000-0001-5465-3988
+# address:
+#   - code: Brandeis University
+#     address: Biology and Environmental Studies, 415 South St, Waltham, MA 02453
+# keywords: [1, 2, 3]
+
 output: 
   # html_notebook
-  bookdown::html_document2:
-    number_sections: FALSE
-bibliography: ../../library.bib
+  # bookdown::html_document2:
+  #   # df_print: paged
+  #   global_numbering: TRUE
+  #   toc: FALSE
+  bookdown::pdf_document2:
+    # number_sections: FALSE
+    global_numbering: TRUE
+    keep_tex: TRUE
+    toc: FALSE
+bibliography: 
+  - ../../library.bib
+  - ../../grateful-refs.bib
 link-citations: TRUE
+csl: ../../styles-master/elsevier-harvard.csl
+
+fontsize: 12pt
+geometry: margin=1in
+header-includes:
+  - \usepackage[left]{lineno}
+  - \linenumbers
+  - \usepackage{setspace}\doublespace
+# abstract
 ---
 
 
+journals: J [Appl] Veg Sci, 
 
-# Abstract
+
+\
+\
+
+**Keywords**: secondary forest; regeneration; timber plantation associated biodiversity; edge effect; aboveground biomass; shade  
+
+\
+\
+  
+***Corresponding author**: Nicholas Medina, nmedina@umich.edu
 
 
+\newpage
+
+
+# Abstract{-}
 
 ```{r child='abs.Rmd'}
 ```
 
 
+\newpage
+
 
 # Introduction
-
-
 
 ```{r child="intro.Rmd"}
 ```
 
 
-
 # Methods
-
-
 
 ```{r child="methods.Rmd"}
 ```
 
 
-
 # Results
 
-
-
-<!-- # ```{r child="results.Rmd"} -->
-<!-- # ``` -->
-
+```{r child="results.Rmd"}
+```
 
 
 # Discussion
 
-
-
 ```{r child="disc.Rmd"}
 ```
 
+
+\newpage
+
+
+# Funding{-}
+
+This study was funded by Brandeis University Hiatt Career Center World of Work Fellowship.
+
+
+# Declaration of interests{-}
+
+Authors declare no conflicts of interest. 
+
+
+# Acknowledgements{-}
+
+Thanks to Professor Dan Perlman for initial networking; Lehigh University Professor Don Morris and interns Emma Capetz and Erin Lau along with field station staff Agustín Mendoza for direct field assistance; concurrent Osa Conservation General Manager Manuel Ramirez and Piro Biological Station staff Juan Carlos Cruz Díaz, Annia Barrantes, Larry Villalobos, Hansel Vargas, and visitors for field support; and previous anonymous reviewers and peer James Fifer for discussion of drafts.
+
+
+# Author contributions{-}
+
+MV and AJ contributed to study conceptualization, administration, and supervision; NM and AJ contributed to funding acquisition; NM contributed to data collection; NM and MV contributed to data analysis; NM contributed to initial draft writing and later revisions.
+
+
+# Data statement{-}
+
+Data and code stored at [github.com/nmedina17/osa](github.com/nmedin17/osa).
+
+
+\newpage
 
 
 # References

@@ -1,4 +1,4 @@
-library(here); i_am("figs/fig3.R")
+here::i_am("figs/fig3.R")
 #userDiff----
 taxRank <- quote(
   # mainDispersal
@@ -6,7 +6,7 @@ taxRank <- quote(
 )
 #re-run
 #taxaResultsTbl1
-source(here("analysis/stats.R"))
+source(here::here("analysis/stats.R"))
 library(glue)
 library(ggpubr)
 
@@ -196,7 +196,7 @@ taxRank <- quote(
 )
 #re-run
 #taxaResultsTbl1
-source(here("analysis/stats.R"))
+source(here::here("analysis/stats.R"))
 
 
 statData3clean <- taxaResultsTbl1 %>%
@@ -322,3 +322,14 @@ fig3
 #   height = 3,
 #   units = "in"
 # )
+
+
+
+#reset----
+taxRank <- quote(
+  # mainDispersal
+  successionalStage
+)
+#re-run
+#taxaResultsTbl1
+source(here::here("analysis/stats.R"))

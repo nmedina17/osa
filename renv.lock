@@ -1059,6 +1059,24 @@
       "Hash": "e30deda901954a80e035ad2e972ba7fd",
       "Requirements": []
     },
+    "grateful": {
+      "Package": "grateful",
+      "Version": "0.1.11",
+      "Source": "GitHub",
+      "RemoteType": "github",
+      "RemoteHost": "api.github.com",
+      "RemoteRepo": "grateful",
+      "RemoteUsername": "Pakillo",
+      "RemoteRef": "HEAD",
+      "RemoteSha": "ba9b003e74d03d120f61e5ad73711ed9f1be6f8b",
+      "Hash": "68c709d127acd63adeef3e8f03fd0454",
+      "Requirements": [
+        "knitr",
+        "remotes",
+        "renv",
+        "rmarkdown"
+      ]
+    },
     "gridExtra": {
       "Package": "gridExtra",
       "Version": "2.3",
@@ -1381,6 +1399,18 @@
         "generics"
       ]
     },
+    "magick": {
+      "Package": "magick",
+      "Version": "2.7.3",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "56fbad418aa50939ed8c3028126af8d7",
+      "Requirements": [
+        "Rcpp",
+        "curl",
+        "magrittr"
+      ]
+    },
     "magrittr": {
       "Package": "magrittr",
       "Version": "2.0.3",
@@ -1525,8 +1555,8 @@
       "Version": "0.0.0.9000",
       "Source": "Local",
       "RemoteType": "local",
-      "RemoteUrl": "/Users/nicholasmedina/Documents/u/0/art/res/GitHub/oir",
-      "Hash": "bdb5a7d480fffa0ad7268405110dfe73",
+      "RemoteUrl": "../oir",
+      "Hash": "8daffbf001ec07858b9c4ae5f1cc38c9",
       "Requirements": [
         "class",
         "devtools",
@@ -1555,10 +1585,10 @@
     },
     "openssl": {
       "Package": "openssl",
-      "Version": "2.0.0",
+      "Version": "2.0.1",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "cf4329aac12c2c44089974559c18e446",
+      "Hash": "edde731e84cf3d42aa9b7f04b8de5941",
       "Requirements": [
         "askpass"
       ]
@@ -2445,10 +2475,10 @@
     },
     "tinytex": {
       "Package": "tinytex",
-      "Version": "0.38",
+      "Version": "0.39",
       "Source": "Repository",
       "Repository": "CRAN",
-      "Hash": "759d047596ac173433985deddf313450",
+      "Hash": "29f67ab15405b390b90e56ff22198ead",
       "Requirements": [
         "xfun"
       ]

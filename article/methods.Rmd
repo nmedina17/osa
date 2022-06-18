@@ -4,14 +4,16 @@ output:
   # html_notebook
   bookdown::html_document2:
     number_sections: FALSE
-bibliography: ../../library.bib
+bibliography: 
+- ../../library.bib
+- ../../grateful-refs.bib
 link-citations: TRUE
 ---
 
 
 
-```{r echo=F, results='hide', warning=F, message=F}
-knitr::opts_chunk$set(echo = F, warning = F, message = F); here::i_am("article/methods.Rmd")
+```{r setupMeth, echo=F, results='hide', warning=F, message=F}
+knitr::opts_chunk$set(echo = F, warning = F, message = F); here::i_am("article/methods.Rmd"); library(tidyverse)
 ```
 
 
@@ -26,23 +28,23 @@ The study site was a regrowing 20 ha timber plantation of *Bombacompsis quinata*
 This focal secondary forest area was roughly triangular, surrounded by primary forest on the two S and NW sides (Fig \@ref(fig:map)) and a wide service road on the third NE border, with primary forest beyond it.
 This census was done in 2013 during the rainy season months between June and August.
 
+```{r map, fig.width=4, fig.height=4, fig.cap="Map of conservation areas and study site on Osa Peninsula, Costa Rica. Map image data © 2022 Osa Conservation. Photo credit: Nicholas Medina."}
+source(here::here("figs/map.R"));
+sitePlot
+# knitr::include_graphics(here::here("figs/figmap.png"))
+# magick::image_read(path = "../figs/map.png") %>% plot()
+```
+<!-- ![**Fig 1**](../figs/map.png) -->
+
 
 
 ## Census design
 
 
 
-Edge effects were studied by dividing the secondary forest area into six 50 m strata spanning 0 - 300 m away from the primary forest edge on the S and NW sides, going inward to the E (Fig \@ref(fig:map)), using available GIS software (*ArcGIS 10 from 2010*, [esri.com](esri.com), and *QGIS 2 from 2013*, [qgis.org](qgis.org)).
+Edge effects were studied by dividing the secondary forest area into six 50 m strata spanning 0 - 300 m away from the primary forest edge on the S and NW sides, going inward to the E (Fig \@ref(fig:map)), using available GIS software (*ArcGIS 10*, [esri.com](esri.com), and *QGIS 2*, [qgis.org](qgis.org)).
 Each stratum was randomly filled with a number of 21 x 21 m square census plots oriented N that was proportional to its area--specifically with 11, eight, five, three, two, and one plot(s), respectively, as distance away from primary forest increased.
 The total area of the 30 census plots equaled ~1 ha or 5% of the total secondary forest stand area, which is comparable to similar studies *[@onyekwelu16]*.
-
-
-
-```{r map, fig.cap="Map of conservation area on Osa Peninsula, Costa Rica."}
-knitr::include_graphics(here::here("figs/map.png"))
-# magick::image_read(path = "../figs/map.png") %>% plot()
-```
-<!-- ![**Fig 1**](../figs/map.png) -->
 
 
 
@@ -51,7 +53,7 @@ knitr::include_graphics(here::here("figs/map.png"))
 
 
 
-### Canopy cover and topography
+<!-- ### Canopy cover and topography -->
 
 
 
@@ -67,7 +69,7 @@ The slope of the forest floor was measured using a rangefinder *(Bushnell, Fores
 
 
 
-### Tree measurements
+<!-- ### Tree measurements -->
 
 
 
@@ -79,7 +81,7 @@ and trait information was gathered from the literature.
 
 
 
-### Aboveground biomass
+<!-- ### Aboveground biomass -->
 
 
 
@@ -87,7 +89,9 @@ Aboveground biomass (AGB) was estimated per stem using the allometric equation b
 The equation specifically for wet tropical forests was used, which has performed slightly better compared to both pantropical and previous other models by *@chave05 [@alvarez12; @ngomanda14]*.
 The equation version with height was used since height was accessibly measurable and has shown improved local accuracy *[@domke12; @khan20]*.
 Wood density (or specific gravity) values when available also improve biomass estimates even more than height *[@vanbreugel11]*.
-The equation used was: $$ {AGB} = 0.0673 (ρ D^2 H)^{0.976} $$ with diameter *D* in cm, height *H* in m, and wood density or specific gravity *p* in *g cm^-3^*.
+The equation used was: 
+$${AGB} = 0.0673 (p D^2 H)^{0.976}$$ 
+with diameter *D* in cm, height *H* in m, and wood density or specific gravity *p* in *g cm^-3^*.
 DBHs and heights were measured in the field and wood densities were extracted from available literature. 
 Where information was limited, values at the genus level were used and unrepresented taxa were assumed to be *0.58* following World Agroforestry Database guidelines [(worldagroforestry.org)](worldagroforestry.org).
 
@@ -99,23 +103,24 @@ Original values found and recorded were later updated to modern values using the
 
 
 
-# Statistical analyses
+## Statistical analyses
 
 
 
-For all response variables, data were analyzed using plot medians and subject to linear regression with distance to forest edge as the only independent variable, after checks for residual normality and equal variance assumptions, using `r version$version.string`.
+```{r pkgRefs, results='hide'}
+# remotes::install_github("Pakillo/grateful")
+tidyr::unnest(grateful::get_pkgs_info(out.dir = "../.."))
+```
+
+For all response variables, data were analyzed using plot medians and subject to linear regression with distance to forest edge as the only independent variable, after assumption checks of residual normality with Shapiro-Wilk tests and equal variance with Levene tests, using base `r version$version.string` and *rstatix* `r packageVersion("rstatix")` package functions *[@base]*.
  <!-- including biomass converted to a per hectare basis,  -->
 
 <!-- Correlated variables were grouped into multi-way ANOVAs---namely biomass, wood density, and diameter in one group; and height, stem density, and wood density in a different group.  -->
-Non-linear regressions were run using the function *poly()* in the *stats* `r packageVersion("stats")` R package *(R Core Team 2022)*, 
-which was only recorded for stem density and richness variables. 
+Non-linear regressions were run using the function *poly()* in the base R package *stats* `r packageVersion("stats")`, 
+which was only ultimately recorded for stem density and richness variables, based on significance and explained variance over linear models. 
 All trees censused were included in each analysis including unidentified taxa that represented a single group in taxa-specific analyses.
 Community analysis and ordination was done as a PERMANOVA with the *adonis()* function from the *vegan* `r packageVersion("vegan")` R package *[@dixon03]*.
-Data and code are available at [nmedina17.github.com/osa](nmedina17.github.com/osa).
-
-
-<!-- `r citation()` -->
-
+Data and code were organized with R packages *here* *[@here]*, *bookdown* *[@bookdown2022]*, and *grateful* *[@grateful]*, and are available at [nmedina17.github.com/osa](nmedina17.github.com/osa).
 
 <!-- -   Allen and Kim (2020) as some justification for family-level analysis (their MI forest site shares \~6 / their 20 families with this site) -->
 

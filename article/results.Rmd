@@ -4,18 +4,20 @@ output:
   # html_notebook
   bookdown::html_document2:
     number_sections: FALSE
+    toc: FALSE
 ---
 
 
 
-```{r setup, echo = F, message = F, warning=F, results=F}
+```{r setupRes, echo = F, message = F, warning=F, results='hide'}
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
-here::i_am("article/results.Rmd"); source(here::here("figs/fig2.R"))
+source(here::here("figs/fig2.R")); here::i_am("article/results.Rmd"); 
+options(digits = 1)
 ```
 
 
 
-# Biomass
+## Biomass
 
 
 
@@ -40,35 +42,34 @@ stems12 <- filter(plotResultsTbl12, variable == "stems") %>% distinct() #alias
 Aboveground biomass did not tend to change with distance to primary forest edge 
 (Fig \@ref(fig:biomass)a), despite significant trends with underlying related variables 
 (Fig \@ref(fig:biomass)).
-
 Median plot wood density tended to increase marginally significantly 
 (`r glue("p=",round(as.numeric(wd$pval),3))`) 
 with edge distance by 
-`r round(wd$statPrint[[1]]$estimate[[2]],4)` ± 
-`r round(wd$statPrint[[1]]$std.error[[2]],5)` per m 
+`r wd$statPrint[[1]]$estimate[[2]]` ± 
+`r wd$statPrint[[1]]$std.error[[2]]` per m 
 explaining 
 `r "R2x100"`% of variance 
 among median distance strata values
 (Fig \@ref(fig:biomass)b).
-
 Plot stem density also tended to increase significantly 
 (`r glue("p=",round(as.numeric(stems12$pval[[2]][2]),2))`) 
 with edge distance but more strongly and non-linearly, by 
-~`r round(stems12$statPrint[[1]]$estimate[[2]],2)` ± 
-`r round(stems12$statPrint[[1]]$std.error[[2]],2)` per m 
+~`r stems12$statPrint[[1]]$estimate[[2]]` ± 
+`r stems12$statPrint[[1]]$std.error[[2]]` per m 
 (Fig \@ref(fig:biomass)c).
-
 At this stage in forest regeneration, canopy light availability did not tend to change with distance from forest edge 
 (Fig \@ref(fig:biomass)d).
 
 
-```{r biomass, fig.cap=" Plot stand properties, namely (a) biomass, (b) wood density, (c) stem density, and (d) canopy light availability."}
-knitr::include_graphics(here::here("../figs/fig1.png"))
+```{r biomass, fig.width=3.5, fig.height=3.5, fig.cap=" Plot stand properties, namely (a) biomass, (b) wood density, (c) stem density, and (d) canopy light availability. Grey dots show individual tree values, white dots with border show plot medians, black dots show distance strata medians  ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians."}
+source(here::here("figs/fig1.R")); 
+fig1
+# knitr::include_graphics(here::here("figs/fig1.png"))
 ```
 
 
 
-# Composition
+## Composition
 
 
 
@@ -89,13 +90,12 @@ ficus <- filter(taxaResultsTbl1, gen == "Ficus")
 
 Overall diversity changed significantly with distance to primary forest edge 
 (Fig \@ref(fig:taxa)).
-
 Alpha diversity significantly 
 (`r glue("p=",round(as.numeric(entropy12$pval[[2]][2]),3))`) 
 decreased non-linearly by 
-~`r round(abs(entropy12$statPrint[[1]]$estimate[[2]]),2)` ± 
-`r round(abs(entropy12$statPrint[[1]]$std.error[[2]]),2)` per m 
-as distance to primary forest edge increased 
+~`r abs(entropy12$statPrint[[1]]$estimate[[2]])` ± 
+`r abs(entropy12$statPrint[[1]]$std.error[[2]])` per m 
+as distance to primary forest edge increased, 
 which explained 
 `r "R2x100"`% of variance 
 among distance strata medians 
@@ -104,15 +104,14 @@ while in contrast taxonomic richness increased slightly
 (`r glue("p=",round(as.numeric(richness$pval),3))`) 
 and linearly 
 by 
-`r round(richness$statPrint[[1]]$estimate[[2]],2)` ± 
-`r round(richness$statPrint[[1]]$std.error[[2]],3)` per m 
+`r richness$statPrint[[1]]$estimate[[2]]` ± 
+`r richness$statPrint[[1]]$std.error[[2]]` per m 
 and had `r "R2x100"`% variance explained 
 among distance strata 
 (Fig \@ref(fig:taxa)b).
-
 Community composition and beta diversity also changed significantly 
-(`r glue("p=",round(ordStat$aov.tab[[6]][1],2))`) with 
-`r round(ordStat$aov.tab$R2[1],2) *100`% 
+(`r glue("p=",ordStat[[5]][1])`) with 
+`r ordStat$R2[1] *100`% 
 variance among distance strata explained by distance to primary forest edge, 
 and the first two principal components explaining 
 `r ordTbl$PC1_prop[1] *100`% and 
@@ -120,51 +119,52 @@ and the first two principal components explaining
 `r (ordTbl$PC1_prop[1] + ordTbl$PC2_prop[1]) *100`% 
 of variance among calculated plot distances 
 (Fig \@ref(fig:taxa)d).
-
-Key abundant taxa `r measure2e` and `r measure2f` showed different responses -- `r measure2e` nearly tended to decrease with distance to primary forest edge 
+Key abundant taxa *`r measure2e`* and *`r measure2f`* showed different responses -- *`r measure2e`* nearly tended to decrease with distance to primary forest edge 
 (Fig \@ref(fig:taxa)e),
-while `r measure2f` decreased marginally significantly 
+while *`r measure2f`* decreased marginally significantly 
 (`r glue("p=",round(as.numeric(ficus$pval),3))`) 
 and linearly by 
-`r round(ficus$statPrint[[1]]$estimate[[2]],2)` ± 
-`r round(ficus$statPrint[[1]]$std.error[[2]],2)` per m 
+`r ficus$statPrint[[1]]$estimate[[2]]` ± 
+`r ficus$statPrint[[1]]$std.error[[2]]` per m 
 with `r "R2x100"`% variance among distance strata explained 
 (Fig \@ref(fig:taxa)f).
 
 
-```{r taxa, fig.cap=" Taxonomic composition measures including (a) diversity, (b) richness, (c) overall biomass, (d) beta diversity, and (e,f) biomass of key taxa."}
-knitr::include_graphics(here::here("../figs/fig2.png"))
+```{r taxa, fig.width=5, fig.height=4, fig.cap=" Taxonomic composition measures including (a) diversity, (b) richness, (c) overall biomass, (d) beta diversity, and (e,f) biomass of key taxa. White and colored dots with border show plot medians, black dots show distance strata medians  ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians."}
+source(here::here("figs/fig2.R"));
+fig2
+# knitr::include_graphics(here::here("figs/fig2.png"))
 ```
 
 
 
-# Functions
+## Functions
 
 
 
-```{r fig3data}
+```{r fig3data, message=F, results='hide', echo=F}
 source(here::here("figs/fig3.R")); succession <- taxaResultsTbl12 #pReplaced
 ```
 
 
 Overall functional regeneration highlighted successional stage associations over primary dispersal mode along distance to primary forest 
 (Fig \@ref(fig:traits)).
-
-Taxa associated with both early and late successional stages decreased significantly 
-(`r glue("p=",round(as.numeric(succession$pval[[3]]),3))`) 
+Taxa associated with both early and late successional stages decreased marginally significantly 
+(`r glue("p=",round(as.numeric(succession$pval[[7]][2]),3))`) 
 and curvi-linearly 
 by 
-~`r round(succession$statPrint[[1]]$estimate[[2]],2)` ± 
-`r round(succession$statPrint[[1]]$std.error[[2]],2)` per m 
+~ `r succession$statPrint[[7]]$estimate[[2]]` ± 
+`r succession$statPrint[[7]]$std.error[[2]]` kg per m 
 with distance to edge explaining 
 `r "R2x100"`% variance 
 among distance strata medians 
 (Fig \@ref(fig:traits)a).
-
 Dispersal modes did not show consistent trends in biomass with increasing distance to edge 
 (Fig \@ref(fig:traits)b).
 
 
-```{r traits, fig.cap=" Functional regeneration based on taxa associations with (a) successional stages and (b) primary dispersal mode."}
-knitr::include_graphics(here::here("../figs/fig3.png"))
+```{r traits, fig.width=2, fig.height=3, fig.cap=" Functional regeneration based on taxa associations with (a) successional stages and (b) primary dispersal mode. Grey dots show individual tree values, white dots with border show plot medians, black dots show distance strata medians  ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians."}
+source(here::here("figs/fig3.R"));
+fig3
+# knitr::include_graphics(here::here("figs/fig3.png"))
 ```

@@ -210,7 +210,7 @@ graph2d <- ordTbl %>%
     "text",
     label = glue(
       "P = ",
-      ordStat$aov.tab$`Pr(>F)` %>%
+      ordStat$`Pr(>F)` %>%
         first() %>% round(2)
     ),
     x = -5,
@@ -222,7 +222,7 @@ graph2d <- ordTbl %>%
     label = glue(
       "R2",
       " = ",
-      ordStat$aov.tab$R2 %>%
+      ordStat$R2 %>%
         first() %>% round(2)
     ),
     x = 5,
