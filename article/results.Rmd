@@ -62,7 +62,7 @@ At this stage in forest regeneration, canopy light availability did not tend to 
 
 
 ```{r biomass, fig.width=3.5, fig.height=3.5, fig.cap=" Plot stand properties, namely (a) biomass, (b) wood density, (c) stem density, and (d) canopy light availability. Grey dots show individual tree values, white dots with border show plot medians, black dots show distance strata medians  ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians."}
-source(here::here("figs/fig1.R")); 
+source(here::here("figs/fig1.R"), echo = F); 
 fig1
 # knitr::include_graphics(here::here("figs/fig1.png"))
 ```
@@ -131,7 +131,7 @@ with `r "R2x100"`% variance among distance strata explained
 
 
 ```{r taxa, fig.width=5, fig.height=4, fig.cap=" Taxonomic composition measures including (a) diversity, (b) richness, (c) overall biomass, (d) beta diversity, and (e,f) biomass of key taxa. White and colored dots with border show plot medians, black dots show distance strata medians  ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians."}
-source(here::here("figs/fig2.R"));
+source(here::here("figs/fig2.R"), echo = F);
 fig2
 # knitr::include_graphics(here::here("figs/fig2.png"))
 ```
@@ -164,7 +164,7 @@ Dispersal modes did not show consistent trends in biomass with increasing distan
 
 
 ```{r traits, fig.width=2, fig.height=3, fig.cap=" Functional regeneration based on taxa associations with (a) successional stages and (b) primary dispersal mode. Grey dots show individual tree values, white dots with border show plot medians, black dots show distance strata medians  ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians."}
-source(here::here("figs/fig3.R"));
+source(here::here("figs/fig3.R"), echo = F);
 fig3
 # knitr::include_graphics(here::here("figs/fig3.png"))
 ```

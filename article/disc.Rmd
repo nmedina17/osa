@@ -22,9 +22,26 @@ link-citations: TRUE
 This study found significant edge effects on tree diversity and community composition, but not aboveground biomass...functional diversity?
 These results were shown in Figs \@ref(fig:biomass), \@ref(fig:taxa), and \@ref(fig:traits)...
 It was initially hypothesized that community regeneration would vary with distance to edge, favoring more shade-tolerant taxa, due to light availability and dispersal potential -- evidence from this study's results supported edge effects on community composition and biomass of taxa associated with both early- and late-successional stages, but without detectable roles for light availability or general dispersal mode.
-...
+..
 
-Aboveground biomass represents aboveground carbon stores... is a measure of ..., and responds variably to secondary succession and edge effects
+Aboveground biomass represents aboveground carbon stores... is a measure of ..., and responds variably to secondary succession and edge effects ...
+- discuss effects on stem density...
+Management has been found to explain most of biomass variation among tropical forest fragments, and wood density ~10% biomass variation *[@pyles22]*.
+This study adds that management via edge effects can also mediate ~10% of wood density variation, and thereby potentially also indirectly affecting biomass.
+Overall, wood density and richness values may have been pulled down by early-successional clonal trees closest to the primary forest, which tend to have lower wood densities, lowering carbon *[@pyles22; others]*.
+On its own, canopy may [not] affect forest biomass, although...
+- fig1 -- edge effects on wood and stem density
+    - although canopy light may still affect biomass generally in this case, without edge effects (check direct light-biomass correlation graph?)
+
+This study supports previous syntheses suggesting that forest biomass and taxonomic richness regenerate more quickly / are more resilient than diversity and community composition *[@poorter21?, other?]*.
+This may be due to priority effects on successional trajectories acting on/at the stem/population level *[]*, variable turnover and reproduction rates among tree taxa *[]*, and/or differential dispersal and establishment success based on local [dispersive] animal community *[]*. ...
+- mention more amundant genera patterns w/ Vochysia and Ficus as a key fruit-bearing taxon *[@tropicalbat/bird]*?
+
+There is increasing interest in functional trait ecology of tropical trees *[@umaña##]*.
+This focuses on a coarse functional association with successional stage, ...
+but also includes patterns with wood density [underlying biomass estmations]...
+- fig3 -- edge effect on succession generalists, but not specialists
+The persistence of early-successional tree communities has been found to lower the standing biomass, likely due to lower wood density *[@césar21]*, and could therefore require a switch in focal timber species *[@karsten14]*.
 
 
 # attic{-}
@@ -37,6 +54,3 @@ In contrast, under intensive silviculture that prioritizes the growth of select 
 In some cases where management decisions are made primarily based on regional economic but not local ecological information, due to limited access to funded scientific reporting (Cook et al 2012), forest stands can perform very poorly all-around.
 
 After this more extreme type of management, it remains uncertain how natural regeneration in secondary forests will proceed, how local ecosystem services will be restored, and how restoration could be managed locally (Laurance et al 2012), e.g. based on surrounding forest proximity.
-
-
-The persistence of early-successional tree communities has been found to lower the standing biomass, likely due to lower wood density *[@césar21]*, and could therefore require a switch in focal timber species *[@karsten14]*.
