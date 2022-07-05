@@ -90,6 +90,12 @@ lifeHist <- vroom(
   )
 
 
+##woodC----
+woodC <- vroom::vroom(here::here(
+  "data/base/glowcad/Doraisami_et_al._2021_Wood_C_Database.csv")) |>
+  select(tissue.c, family.resolved, genus.resolved, binomial.resolved)
+
+
 updateRaw <- function(
   ...rawData
 ) {
@@ -154,9 +160,7 @@ cleanData <- rawData %>%
     )
   ) %>%
 
-  full_join(
-    dispersal
-  ) %>%
+  full_join(dispersal) %>%
   filter(
     !is.na(
       dist
@@ -174,6 +178,8 @@ cleanData <- rawData %>%
     traits,
     by = "gen"
   ) %>%
+
+  full_join(woodC, by = c("gen" = "genus.resolved")) |>
 
 
   filter(

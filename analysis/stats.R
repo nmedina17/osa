@@ -18,9 +18,7 @@ library(ggbeeswarm); library(ggpmisc)
 
 
 # #userInput--parentFile
-# taxRank <- quote(
-#   gen
-# )
+# taxRank <- quote(gen)
 
 
 
@@ -92,27 +90,17 @@ plotVarsTbl <- cleanData %>%
   ) %>%
   select(
     #abiotic
-    luz,
-    incl,
+    luz, incl,
 
     #biotic
-    dap,
-    h,
-    spg,
-    kg17,
+    dap, h, spg, kg17, tissue.c,
 
     #community
-    stems,
-    richness,
-    entropy
+    stems, richness, entropy
   ) %>%
 
-  get_summary_stats(
-    type = "median_mad"
-  ) %>%
-  nest(
-    "varData" = -variable
-  ) %>%
+  rstatix::get_summary_stats(type = "median_mad") %>%
+  tidyr::nest("varData" = -variable) %>%
 
   #nextlevel
 
@@ -150,7 +138,12 @@ plotVarsTbl <- cleanData %>%
             .,
             plot = F
           )
-      )
+      ),
+    "varData0" = cleanData |>
+      tidyr::nest("varData0" = everything()),
+    "varData0col" = varData0 #%>% modify(
+      # ~ .x %>% select(where(colnames(.x$varData0) == .x$variable))
+        # lattice::histogram(plot = F))
   )
 
 
@@ -317,9 +310,15 @@ mainModel <- {
 
 #OGpackage
 plotResultsTbl <- plotVarsTbl %>%
-  getStatsTbl(
+  oir::getStatsTbl(
     mainModel
   )
+
+
+##woodCcheck
+# ggplot2::ggplot(plotResultsTbl$varData[[10]], aes(dist, median)) +
+#   geom_point() + geom_smooth(method = "lm", formula = y ~ poly(x, 2)) +
+#   stat_poly_eq(aes(label = after_stat(p.value.label)))
 
 
 ### quad----
