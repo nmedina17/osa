@@ -156,6 +156,26 @@ graph1d
 
 
 
+#panel----
+
+measure1e <- quote(tissue.c)
+yAxisLabel1e <- "Tissue C (%)"
+graph1e <- statData %>%
+  dotGraph(
+    measure1e,
+    varForm[[3]],
+    varForm[[2]],
+    xAxisLabel,
+    yAxisLabel1e,
+    ..addBins = T,
+    ..addCenters = T,
+    ..addP = F,
+    ..cleanData = underData
+  )
+graph1e
+
+
+
 #arrange----
 
 
@@ -163,15 +183,18 @@ graph1d
 fig1 <- ggarrange(
   graph1a,
   graph1b,
+  graph1e,
+  #hists
   graph1c,
   graph1d,
-  nrow = 2,
+  nrow = 3,
   ncol = 2,
   labels = c(
     "a",
     "b",
     "c",
-    "d"
+    "d",
+    "e"
   ),
   font.label = list(
     size = 8

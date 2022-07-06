@@ -141,9 +141,12 @@ plotVarsTbl <- cleanData %>%
       ),
     "varData0" = cleanData |>
       tidyr::nest("varData0" = everything()),
-    "varData0col" = varData0 #%>% modify(
-      # ~ .x %>% select(where(colnames(.x$varData0) == .x$variable))
-        # lattice::histogram(plot = F))
+    "sys0" = {
+      temp <- varData0 %>% tidyr::unnest(everything()) |> dplyr::distinct();
+      tempHist <- hist(temp$kg17, plot = F);
+      tempHistTbl <- dplyr::tibble(tempHist$mids, tempHist$counts)
+    } %>% tidyr::nest("sys0" = everything())
+      # where(colnames(.x$varData0) == .x$variable))
   )
 
 
@@ -316,7 +319,7 @@ plotResultsTbl <- plotVarsTbl %>%
 
 
 ##woodCcheck
-# ggplot2::ggplot(plotResultsTbl$varData[[10]], aes(dist, median)) +
+# ggplot2::ggplot(plotResultsTbl$varData1[[10]], aes(dist, median)) +
 #   geom_point() + geom_smooth(method = "lm", formula = y ~ poly(x, 2)) +
 #   stat_poly_eq(aes(label = after_stat(p.value.label)))
 
