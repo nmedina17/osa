@@ -5,7 +5,7 @@ author:
   # - Max Villalobos? ^b^
   # - Andrea Johnson? ^b^
 date: 
-# scriptsize\
+  # scriptsize\ 
   Ecology and Evolutionary Biology, University of Michigan, 1105 N University Ave, Ann Arbor, MI, USA 48109
   # ^a^ Biology and Environmental Studies, Brandeis University, 415 South St, Waltham, MA, USA 02453; 
   # ^b^ Land Stewardship, Osa Conservation, Puerto Jiménez, Golfito, Costa Rica
