@@ -121,7 +121,7 @@ output: html_notebook
 About half of all forests are tropical and secondary, making tropical forest regeneration integral to future forests. 
 Tree stand biomass and taxonomic richness can recover in a few decades, but relative abundances may lag indefinitely. 
 Since most forests are within a km of a habitat edge, edge effects likely affect community composition regeneration, mediated by shade tolerance and dispersal traits, along with management history.
-This study addresses how wet tropical secondary forest regeneration is affected by distance to habitat edge, and hypothesizes that old timber plantations facilitate regeneration by favoring shade tolerant or late successional taxa, and adjacent forest edges mediate community composition.
+This study addressed how wet tropical secondary forest regeneration was affected by distance to habitat edge, and hypothesized that old timber plantations facilitate regeneration by favoring shade tolerant or late successional taxa, and adjacent forest edges mediate community composition.
 An abandoned neotropical timber plantation adjacent to primary forest was censused for trees along a 300 m edge distance gradient, and analysis matched taxa to traits using relevant literature.
 
 <!-- # Results/Conclusions -->
@@ -138,12 +138,12 @@ Overall this study supports that stand composition is less resilient and more su
 
 
 Más de la mitad de bosques son tropicales y secundarios, indicando que la regeneración de bosques tropicales es integral al futuro de bosques, globalmente.
-Biomasa arboreal y *riqueza* taxonomica pueden recuperarse en algunas décadas, pero abundancias relativas pueden durar más de un siglo.
-Dado que la mayoría de bosques están entre un km de su orilla, *efectos de orilla* probablemente afectan la regeneración de composición de comnuidad, mediado por tolerancia a sombra y "traits"/characterísticas de *disperso*, y también historia de manejamiento.
-Este estudio *investiga* cómo regeneración de bosque secundario tropical húmedo es afectado por distancia a *orilla de habitat*, y *"hypothesizes"* que plantaciones de madera viejos facilitan regeneración porque favoran taxa tolerante a sombra o de *"succession"* tarde, y que orillas de bosque cercanos/*"adjacent"* *median* composición de comunidad.
-Una plantación de madera neotropical *al lado de* bosque primario fue *"censused"* por árboles siguiendo un transecto de 300 m midiendo un gradiente de distancia de orilla, y análisis combino taxa con characterísticas/*"traits"* usando literatura relevante.
+Biomasa arboreal y riqueza taxonómica pueden recuperarse en algunas décadas, pero abundancias relativas pueden durar más de un siglo.
+Dado que la mayoría de bosques quedan entre un km de su orilla, efectos de borde probablemente afectan la regeneración de composición de comunidad, mediado por tolerancia a sombra y characterísticas de disperso, y también historia de manejo.
+Este estudio investigó cómo la regeneración de bosque secundario tropical húmedo fue afectado por distancia a borde de hábitat, e hipotetizó que plantaciones de madera viejas facilitan regeneración porque favorecen a taxa tolerantes a sombra o de sucesión tarde, y que orillas de bosque adyacente median cambios a composición de comunidad.
+Una plantación de madera neotropical adyacente a bosque primario fue censada por árboles siguiendo un transecto de 300 m midiendo un gradiente de distancia de orilla, y análisis combinó taxa con characterísticas ecológicas usando literatura relevante.
 
-Mientras distancia de bosque primario aumentó, densidad de madera y *"stems"* *"tended to"* aumentó *signifantemente*, con 10% variación explicado, mientras tanto biomasa y luz de dócel *"tended to"* quedarse igual.
-*Riquesa* de árboles también *"tended to"* aumentar *significantemente*, pero diversidad bajó profundamente y no-linearmente, y composición taxonomica varió notablemente.
-Finalmente, taxa de árboles asociado *etapas* de *"succession"* ambos temprano y tarde  bajó *significativamente*, pero biomasa por modo de *disperso* no *"tended to"* cambiar.
-*Entre todo* este estudio apoya que composición es menos resiliente y más sujeto a *efectos de orilla* que biomasa y *riqueza*, sugeriendo que bosques globales probablemente serán *asemblajes* nuevos distintos en el futuro, con *"trade-offs"* entre producción de madera y biodiversidad *ocuriendo* basado en actividad de manejamiento local y regional.
+Mientras distancia de bosque primario aumentó, densidad de madera y tallos tendieron a aumentar significativamente, con 10% variación explicado, mientras tanto biomasa y luz de dócel tendió a quedarse igual.
+Riquesa taxonómica de árboles también tendió a aumentar significativamente, pero diversidad bajó profundamente y no-linearmente, y composición taxonomica varió notablemente.
+Finalmente, biomasa de taxa de árboles asociados con etapas de sucesión ambos temprano y tarde bajaron significativamente, pero biomasa por modo de disperso no tendió a cambiar.
+Entre todo este estudio apoya que composición taxonómica es menos resiliente y más sujeto a efectos de borde negativos que biomasa y riqueza taxonómica, sugeriendo que bosques globales probablemente serán ensamblajes nuevamente distintos en el futuro, con compensaciones entre producción de madera y biodiversidad que ocurren basado en manejo local y regional.

@@ -90,7 +90,7 @@ ficus <- filter(taxaResultsTbl1, gen == "Ficus")
 
 Overall diversity changed significantly with distance to primary forest edge 
 (Fig \@ref(fig:taxa)).
-Alpha diversity significantly 
+Diversity significantly 
 (`r glue("p=",round(as.numeric(entropy12$pval[[2]][2]),3))`) 
 decreased non-linearly by 
 ~`r abs(entropy12$statPrint[[1]]$estimate[[2]])` ± 
@@ -138,7 +138,7 @@ fig2
 
 
 
-## Functions
+## Traits
 
 
 
@@ -147,9 +147,9 @@ source(here::here("figs/fig3.R")); succession <- taxaResultsTbl12 #pReplaced
 ```
 
 
-Overall functional regeneration highlighted successional stage associations over primary dispersal mode along distance to primary forest 
+Overall trait regeneration highlighted successional stage associations over primary dispersal mode along distance to primary forest 
 (Fig \@ref(fig:traits)).
-Taxa associated with both early and late successional stages decreased marginally significantly 
+Taxa associated with both early and late successional stages decreased significantly 
 (`r glue("p=",round(as.numeric(succession$pval[[7]][2]),3))`) 
 and curvi-linearly 
 by 
