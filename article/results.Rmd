@@ -67,6 +67,8 @@ fig1
 # knitr::include_graphics(here::here("figs/fig1.png"))
 ```
 
+<!-- - size distributions? -->
+<!-- - put light-biomass correlation? -->
 
 
 ## Composition
@@ -136,6 +138,7 @@ fig2
 # knitr::include_graphics(here::here("figs/fig2.png"))
 ```
 
+<!-- - put diversity-biomass correlation -->
 
 
 ## Traits

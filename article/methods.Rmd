@@ -119,7 +119,7 @@ Non-linear regressions were run using the function *poly()* in the base R packag
 which was only ultimately recorded for stem density and richness variables, based on significance and explained variance over linear models. 
 All trees censused were included in each analysis including unidentified taxa that represented a single group in taxa-specific analyses.
 Community analysis and ordination was done as a PERMANOVA with the *adonis()* function from the *vegan* `r packageVersion("vegan")` R package *[@dixon03]*.
-Data and code were organized with R packages *here* *[@here]*, *bookdown* *[@bookdown2022]*, and *grateful* *[@grateful]*, and internal pipeline *oir* *[@softwareMedina22]* are stored at [github.com/nmedina17/osa](github.com/nmedina17/osa).
+Data and code were organized with R packages *here* *[@here]*, *bookdown* *[@bookdown2022]*, and *grateful* *[@grateful]*, and internal pipeline *oir* *[@softwareMedinaOir22]* are stored at [github.com/nmedina17/osa](github.com/nmedina17/osa) *[@softwareMedinaOsa]*.
 
 <!-- -   Allen and Kim (2020) as some justification for family-level analysis (their MI forest site shares \~6 / their 20 families with this site) -->
 

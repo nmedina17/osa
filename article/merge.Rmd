@@ -123,7 +123,7 @@ NM wrote initial draft and later revisions.
 
 # Data statement{-}
 
-Code stored at [github.com/nmedina17/osa](github.com/nmedin17/osa).
+Code stored at [github.com/nmedina17/osa](github.com/nmedin17/osa) *[@softwareMedinaOsa]*.
 
 
 \newpage

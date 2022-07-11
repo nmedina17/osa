@@ -52,6 +52,8 @@ We hypothesized that remaining timber trees would mediate forest regrowth by mai
     <!-- - supported by inference?! -->
 Accordingly, we predicted that further from the primary forest edge, canopy light availability would increase, while stand biomass and diversity would decrease.
 
+<!-- - conceptual hypothesis diagram? -->
+
 
 
 <!-- # attic -->
