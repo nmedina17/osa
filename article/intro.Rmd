@@ -41,11 +41,18 @@ Understanding secondary forest regeneration is key for global biodiversity conse
 Secondary forest regeneration is often affected by edge effects, or changes near an ecosystem boundary, as well as land-use history, especially in heterogeneously-managed landscapes *[@perfecto09; @melo13]*.
 About 70% of all forests have been estimated to be within a km of their edge *[@haddad15]*, resulting in tropical forests having been estimated to lose ~22% aboveground carbon along heavily-managed edges >100m, in part due to shortening trees and lighter leaf mass *[@ordway20]*.
 Edge effects also have the potential to shape community composition, based on the local dispersal kernel patterns of existing taxa *[@wandrag17]*, which while complicated *[@muller-landau09]*, can also correlate with simpler plant traits like height and seed mass *[@thomson11; @tamme14]*.
-The traits of existing taxa also depend on land-use history and previous management *[@omeja12]*, which historically has favored tree taxa that tend to pioneering, or be faster-growing, have lower wood densities, and be less shade-tolerant *[@tabarelli08]*.
+
+Properties of the existing tree community also depend on land-use history and previous management *[@omeja12]* including plantation use for timber production, which historically has favored tree taxa that tend to pioneering, or be faster-growing, have lower wood densities, and be less shade-tolerant *[@tabarelli08]*.
 Legacy effects from management like intensive timber planting could in theory delay or result in non-linear changes between successional stages *[@albrich20; @gough21]*, which would make future management more uncertain, unlike more sustainable thinning practices and agroforestry *[@lefland18]*.
 Overall, while edge effects near degraded habitat edges are often negative, meta-population *[@levins79]* and -community *[@leibold04; @warren15]* theories highlight dispersal as a key process for offsetting extinction debt and thus maintaining biodiversity.
 Near primary forest, dispersal may facilitate secondary forest regeneration, and help explain relatively high biodiversity compared to adjacent stands that can be found in agroforests *[@oliveira-neto17]*, forests affected by logging *[@clark12; @edwards14]*, and timber plantations *[@pryde15]*.
+
 <!-- role of N-fixing trees... *[@lai18]* -->
+<!-- A subset of secondary forests include naturally regenerating timber plantations, which may show unique recovery patterns. -->
+<!-- .. -->
+<!-- More specifically, regenerating timer plantations may also experience edge effects, but they tend to be ...  -->
+<!-- - from *[@anderson22; others]* -->
+<!-- - examples of *B. quinata* plantation papers specifically -->
 
 This study reports tree regeneration patterns of an abandoned wet neotropical timber plantation, highlighting edge effects from an adjacent primary forest.
 We hypothesized that remaining timber trees would mediate forest regrowth by maintaining shade that would suppress less shade-tolerant pioneer tree taxa and allow for more tree diversity closer to the primary forest edge.
