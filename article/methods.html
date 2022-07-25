@@ -404,7 +404,7 @@ The total area of the 30 census plots equaled ~1 ha or 5% of the total secondary
 <!-- ### [Topography] -->
 <p>The slope of the forest floor was measured using a rangefinder <em>(Bushnell, Forestry Suppliers, Inc)</em> to measure the distance the diagonal between two plot corners and triangulate the observation angle.</p>
 <!-- ### Tree measurements -->
-<p>The diameter of all stems &gt;10 cm wide were recorded in each census plot.
+<p>The diameter of all stems &gt;10 cm wide were recorded in each census plot, totaling over 1,000 trees.
 Following common forestry guidelines, in cases where a tree split into 2 or more stems below breast height, each stem was measured separately; in cases where a stem split only above breast height, it was measured as a single stem.
 Tree height was recorded by measuring distances to both the crown and the stem at chest height <em>(~2.7 m)</em> using a rangefinder <em>(Bushnell, Forestry Suppliers, Inc.)</em> and triangulating the missing side length.
 Taxa were identified with localized knowledge and field guides matching common names to Latin binomials,
@@ -422,7 +422,7 @@ Where information was limited, values at the genus level were used and unreprese
 <!-- *[References used for this step are given in *Table S1*.] * -->
 Original values found and recorded were later updated to modern values using the pipeline developed in the <em>BIOMASS</em> 2.1.8 R software package by <em><span class="citation">Réjou-Méchain et al. (<a href="#ref-rejou-mechain17" role="doc-biblioref">2017</a>)</span></em>, which notably replaced unknown wood density values with plot-level averages instead during stem biomass calculations.
 <!-- However, these updates did not appear to change the main results of this study. --></p>
-<p>Traits including successional stage and main dispersal mode were matched to species with <em><span class="citation">(<a href="#ref-werden20" role="doc-biblioref"><strong>werden20?</strong></a>)</span></em> data, and wood tissue carbon matched to genera with the GLOWCAD database <em><span class="citation">(<a href="#ref-doraisami22" role="doc-biblioref">Doraisami et al. 2022</a>)</span></em> given high alignment at species levels <em><span class="citation">(<a href="#ref-chave06" role="doc-biblioref">Jérôme Chave et al. 2006</a>)</span></em>.</p>
+<p>Traits including successional stage and main dispersal mode were matched to species with <em><span class="citation">Werden et al. (<a href="#ref-werden20" role="doc-biblioref">2020</a>)</span></em> data, and wood tissue carbon matched to genera with the GLOWCAD database <em><span class="citation">(<a href="#ref-doraisami22" role="doc-biblioref">Doraisami et al. 2022</a>)</span></em> given high alignment at species levels <em><span class="citation">(<a href="#ref-chave06" role="doc-biblioref">Jérôme Chave et al. 2006</a>)</span></em>.</p>
 </div>
 <div id="statistical-analyses" class="section level2">
 <h2>Statistical analyses</h2>
@@ -433,7 +433,7 @@ Original values found and recorded were later updated to modern values using the
 which was only ultimately recorded for stem density and richness variables, based on significance and explained variance over linear models.
 All trees censused were included in each analysis including unidentified taxa that represented a single group in taxa-specific analyses.
 Community analysis and ordination was done as a PERMANOVA with the <em>adonis()</em> function from the <em>vegan</em> 2.6.2 R package <em><span class="citation">(<a href="#ref-dixon03" role="doc-biblioref">Dixon 2003</a>)</span></em>.
-Data and code were organized with R packages <em>here</em> <em><span class="citation">(<a href="#ref-here" role="doc-biblioref">Müller 2020</a>)</span></em>, <em>bookdown</em> <em><span class="citation">(<a href="#ref-bookdown2022" role="doc-biblioref">Xie 2022</a>)</span></em>, and <em>grateful</em> <em><span class="citation">(<a href="#ref-grateful" role="doc-biblioref">Rodríguez-Sánchez, Jackson, and Hutchins 2022</a>)</span></em>, and internal pipeline <em>oir</em> <em><span class="citation">(<a href="#ref-softwareMedina22" role="doc-biblioref">Medina 2022</a>)</span></em> are stored at <a href="github.com/nmedina17/osa">github.com/nmedina17/osa</a>.</p>
+Data and code were organized with R packages <em>here</em> <em><span class="citation">(<a href="#ref-here" role="doc-biblioref">Müller 2020</a>)</span></em>, <em>bookdown</em> <em><span class="citation">(<a href="#ref-bookdown2022" role="doc-biblioref">Xie 2022</a>)</span></em>, and <em>grateful</em> <em><span class="citation">(<a href="#ref-grateful" role="doc-biblioref">Rodríguez-Sánchez, Jackson, and Hutchins 2022</a>)</span></em>, and internal pipeline <em>oir</em> <em><span class="citation">(<a href="#ref-softwareMedina22oir" role="doc-biblioref">Medina 2022a</a>)</span></em> are stored at <a href="github.com/nmedina17/osa">github.com/nmedina17/osa</a> <em><span class="citation">(<a href="#ref-softwareMedina22osa" role="doc-biblioref">Medina 2022b</a>)</span></em>.</p>
 <!-- -   Allen and Kim (2020) as some justification for family-level analysis (their MI forest site shares \~6 / their 20 families with this site) -->
 <!-- -   Neighborhood influence metric (Lorimer 1983, applied in Looney et al 2016) -->
 <!-- - justify metrics, i.e. entropy vs. hists -->
@@ -465,8 +465,11 @@ Hulshof, Catherine M., and Jennifer S. Powers. 2020. <span>“Tropical Forest Co
 <div id="ref-khan20" class="csl-entry">
 Khan, Md Nabiul Islam, Md Rafikul Islam, Atikur Rahman, Md Salim Azad, Abdus Subhan Mollick, Md Kamruzzaman, Md Nazmus Sadath, S. M. Feroz, Md Golam Rakkibu, and Alexander Knohl. 2020. <span>“Allometric Relationships of Stand Level Carbon Stocks to Basal Area, Tree Height and Wood Density of Nine Tree Species in <span>Bangladesh</span>.”</span> <em>Global Ecology and Conservation</em> 22. <a href="https://doi.org/10.1016/j.gecco.2020.e01025">https://doi.org/10.1016/j.gecco.2020.e01025</a>.
 </div>
-<div id="ref-softwareMedina22" class="csl-entry">
-Medina, Nicholas. 2022. <em><span class="nocase">Code for: Automating statistical decision trees for data exploration and analysis revision workflow</span></em> (version 0.9.1). <a href="https://doi.org/10.5281/zenodo.6800299">https://doi.org/10.5281/zenodo.6800299</a>.
+<div id="ref-softwareMedina22oir" class="csl-entry">
+Medina, Nicholas. 2022a. <em><span class="nocase">Code for: Automating statistical decision trees for data exploration and analysis revision workflow</span></em> (version 0.9.1). <a href="https://doi.org/10.5281/zenodo.6800299">https://doi.org/10.5281/zenodo.6800299</a>.
+</div>
+<div id="ref-softwareMedina22osa" class="csl-entry">
+———. 2022b. <em><span class="nocase">Code for: Habitat edges affect tree diversity more than biomass regeneration in a wet neotropical secondary forest</span></em> (version 0.9.0). <a href="https://doi.org/10.5281/zenodo.6816612">https://doi.org/10.5281/zenodo.6816612</a>.
 </div>
 <div id="ref-here" class="csl-entry">
 Müller, Kirill. 2020. <em>Here: A Simpler Way to Find Your Files</em>. <a href="https://CRAN.R-project.org/package=here">https://CRAN.R-project.org/package=here</a>.
@@ -494,6 +497,9 @@ Taylor, Philip, Gregory Asner, Kyla Dahlin, Christopher Anderson, David Knapp, R
 </div>
 <div id="ref-vanbreugel11" class="csl-entry">
 Van Breugel, Michiel, Johannes Ransijn, Dylan Craven, Frans Bongers, and Jefferson S. Hall. 2011. <span>“Estimating Carbon Stock in Secondary Forests: <span>Decisions</span> and Uncertainties Associated with Allometric Biomass Models.”</span> <em>Forest Ecology and Management</em> 262 (8): 1648–57. <a href="https://doi.org/10.1016/j.foreco.2011.07.018">https://doi.org/10.1016/j.foreco.2011.07.018</a>.
+</div>
+<div id="ref-werden20" class="csl-entry">
+Werden, Leland K., Karen D. Holl, Juan Abel Rosales, Janelle M. Sylvester, and Rakan A. Zahawi. 2020. <span>“Effects of Dispersal- and Niche-Based Factors on Tree Recruitment in Tropical Wet Forest Restoration.”</span> <em>Ecological Applications</em> 30 (7). <a href="https://doi.org/10.1002/eap.2139">https://doi.org/10.1002/eap.2139</a>.
 </div>
 <div id="ref-bookdown2022" class="csl-entry">
 Xie, Yihui. 2022. <em>Bookdown: Authoring Books and Technical Documents with r Markdown</em>. <a href="https://github.com/rstudio/bookdown">https://github.com/rstudio/bookdown</a>.

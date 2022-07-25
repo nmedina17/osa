@@ -13,6 +13,7 @@ output:
 knitr::opts_chunk$set(echo = F, message = F, warning = F)
 source(here::here("figs/fig2.R")); here::i_am("article/results.Rmd"); 
 options(digits = 1)
+# source(here::here("figs/fig2.R"));
 ```
 
 
@@ -45,10 +46,10 @@ Aboveground biomass did not tend to change with distance to primary forest edge
 Median plot wood density tended to increase marginally significantly 
 (`r glue("p=",round(as.numeric(wd$pval),3))`) 
 with edge distance by 
-`r wd$statPrint[[1]]$estimate[[2]]` ± 
-`r wd$statPrint[[1]]$std.error[[2]]` per m 
+`r wd$statPrint[[1]]$estimate[[2]] %>% p_round()` ± 
+`r wd$statPrint[[1]]$std.error[[2]] %>% rstatix::p_round()` per m 
 explaining 
-`r "R2x100"`% of variance 
+*`r "~10"`*% of variance 
 among median distance strata values
 (Fig \@ref(fig:biomass)b).
 Plot stem density also tended to increase significantly 
@@ -99,7 +100,7 @@ decreased non-linearly by
 `r abs(entropy12$statPrint[[1]]$std.error[[2]])` per m 
 as distance to primary forest edge increased, 
 which explained 
-`r "R2x100"`% of variance 
+*`r "73"`*% of variance 
 among distance strata medians 
 (Fig \@ref(fig:taxa)a) -- 
 while in contrast taxonomic richness increased slightly 
@@ -108,7 +109,7 @@ and linearly
 by 
 `r richness$statPrint[[1]]$estimate[[2]]` ± 
 `r richness$statPrint[[1]]$std.error[[2]]` per m 
-and had `r "R2x100"`% variance explained 
+and had *`r "16"`*% variance explained 
 among distance strata 
 (Fig \@ref(fig:taxa)b).
 Community composition and beta diversity also changed significantly 
@@ -128,7 +129,7 @@ while *`r measure2f`* decreased marginally significantly
 and linearly by 
 `r ficus$statPrint[[1]]$estimate[[2]]` ± 
 `r ficus$statPrint[[1]]$std.error[[2]]` per m 
-with `r "R2x100"`% variance among distance strata explained 
+with *`r "~20"`*% variance among distance strata explained 
 (Fig \@ref(fig:taxa)f).
 
 

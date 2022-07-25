@@ -9,32 +9,14 @@ library(BIOMASS)
 #import----
 
 ##raw----
-rawData <- vroom(
-  here("data/raw/osa.csv")
-)
+rawData <- vroom(here("data/raw/osa.csv"))
 
-dispersal <- vroom(
-  here("data/dispersal.csv")
-) %>%
-  select(
-    fam,
-    gen,
-    sp,
-    mainDispersal
-  ) %>%
-  filter(
-    !is.na(
-      gen
-    ) &
-      !is.na(
-        mainDispersal
-      )
-  )
+dispersal <- vroom(here("data/dispersal.csv")) %>%
+  select(fam, gen, sp, mainDispersal) %>%
+  filter(!is.na(gen) & !is.na(mainDispersal))
 
 ##traits----
-traits <- vroom(
-  here("data/base/try/try19707.csv")
-) %>% #glimpse()
+traits <- vroom(here("data/base/try/try19707.csv")) %>% #glimpse()
   select(
     AccSpeciesName,
     TraitName,
@@ -45,25 +27,16 @@ traits <- vroom(
   ###qc----
   mutate(
     StdValue = ifelse(
-      is.na(
-        StdValue
-      ),
+      is.na(StdValue),
       yes = OrigValueStr,
       no = StdValue
     ),
-    "gen" = AccSpeciesName %>%
-      str_split(
-        " "
-      ) %>% #list
+    "gen" = AccSpeciesName %>% str_split(" ") %>% #list
       modify(
-        . %>%
-          first()
-      ) %>%
-      as_vector()
+        . %>% first()
+      ) %>% as_vector()
   ) %>%
-  select(
-    !OrigValueStr
-  ) %>%
+  select(!OrigValueStr) %>%
 
   pivot_wider(
     id_cols = gen,
@@ -83,16 +56,12 @@ lifeHist <- vroom(
     successionalStage
   ) %>%
   #qc
-  filter(
-    !is.na(
-      successionalStage
-    )
-  )
+  filter(!is.na(successionalStage))
 
 
 ##woodC----
 woodC <- vroom::vroom(here::here(
-  "data/base/glowcad/Doraisami_et_al._2021_Wood_C_Database.csv")) |>
+  "data/base/glowcad/Doraisami_et_al._2021_Wood_C_Database.csv")) %>%
   select(tissue.c, family.resolved, genus.resolved, binomial.resolved)
 
 
@@ -148,52 +117,27 @@ updateRaw <- function(
 
 #join----
 
-cleanData <- rawData %>%
-  updateRaw() %>%
-
-  mutate(
-    #perHa
-    kg17 = kg17 / (
-      21 * 21
-    ) * (
-      10000 / 1
-    )
-  ) %>%
+cleanData <- rawData %>% updateRaw() %>%
+  #perHa
+  mutate(kg17 = kg17 / (21 * 21) * (10000 / 1)) %>%
 
   full_join(dispersal) %>%
-  filter(
-    !is.na(
-      dist
-    )
-  ) %>%
 
-  full_join(
-    lifeHist,
-    by = c(
-      "gen" = "genus"
-    )
-  ) %>%
+  filter(!is.na(dist)) %>%
 
-  full_join(
-    traits,
-    by = "gen"
-  ) %>%
+  left_join(lifeHist, by = c("gen" = "genus")) %>% distinct() |>
+  full_join(traits, by = "gen") %>%
+  full_join(woodC |>
+              group_by(genus.resolved) |> summarize(tissue.c = median(tissue.c)) |>
+              distinct(),
+            by = c("gen" = "genus.resolved")) %>%
 
-  full_join(woodC, by = c("gen" = "genus.resolved")) |>
-
-
-  filter(
-    !is.na(
-      dist
-    )
-  ) %>%
+  filter(!is.na(dist)) %>%
 
   distinct() %>%
 
   ##qc----
-  rename(
-    "DispersalSyndrome" = "Dispersal syndrome"
-  ) #%>%
+  rename("DispersalSyndrome" = "Dispersal syndrome") #%>%
 
 #   mutate(
 #     "checkDisp" = DispersalSyndrome %>%

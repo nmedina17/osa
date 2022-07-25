@@ -26,53 +26,29 @@ library(ggbeeswarm); library(ggpmisc)
 
 
 #4vegan
-spTbl <- cleanData %>%
-  filter(
-    !is.na(
-      dist |
-        plot
-    )
-  ) %>%
+spTbl <- cleanData %>% filter(!is.na(dist | plot)) %>%
   add_count(
-    {{
-      taxRank
-    }},
+    {{taxRank}},
     plot, #group
     name = "n_tax",
     sort = T
     ) %>%
   pivot_wider(
     id_cols = plot,
-    names_from = {{
-      taxRank
-    }},
+    names_from = {{taxRank}},
     values_from = n_tax,
     #rmwarn
     values_fn = length,
     values_fill = 0
     ) %>%
-  mutate(
-    "entropy" =
-      diversity(
-        .
-      )
-  )
+  mutate("entropy" = diversity(.))
 
 
 
 # centers ----
 
-plotVarsTbl <- cleanData %>%
-  left_join(
-    .,
-    spTbl %>%
-      select(
-        plot,
-        entropy
-      ),
-    by = "plot",
-    copy = T
-  ) %>%
+cleanDataPlotVars <- cleanData %>%
+  left_join(spTbl %>% select(plot, entropy), by = "plot", copy = T) %>%
 
   ## plots ----
 
@@ -83,10 +59,7 @@ plotVarsTbl <- cleanData %>%
   ) %>%
   mutate(
     "stems" = n(),
-    "richness" =
-      n_distinct(
-        sp
-      )
+    "richness" = n_distinct(sp)
   ) %>%
   select(
     #abiotic
@@ -97,9 +70,12 @@ plotVarsTbl <- cleanData %>%
 
     #community
     stems, richness, entropy
-  ) %>%
+  ) #%>%
 
+
+plotVarsTbl <- cleanDataPlotVars |>
   rstatix::get_summary_stats(type = "median_mad") %>%
+  left_join(cleanDataPlotVars, by = c("plot", "dist")) |>
   tidyr::nest("varData" = -variable) %>%
 
   #nextlevel
@@ -114,70 +90,45 @@ plotVarsTbl <- cleanData %>%
             dist
             # mainDispersal
           ) %>%
-          summarize(
-            median = median(
-              median
-            ),
-            mad = mad(
-              median
-            )
-          )
+          # summarize(median = median(median), mad = mad(median)) #|>
+          summarize(across(is.numeric, ~ median(.x)))
+          # left_join(cleanDataPlotVars, by = "dist")
       )
-  ) %>%
+  ) #%>%
 
   # hist parms
-  mutate(
-    "sys" = varData %>%
-      modify(
-        ~ .x %>%
-
-          pull(
-            median
-          ) %>%
-          hist(
-            .,
-            plot = F
-          )
-      ),
-    "varData0" = cleanData |>
-      tidyr::nest("varData0" = everything()),
-    "sys0" = {
-      temp <- varData0 %>% tidyr::unnest(everything()) |> dplyr::distinct();
-      tempHist <- hist(temp$kg17, plot = F);
-      tempHistTbl <- dplyr::tibble(tempHist$mids, tempHist$counts)
-    } %>% tidyr::nest("sys0" = everything())
-      # where(colnames(.x$varData0) == .x$variable))
-  )
+  # mutate(
+  #   "sys" = varData %>%
+  #     modify(
+  #       ~ .x %>%
+  #
+  #         pull(
+  #           median
+  #         ) %>%
+  #         hist(
+  #           .,
+  #           plot = F
+  #         )
+  #     )
+    # "varData0" = cleanData %>%
+    #   tidyr::nest("varData0" = everything())#,
+    # "sys0" = {
+    #   temp <- varData0 %>% tidyr::unnest(everything()) %>% dplyr::distinct();
+    #   tempHist <- hist(temp$kg17, plot = F);
+    #   tempHistTbl <- dplyr::tibble(tempHist$mids, tempHist$counts)
+    # } %>% tidyr::nest("sys0" = everything())
+    #   # where(colnames(.x$varData0) == .x$variable))
+  # )
 
 
 
 # ordinate ----
 
-commTbl <- spTbl %>%
-  select(
-    -c(
-      entropy,
-      plot
-    )
-  )
-
-distMat <- vegdist(
-  commTbl
-)
-
-metaTbl <- cleanData %>%
-  distinct(
-    plot,
-    dist
-  ) %>%
-
+commTbl <- spTbl %>% select(-c(entropy, plot))
+distMat <- vegdist(commTbl)
+metaTbl <- cleanData %>% distinct(plot, dist) %>%
   #qc
-  filter(
-    !is.na(
-      plot |
-        dist
-    )
-  )
+  filter(!is.na(plot | dist))
 
 
 ordModel <- distMat ~ dist
@@ -190,10 +141,7 @@ ordStat <- vegan::adonis2(
 )
 
 
-ordTbl <- commTbl %>%
-  oir::getOrdVarTbl(
-    metaTbl
-  )
+ordTbl <- commTbl %>% oir::getOrdVarTbl(metaTbl)
 
 
 
@@ -202,91 +150,28 @@ ordTbl <- commTbl %>%
 ## taxa----
 
 #user
-taxMetric <- quote(
-  kg17
-)
+taxMetric <- quote(kg17)
 
 
 spStatTbl <- cleanData %>%
-  select(
-    dist,
-    plot,
-    {{
-      taxRank
-    }},
-    {{
-      taxMetric
-    }}
-  ) %>%
-  add_count(
-    {{
-      taxRank
-    }},
-    plot,
-  ) %>%
+  select(dist, plot, {{taxRank}}, {{taxMetric}}) %>%
+  add_count({{taxRank}}, plot) %>%
   #collapse
-  distinct(
-    {{
-      taxRank
-    }},
-    plot,
-    .keep_all = T
-  ) %>%
-  nest(
-    "varData" = -{{
-      taxRank
-    }}
-  ) %>%
+  distinct({{taxRank}}, plot, .keep_all = T) %>%
+  nest("varData" = -{{taxRank}}) %>%
 
   #QCshapiro
   mutate(
-    nDist = varData %>%
-      modify(
-        ~ .x %>%
-          pull(
-            dist
-          ) %>%
-          n_distinct()
-      ),
-    varN = varData %>%
-      modify(
-        ~ .x %>%
-          pull(
-            n
-          ) %>%
-          var()
-      )
-  ) %>%
-  unnest(
-    c(
-      nDist,
-      varN
-    )
-  ) %>%
-  filter(
-    nDist >=
-      3,
-    varN >
-      0
-  ) %>%
+    nDist = varData %>% modify(~ .x %>%pull(dist) %>% n_distinct()),
+    varN = varData %>% modify(~ .x %>% pull(n) %>% var())
+  ) %>% unnest(c(nDist, varN)) %>%
+  filter(nDist >= 3, varN > 0) %>%
 
   mutate(
-    "varData1" =
-      varData %>%
-      modify(
-        ~ .x %>%
-          group_by(
-            dist
-          ) %>%
-          summarize(
-            "taxMetric" = median(
-              {
-                taxMetric %>%
-                  eval()
-              }
-            )
-          )
-      )
+    "varData1" = varData %>% modify(
+      ~ .x %>% group_by(dist) %>%
+        summarize("taxMetric" = median({taxMetric %>% eval()}))
+    )
   )
 
 
@@ -298,24 +183,16 @@ spStatTbl <- cleanData %>%
 
 
 #user
-mainMetric <- quote(
-  median
-)
+mainMetric <- quote(abs(median + 1))
 
 
 #get
 
-mainModel <- {
-  mainMetric %>%
-    eval()
-} ~ dist
+mainModel <- {mainMetric %>% eval()} ~ dist
 
 
 #OGpackage
-plotResultsTbl <- plotVarsTbl %>%
-  oir::getStatsTbl(
-    mainModel
-  )
+plotResultsTbl <- plotVarsTbl %>% oir::getStatsTbl(mainModel)
 
 
 ##woodCcheck
@@ -328,21 +205,11 @@ plotResultsTbl <- plotVarsTbl %>%
 
 #get2
 
-mainModel2 <- {
-  mainMetric %>%
-    eval()
-} ~ poly(
-  dist,
-  2
-)
+mainModel2 <- {mainMetric %>% eval()} ~ poly(dist, 2)
 
 plotResultsTbl2 <- plotVarsTbl %>%
-  getStatsTbl2(
-    mainModel2
-  ) %>%
-  addGraph2(
-    mainModel
-  )
+  getStatsTbl2(mainModel2) %>%
+  addGraph2(mainModel)
 
 
 ### centers----
@@ -352,10 +219,7 @@ plotResultsTbl2 <- plotVarsTbl %>%
 
 
 #get1
-plotResultsTbl1 <- plotVarsTbl %>%
-  getStatsTbl1(
-    mainModel
-  )
+plotResultsTbl1 <- plotVarsTbl %>% getStatsTbl1(mainModel)
 
 
 #### quad----
@@ -363,12 +227,8 @@ plotResultsTbl1 <- plotVarsTbl %>%
 
 #get12
 plotResultsTbl12 <- plotVarsTbl %>%
-  getStatsTbl12(
-    mainModel2
-  ) %>%
-  addGraph12(
-    mainModel
-  )
+  getStatsTbl12(mainModel2) %>%
+  addGraph12(mainModel)
 
 
 
@@ -377,65 +237,40 @@ plotResultsTbl12 <- plotVarsTbl %>%
 
 #getTaxa
 
-taxModel <- {
-  taxMetric %>%
-    eval()
-} ~ dist
+taxModel <- {taxMetric %>% eval()} ~ dist
 
 
-taxaResultsTbl <- spStatTbl %>%
-  getStatsTbl(
-    taxModel
-  )
+taxaResultsTbl <- spStatTbl %>% getStatsTbl(taxModel)
 
 
 #getTaxa2
 
-taxModel2 <- {
-  taxMetric %>%
-    eval()
-} ~ poly(
-  dist,
-  2
-)
+taxModel2 <- {taxMetric %>% eval()} ~ poly(dist, 2)
 
 taxaResultsTbl2 <- spStatTbl %>%
-  getStatsTbl2(
-    taxModel2
-  ) %>%
-  addGraph2(
-    taxModel
-  )
+  getStatsTbl2(taxModel2) %>%
+  addGraph2(taxModel)
 
 
 #getTaxa1
-taxaResultsTbl1 <- spStatTbl %>%
-  getStatsTbl1(
-    taxModel
-  )
+taxaResultsTbl1 <- spStatTbl %>% getStatsTbl1(taxModel)
 
 
 #getTaxa12
 taxaResultsTbl12 <- spStatTbl %>%
-  getStatsTbl12(
-    taxModel2
-  ) %>%
-  addGraph12(
-    taxModel
-  )
+  getStatsTbl12(taxModel2) %>%
+  addGraph12(taxModel)
 
 
 
 #DISPERSAL
 #
-mainModel0 <- {
-  taxMetric %>%
-    eval()
-} ~ dist # * mainDispersal
+mainModel0 <- {taxMetric %>% eval()} ~ dist # * mainDispersal
 
 
-dispResultsTbl0 <- spStatTbl %>%
-  oir::getStatsTbl(
-    mainModel0
-  )
+dispResultsTbl0 <- spStatTbl %>% oir::getStatsTbl(mainModel0)
 
+
+#sp-biomass
+covarModel <- eval(mainMetric) ~ (entropy + 1)
+covarResultsTbl <- oir::getStatsTbl(plotVarsTbl, covarModel)

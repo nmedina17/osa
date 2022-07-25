@@ -23,59 +23,27 @@ library(ggpubr)
 #userInput
 #sortbyPvals
 
-measure1a <- quote(
-  kg17
-)
-yAxisLabel1a <- quote(
-  expression(
-    paste(
-      "Biomass (kg ha"^-1,
-      ")"
-    )
-  )
-)
-measure1b <- quote(
-  spg
-)
-yAxisLabel1b <- quote(
-  expression(
-    paste(
-      "Wood density (g",
-      " cm"^-3,
-      ")"
-    )
-  )
-)
-measure1c <- quote(
-  stems
-)
-yAxisLabel1c <- quote(
-  expression(
-    paste(
-      "Stems (0.04 ha"^-1,
-      ")"
-    )
-  )
-)
-measure1d <- quote(
-  luz
-)
-yAxisLabel1d <- quote(
-  "Canopy light (%)"
-)
+measure1a <- quote(kg17)
+yAxisLabel1a <- quote(expression(paste("Biomass (kg ha"^-1, ")")))
+measure1b <- quote(spg)
+yAxisLabel1b <- quote(expression(paste("Wood density (g", " cm"^-3, ")")))
+measure1c <- quote(stems)
+yAxisLabel1c <- quote(expression(paste("Stems (0.04 ha"^-1, ")")))
+measure1d <- quote(luz)
+yAxisLabel1d <- quote("Canopy light (%)")
 
 
 varForm <- median ~ dist
-xAxisLabel <- quote(
-  "Distance to edge (m)"
-)
+xAxisLabel <- quote("Distance to edge (m)")
 statData <- plotResultsTbl1
 underData <- cleanData
 
+covarModel <- eval(mainMetric) ~ (entropy + 1)
 
 
 
-#panel----
+
+#panelA----
 
 graph1a <-  statData %>%
   dotGraph(
@@ -98,7 +66,7 @@ graph1a
 
 
 
-#panel----
+#panelB----
 
 graph1b <- statData %>%
   dotGraph(
@@ -116,7 +84,7 @@ graph1b
 
 
 
-#panel----
+#panelC----
 
 statData$pval[[9]] <-
   #varsDoubled
@@ -140,7 +108,7 @@ graph1c
 
 
 
-#panel----
+#panelD----
 
 graph1d <- statData %>%
   dotGraph(
@@ -156,7 +124,7 @@ graph1d
 
 
 
-#panel----
+#panelE----
 
 measure1e <- quote(tissue.c)
 yAxisLabel1e <- "Tissue C (%)"
@@ -173,6 +141,26 @@ graph1e <- statData %>%
     ..cleanData = underData
   )
 graph1e
+
+
+
+#panelF----
+
+measure1f <- quote(kg17)
+yAxisLabel1f <- "Diversity"
+xAxisLabel1f <- "Biomass"
+graph1f <- statData %>%
+  dotGraph(
+    measure1f,
+    covarModel[[2]],
+    covarModel[[3]],
+    xAxisLabel1f,
+    yAxisLabel1f,
+    ..addP = T,
+    ..addLines = T,
+    ..addCurve = T
+  )
+graph1f
 
 
 
