@@ -35,8 +35,9 @@ options(digits = 1)
 
 ```{r fig1data}
 wd <- filter(plotResultsTbl1, variable == "spg") #alias
-stems <- filter(plotResultsTbl1, variable == "stems") #alias
+# stems <- filter(plotResultsTbl1, variable == "stems") #alias
 stems12 <- filter(plotResultsTbl12, variable == "stems") %>% distinct() #alias
+divwd <- filter(covarResultsTbl1, variable == "entropy")
 ```
 
 
@@ -46,23 +47,34 @@ Aboveground biomass did not tend to change with distance to primary forest edge
 Median plot wood density tended to increase marginally significantly 
 (`r glue("p=",round(as.numeric(wd$pval),3))`) 
 with edge distance by 
-`r wd$statPrint[[1]]$estimate[[2]] %>% p_round()` ± 
-`r wd$statPrint[[1]]$std.error[[2]] %>% rstatix::p_round()` per m 
+`r wd$statPrint[[1]]$estimate[[2]] %>% rstatix::p_format()` per m 
+<!-- ± `r wd$statPrint[[1]]$std.error[[2]] |> round(3) #formatting...` -->
 explaining 
 *`r "~10"`*% of variance 
 among median distance strata values
-(Fig \@ref(fig:biomass)b).
+(Fig \@ref(fig:biomass)b),
+while tissue carbon did not change significantly with distance to forest edge 
+(Fig \@ref(fig:biomass)c).
 Plot stem density also tended to increase significantly 
 (`r glue("p=",round(as.numeric(stems12$pval[[2]][2]),2))`) 
 with edge distance but more strongly and non-linearly, by 
 ~`r stems12$statPrint[[1]]$estimate[[2]]` ± 
 `r stems12$statPrint[[1]]$std.error[[2]]` per m 
-(Fig \@ref(fig:biomass)c).
-At this stage in forest regeneration, canopy light availability did not tend to change with distance from forest edge 
 (Fig \@ref(fig:biomass)d).
+At this stage in forest regeneration, canopy light availability did not tend to change with distance from forest edge 
+(Fig \@ref(fig:biomass)e).
+Notably, tree diversity decreased marginally significantly 
+(`r glue("p=", divwd$pval[[1]] |> rstatix::p_format())`)
+by 
+~ `r divwd$statPrint[[1]]$estimate[[2]] |> rstatix::p_round()` 
+<!-- ± `r divwd$statPrint[[1]]$std.error[[2]] |> rstatix::p_round()` -->
+per g plot wood density, 
+yet only explaining
+*`r "~4"`*% of variance
+(Fig \@ref(fig:biomass)f).
 
 
-```{r biomass, fig.width=3.5, fig.height=3.5, fig.cap=" Plot stand properties, namely (a) biomass, (b) wood density, (c) stem density, and (d) canopy light availability. Grey dots show individual tree values, white dots with border show plot medians, black dots show distance strata medians  ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians."}
+```{r biomass, fig.width=3.5, fig.height=3.5, fig.cap=" Plot stand properties, namely (a) biomass, (b) wood density, (c) tissue carbon, (d) stem density, (d) canopy light availability, all across distance to primary forest edge gradient, and (e) diversity against wood density. Grey dots show individual tree values, white dots with border show plot medians, black dots show distance strata medians ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians."}
 source(here::here("figs/fig1.R"), echo = F); 
 fig1
 # knitr::include_graphics(here::here("figs/fig1.png"))
@@ -160,7 +172,7 @@ by
 ~ `r succession$statPrint[[7]]$estimate[[2]]` ± 
 `r succession$statPrint[[7]]$std.error[[2]]` kg per m 
 with distance to edge explaining 
-`r "R2x100"`% variance 
+*`r "~14"`*% variance 
 among distance strata medians 
 (Fig \@ref(fig:traits)a).
 Dispersal modes did not show consistent trends in biomass with increasing distance to edge 

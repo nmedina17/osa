@@ -1,17 +1,17 @@
 # refs ----
 
-library(here); i_am("figs/fig1.R")
+here::i_am("figs/fig1.R")
 #median,dist
 #plotResultsTbl,cleanData
-taxRank <- quote(
-  gen
-)
-source(here("analysis/stats.R"))
+
+taxRank <- quote(gen) #KEY--userSetB4stats.R!
+
+source(here::here("analysis/stats.R"))
 #plotResultsTbl
 library(glue)
 #annotate()
 
-library(oir)
+library(oir) #local
 library(gginnards)
 #append_layers()
 library(ggpubr)
@@ -46,7 +46,7 @@ covarModel <- eval(mainMetric) ~ (entropy + 1)
 #panelA----
 
 graph1a <-  statData %>%
-  dotGraph(
+  oir::dotGraph(
     measure1a,
     varForm[[3]],
     varForm[[2]],
@@ -56,12 +56,8 @@ graph1a <-  statData %>%
     ..cleanData = underData,
     ..addCenters = T
   ) +
-  scale_y_continuous(
-    trans = "log10",
-    labels = trans_format(
-      "log10", math_format()
-    )
-  )
+  scale_y_continuous(trans = "log10",
+                     labels = trans_format("log10", math_format()))
 graph1a
 
 
@@ -69,7 +65,7 @@ graph1a
 #panelB----
 
 graph1b <- statData %>%
-  dotGraph(
+  oir::dotGraph(
     measure1b,
     varForm[[3]],
     varForm[[2]],
@@ -88,11 +84,10 @@ graph1b
 
 statData$pval[[9]] <-
   #varsDoubled
-  plotResultsTbl12$pval[[9 * 2]] %>%
-  last()
+  plotResultsTbl12$pval[[9 * 2]] %>% last()
 
 graph1c <- statData %>%
-  dotGraph(
+  oir::dotGraph(
     measure1c,
     varForm[[3]],
     varForm[[2]],
@@ -111,7 +106,7 @@ graph1c
 #panelD----
 
 graph1d <- statData %>%
-  dotGraph(
+  oir::dotGraph(
     measure1d,
     varForm[[3]],
     varForm[[2]],
@@ -129,7 +124,7 @@ graph1d
 measure1e <- quote(tissue.c)
 yAxisLabel1e <- "Tissue C (%)"
 graph1e <- statData %>%
-  dotGraph(
+  oir::dotGraph(
     measure1e,
     varForm[[3]],
     varForm[[2]],
@@ -146,19 +141,20 @@ graph1e
 
 #panelF----
 
-measure1f <- quote(kg17)
-yAxisLabel1f <- "Diversity"
-xAxisLabel1f <- "Biomass"
+measure1f <- quote(spg)
+yAxisLabel1f <- "Diversity (H')"
+xAxisLabel1f <- quote(expression(paste("Wood density (g cm"^-1, ")")))
 graph1f <- statData %>%
-  dotGraph(
+  oir::dotGraph(
     measure1f,
-    covarModel[[2]],
-    covarModel[[3]],
+    covarModel0[[2]],
+    covarModel0[[3]],
     xAxisLabel1f,
     yAxisLabel1f,
     ..addP = T,
     ..addLines = T,
-    ..addCurve = T
+    ..addPxy = c(0.5, 1.1)
+    # ..cleanData = underData
   )
 graph1f
 
@@ -168,25 +164,18 @@ graph1f
 
 
 
-fig1 <- ggarrange(
+fig1 <- ggpubr::ggarrange(
   graph1a,
   graph1b,
   graph1e,
   #hists
   graph1c,
   graph1d,
+  graph1f,
   nrow = 3,
   ncol = 2,
-  labels = c(
-    "a",
-    "b",
-    "c",
-    "d",
-    "e"
-  ),
-  font.label = list(
-    size = 8
-  )
+  labels = c("a", "b", "c", "d", "e"),
+  font.label = list(size = 8)
   # widths = 0.25,
   # heights = 0.25
 )

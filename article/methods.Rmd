@@ -2,8 +2,11 @@
 title: "Methods"
 output: 
   # html_notebook
-  bookdown::html_document2:
+  # bookdown::html_document2:
+  #   number_sections: FALSE
+  bookdown::pdf_document2:
     number_sections: FALSE
+    toc: FALSE
 bibliography: 
 - ../../library.bib
 - ../../grateful-refs.bib
@@ -25,16 +28,17 @@ knitr::opts_chunk$set(echo = F, warning = F, message = F); here::i_am("article/m
 
 This study was done in a neotropical lowland rainforest on the Osa Peninsula at the Greg Gund Conservation Center (approx. `r RgoogleMaps::getGeoCode("cabo matapalo")`) near the Piro Biological Station run by Osa Conservation.
 (See *@taylor15* for a broader ecosystem description of the region.)
-The study site was a regrowing 20 ha timber plantation of *Bombacompsis quinata* abandoned in ~1990 after the dry-adapted species from the Guanacaste region *[@perezcordero02; @hulshof20]* grew poorly in very wet conditions.
+The study site was a regrowing 20 ha timber plantation of *Bombacompsis quinata* abandoned in ~1990 after the vulnerably dry-adapted species from the Guanacaste region *[@perezcordero02; @hulshof20]* grew poorly in very wet conditions.
 This focal secondary forest area was roughly triangular, surrounded by primary forest on the two S and NW sides (Fig \@ref(fig:map)) and a wide service road on the third NE border, with primary forest beyond it.
 This census was done in 2013 during the rainy season months between June and August.
 
-```{r map, fig.width=4, fig.height=4, fig.cap="Map of (a) conservation areas and (b) study site of (c) Bombacopsis quinata timber plantation on Osa Peninsula, Costa Rica. Map image data © 2022 Osa Conservation. Photo credit: Nicholas Medina."}
+```{r map, fig.width=4, fig.height=4, fig.cap="Map of (a) conservation areas and (b) study site (c) showing plot design among distance strata, and focal plantation timber taxon (c) Bombacopsis quinata on Osa Peninsula, Costa Rica. Map image data © 2009 Google, © 2022 Osa Conservation. Photo credit: Nicholas Medina."}
 source(here::here("figs/map.R"));
 sitePlot
 # knitr::include_graphics(here::here("figs/figmap.png"))
 # magick::image_read(path = "../figs/map.png") %>% plot()
 ```
+
 <!-- ![**Fig 1**](../figs/map.png) -->
 
 

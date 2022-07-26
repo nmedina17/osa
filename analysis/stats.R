@@ -58,15 +58,15 @@ cleanDataPlotVars <- cleanData %>%
     plot
   ) %>%
   mutate(
-    "stems" = n(),
-    "richness" = n_distinct(sp)
+    "stems" = n(), "richness" = n_distinct(sp),
+    "hmax" = max(h), "dapmax" = max(dap)
   ) %>%
   select(
     #abiotic
     luz, incl,
 
     #biotic
-    dap, h, spg, kg17, tissue.c,
+    dap, h, spg, kg17, tissue.c, hmax, dapmax,
 
     #community
     stems, richness, entropy
@@ -75,7 +75,10 @@ cleanDataPlotVars <- cleanData %>%
 
 plotVarsTbl <- cleanDataPlotVars |>
   rstatix::get_summary_stats(type = "median_mad") %>%
-  left_join(cleanDataPlotVars, by = c("plot", "dist")) |>
+  left_join(cleanDataPlotVars |> group_by(plot) |>
+              summarize(across(.fns = median)) |>
+              select(where(~ !all(is.na(.x)))),
+            by = c("plot", "dist")) |>
   tidyr::nest("varData" = -variable) %>%
 
   #nextlevel
@@ -91,7 +94,7 @@ plotVarsTbl <- cleanDataPlotVars |>
             # mainDispersal
           ) %>%
           # summarize(median = median(median), mad = mad(median)) #|>
-          summarize(across(is.numeric, ~ median(.x)))
+          summarize(across(where(is.numeric), ~ median(.x)))
           # left_join(cleanDataPlotVars, by = "dist")
       )
   ) #%>%
@@ -183,7 +186,7 @@ spStatTbl <- cleanData %>%
 
 
 #user
-mainMetric <- quote(abs(median + 1))
+mainMetric <- quote(abs(median + 1)) #incl
 
 
 #get
@@ -274,3 +277,11 @@ dispResultsTbl0 <- spStatTbl %>% oir::getStatsTbl(mainModel0)
 #sp-biomass
 covarModel <- eval(mainMetric) ~ (entropy + 1)
 covarResultsTbl <- oir::getStatsTbl(plotVarsTbl, covarModel)
+covarResultsTbl1 <- oir::getStatsTbl1(plotVarsTbl, covarModel)
+
+covarModel2 <- eval(mainMetric) ~ poly((entropy + 1), 2)
+covarResultsTbl12 <- plotVarsTbl %>%
+  getStatsTbl12(covarModel2) %>%
+  addGraph12(covarModel)
+
+covarModel0 <- spg ~ (entropy + 1)

@@ -1,13 +1,16 @@
 ---
 title: "Habitat edges affect tree diversity more than biomass regeneration in a wet neotropical secondary forest"
-author: 
-  - Nicholas Medina ^a^*
-  - Max Villalobos ^b^
-  - Andrea Johnson ^b^
-date: 
-  scriptsize\ ^a^ Biology and Environmental Studies, Brandeis University, 415 South St, Waltham, MA, USA 02453;
-  ^b^ Land Stewardship, Osa Conservation, Puerto Jiménez, Golfito, Costa Rica
-  # Ecology and Evolutionary Biology, University of Michigan, 1105 N University Ave, Ann Arbor, MI, USA 48109
+# author: 
+  # - Nicholas Medina * #^a^
+  # - Emma Capetz ^c^
+  # - Andrea Johnson ^b^
+  # - Erin Lau ^c^
+  # - Max Villalobos ^b^
+# date: \scriptsize
+#   ^a^ Biology and Environmental Studies, Brandeis University, 415 South St, Waltham, MA 02453 USA; 
+  # ^b^ Land Stewardship, Osa Conservation, Puerto Jiménez, Golfito, Costa Rica
+  # ^c^ Earth and Environmental Sciences, Lehigh University, 27 Memorial Drive West, Bethlehem, PA 18015 USA
+  # Ecology and Evolutionary Biology, University of Michigan, 1105 N University Ave, Ann Arbor, MI 48109 USA
 # author: 
 #   - name: "Nicholas Medina"
 #     email: nmedina@umich.edu
@@ -46,7 +49,7 @@ header-includes:
 ---
 
 
-<!-- journals: J [Appl] Ecol, J [Appl] Veg Sci, Basic Appl Ecol (3.5), Biotropica (2.5), Eco Evo -->
+<!-- journals: J [Appl] Ecol, J [Appl] Veg Sci, Basic Appl Ecol (3.7), Biotropica (2.5), Small-scale Forestry (1.3), Eco Evo -->
 
 
 \
@@ -109,20 +112,20 @@ This study was funded by Brandeis University Hiatt Career Center World of Work F
 Authors declare no conflicts of interest. 
 
 
-# Acknowledgements{-}
+<!-- # Acknowledgements{-} -->
 
-Thanks to Professor Dan Perlman for initial networking; 
-<!-- concurrent Osa Conservation managers Max Villalobos and Andrea Johnson for project guidance and supervision;  -->
-Lehigh University Professor Don Morris and interns Emma Capetz and Erin Lau along with field station staff Agustín Mendoza for direct field assistance; 
-concurrent Osa Conservation general manager Manuel Ramirez and Piro Biological Station staff Juan Carlos Cruz Díaz, Annia Barrantes, Larry Villalobos, Hansel Vargas, and visitors for field support; 
-peer James Fifer for discussion of early draft; 
-and Luisa Valdez for translation assistance.
+<!-- Thanks to Professor Dan Perlman for initial networking;  -->
+<!-- <!-- concurrent Osa Conservation managers Max Villalobos and Andrea Johnson for project guidance and supervision;  --> -->
+<!-- Lehigh University Professor Don Morris and interns Emma Capetz and Erin Lau along with field station staff Agustín Mendoza for direct field assistance;  -->
+<!-- concurrent Osa Conservation general manager Manuel Ramirez and Piro Biological Station staff Juan Carlos Cruz Díaz, Annia Barrantes, Larry Villalobos, Hansel Vargas, and visitors for field support;  -->
+<!-- peer James Fifer for discussion of early draft;  -->
+<!-- and Luisa Valdez for translation assistance. -->
 
 
-# Author contributions{-}
+<!-- # Author contributions{-} -->
 
-MV and AJ contributed to study conceptualization, administration, and supervision; NM and AJ contributed to funding acquisition; NM contributed to data collection; NM and MV contributed to data analysis;
-NM wrote initial draft and later revisions.
+<!-- MV and AJ contributed to study conceptualization, administration, and supervision; NM and AJ contributed to funding acquisition; NM contributed to data collection; NM and MV contributed to data analysis; -->
+<!-- NM wrote initial draft and later revisions. -->
 
 
 # Data statement{-}
