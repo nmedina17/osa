@@ -96,13 +96,12 @@
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
   pdftitle={Habitat edges affect tree diversity more than biomass regeneration in a wet neotropical secondary forest},
-  pdfauthor={Nicholas Medina a*; Max Villalobos b; Andrea Johnson b},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
 \title{Habitat edges affect tree diversity more than biomass regeneration in a wet neotropical secondary forest}
-\author{Nicholas Medina \textsuperscript{a}* \and Max Villalobos \textsuperscript{b} \and Andrea Johnson \textsuperscript{b}}
-\date{\scriptsize \textsuperscript{a} Biology and Environmental Studies, Brandeis University, 415 South St, Waltham, MA, USA 02453; \textsuperscript{b} Land Stewardship, Osa Conservation, Puerto Jiménez, Golfito, Costa Rica}
+\author{}
+\date{\vspace{-2.5em}}
 
 \begin{document}
 \maketitle
@@ -141,7 +140,7 @@ Overall this study supports that stand composition is less resilient and more su
 \addcontentsline{toc}{section}{Abstracto}
 
 Más de la mitad de bosques son tropicales y secundarios, indicando que la regeneración de bosques tropicales es integral al futuro de bosques, globalmente.
-Biomasa riqueza taxonómica pueden recuperarse en algunas décadas, pero abundancias relativas pueden durar más de un siglo.
+Biomasa y riqueza taxonómica pueden recuperarse en algunas décadas, pero abundancias relativas pueden durar más de un siglo.
 Dado que la mayoría de bosques quedan entre un km de su orilla, efectos de borde probablemente afectan la regeneración de composición de comunidad, mediado por tolerancia a sombra y characterísticas de disperso, y también historia de manejo.
 Este estudio investigó cómo la regeneración de bosque secundario tropical húmedo fue afectado por distancia a borde de hábitat, e hipotetizó que plantaciones de madera viejas facilitan regeneración porque favorecen a taxa tolerantes a sombra o de sucesión tarde, y que orillas de bosque adyacente median cambios a composición de comunidad.
 Una plantación de madera neotropical adyacente a bosque primario fue censada por árboles siguiendo un transecto de 300 m midiendo un gradiente de distancia de orilla, y análisis combinó taxa con characterísticas ecológicas usando literatura relevante.
@@ -186,7 +185,7 @@ Accordingly, we predicted that further from the primary forest edge, canopy ligh
 
 This study was done in a neotropical lowland rainforest on the Osa Peninsula at the Greg Gund Conservation Center (approx. 8.3778176, -83.2935426) near the Piro Biological Station run by Osa Conservation.
 (See \emph{Taylor et al. (\protect\hyperlink{ref-taylor15}{2015})} for a broader ecosystem description of the region.)
-The study site was a regrowing 20 ha timber plantation of \emph{Bombacompsis quinata} abandoned in \textasciitilde1990 after the dry-adapted species from the Guanacaste region \emph{(\protect\hyperlink{ref-hulshof20}{Hulshof and Powers, 2020}; \protect\hyperlink{ref-perezcordero02}{Pérez Cordero and Kanninen, 2002})} grew poorly in very wet conditions.
+The study site was a regrowing 20 ha timber plantation of \emph{Bombacompsis quinata} abandoned in \textasciitilde1990 after the vulnerably dry-adapted species from the Guanacaste region \emph{(\protect\hyperlink{ref-hulshof20}{Hulshof and Powers, 2020}; \protect\hyperlink{ref-perezcordero02}{Pérez Cordero and Kanninen, 2002})} grew poorly in very wet conditions.
 This focal secondary forest area was roughly triangular, surrounded by primary forest on the two S and NW sides (Fig \ref{fig:map}) and a wide service road on the third NE border, with primary forest beyond it.
 This census was done in 2013 during the rainy season months between June and August.
 
@@ -238,7 +237,7 @@ Non-linear regressions were run using the function \emph{poly()} in the base R p
 which was only ultimately recorded for stem density and richness variables, based on significance and explained variance over linear models.
 All trees censused were included in each analysis including unidentified taxa that represented a single group in taxa-specific analyses.
 Community analysis and ordination was done as a PERMANOVA with the \emph{adonis()} function from the \emph{vegan} 2.6.2 R package \emph{(\protect\hyperlink{ref-dixon03}{Dixon, 2003})}.
-Data and code were organized with R packages \emph{here} \emph{(\protect\hyperlink{ref-here}{Müller, 2020})}, \emph{bookdown} \emph{(\protect\hyperlink{ref-bookdown2022}{Xie, 2022})}, and \emph{grateful} \emph{(\protect\hyperlink{ref-grateful}{Rodríguez-Sánchez et al., 2022})}, and internal pipeline \emph{oir} \emph{(\protect\hyperlink{ref-softwareMedina22oir}{Medina, 2022a})} are stored at \url{github.com/nmedina17/osa} \emph{(\protect\hyperlink{ref-softwareMedina22osa}{Medina, 2022b})}.
+Data and code were organized with R packages \emph{here} \emph{(\protect\hyperlink{ref-here}{Müller, 2020})}, \emph{bookdown} \emph{(\protect\hyperlink{ref-bookdown2022}{Xie, 2022})}, and \emph{grateful} \emph{(\protect\hyperlink{ref-grateful}{Rodríguez-Sánchez et al., 2022})}, and internal pipeline \emph{oir} \emph{(\protect\hyperlink{ref-softwareMedina22oir}{Medina, 2022a})}, and are stored at \url{github.com/nmedina17/osa} \emph{(\protect\hyperlink{ref-softwareMedina22osa}{Medina, 2022b})}.
 
 \hypertarget{results}{%
 \section{Results}\label{results}}
@@ -252,10 +251,9 @@ Aboveground biomass did not tend to change with distance to primary forest edge
 Median plot wood density tended to increase marginally significantly
 (p=0.105)
 with edge distance by
-0.00019
-per m
+0.00019 per m
 explaining
-\emph{\textsubscript{10\emph{\% of variance
+\emph{\textasciitilde10} \% of variance
 among median distance strata values
 (Fig \ref{fig:biomass}b),
 while tissue carbon did not change significantly with distance to forest edge
@@ -274,7 +272,7 @@ by
 \textasciitilde{} 1
 per g plot wood density,
 yet only explaining
-}}4}\% of variance
+\emph{\textasciitilde4} \% of variance
 (Fig \ref{fig:biomass}f).
 
 \begin{verbatim}
@@ -418,22 +416,7 @@ This study was funded by Brandeis University Hiatt Career Center World of Work F
 
 Authors declare no conflicts of interest.
 
-\hypertarget{acknowledgements}{%
-\section*{Acknowledgements}\label{acknowledgements}}
-\addcontentsline{toc}{section}{Acknowledgements}
-
-Thanks to Professor Dan Perlman for initial networking;
-Lehigh University Professor Don Morris and interns Emma Capetz and Erin Lau along with field station staff Agustín Mendoza for direct field assistance;
-concurrent Osa Conservation general manager Manuel Ramirez and Piro Biological Station staff Juan Carlos Cruz Díaz, Annia Barrantes, Larry Villalobos, Hansel Vargas, and visitors for field support;
-peer James Fifer for discussion of early draft;
-and Luisa Valdez for translation assistance.
-
-\hypertarget{author-contributions}{%
-\section*{Author contributions}\label{author-contributions}}
-\addcontentsline{toc}{section}{Author contributions}
-
-MV and AJ contributed to study conceptualization, administration, and supervision; NM and AJ contributed to funding acquisition; NM contributed to data collection; NM and MV contributed to data analysis;
-NM wrote initial draft and later revisions.
+--\textgreater{}
 
 \hypertarget{data-statement}{%
 \section*{Data statement}\label{data-statement}}

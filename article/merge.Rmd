@@ -5,6 +5,7 @@ title: "Habitat edges affect tree diversity more than biomass regeneration in a 
   # - Emma Capetz ^c^
   # - Andrea Johnson ^b^
   # - Erin Lau ^c^
+  # - Don Morris ^c^
   # - Max Villalobos ^b^
 # date: \scriptsize
 #   ^a^ Biology and Environmental Studies, Brandeis University, 415 South St, Waltham, MA 02453 USA; 

@@ -2,7 +2,10 @@
 title: "Results"
 output: 
   # html_notebook
-  bookdown::html_document2:
+  # bookdown::html_document2:
+  #   number_sections: FALSE
+  #   toc: FALSE
+  bookdown::pdf_document2:
     number_sections: FALSE
     toc: FALSE
 ---
@@ -50,7 +53,7 @@ with edge distance by
 `r wd$statPrint[[1]]$estimate[[2]] %>% rstatix::p_format()` per m 
 <!-- ± `r wd$statPrint[[1]]$std.error[[2]] |> round(3) #formatting...` -->
 explaining 
-*`r "~10"`*% of variance 
+*`r "~10"`* % of variance 
 among median distance strata values
 (Fig \@ref(fig:biomass)b),
 while tissue carbon did not change significantly with distance to forest edge 
@@ -70,11 +73,11 @@ by
 <!-- ± `r divwd$statPrint[[1]]$std.error[[2]] |> rstatix::p_round()` -->
 per g plot wood density, 
 yet only explaining
-*`r "~4"`*% of variance
+*`r "~4"`* % of variance
 (Fig \@ref(fig:biomass)f).
 
 
-```{r biomass, fig.width=3.5, fig.height=3.5, fig.cap=" Plot stand properties, namely (a) biomass, (b) wood density, (c) tissue carbon, (d) stem density, (d) canopy light availability, all across distance to primary forest edge gradient, and (e) diversity against wood density. Grey dots show individual tree values, white dots with border show plot medians, black dots show distance strata medians ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians."}
+```{r biomass, fig.width=4, fig.height=5, fig.cap=" Plot stand properties, namely (a) biomass, (b) wood density, (c) tissue carbon, (d) stem density, (d) canopy light availability, all across distance to primary forest edge gradient, and (e) diversity against wood density. Grey dots show individual tree values, white dots with border show plot medians, black dots show distance strata medians ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians."}
 source(here::here("figs/fig1.R"), echo = F); 
 fig1
 # knitr::include_graphics(here::here("figs/fig1.png"))
@@ -179,7 +182,7 @@ Dispersal modes did not show consistent trends in biomass with increasing distan
 (Fig \@ref(fig:traits)b).
 
 
-```{r traits, fig.width=2, fig.height=3, fig.cap=" Functional regeneration based on taxa associations with (a) successional stages and (b) primary dispersal mode. Grey dots show individual tree values, white dots with border show plot medians, black dots show distance strata medians  ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians."}
+```{r traits, fig.width=3, fig.height=4, fig.cap=" Functional regeneration based on taxa associations with (a) successional stages and (b) primary dispersal mode. Grey dots show individual tree values, white dots with border show plot medians, black dots show distance strata medians  ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians."}
 source(here::here("figs/fig3.R"), echo = F);
 fig3
 # knitr::include_graphics(here::here("figs/fig3.png"))

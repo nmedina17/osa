@@ -32,7 +32,7 @@ The study site was a regrowing 20 ha timber plantation of *Bombacompsis quinata*
 This focal secondary forest area was roughly triangular, surrounded by primary forest on the two S and NW sides (Fig \@ref(fig:map)) and a wide service road on the third NE border, with primary forest beyond it.
 This census was done in 2013 during the rainy season months between June and August.
 
-```{r map, fig.width=4, fig.height=4, fig.cap="Map of (a) conservation areas and (b) study site (c) showing plot design among distance strata, and focal plantation timber taxon (c) Bombacopsis quinata on Osa Peninsula, Costa Rica. Map image data © 2009 Google, © 2022 Osa Conservation. Photo credit: Nicholas Medina."}
+```{r map, fig.width=4.5, fig.height=4.5, fig.cap="Map of (a) conservation areas and (b) study site (c) showing plot design among distance strata, and focal plantation timber taxon (c) Bombacopsis quinata on Osa Peninsula, Costa Rica. Map image data © 2009 Google, © 2022 Osa Conservation. Photo credit: Nicholas Medina."}
 source(here::here("figs/map.R"));
 sitePlot
 # knitr::include_graphics(here::here("figs/figmap.png"))
@@ -123,7 +123,7 @@ Non-linear regressions were run using the function *poly()* in the base R packag
 which was only ultimately recorded for stem density and richness variables, based on significance and explained variance over linear models. 
 All trees censused were included in each analysis including unidentified taxa that represented a single group in taxa-specific analyses.
 Community analysis and ordination was done as a PERMANOVA with the *adonis()* function from the *vegan* `r packageVersion("vegan")` R package *[@dixon03]*.
-Data and code were organized with R packages *here* *[@here]*, *bookdown* *[@bookdown2022]*, and *grateful* *[@grateful]*, and internal pipeline *oir* *[@softwareMedina22oir]* are stored at [github.com/nmedina17/osa](github.com/nmedina17/osa) *[@softwareMedina22osa]*.
+Data and code were organized with R packages *here* *[@here]*, *bookdown* *[@bookdown2022]*, and *grateful* *[@grateful]*, and internal pipeline *oir* *[@softwareMedina22oir]*, and are stored at [github.com/nmedina17/osa](github.com/nmedina17/osa) *[@softwareMedina22osa]*.
 
 <!-- -   Allen and Kim (2020) as some justification for family-level analysis (their MI forest site shares \~6 / their 20 families with this site) -->
 

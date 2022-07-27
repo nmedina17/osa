@@ -10,6 +10,7 @@ pochote <- magick::image_read(here::here("figs/pochote.jpg")) %>% magick::image_
 # source(here::here("data/clean.R"))
 # parcela <- ggplot2::ggplot(cleanData, aes(x = W, y = N)) + geom_point()
 # ggplot2::geom_raster()
+sf::
 
 
 sitePlot <- ggpubr::ggarrange(Osa, site0, site, pochote, #pcarcela,
