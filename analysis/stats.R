@@ -41,6 +41,7 @@ spTbl <- cleanData %>% filter(!is.na(dist | plot)) %>%
     values_fn = length,
     values_fill = 0
     ) %>%
+  select(!`-`) %>% #sig?
   mutate("entropy" = diversity(.))
 
 

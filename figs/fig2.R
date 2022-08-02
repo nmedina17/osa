@@ -1,9 +1,9 @@
 here::i_am("figs/fig2.R")
 #taxMetric,mainMetric
 #plotResultsTbl1,taxaResultsTbl1
-taxRank <- quote(
-  gen
-)
+
+taxRank <- quote(gen) #KEY
+
 source(here::here("analysis/stats.R"))
 #plotResultsTbl
 library(glue)
@@ -33,19 +33,19 @@ yAxisLabel2b <- quote("Richness")
 
 measure2e <- quote(Vochysia)
 taxMetricUnit <- "kg"
-yAxisLabel2e <- quote(glue(measure2e, " ", " (", taxMetricUnit, " ha^-1", ")"))
+yAxisLabel2e <- quote(glue(measure2e, " ", " (", taxMetricUnit, " per ha", ")"))
 
 measure2f <- quote(Ficus)
-yAxisLabel2f <- quote(glue(measure2f, " ", " (", taxMetricUnit, " ha^-1", ")"))
+yAxisLabel2f <- quote(glue(measure2f, " ", " (", taxMetricUnit, " per ha", ")"))
 
 measure2c <- quote(kg17)
-yAxisLabel2c <- quote(glue("Biomass (", taxMetricUnit, " ha^-1",")"))
+yAxisLabel2c <- quote(glue("Biomass (", taxMetricUnit, " per ha",")"))
 
 
 varForm <- {mainMetric %>% eval()} ~ dist
 #check.env...
 taxForm <- {taxMetric %>% eval()} ~ dist
-xAxisLabel <- quote("Distance to edge (m)")
+xAxisLabel <- quote("Distance to intact forest (m)")
 statData2ab <- plotResultsTbl1
 statData2ef <- taxaResultsTbl1 %>% rename("variable" = all_of(taxRank))
 statData2c <- ordTbl

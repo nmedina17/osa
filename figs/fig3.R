@@ -23,26 +23,12 @@ library(ggpubr)
 #defs----
 
 
-measure3a <- quote(
-  "NA"
-)
+measure3a <- quote("NA")
 
-xAxisLabel3 <- quote(
-  "Distance to edge (m)"
-)
-yAxisLabel3 <- quote(
-  expression(
-    paste(
-      "Biomass (kg ha"^-1,
-      ")"
-    )
-  )
-)
+xAxisLabel3 <- quote("Distance to intact forest (m)")
+yAxisLabel3 <- quote(expression(paste("Biomass (kg ha"^-1, ")")))
 
-statData3clean <- taxaResultsTbl1 %>%
-  unnest(
-    "varData"
-  )
+statData3clean <- taxaResultsTbl1 %>% unnest("varData")
 
 statData3 <- taxaResultsTbl1 %>%
   rename(
@@ -54,9 +40,7 @@ statData3 <- taxaResultsTbl1 %>%
 
 
 
-theme_set(
-  style
-)
+theme_set(style)
 
 
 #panel----
@@ -72,15 +56,8 @@ fig3a <- statData3clean %>%
   ) %>%
 
   # dotGraph()
-  ggplot(
-    aes(
-      x = dist,
-      y = {{
-        taxMetric
-      }},
-      shape = successionalStage
-    )
-  ) +
+  ggplot(aes(x = dist, y = {{taxMetric}},
+             shape = successionalStage)) +
   geom_quasirandom(
     data = cleanData %>%
       filter(
@@ -92,30 +69,19 @@ fig3a <- statData3clean %>%
       ),
     color = "gray"
   ) +
-  geom_quasirandom(
-    shape = 21,
-    fill = "white"
-  ) +
-  labs(
-    x = xAxisLabel3,
-    y = eval(yAxisLabel3)
-  ) +
+  geom_quasirandom(shape = 21, fill = "white") +
+  labs(x = xAxisLabel3, y = eval(yAxisLabel3)) +
   # scale_y_log10() +
   scale_y_continuous(
     trans = "log10",
-    label = trans_format(
-      "log10", math_format()
-    )
+    label = trans_format("log10", math_format())
   ) +
   # theme(
   #   legend.position = "top"
   # ) +
   stat_summary(
-    fun.data = "median_mad",
-    size = 0.25
-    # position = position_dodge(
-    #   width = 25
-    # )
+    fun.data = "median_mad", size = 0.25
+    # position = position_dodge(width = 25)
   ) +
   stat_smooth(
     method = "lm",
@@ -138,39 +104,21 @@ fig3a <- statData3clean %>%
         pval[[2 * 2]] %>%
         last() %>% round(3)
     ),
-    x = 1,
-    y = 1.1,
+    x = 1, y = 1.1,
     hjust = -0.5,
     size = 2
   ) +
-  theme(
-    legend.position = "top"
-  ) +
-  labs(
-    shape = "Successional stage"
-  ) +
+  theme(legend.position = "top") +
+  labs(shape = "Successional stage") +
 
   theme(
     #allsmaller
-    legend.text = element_text(
-      size = 6
-    ),
-    legend.key.size = unit(
-      0.2, "cm"
-    ),
+    legend.text = element_text(size = 6),
+    legend.key.size = unit(0.2, "cm"),
     legend.text.align = 0,
-    legend.key.width = unit(
-      0.2, "cm"
-    ),
-    legend.title = element_text(
-      size = 6
-    ),
-    legend.margin = margin(
-      l = -5,
-      t = -5,
-      b = -5,
-      r = -5
-    )
+    legend.key.width = unit(0.2, "cm"),
+    legend.title = element_text(size = 6),
+    legend.margin = margin(l = -5, t = -5, b = -5, r = -5)
   )
 fig3a
 
@@ -199,10 +147,7 @@ taxRank <- quote(
 source(here::here("analysis/stats.R"))
 
 
-statData3clean <- taxaResultsTbl1 %>%
-  unnest(
-    "varData"
-  )
+statData3clean <- taxaResultsTbl1 %>% unnest("varData")
 
 
 
@@ -218,15 +163,7 @@ fig3b <- statData3clean %>%
   ) %>%
 
   # dotGraph()
-  ggplot(
-    aes(
-      x = dist,
-      y = {{
-        taxMetric
-      }},
-      shape = mainDispersal
-    )
-  ) +
+  ggplot(aes(x = dist, y = {{taxMetric}}, shape = mainDispersal)) +
   geom_quasirandom(
     data = cleanData %>%
       filter(
@@ -238,51 +175,27 @@ fig3b <- statData3clean %>%
     color = "gray"
     # shape = mainDispersal
   ) +
-  geom_quasirandom(
-    shape = 21,
-    fill = "white"
-  ) +
-  labs(
-    x = xAxisLabel3,
-    y = yAxisLabel3 %>% eval()
-  ) +
+  geom_quasirandom(shape = 21, fill = "white") +
+  labs(x = xAxisLabel3, y = eval(yAxisLabel3)) +
   # scale_y_log10() +
   scale_y_continuous(
     trans = "log10",
-    label = trans_format(
-      "log10", math_format())
+    label = trans_format("log10", math_format())
   ) +
   theme(
     legend.position = "top",
     #allsmaller
-    legend.text = element_text(
-      size = 6
-    ),
-    legend.key.size = unit(
-      0.2, "cm"
-    ),
+    legend.text = element_text(size = 6),
+    legend.key.size = unit(0.2, "cm"),
     legend.text.align = 0,
-    legend.key.width = unit(
-      0.2, "cm"
-    ),
-    legend.title = element_text(
-      size = 6
-    ),
-    legend.margin = margin(
-      l = -5,
-      t = -5,
-      b = -5,
-      r = -5
-    )
+    legend.key.width = unit(0.2, "cm"),
+    legend.title = element_text(size = 6),
+    legend.margin = margin(l = -5, t = -5, b = -5, r = -5)
   ) +
-  labs(
-    shape = "Dispersal"
-  ) +
+  labs(shape = "Dispersal") +
   stat_summary(
     fun.data = "median_mad",
-    position = position_dodge(
-      width = 25
-    ),
+    position = position_dodge(width = 25),
     size = 0.25
   )
 fig3b

@@ -34,7 +34,7 @@ yAxisLabel1d <- quote("Canopy light (%)")
 
 
 varForm <- median ~ dist
-xAxisLabel <- quote("Distance to edge (m)")
+xAxisLabel <- quote("Distance to intact forest (m)")
 statData <- plotResultsTbl1
 underData <- cleanData
 

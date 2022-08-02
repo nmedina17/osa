@@ -1,0 +1,43 @@
+---
+title: ""
+output: html_notebook
+header-includes:
+  - \usepackage{setspace}\doublespace
+---
+
+```{r keys}
+knitr::opts_chunk$set(echo = F)
+title <- "Habitat edges affect tree diversity more than biomass regeneration in a wet neotropical secondary forest"
+journal <- "Journal of Applied Ecology"
+```
+
+Dear Editors of `r journal`:
+
+Please consider this manuscript entitled 
+“`r title`” 
+as a Research Paper. 
+This manuscript presents and discusses data that 
+
+support the use of roto-till and cover crop mixtures to alleviate soil compaction and weed pressure, which are very common issues for all farmers as agriculture expands into urban environments.
+
+This manuscript both fits within and also expands the scope of this journal publication. 
+The manuscript fits well with the scope because 
+it discusses changes to soil functions caused by various types and intensities of mechanical tillage, and informs balancing trade-offs during agricultural management. 
+In addition analyzing tillage affects, the manuscript also incorporates discussion of cover crops as a comparable management strategy targeting similar soil functions, and more specifically presents the use of cover crop mixtures, rather than traditional single-species cover cropping. 
+Finally, this manuscript places these soil management considerations in an urban agriculture context, which is increasingly relevant to the majority of the world’s population living in urban areas and promotes adaptation to more local food supply chain systems.
+
+Overall, this manuscript represents a solid and interesting contribution to the soil tillage and modern agricultural literature. 
+The analysis and discussion is presented as a full manuscript, though it could be possible to contribute this a Short Communication. 
+We are also happy to recommend your associate editor 
+Elke Noellemeyer 
+to be associated with our submission, based on a listed interest in 
+agroecology. 
+As potential reviewers, we point to 
+Kami Pothukuchi and Zhijiang Lu (Wayne State), 
+Viashelav Vashenev (RUDN, Russia), 
+Zhonqi (Joshua) Cheng (USI, Brooklyn Coll), and 
+Rattan Lal (Ohio State). 
+Finally, please feel free to contact us for any additional relevant information you may like.
+
+Sincerely, 
+Authors
