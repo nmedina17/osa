@@ -134,7 +134,7 @@ Overall this study supports that stand composition is less resilient and more su
 \newpage
 
 
-# Abstracto{-}
+# Resumen{-}
 
 
 Más de la mitad de bosques son tropicales y secundarios, indicando que la regeneración de bosques tropicales es integral al futuro de bosques, globalmente.
