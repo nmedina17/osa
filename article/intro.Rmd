@@ -38,23 +38,23 @@ They also recover taxonomic richness and biomass quite quickly, as well as tree 
 The recovery of species richness alone is beneficial in that it also tends to correlate with the recovery of some ecosystem services *[@guariguata01; @stanturf14]* like biomass and carbon storage *[@liu18]*.
 However, recovery of secondary neotropical forests diverge widely in taxonomic composition *[@norden15]*, potentially taking over a century to recover *[@poorter21]* with added variability *[@atkinson22]*.
 Despite being one of the slowest ecosystem properties to recover, restoring recovering community composition is often important for preserving rare taxa *[@carlo16]*, which can be keystone to locally-adapted food webs, including birds *[@maas16]*.
-Understanding secondary forest regeneration is key for global biodiversity conservation at the global scale, 
-**yet local management remains the strongest driver of tropical forest carbon stores *[@pyles22]*.**
+Overall, understanding secondary forest regeneration is key for global biodiversity conservation at the global scale.
 
-Secondary forest regeneration is often affected by edge effects, or changes near an ecosystem boundary, especially in heterogeneously-managed landscapes *[@perfecto09; @melo13]*.
+Modern secondary forest regeneration is often affected by edge effects, or changes near an ecosystem boundary, especially in heterogeneously-managed landscapes *[@perfecto09; @melo13]*.
 About 70% of all forests have been estimated to be within a km of their edge *[@haddad15]*, resulting in tropical forests having been estimated to lose ~22% aboveground carbon along heavily-managed edges >100m, in part due to shortening trees and lighter leaf mass *[@ordway20]*.
-Edge effects also have the potential to shape community composition, based on the local dispersal kernel patterns of existing taxa *[@wandrag17]*, which while complicated *[@muller-landau09]*, can also correlate with simpler plant traits like height and seed mass *[@thomson11; @tamme14]*.
-
-Properties of the existing tree community also depend on land-use history and previous management *[@omeja12]*, together with the composition of surrounding forests.
-Overall, legacy effects from management like intensive timber planting could potentially delay or result in non-linear changes between successional stages *[@albrich20; @gough21]*, which would make future management more uncertain, unlike more sustainable thinning practices and agroforestry *[@lefland18]*.
-More specifically, timber plantations have historically favored tree taxa that tend to be pioneering, or be faster-growing, have lower wood densities, and be less shade-tolerant *[@tabarelli08]*.
-This could lead to a longer-term dominance of pioneer taxa, referred to as arrested succession *[@]*.
-However, arrested succession could be prevented and even typical succession accelerated if intact forests that were adjacent to regenerating plantations functioned as contributing reservoirs of seeds from later-successional tree taxa.
-Additionally, the leftover timber stands could provide additional shade, which would not be available in a clear-cut harvested timber plantation, and this could help more shade-tolerant taxa establish and recruit better.
+Effects of degraded edges have historically favored tree taxa that tend to be pioneering, or be faster-growing, have lower wood densities, and be less shade-tolerant *[@tabarelli08]*.
+Accordingly, secondary forest wood density may also tend to decrease near degraded habitat edges.
+Additionally, the dominance of pioneering taxa could lead to arrested succession *[@tymen15]*, which further delays the recruitment of shade-tolerant taxa, as well as associated increases in aboveground biomass, in part due to their higher survival with increasing shade, and tendency toward relatively higher wood densities.
+However, arrested succession could be prevented, and even typical succession accelerated, if intact forests that were adjacent to regenerating plantations functioned as contributing reservoirs of seeds from later-successional tree taxa.
 In this case, having a habitat edge near a relatively rich intact forest, rather than near a relatively degraded open area, would instead be an asset to regenerating plantation forest patches, rather than a detriment.
-Overall, edge effects near degraded habitat edges are often negative, but influences from meta-population *[@levins79]* and meta-community *[@leibold04; @warren15]* theories do highlight dispersal as a key process for offsetting extinction debt and thus maintaining biodiversity, thereby potentially making particular edge effects, specifically from adjacent intact forests, actually beneficial for regeneration plantation forest parcels.
-Taken together, these ideas suggest that near primary forest, shade-tolerant dispersal may facilitate plantation forest regeneration.
-This kind of edge effect may ultimately help explain relatively high biodiversity compared to adjacent stands that can be found in agroforests *[@oliveira-neto17]*, forests affected by logging *[@clark12; @edwards14]*, and timber plantations *[@pryde15]*.
+Overall, edge effects ultimately have the potential to shape community composition, in part based on the local dispersal kernel patterns of existing taxa *[@wandrag17]*, which while complicated *[@muller-landau09]*, can also correlate with simpler plant traits like height and seed mass *[@thomson11; @tamme14]*.
+
+Additionally, properties of the tropical forest carbon stores and tree community depend heavily on land-use history and previous management *[@omeja12; @pyles22]*.
+Overall, legacy effects from management like intensive timber planting could potentially delay or result in non-linear changes between successional stages *[@albrich20; @gough21]*, which would make future management more uncertain, unlike more sustainable thinning practices and agroforestry *[@lefland18]*.
+In some cases, the leftover timber stands could provide additional shade, which would not be available in a clear-cut harvested timber plantation, and this could help more shade-tolerant taxa establish and recruit better.
+Overall, edge effects near degraded habitat edges are often studied as negative, but conceptual influences from meta-population *[@levins79]* and meta-community *[@leibold04; @warren15]* theories do highlight dispersal as a key process for offsetting extinction debt and thus maintaining biodiversity, thereby potentially making particular edge effects, specifically from adjacent intact forests, actually beneficial for regeneration plantation forest parcels.
+Taken together, these ideas suggest that edge effects specifically from adjacent intact primary forests, potentially via shade-tolerant dispersal and performance, may indeed facilitate plantation forest regeneration.
+Such a beneficial edge effect may ultimately help explain relatively high biodiversity, compared to adjacent stands, found in agroforests *[@oliveira-neto17]*, forests affected by logging *[@clark12; @edwards14]*, and timber plantations *[@pryde15]*.
 
 <!-- role of N-fixing trees... *[@lai18]* -->
 <!-- A subset of secondary forests include naturally regenerating timber plantations, which may show unique recovery patterns. -->
@@ -63,8 +63,8 @@ This kind of edge effect may ultimately help explain relatively high biodiversit
 <!-- - from *[@anderson22; others]* -->
 <!-- - examples of *B. quinata* plantation papers specifically -->
 
-This study reports tree regeneration patterns of an abandoned wet neotropical timber plantation, highlighting edge effects from an adjacent primary forest.
-**- what is new in this study?**
+Influenced by restoration ecology for forest management, this study reports tree regeneration patterns of an abandoned wet neotropical timber plantation, focused on highlighting edge effects from an adjacent primary forest on overall stand properties, tree community composition, and limited functional trait recovery.
+<!-- **- what is new in this study?** -->
 We hypothesized that remaining timber trees would mediate forest regrowth by maintaining shade, which would suppress less shade-tolerant pioneer tree taxa, and in turn facilitate more shade-tolerant tree taxa, ultimately allowing for more tree diversity within the regenerating plantation forest in parts that were closer to the richer edge of the intact unmanaged forest.
     <!-- - supported by inference?! -->
 Accordingly, we predicted that further from the primary forest edge, canopy light availability would increase, while stand biomass and diversity would decrease.

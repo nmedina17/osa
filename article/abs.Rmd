@@ -120,12 +120,15 @@ output: html_notebook
 
 About half of all forests are tropical and secondary, making tropical forest regeneration integral to future forests. 
 Tree stand biomass and taxonomic richness can recover in a few decades, but relative abundances may lag indefinitely. 
-Since most forests are within a km of a habitat edge, edge effects likely affect community composition regeneration, mediated by shade tolerance and dispersal traits, along with management history.
-This study addressed how wet tropical secondary forest regeneration was affected by distance to habitat edge, and hypothesized that old timber plantations facilitate regeneration by favoring shade tolerant or late successional taxa, and adjacent forest edges mediate community composition.
-An abandoned neotropical timber plantation adjacent to primary forest was censused for trees along a 300 m edge distance gradient, and analysis matched taxa to traits using relevant literature.
+Since most forests are within a km of a habitat edge, edge effects likely affect community composition regeneration.
+However, most studies assess how degraded edges affect intact forests, leaving it unclear whether higher-quality edges could facilitate regeneration of previously degraded forests.
+Notably, higher quality edges near intact forests could promote processes like dispersal and wood biomass accumulation that effectively accelerate succession, leading to better performance of shade-tolerant taxa compared to pioneer taxa in the early stages of forested plantation regeneration.
+This study addressed how wet tropical forested plantation regeneration was affected by distance to adjacent intact forest edge.
+It was hypothesized that old timber plantations facilitate regeneration by increasing available shade, favoring the presence and biomass of later-successional taxa, ultimately changing community composition overall.
+An abandoned neotropical timber plantation adjacent to primary forest was censused for trees along a 300 m edge distance gradient, and analysis matched taxa to broad dispersal mode and wood density traits using relevant literature.
 
 <!-- # Results/Conclusions -->
-As distance from primary forest edge increased, stem and wood density tended to increase significantly, with ca 10% variation explained, while biomass and canopy light tended to stay the same.
+As distance from primary forest edge increased, stem and wood density tended to increase significantly, with ~10% variation explained, while biomass and canopy light tended to stay the same.
 Stand tree richness also tended to increase significantly, but diversity decreased steeply and non-linearly, and taxonomic composition varied notably. 
 Finally, tree taxa associated with both early and late successional stages decreased significantly, but biomass by dispersal mode did not tend to change.
 Overall this study supports that stand composition is less resilient and more subject to edge effects than biomass and richness, suggesting that global forests will likely be distinctly new assemblages in the future, with timber and biodiversity trade-offs occurring based on local and regional management activity.
@@ -134,7 +137,7 @@ Overall this study supports that stand composition is less resilient and more su
 \newpage
 
 
-# Resumen{-}
+# Resumen*{-}
 
 
 Más de la mitad de bosques son tropicales y secundarios, indicando que la regeneración de bosques tropicales es integral al futuro de bosques, globalmente.
