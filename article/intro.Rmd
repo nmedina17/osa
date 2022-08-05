@@ -32,7 +32,7 @@ link-citations: TRUE
 Forest and landscape restoration is a key international conservation and climate change adaptation strategy *[@depinto20]*.
 While tropical forests specifically store most land biomass *[@pan13]*, most are now secondary *[@fao20]* and functionally degraded *[@hubau20]*.
 This likely amplifies amid increasing climate stressors *[@anderegg22]* and collective management issues, including insufficient policy support *[@chazdon18]* via skewed priorities *[@pyron22]*.
-Secondary forests can regenerate relatively quickly compared to old-growth forests in some ways, but in other ways remain distinct.
+Overall, secondary forests can regenerate relatively quickly compared to old-growth forests, in some ways.
 Neotropical secondary forests can grow quickly enough to accumulate biomass >10x faster than old-growth forests *[@finegan96; @poorter16]*, and substantially offset carbon emissions, with estimates ranging from ~10% from Amazonian deforestation *[@smith20]* to a decade of fossil fuel emissions from all of Latin American and the Caribbean *[@chazdon16]*.
 They also recover taxonomic richness and biomass quite quickly, as well as tree height, averaging 80% of old-growth forest levels in just 20 years, especially in wetter regions *[@rozendaal19]*.
 The recovery of species richness alone is beneficial in that it also tends to correlate with the recovery of some ecosystem services *[@guariguata01; @stanturf14]* like biomass and carbon storage *[@liu18]*.
@@ -67,7 +67,7 @@ Influenced by restoration ecology for forest management, this study reports tree
 <!-- **- what is new in this study?** -->
 We hypothesized that remaining timber trees would mediate forest regrowth by maintaining shade, which would suppress less shade-tolerant pioneer tree taxa, and in turn facilitate more shade-tolerant tree taxa, ultimately allowing for more tree diversity within the regenerating plantation forest in parts that were closer to the richer edge of the intact unmanaged forest.
     <!-- - supported by inference?! -->
-Accordingly, we predicted that further from the primary forest edge, canopy light availability would increase, while stand biomass and diversity would decrease.
+Accordingly, we predicted more specifically that further from the primary forest edge, canopy light availability would increase, while stand biomass and diversity would decrease.
 
 <!-- - conceptual hypothesis diagram? -->
 
