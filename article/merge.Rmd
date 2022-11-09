@@ -1,28 +1,81 @@
 ---
-title: "Habitat edges affect tree diversity more than biomass regeneration in a wet neotropical secondary forest"
+title: "Habitat edges affect tree diversity more than biomass regeneration in a reforested wet neotropical timber plantation"
 author:
-  - Nicholas Medina * ^a^
-  # - Emma Capetz ^c^
+  - Nicholas Medina * ^a,d^
+  - Emma Capetz ^c^
   - Andrea Johnson ^b^
-  # - Erin Lau ^c^
-  # - Agustín Mendoza ^b^
-  # - Don Morris ^c^
+  - Agustín Mendoza ^b^
   - Max Villalobos ^b^
 date: \scriptsize
   ^a^ Biology and Environmental Studies, Brandeis University, 415 South St, Waltham, MA 02453 USA;
-  ^b^ Land Stewardship, Osa Conservation, Puerto Jiménez, Golfito, Costa Rica
-  # ^c^ Earth and Environmental Sciences, Lehigh University, 27 Memorial Drive West, Bethlehem, PA 18015 USA
-  # ^a^ Ecology and Evolutionary Biology, University of Michigan, 1105 N University Ave, Ann Arbor, MI 48109 USA
-# author: 
-#   - name: "Nicholas Medina"
+  ^b^ Land Stewardship, Osa Conservation, Puerto Jiménez, Puntarenas, Costa Rica;
+  ^c^ Lehigh University, 27 Memorial Drive West, Bethlehem, PA 18015 USA
+  ^d^ Ecology and Evolutionary Biology, University of Michigan, 1105 N University Ave, Ann Arbor, MI 48109 USA
+# author:
+#   - name: Nicholas Medina
 #     email: nmedina@umich.edu
-#     affiliation: Brandeis University
-#     orcid_id: 0000-0001-5465-3988
+#     affliation: 
+#       - Brandeis University
+#       - University of Michigan
+#     # orcid_id: 0000-0001-5465-3988
+#     correspondingauthor: TRUE
+#   - name: Emma Capetz
+#     affiliation: Lehigh University
+#     email: emmacapetz11@gmail.com
+#   - name: Andrea Johnson
+#     affiliation: Osa Conservation
+#     email: andrea.e.johnson@gmail.com
+#   # - name: Erin Lau
+#   #   affiliation: Lehigh University
+#   #   # email:
+#   - name: Agustín Mendoza
+#     affiliation: Osa Conservation
+#     email: agustinescaladorosa@gmail.com
+#   - name: Max Villalobos
+#     affiliation: Osa Conservation
+#     email: maxvillalobosv@gmail.com
 # address:
 #   - code: Brandeis University
-#     address: Biology and Environmental Studies, 415 South St, Waltham, MA 02453
-# keywords: [1, 2, 3]
-
+#     address: 415 South St, Waltham, MA 02453 USA
+#   - code: Osa Conservation
+#     address: Puerto Jiménez, Puntarenas, Costa Rica
+#   - code: Lehigh University
+#     address: 27 Memorial Drive West, Bethelhem, PA 18015 USA
+#   - code: University of Michigan
+#     address: 1105 N University Ave, Ann Arbor, MI 48109 USA
+# keywords:
+#   - secondary forest
+#   - regeneration
+#   - timber plantation associated biodiversity
+#   - edge effect
+#   - aboveground biomass
+#   - shade  
+# abstract: |
+#   About half of all forests are tropical and secondary, making tropical forest regeneration integral to future forests. 
+#   Tree stand biomass and taxonomic richness can recover in a few decades, but relative abundances may lag indefinitely. 
+#   Since most forests are within a km of a habitat edge, edge effects likely affect community composition regeneration.
+#   However, most studies assess how degraded edges affect intact forests, leaving it unclear whether higher-quality edges could facilitate regeneration of nearby degraded forests.
+#   Notably, higher quality edges near intact forests could promote processes like dispersal and wood biomass accumulation that effectively accelerate succession, leading to better performance of shade-tolerant taxa compared to pioneer taxa in the early stages of forested plantation regeneration.
+#   This study addressed how wet tropical forested plantation regeneration was affected by distance to adjacent intact forest edge.
+#   It was hypothesized that old timber plantations facilitate regeneration by increasing available shade, favoring the presence and biomass of later-successional taxa, ultimately changing community composition overall.
+#   A wet neotropical timber plantation reforested after 20 years and adjacent to primary forest was censused for trees along a 300 m edge distance gradient, and analysis matched identified taxa to broad dispersal mode and wood density traits using relevant literature.
+#   As distance from primary forest edge increased, stem and wood density tended to increase significantly, with ~10% variation explained, while biomass and canopy light surprisingly tended to stay the same.
+#   Stand tree richness also tended to increase significantly, but diversity decreased steeply and non-linearly, explained in part by wood density, and taxonomic composition varied notably. 
+#   Finally, tree taxa associated with both early and late successional stages decreased significantly, but biomass by dispersal mode did not tend to change.
+#   Overall this study supports that stand composition is less resilient and more subject to edge effects than biomass and richness, suggesting that global forests will likely be distinctly new assemblages in the future, with timber and biodiversity trade-offs occurring based on local and regional management activity.
+#   
+#   Más de la mitad de bosques son tropicales y secundarios, indicando que la regeneración de bosques tropicales es integral al futuro de bosques, globalmente.
+#   Biomasa y riqueza taxonómica pueden recuperarse en algunas décadas, pero abundancias relativas pueden durar más de un siglo.
+#   Dado que la mayoría de bosques quedan entre un km de su borde, efectos de borde probablemente afectan la regeneración de composición de comunidad.
+#   Sin embargo, la mayoría de estudios evalúan cómo bordes ya degradados afectan a bosques intactos, dejándolo poco claro si bordes de más alta calidad podrían facilitar la regeneración de bosques cercanos previamente degradados.
+#   Notablemente, bordes de alta calidad cerca de bosques intactos podrían promover procesos como disperso y acumulación de biomasa maderosa que efectivamente acceleran a la sucesión, permitiendo mejor rendimiento de taxa tolerantes a sombra comparado con taxa más adaptados a alta luz en las etapas tempranas de regeneración de plantaciones foresterados.
+#   Este estudio investigó cómo la regeneración de bosque secundario tropical húmedo fue afectado por distancia a borde de hábitat, e hipotetizó que plantaciones de madera viejas facilitan regeneración porque favorecen a taxa tolerantes a sombra o de sucesión tarde, y que orillas de bosque adyacente median cambios a composición de comunidad.
+#   Una plantación de madera neotropical adyacente a bosque primario fue censada por árboles siguiendo un transecto de 300 m midiendo un gradiente de distancia de orilla, y análisis combinó taxa con characterísticas ecológicas usando literatura relevante.
+#   Mientras distancia de bosque primario aumentó, densidad de madera y tallos tendieron a aumentar significativamente, con 10% variación explicado, mientras tanto biomasa y luz de dócel asombrosamente tendió a quedarse igual.
+#   Riquesa taxonómica de árboles también tendió a aumentar significativamente, pero diversidad bajó profundamente y no-linearmente, explicado en parte por densidad de madera, y composición taxonomica varió notablemente.
+#   Finalmente, biomasa de taxa de árboles asociados con etapas de sucesión ambos temprano y tarde bajaron significativamente, pero biomasa por modo de disperso no tendió a cambiar.
+#   Entre todo este estudio apoya que composición taxonómica es menos resiliente y más sujeto a efectos de borde negativos que biomasa y riqueza taxonómica, sugeriendo que bosques globales probablemente serán ensamblajes nuevamente distintos en el futuro, con compensaciones entre producción de madera y biodiversidad que ocurren basado en manejo local y regional.
+  
 output: 
   # html_notebook
   # bookdown::html_document2:
@@ -30,10 +83,13 @@ output:
   #   global_numbering: TRUE
   #   toc: FALSE
   bookdown::pdf_document2:
-    # number_sections: FALSE
+    number_sections: FALSE
     global_numbering: TRUE
     keep_tex: TRUE
     toc: FALSE
+  # bookdown::pdf_book:
+    # base_format: rticles::springer_article
+    # citation_package: biblatex
 bibliography: 
   - ../../library.bib
   - ../../grateful-refs.bib
@@ -47,7 +103,6 @@ header-includes:
   - \usepackage[left]{lineno}
   - \linenumbers
   - \usepackage{setspace}\doublespace
-# abstract
 ---
 
 
@@ -57,12 +112,18 @@ header-includes:
 \
 \
 
-**Keywords**: secondary forest; regeneration; timber plantation associated biodiversity; edge effect; aboveground biomass; shade  
+**Keywords**:
+secondary forest;
+regeneration;
+timber plantation associated biodiversity;
+edge effect;
+aboveground biomass;
+shade
 
 \
 \
   
-***Corresponding author**: Nicholas Medina, nmedina@umich.edu
+***Correspondence**: Nicholas Medina, nmedina@umich.edu
 
 
 \newpage
@@ -106,31 +167,38 @@ header-includes:
 
 # Funding{-}
 
-This study was funded by Brandeis University Hiatt Career Center World of Work Fellowship.
+This study was funded by Brandeis University Hiatt Career Center World of Work Fellowship and in part by University of Michigan Rackham Merit Fellowship.
 
 
-# Declaration of interests{-}
+<!-- # Declaration of interests{-} -->
 
-Authors declare no conflicts of interest. 
+<!-- Authors declare no conflicts of interest.  -->
 
 
 # Acknowledgements{-}
 
 Thanks to 
-Professor Dan Perlman for initial networking;
-<!-- Lehigh University Professor Don Morris and interns Emma Capetz and Erin Lau along with field station staff Agustín Mendoza for direct field assistance;  -->
-concurrent Osa Conservation general manager Manuel Ramirez and Piro Biological Station staff Juan Carlos Cruz Díaz, Annia Barrantes, Larry Villalobos, Hansel Vargas, and visitors for field support;
-James Fifer, Chau Ho, and Michelle Spicer for discussion of early drafts;
+Brandeis University Professor Dan Perlman for initial networking;
+Lehigh University Professor Don Morris 
+and student Erin Lau 
+for field support;
+concurrent Osa Conservation general manager Manuel Ramírez and Piro Biological Station staff Juan Carlos Cruz Díaz, Annia Barrantes, Larry Villalobos, Hansel Vargas, and visitors for field support;
+James Fifer, Chau Ho, and Michelle Spicer for review of early draft content;
 and Luisa Valdez for translation assistance.
+
+Authors declare no conflicts of interest. 
 
 
 # Author contributions{-}
 
-MV and AJ contributed to study conceptualization, administration, and supervision;
+NM, MV and AJ contributed to study conceptualization, design, administration, and supervision;
 NM and AJ contributed to funding acquisition;
-NM contributed to data collection;
+NM, AM, and EC, 
+contributed to key data collection;
 NM and MV contributed to data analysis;
 NM wrote initial draft and later revisions.
+
+Study team includes and recognizes diverse and historically-excluded contributions to research; with bilingual communication efforts completed and pending.
 
 
 # Data statement{-}

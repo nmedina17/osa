@@ -21,33 +21,49 @@ link-citations: TRUE
 
 This study found significant edge effects on secondary forest stand wood and stem density, tree diversity and community composition, and some functional traits, yet not on overall aboveground biomass.
 <!-- These results were shown in Figs \@ref(fig:biomass), \@ref(fig:taxa), and \@ref(fig:traits)... -->
-It was initially hypothesized that community composition would vary with distance to edge, favoring more shade-tolerant taxa, due to light availability and dispersal potential, 
-and the evidence presented here supported edge effects on community composition and biomass of taxa associated with both early- and late-successional stages, but without detectable roles for light availability or general dispersal mode.
+It was initially hypothesized that community composition would vary with distance to high-quality intact primary forest edge, favoring more shade-tolerant taxa, due to light availability and dispersal potential.
+The evidence presented here supported edge effects on community composition and biomass of taxa that were associated with both early- and late-successional stages, but without detectable roles for light availability or general dispersal mode.
 Accordingly, this suggests that edge effects do significantly change humid tropical forest community taxonomic and functional composition, but primarily due to factors other than light competition or dispersal limitation *[@krishnadas20]*, and also suggests that aboveground biomass and even low taxonomic richness are resilient after a decade of regeneration.
+
+<!-- ## Biomass -->
 
 Aboveground biomass storage is a key global ecosystem function and service, but edge effects tend to release about one-third of carbon lost from tropical deforestation *[@brinck17]*, with more expected in the future *[@mitchard18]*.
 <!-- responds variably to secondary succession and edge effects ...   -->
 Management has been found to explain most of biomass variation among tropical forest fragments, and wood density ~10% biomass variation *[@pyles22]*.
-This study adds that management via edge effects can also mediate ~10% of wood density variation without affecting local biomass, although median stem wood density can describe regional spatial biomass patterns *[@baker04]*.
+Additionally, this study contributes that management via edge effects can also mediate ~10% of wood density variation without affecting local biomass, although median stem wood density can describe regional spatial biomass patterns *[@baker04]*.
 In this study, wood density and richness values may have been pulled down by early-successional clonal trees closest to the primary forest, which tend to have lower wood densities, lowering carbon *[@gonzalezj98; @pyles22]*, and increasing nearby stem density.
-Lower wood density can also reflect more dynamic forest stands *[@malhi06]* with higher tree turnover, a consequence of forest fragmentation *[@nascimento04a]* together with other global change drivers *[@laurance14]*, as well as may reflect possible differences in soil fertility *[@malhi04]*, all of which represent possible future research directions, beyond strictly neutral dynamics *[@terborgh95]*.
+Lower wood density can also reflect more dynamic forest stands *[@malhi06]* with higher tree turnover, a consequence of forest fragmentation *[@nascimento04]* together with other global change drivers *[@laurance14]*, and may also reflect possible differences in soil fertility *[@malhi04]*, all of which represent possible future research directions, beyond strictly neutral dynamics *[@terborgh95]*.
 Furthermore, light availability at the plot level did not affect biomass storage, but instead, individual light gaps may be more important for biomass dynamics *[@chazdon84]*.
     <!-- - although canopy light may still affect biomass generally in this case, without edge effects (check direct light-biomass correlation graph? -- no sig correlation) -->
 
-Edge effects have been shown in other studies to lower both forest biomass and change community composition *[@anderson22]*, and this study adds that the decline in diversity can be rapid and non-linear across edge gradients, along with supporting the likelihood of lasting changes to community composition.
+<!-- ## Composition -->
+
+Edge effects have been shown in other studies not only to lower forest biomass, but also to change community composition *[@anderson22]*, and in addition this study contributes that the decline in diversity can be rapid and non-linear across edge gradients, along with supporting the likelihood of changes to community composition lasting decades.
 This rapid loss of diversity across the edge gradient may be in part due to existing higher yet constant levels of shade limiting shade-intolerant seedling recruitment and/or performance, together with insufficient time for slower-growing shade-tolerant taxa to accumulate significant amounts of biomass.
-Another possible factor may be overall short dispersal kernels, in part due to higher fungal pathogen pressure under higher constant shade, also increasing tree mortality.
-Decomposing compositional changes into key specific taxa, while the biomass of the most abundant taxon *Vochysia* was resilient to edge effects in this study, that of the key taxon for frugivores like birds and bats *Ficus* was significantly lowered across the secondary forest edge, pointing to potentially different responses of biomass and food web associated ecosystem services.
-Community composition also tended to show lower variance across the edge gradient, although this effect cannot be confirmed here given the uneven sampling that accounted for variable forest area at different distances from edge.
+Another possible factor may be Janzen-Connell processes *[@wills06; @terborgh20]*, including conspecific negative density-dependence of seedling survival on basal area *[@comita09]*, as well as overall short dispersal kernels, whose effects can be mediated by shade *[@comita14]* and in part by higher fungal pathogen pressure near conspecifics *[@jia20]*.
+While both diversity and community composition changed significantly with distance to intact forest in this study, the biomass of most individual taxa, surprisingly, tended to stay the same along the edge gradient.
+This lack of significant individual taxon biomass responses along this edge gradient could be due to stochastic population factors affecting their biomass growth, perhaps widening variability.
+Regardless of the underlying process, these absent patterns do also help explain the lack of pattern observed with plot biomass overall across the edge gradient.
+This explanation points to future studies of taxon-specific responses to edge effects, to help explain overall forest biomass dynamics near habitat edge.
+More specifically here, the biomass of the most abundant taxon *Vochysia* was resilient to edge effects in this study, however, that of the taxon *Ficus*, key for frugivores like birds and bats *[@cottee-jones15; @rafidison20]*, was significantly lowered across the secondary forest edge, pointing to potentially different responses of biomass and local food web associated ecosystem services.
+Results suggest that this pattern is specific to this locally widespread *Ficus* genus, since the overall biomass of other animal-dispersed taxa as a whole tended to stay the same across the edge gradient studied here.
+Interestingly, community composition also appeared to show lower variance across the edge gradient, although testing this observation in a forested area with evenly distributed area among distance strata bands would provide additional support.
+
+<!-- ## Traits -->
 
 Characterizing community composition by functional traits is also increasingly studied *[@kearney21]*, but less so regarding edge effects.
 A study in Madagascar found lower phylogenetic diversity closer to degraded forest edge, but no change in aboveground biomass *[@razafindratsima18]*.
-These results parallel in showing lower taxonomic diversity, although biomass specifically of taxa assoociated with both early- and late-successional stages also decreased with away from primary forest edge.
-This result by successional stage can be explained by slightly lower habitat quality inferred near exposed habitat edges near roads, and accordingly relatively higher habitat quality near closed primary forest edge.
-While lower biomass of succession-agnostic taxa further from primary forest edge appears consistent with dispersal kernels, the lack of pattern by broad dispersal mode limits this explanation here, yet could be further tested by measuring taxon-specific dispersal kernels.
+This study presents similar results in showing lower taxonomic diversity, although biomass specifically of taxa associated with both early- and late-successional stages also decreased with away from primary forest edge.
+This resulting decrease by successional stage could be explained by slightly lower habitat quality inferred near exposed habitat edges near roads, and accordingly relatively higher habitat quality near closed primary forest edge *[@ries04]*.
+While lower biomass of succession-agnostic taxa further from primary forest edge appears consistent with the expected forms of group-level dispersal kernels as an explanation, the lack of significant pattern along forest edge when binned by broad dispersal mode that was found here may limit the potential of seed dispersal to explain biomass trends.
+Instead, seedling survival may have been more important than dispersal in accumulating basal area and biomass *[@comita09]*.
+For taxa primarily dispersed by animals instead of wind, this could be explained by potentially broader local limitations in animal dispersal activity or abundance.
+Additionally, the potential for nearby dispersal to facilitate reforestation could be tested in future studies by measuring taxon-specific dispersal kernels.
+
+<!-- ## Conclusion -->
 
 Overall, this study highlights how abandoned wet tropical timber plantation can regenerate in alongside fragmented forests.
-Results support related syntheses that biomass and taxonomic richness often regrows relatively quickly, 
+Results support related syntheses that tropical forest biomass and taxonomic richness often regrows relatively quickly *[@davies21a]*, 
 <!-- **along with traits?,** -->
 while taxonomic composition recovers much more slowly, if not diverging altogether *[@norden15]*.
 These findings can suggest that more efficient reforestation could more actively target biodiversity conservation over other resilient functions like carbon storage, and that restoration efforts could include focusing activities like native species planting efforts on degraded habitat edges away from primary forest edges, and investing less in areas closer to existing forest edges, where recruitment may already maintain diversity levels.

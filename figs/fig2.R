@@ -234,14 +234,9 @@ graph2c
 
 
 fig2 <- ggpubr::ggarrange(
-  graph2a,
-  graph2b,
-  graph2c,
-  graph2d,
-  graph2e,
-  graph2f,
-  ncol = 3,
-  nrow = 2,
+  graph2a, graph2b, graph2c,
+  graph2d, graph2e, graph2f,
+  ncol = 3, nrow = 2,
   labels = c(
     "a", "b", "c",
     "d", "e", "f"

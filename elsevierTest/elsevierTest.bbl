@@ -1,0 +1,21 @@
+\begin{thebibliography}{2}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Dirac(1953)]{Dirac1953888}
+P.~A.~M. Dirac.
+\newblock The {Lorentz} transformation and absolute time.
+\newblock \emph{Physica}, 19\penalty0 (1-–12):\penalty0 888--896, 1953.
+\newblock \doi{10.1016/S0031-8914(53)80099-6}.
+
+\bibitem[Feynman and {Vernon Jr.}(1963)]{Feynman1963118}
+R.~P Feynman and F.~L {Vernon Jr.}
+\newblock The theory of a general quantum system interacting with a linear
+  dissipative system.
+\newblock \emph{Annals of Physics}, 24:\penalty0 118--173, 1963.
+\newblock \doi{10.1016/0003-4916(63)90068-X}.
+
+\end{thebibliography}

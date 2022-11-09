@@ -75,9 +75,10 @@ per g plot wood density,
 yet only explaining
 *`r "~4"`* % of variance
 (Fig \@ref(fig:biomass)f).
+Additional variables tested, including maximum height and diameter, tended to stay the same across the edge gradient *(data not shown)*.
 
 
-```{r biomass, fig.width=4, fig.height=5, fig.cap=" Plot stand properties, namely (a) biomass, (b) wood density, (c) tissue carbon, (d) stem density, (d) canopy light availability, all across distance to primary forest edge gradient, and (e) diversity against wood density. Grey dots show individual tree values, white dots with border show plot medians, black dots show plot-level data binned into discrete distance strata medians ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians."}
+```{r biomass, fig.width=5, fig.height=6, fig.cap=" Plot stand properties, namely (a) biomass, (b) wood density, (c) tissue carbon, (d) stem density, (e) canopy light availability, all across distance to primary forest edge gradient, and (f) diversity against wood density. Grey dots show individual tree values, white dots with border show plot medians, black dots show plot-level data binned into discrete distance strata medians ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians."}
 source(here::here("figs/fig1.R"), echo = F); 
 fig1
 # knitr::include_graphics(here::here("figs/fig1.png"))
@@ -112,7 +113,7 @@ Diversity significantly
 (`r glue("p=",round(as.numeric(entropy12$pval[[2]][2]),3))`) 
 decreased non-linearly by 
 ~`r abs(entropy12$statPrint[[1]]$estimate[[2]])` ± 
-`r abs(entropy12$statPrint[[1]]$std.error[[2]])` per m 
+`r abs(entropy12$statPrint[[1]]$std.error[[2]]) %>% rstatix::p_format()` per m 
 as distance to primary forest edge increased, 
 which explained 
 *`r "73"`*% of variance 
@@ -122,8 +123,8 @@ while in contrast taxonomic richness increased slightly
 (`r glue("p=",round(as.numeric(richness$pval),3))`) 
 and linearly 
 by 
-`r richness$statPrint[[1]]$estimate[[2]]` ± 
-`r richness$statPrint[[1]]$std.error[[2]]` per m 
+`r richness$statPrint[[1]]$estimate[[2]] %>% rstatix::p_format()` ± 
+`r richness$statPrint[[1]]$std.error[[2]] %>% rstatix::p_format()` per m 
 and had *`r "16"`*% variance explained 
 among distance strata 
 (Fig \@ref(fig:taxa)b).
@@ -146,15 +147,21 @@ and linearly by
 `r ficus$statPrint[[1]]$std.error[[2]]` per m 
 with *`r "~20"`*% variance among distance strata explained 
 (Fig \@ref(fig:taxa)f).
+Other taxa did not change significantly with distance to intact forest *(data not shown)*.
 
 
-```{r taxa, fig.width=5, fig.height=4, fig.cap=" Taxonomic composition measures including (a) diversity, (b) richness, (c) overall biomass, (d) beta diversity, and (e,f) biomass of key taxa. White and colored dots with border show plot medians, black dots show plot-level data binned into discrete distance strata medians ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians."}
+```{r taxa, fig.width=6, fig.height=5, fig.cap=" Taxonomic composition measures including (a) diversity, (b) richness, (c) overall biomass, (d) beta diversity, and (e,f) biomass of key taxa. White and colored dots with border show plot medians, black dots show plot-level data binned into discrete distance strata medians ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians."}
 source(here::here("figs/fig2.R"), echo = F);
 fig2
 # knitr::include_graphics(here::here("figs/fig2.png"))
 ```
 
 <!-- - put diversity-biomass correlation -->
+
+<!-- # ```{r taxaList} -->
+<!-- # source(here::here("tblTaxa.R"));  -->
+<!-- # ``` -->
+
 
 
 ## Traits
@@ -182,7 +189,7 @@ Dispersal modes did not show consistent trends in biomass with increasing distan
 (Fig \@ref(fig:traits)b).
 
 
-```{r traits, fig.width=3, fig.height=4, fig.cap=" Functional regeneration based on taxa associations with (a) successional stages and (b) primary dispersal mode. Grey dots show individual tree values, white dots with border show plot medians, black dots show plot-level data binned into discrete distance strata medians ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians."}
+```{r traits, fig.width=4, fig.height=5, fig.cap=" Functional regeneration based on taxa associations with (a) successional stages and (b) primary dispersal mode. Grey dots show individual tree values, white dots with border show plot medians, black dots show plot-level data binned into discrete distance strata medians ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians."}
 source(here::here("figs/fig3.R"), echo = F);
 fig3
 # knitr::include_graphics(here::here("figs/fig3.png"))

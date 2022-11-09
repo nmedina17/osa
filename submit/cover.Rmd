@@ -1,14 +1,17 @@
 ---
 title: ""
-output: html_notebook
+output: 
+  # html_notebook
+  pdf_document
 header-includes:
   - \usepackage{setspace}\doublespace
 ---
 
-```{r keys}
+```{r keys, echo=F}
 knitr::opts_chunk$set(echo = F)
-title <- "Habitat edges affect tree diversity more than biomass regeneration in a wet neotropical secondary forest"
+title <- "Habitat edges affect tree diversity more than biomass regeneration in a reforested wet neotropical timber plantation"
 journal <- "Journal of Applied Ecology"
+comparison <- "Edge effects on components of diversity and above-ground biomass in a tropical rainforest, by Razafindratsima et al 2017"
 ```
 
 Dear Editors of `r journal`:
@@ -16,27 +19,30 @@ Dear Editors of `r journal`:
 Please consider this manuscript entitled 
 “`r title`” 
 as a Research Paper. 
-This manuscript presents and discusses data that 
+This manuscript presents and discusses data from a regenerating forested tropical timber plantation that expands typical notions of edge effects, beyond degraded edges and fragmented forests, to highlight how adjacent intact primary forests can actually facilitate the restoration of tree biodiversity and help prioritize ecosystem management efforts.
 
-support the use of roto-till and cover crop mixtures to alleviate soil compaction and weed pressure, which are very common issues for all farmers as agriculture expands into urban environments.
+This manuscript fits directly within the scope of this journal publication, primarily in that it uses an applied setting to address fundamental questions in tropical forest ecology. 
+<!-- We use an applied setting, a regenerated tropical timber plantation, to answer fundamental questions about forest community ecology, namely digging into how local management works as the strongest driver of tropical forest carbon, focusing showing data on forest biomass, tree biodiversity, and functional trait recovery. -->
+Specifically, it moves beyond aboveground biomass measurements to also evaluate data on tree community composition, as well as some functional traits like height, wood density, tissue carbon, successional stage, and dispersal mode.
+As a result, this study does a very robust job of evaluating multiple dimensions of forest restoration, including with respect to this new beneficial edge effect hypothesis.
+This study also does a solid job of addressing motivating the globally relevant question of how local management, which is the strongest driver of tropical forest carbon, affects the early stages of recovering forest tree diversity, which can lag many decades behind functional recovery of biomass and taxonomic richness.
+Overall, this study appears to closely resemble a recent publication in your journal, `r comparison` under Associate Editor *Natalie Butt*.
 
-This manuscript both fits within and also expands the scope of this journal publication. 
-The manuscript fits well with the scope because 
-it discusses changes to soil functions caused by various types and intensities of mechanical tillage, and informs balancing trade-offs during agricultural management. 
-In addition analyzing tillage affects, the manuscript also incorporates discussion of cover crops as a comparable management strategy targeting similar soil functions, and more specifically presents the use of cover crop mixtures, rather than traditional single-species cover cropping. 
-Finally, this manuscript places these soil management considerations in an urban agriculture context, which is increasingly relevant to the majority of the world’s population living in urban areas and promotes adaptation to more local food supply chain systems.
-
-Overall, this manuscript represents a solid and interesting contribution to the soil tillage and modern agricultural literature. 
-The analysis and discussion is presented as a full manuscript, though it could be possible to contribute this a Short Communication. 
-We are also happy to recommend your associate editor 
-Elke Noellemeyer 
-to be associated with our submission, based on a listed interest in 
-agroecology. 
+The analysis and discussion is presented as a full manuscript, with solid potential to generate discussion with and influence practitioners' perspectives. 
+We are also happy to recommend some of your associate editors to be associated with our submission -- 
+*P.C Abhilash* based on listed interests in restoring degraded habitats,
+*Natalie Butt* based on listed interests in neotropical forest diversity and functions affected by humans,
+*Cristina Garcia* based on listed interests in seed dispersal,
+*David Moreno Mateos* based on listed interests in accelerating ecosystem restoration,
+and
+*Sharif Ahmed Mukul* based on listed interests in forest management.
 As potential reviewers, we point to 
-Kami Pothukuchi and Zhijiang Lu (Wayne State), 
-Viashelav Vashenev (RUDN, Russia), 
-Zhonqi (Joshua) Cheng (USI, Brooklyn Coll), and 
-Rattan Lal (Ohio State). 
+*María Uriarte* (Columbia U),
+*Liza Comita* (Yale U), 
+*Marcel Caritá Vaz* (U California - Los Ángeles), 
+*Jenny Zambrano* (Washington State U),
+*Julia Burton* (Michigan Tech U), and 
+*Caroline Farrior* (U Texas - Austin). 
 Finally, please feel free to contact us for any additional relevant information you may like.
 
 Sincerely, 

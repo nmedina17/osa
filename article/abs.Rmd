@@ -10,7 +10,7 @@ output: html_notebook
 
 
 <!-- ## REVIEW CRITERIA -->
-<!-- ​ -->
+<!-- . -->
 <!-- All abstracts will be evaluated and scored by the ATBC2022 Scientific Committee. The Scientific Committee may accept, decline, or offer an opportunity for a revised abstract submission. Proposals will be assessed using the following criteria:  -->
 
 <!-- - *Scientific merit*: Likelihood of promoting a significant advancement in our understanding of tropical biology and conservation, innovative or interdisciplinary approaches, or likelihood of novel conceptual synthesis.  -->
@@ -121,32 +121,34 @@ output: html_notebook
 About half of all forests are tropical and secondary, making tropical forest regeneration integral to future forests. 
 Tree stand biomass and taxonomic richness can recover in a few decades, but relative abundances may lag indefinitely. 
 Since most forests are within a km of a habitat edge, edge effects likely affect community composition regeneration.
-However, most studies assess how degraded edges affect intact forests, leaving it unclear whether higher-quality edges could facilitate regeneration of previously degraded forests.
+However, most studies assess how degraded edges affect intact forests, leaving it unclear whether higher-quality edges could facilitate regeneration of nearby degraded forests.
 Notably, higher quality edges near intact forests could promote processes like dispersal and wood biomass accumulation that effectively accelerate succession, leading to better performance of shade-tolerant taxa compared to pioneer taxa in the early stages of forested plantation regeneration.
 This study addressed how wet tropical forested plantation regeneration was affected by distance to adjacent intact forest edge.
 It was hypothesized that old timber plantations facilitate regeneration by increasing available shade, favoring the presence and biomass of later-successional taxa, ultimately changing community composition overall.
-An abandoned neotropical timber plantation adjacent to primary forest was censused for trees along a 300 m edge distance gradient, and analysis matched taxa to broad dispersal mode and wood density traits using relevant literature.
+A wet neotropical timber plantation reforested after 20 years and adjacent to primary forest was censused for trees along a 300 m edge distance gradient, and analysis matched identified taxa to broad dispersal mode and wood density traits using relevant literature.
 
 <!-- # Results/Conclusions -->
-As distance from primary forest edge increased, stem and wood density tended to increase significantly, with ~10% variation explained, while biomass and canopy light tended to stay the same.
-Stand tree richness also tended to increase significantly, but diversity decreased steeply and non-linearly, and taxonomic composition varied notably. 
-Finally, tree taxa associated with both early and late successional stages decreased significantly, but biomass by dispersal mode did not tend to change.
+As distance from primary forest edge increased, stem and wood density tended to increase significantly, with ~10% variation explained, while biomass and canopy light surprisingly tended to stay the same.
+Stand tree richness also tended to increase significantly, but diversity decreased steeply and non-linearly, explained in part by wood density, and taxonomic composition varied notably. 
+Finally, tree taxa associated with both early and late successional stages decreased significantly, as well as genus Ficus, but biomass by dispersal mode did not tend to change.
 Overall this study supports that stand composition is less resilient and more subject to edge effects than biomass and richness, suggesting that global forests will likely be distinctly new assemblages in the future, with timber and biodiversity trade-offs occurring based on local and regional management activity.
 
 
 \newpage
 
 
-# Resumen*{-}
+# Resumen{-}
 
 
 Más de la mitad de bosques son tropicales y secundarios, indicando que la regeneración de bosques tropicales es integral al futuro de bosques, globalmente.
 Biomasa y riqueza taxonómica pueden recuperarse en algunas décadas, pero abundancias relativas pueden durar más de un siglo.
-Dado que la mayoría de bosques quedan entre un km de su orilla, efectos de borde probablemente afectan la regeneración de composición de comunidad, mediado por tolerancia a sombra y characterísticas de disperso, y también historia de manejo.
+Dado que la mayoría de bosques quedan entre un km de su borde, efectos de borde probablemente afectan la regeneración de composición de comunidad.
+Sin embargo, la mayoría de estudios evalúan cómo bordes ya degradados afectan a bosques intactos, dejándolo poco claro si bordes de más alta calidad podrían facilitar la regeneración de bosques cercanos previamente degradados.
+Notablemente, bordes de alta calidad cerca de bosques intactos podrían promover procesos como disperso y acumulación de biomasa maderosa que efectivamente acceleran a la sucesión, permitiendo mejor rendimiento de taxa tolerantes a sombra comparado con taxa más adaptados a alta luz en las etapas tempranas de regeneración de plantaciones foresterados.
 Este estudio investigó cómo la regeneración de bosque secundario tropical húmedo fue afectado por distancia a borde de hábitat, e hipotetizó que plantaciones de madera viejas facilitan regeneración porque favorecen a taxa tolerantes a sombra o de sucesión tarde, y que orillas de bosque adyacente median cambios a composición de comunidad.
 Una plantación de madera neotropical adyacente a bosque primario fue censada por árboles siguiendo un transecto de 300 m midiendo un gradiente de distancia de orilla, y análisis combinó taxa con characterísticas ecológicas usando literatura relevante.
 
-Mientras distancia de bosque primario aumentó, densidad de madera y tallos tendieron a aumentar significativamente, con 10% variación explicado, mientras tanto biomasa y luz de dócel tendió a quedarse igual.
-Riquesa taxonómica de árboles también tendió a aumentar significativamente, pero diversidad bajó profundamente y no-linearmente, y composición taxonomica varió notablemente.
-Finalmente, biomasa de taxa de árboles asociados con etapas de sucesión ambos temprano y tarde bajaron significativamente, pero biomasa por modo de disperso no tendió a cambiar.
+Mientras distancia de bosque primario aumentó, densidad de madera y tallos tendieron a aumentar significativamente, con 10% variación explicado, mientras tanto biomasa y luz de dócel asombrosamente tendió a quedarse igual.
+Riquesa taxonómica de árboles también tendió a aumentar significativamente, pero diversidad bajó profundamente y no-linearmente, explicado en parte por densidad de madera, y composición taxonomica varió notablemente.
+Finalmente, biomasa de taxa de árboles asociados con etapas de sucesión ambos temprano y tarde bajaron significativamente, tanto como el género Ficus, pero biomasa por modo de disperso no tendió a cambiar.
 Entre todo este estudio apoya que composición taxonómica es menos resiliente y más sujeto a efectos de borde negativos que biomasa y riqueza taxonómica, sugeriendo que bosques globales probablemente serán ensamblajes nuevamente distintos en el futuro, con compensaciones entre producción de madera y biodiversidad que ocurren basado en manejo local y regional.

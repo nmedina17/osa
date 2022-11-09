@@ -61,7 +61,7 @@
 \setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{5}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
 \newlength{\cslhangindent}
 \setlength{\cslhangindent}{1.5em}
 \newlength{\csllabelwidth}
@@ -95,14 +95,14 @@
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
 \urlstyle{same} % disable monospaced font for URLs
 \hypersetup{
-  pdftitle={Habitat edges affect tree diversity more than biomass regeneration in a wet neotropical secondary forest},
-  pdfauthor={Nicholas Medina * a; Andrea Johnson b; Max Villalobos b},
+  pdftitle={Habitat edges affect tree diversity more than biomass regeneration in a reforested wet neotropical timber plantation},
+  pdfauthor={Nicholas Medina * a,d; Emma Capetz c; Andrea Johnson b; Agustín Mendoza b; Max Villalobos b},
   hidelinks,
   pdfcreator={LaTeX via pandoc}}
 
-\title{Habitat edges affect tree diversity more than biomass regeneration in a wet neotropical secondary forest}
-\author{Nicholas Medina * \textsuperscript{a} \and Andrea Johnson \textsuperscript{b} \and Max Villalobos \textsuperscript{b}}
-\date{\scriptsize \textsuperscript{a} Biology and Environmental Studies, Brandeis University, 415 South St, Waltham, MA 02453 USA; \textsuperscript{b} Land Stewardship, Osa Conservation, Puerto Jiménez, Golfito, Costa Rica}
+\title{Habitat edges affect tree diversity more than biomass regeneration in a reforested wet neotropical timber plantation}
+\author{Nicholas Medina * \textsuperscript{a,d} \and Emma Capetz \textsuperscript{c} \and Andrea Johnson \textsuperscript{b} \and Agustín Mendoza \textsuperscript{b} \and Max Villalobos \textsuperscript{b}}
+\date{\scriptsize \textsuperscript{a} Biology and Environmental Studies, Brandeis University, 415 South St, Waltham, MA 02453 USA; \textsuperscript{b} Land Stewardship, Osa Conservation, Puerto Jiménez, Puntarenas, Costa Rica; \textsuperscript{c} Lehigh University, 27 Memorial Drive West, Bethlehem, PA 18015 USA \textsuperscript{d} Ecology and Evolutionary Biology, University of Michigan, 1105 N University Ave, Ann Arbor, MI 48109 USA}
 
 \begin{document}
 \maketitle
@@ -110,12 +110,18 @@
 \hfill\break
 \hfill\break
 
-\textbf{Keywords}: secondary forest; regeneration; timber plantation associated biodiversity; edge effect; aboveground biomass; shade
+\textbf{Keywords}:
+secondary forest;
+regeneration;
+timber plantation associated biodiversity;
+edge effect;
+aboveground biomass;
+shade
 
 \hfill\break
 \hfill\break
 
-*\textbf{Corresponding author}: Nicholas Medina, \href{mailto:nmedina@umich.edu}{\nolinkurl{nmedina@umich.edu}}
+*\textbf{Correspondence}: Nicholas Medina, \href{mailto:nmedina@umich.edu}{\nolinkurl{nmedina@umich.edu}}
 
 \newpage
 
@@ -125,30 +131,35 @@
 
 About half of all forests are tropical and secondary, making tropical forest regeneration integral to future forests.
 Tree stand biomass and taxonomic richness can recover in a few decades, but relative abundances may lag indefinitely.
-Since most forests are within a km of a habitat edge, edge effects likely affect community composition regeneration, mediated by shade tolerance and dispersal traits, along with management history.
-This study addressed how wet tropical secondary forest regeneration was affected by distance to habitat edge, and hypothesized that old timber plantations facilitate regeneration by favoring shade tolerant or late successional taxa, and adjacent forest edges mediate community composition.
-An abandoned neotropical timber plantation adjacent to primary forest was censused for trees along a 300 m edge distance gradient, and analysis matched taxa to traits using relevant literature.
+Since most forests are within a km of a habitat edge, edge effects likely affect community composition regeneration.
+However, most studies assess how degraded edges affect intact forests, leaving it unclear whether higher-quality edges could facilitate regeneration of nearby degraded forests.
+Notably, higher quality edges near intact forests could promote processes like dispersal and wood biomass accumulation that effectively accelerate succession, leading to better performance of shade-tolerant taxa compared to pioneer taxa in the early stages of forested plantation regeneration.
+This study addressed how wet tropical forested plantation regeneration was affected by distance to adjacent intact forest edge.
+It was hypothesized that old timber plantations facilitate regeneration by increasing available shade, favoring the presence and biomass of later-successional taxa, ultimately changing community composition overall.
+A wet neotropical timber plantation reforested after 20 years and adjacent to primary forest was censused for trees along a 300 m edge distance gradient, and analysis matched identified taxa to broad dispersal mode and wood density traits using relevant literature.
 
-As distance from primary forest edge increased, stem and wood density tended to increase significantly, with ca 10\% variation explained, while biomass and canopy light tended to stay the same.
-Stand tree richness also tended to increase significantly, but diversity decreased steeply and non-linearly, and taxonomic composition varied notably.
-Finally, tree taxa associated with both early and late successional stages decreased significantly, but biomass by dispersal mode did not tend to change.
+As distance from primary forest edge increased, stem and wood density tended to increase significantly, with \textasciitilde10\% variation explained, while biomass and canopy light surprisingly tended to stay the same.
+Stand tree richness also tended to increase significantly, but diversity decreased steeply and non-linearly, explained in part by wood density, and taxonomic composition varied notably.
+Finally, tree taxa associated with both early and late successional stages decreased significantly, as well as genus Ficus, but biomass by dispersal mode did not tend to change.
 Overall this study supports that stand composition is less resilient and more subject to edge effects than biomass and richness, suggesting that global forests will likely be distinctly new assemblages in the future, with timber and biodiversity trade-offs occurring based on local and regional management activity.
 
 \newpage
 
-\hypertarget{abstracto}{%
-\section*{Abstracto}\label{abstracto}}
-\addcontentsline{toc}{section}{Abstracto}
+\hypertarget{resumen}{%
+\section*{Resumen}\label{resumen}}
+\addcontentsline{toc}{section}{Resumen}
 
 Más de la mitad de bosques son tropicales y secundarios, indicando que la regeneración de bosques tropicales es integral al futuro de bosques, globalmente.
 Biomasa y riqueza taxonómica pueden recuperarse en algunas décadas, pero abundancias relativas pueden durar más de un siglo.
-Dado que la mayoría de bosques quedan entre un km de su orilla, efectos de borde probablemente afectan la regeneración de composición de comunidad, mediado por tolerancia a sombra y characterísticas de disperso, y también historia de manejo.
+Dado que la mayoría de bosques quedan entre un km de su borde, efectos de borde probablemente afectan la regeneración de composición de comunidad.
+Sin embargo, la mayoría de estudios evalúan cómo bordes ya degradados afectan a bosques intactos, dejándolo poco claro si bordes de más alta calidad podrían facilitar la regeneración de bosques cercanos previamente degradados.
+Notablemente, bordes de alta calidad cerca de bosques intactos podrían promover procesos como disperso y acumulación de biomasa maderosa que efectivamente acceleran a la sucesión, permitiendo mejor rendimiento de taxa tolerantes a sombra comparado con taxa más adaptados a alta luz en las etapas tempranas de regeneración de plantaciones foresterados.
 Este estudio investigó cómo la regeneración de bosque secundario tropical húmedo fue afectado por distancia a borde de hábitat, e hipotetizó que plantaciones de madera viejas facilitan regeneración porque favorecen a taxa tolerantes a sombra o de sucesión tarde, y que orillas de bosque adyacente median cambios a composición de comunidad.
 Una plantación de madera neotropical adyacente a bosque primario fue censada por árboles siguiendo un transecto de 300 m midiendo un gradiente de distancia de orilla, y análisis combinó taxa con characterísticas ecológicas usando literatura relevante.
 
-Mientras distancia de bosque primario aumentó, densidad de madera y tallos tendieron a aumentar significativamente, con 10\% variación explicado, mientras tanto biomasa y luz de dócel tendió a quedarse igual.
-Riquesa taxonómica de árboles también tendió a aumentar significativamente, pero diversidad bajó profundamente y no-linearmente, y composición taxonomica varió notablemente.
-Finalmente, biomasa de taxa de árboles asociados con etapas de sucesión ambos temprano y tarde bajaron significativamente, pero biomasa por modo de disperso no tendió a cambiar.
+Mientras distancia de bosque primario aumentó, densidad de madera y tallos tendieron a aumentar significativamente, con 10\% variación explicado, mientras tanto biomasa y luz de dócel asombrosamente tendió a quedarse igual.
+Riquesa taxonómica de árboles también tendió a aumentar significativamente, pero diversidad bajó profundamente y no-linearmente, explicado en parte por densidad de madera, y composición taxonomica varió notablemente.
+Finalmente, biomasa de taxa de árboles asociados con etapas de sucesión ambos temprano y tarde bajaron significativamente, tanto como el género Ficus, pero biomasa por modo de disperso no tendió a cambiar.
 Entre todo este estudio apoya que composición taxonómica es menos resiliente y más sujeto a efectos de borde negativos que biomasa y riqueza taxonómica, sugeriendo que bosques globales probablemente serán ensamblajes nuevamente distintos en el futuro, con compensaciones entre producción de madera y biodiversidad que ocurren basado en manejo local y regional.
 
 \newpage
@@ -156,27 +167,36 @@ Entre todo este estudio apoya que composición taxonómica es menos resiliente y
 \hypertarget{introduction}{%
 \section{Introduction}\label{introduction}}
 
-Forest and landscape restoration is a key international conservation and climate change adaptation strategy \emph{(\protect\hyperlink{ref-depinto20}{De Pinto et al., 2020})}, and while tropical forests specifically store most land biomass \emph{(\protect\hyperlink{ref-pan13}{Pan et al., 2013})}, most are now secondary \emph{(\protect\hyperlink{ref-fao20}{FAO, 2020})} and regenerating degraded functions \emph{(\protect\hyperlink{ref-hubau20}{Hubau et al., 2020})} amid increasing climate stressors \emph{(\protect\hyperlink{ref-anderegg22}{Anderegg et al., 2022})} yet insufficient policy support \emph{(\protect\hyperlink{ref-chazdon18}{Chazdon, 2018})} via skewed priorities \emph{(\protect\hyperlink{ref-pyron22}{Pyron and Mooers, 2022})}.
-Secondary forests can regenerate relatively quickly compared to old-growth forests in some ways, but in other ways remain distinct.
+Forest and landscape restoration is a key international conservation and climate change adaptation strategy \emph{(\protect\hyperlink{ref-depinto20}{De Pinto et al., 2020})}.
+While tropical forests specifically store most land biomass \emph{(\protect\hyperlink{ref-pan13}{Pan et al., 2013})}, most are now secondary \emph{(\protect\hyperlink{ref-fao20}{FAO, 2020})} and functionally degraded \emph{(\protect\hyperlink{ref-hubau20}{Hubau et al., 2020})}.
+This likely amplifies amid increasing climate stressors \emph{(\protect\hyperlink{ref-anderegg22}{Anderegg et al., 2022})} and collective management issues, including insufficient policy support \emph{(\protect\hyperlink{ref-chazdon18}{Chazdon, 2018})} via skewed priorities \emph{(\protect\hyperlink{ref-pyron22}{Pyron and Mooers, 2022})}.
+Overall, secondary forests can regenerate relatively quickly compared to old-growth forests, in some ways.
 Neotropical secondary forests can grow quickly enough to accumulate biomass \textgreater10x faster than old-growth forests \emph{(\protect\hyperlink{ref-finegan96}{Finegan, 1996}; \protect\hyperlink{ref-poorter16}{Poorter et al., 2016})}, and substantially offset carbon emissions, with estimates ranging from \textasciitilde10\% from Amazonian deforestation \emph{(\protect\hyperlink{ref-smith20}{Smith et al., 2020})} to a decade of fossil fuel emissions from all of Latin American and the Caribbean \emph{(\protect\hyperlink{ref-chazdon16}{Chazdon et al., 2016})}.
 They also recover taxonomic richness and biomass quite quickly, as well as tree height, averaging 80\% of old-growth forest levels in just 20 years, especially in wetter regions \emph{(\protect\hyperlink{ref-rozendaal19}{Rozendaal et al., 2019})}.
 The recovery of species richness alone is beneficial in that it also tends to correlate with the recovery of some ecosystem services \emph{(\protect\hyperlink{ref-guariguata01}{Guariguata and Ostertag, 2001}; \protect\hyperlink{ref-stanturf14}{Stanturf et al., 2014})} like biomass and carbon storage \emph{(\protect\hyperlink{ref-liu18}{Liu et al., 2018})}.
-However, secondary neotropical forests diverge widely in taxonomic composition \emph{(\protect\hyperlink{ref-norden15}{Norden et al., 2015})}, potentially taking over a century to recover \emph{(\protect\hyperlink{ref-poorter21}{Poorter et al., 2021})} with added variability \emph{(\protect\hyperlink{ref-atkinson22}{Atkinson et al., 2022})}.
+However, recovery of secondary neotropical forests diverge widely in taxonomic composition \emph{(\protect\hyperlink{ref-norden15}{Norden et al., 2015})}, potentially taking over a century to recover \emph{(\protect\hyperlink{ref-poorter21}{Poorter et al., 2021})} with added variability \emph{(\protect\hyperlink{ref-atkinson22}{Atkinson et al., 2022})}.
 Despite being one of the slowest ecosystem properties to recover, restoring recovering community composition is often important for preserving rare taxa \emph{(\protect\hyperlink{ref-carlo16}{Carlo and Morales, 2016})}, which can be keystone to locally-adapted food webs, including birds \emph{(\protect\hyperlink{ref-maas16}{Maas et al., 2016})}.
-Understanding secondary forest regeneration is key for global biodiversity conservation at the global scale, yet local management remains the strongest driver of tropical forest carbon stores \emph{(\protect\hyperlink{ref-pyles22}{Pyles et al., 2022})}.
+Overall, understanding secondary forest regeneration is key for global biodiversity conservation at the global scale.
 
-Secondary forest regeneration is often affected by edge effects, or changes near an ecosystem boundary, as well as land-use history, especially in heterogeneously-managed landscapes \emph{(\protect\hyperlink{ref-melo13}{Melo et al., 2013}; \protect\hyperlink{ref-perfecto09}{Perfecto et al., 2009})}.
+Modern secondary forest regeneration is often affected by edge effects, or changes near an ecosystem boundary, especially in heterogeneously-managed landscapes \emph{(\protect\hyperlink{ref-melo13}{Melo et al., 2013}; \protect\hyperlink{ref-perfecto09}{Perfecto et al., 2009})}.
 About 70\% of all forests have been estimated to be within a km of their edge \emph{(\protect\hyperlink{ref-haddad15}{Haddad et al., 2015})}, resulting in tropical forests having been estimated to lose \textasciitilde22\% aboveground carbon along heavily-managed edges \textgreater100m, in part due to shortening trees and lighter leaf mass \emph{(\protect\hyperlink{ref-ordway20}{Ordway and Asner, 2020})}.
-Edge effects also have the potential to shape community composition, based on the local dispersal kernel patterns of existing taxa \emph{(\protect\hyperlink{ref-wandrag17}{Wandrag et al., 2017})}, which while complicated \emph{(\protect\hyperlink{ref-muller-landau09}{Muller-Landau and Hardesty, 2009})}, can also correlate with simpler plant traits like height and seed mass \emph{(\protect\hyperlink{ref-tamme14}{Tamme et al., 2014}; \protect\hyperlink{ref-thomson11}{Thomson et al., 2011})}.
+Effects of degraded edges have historically favored tree taxa that tend to be pioneering, or be faster-growing, have lower wood densities, and be less shade-tolerant \emph{(\protect\hyperlink{ref-tabarelli08}{Tabarelli et al., 2008})}.
+Accordingly, secondary forest wood density may also tend to decrease near degraded habitat edges.
+Additionally, the dominance of pioneering taxa could lead to arrested succession \emph{(\protect\hyperlink{ref-tymen16}{Tymen et al., 2016})}, which further delays the recruitment of shade-tolerant taxa, as well as associated increases in aboveground biomass, in part due to their higher survival with increasing shade, and tendency toward relatively higher wood densities.
+However, arrested succession could be prevented, and even typical succession accelerated, if intact forests that were adjacent to regenerating plantations functioned as contributing reservoirs of seeds from later-successional tree taxa.
+In this case, having a habitat edge near a relatively rich intact forest, rather than near a relatively degraded open area, would instead be an asset to regenerating plantation forest patches, rather than a detriment.
+Overall, edge effects ultimately have the potential to shape community composition, in part based on the local dispersal kernel patterns of existing taxa \emph{(\protect\hyperlink{ref-wandrag17}{Wandrag et al., 2017})}, which while complicated \emph{(\protect\hyperlink{ref-muller-landau09}{Muller-Landau and Hardesty, 2009})}, can also correlate with simpler plant traits like height and seed mass \emph{(\protect\hyperlink{ref-tamme14}{Tamme et al., 2014}; \protect\hyperlink{ref-thomson11}{Thomson et al., 2011})}.
 
-Properties of the existing tree community also depend on land-use history and previous management \emph{(\protect\hyperlink{ref-omeja12}{Omeja et al., 2012})} including plantation use for timber production, which historically has favored tree taxa that tend to pioneering, or be faster-growing, have lower wood densities, and be less shade-tolerant \emph{(\protect\hyperlink{ref-tabarelli08}{Tabarelli et al., 2008})}.
-Legacy effects from management like intensive timber planting could in theory delay or result in non-linear changes between successional stages \emph{(\protect\hyperlink{ref-albrich20}{Albrich et al., 2020}; \protect\hyperlink{ref-gough21}{Gough et al., 2021})}, which would make future management more uncertain, unlike more sustainable thinning practices and agroforestry \emph{(\protect\hyperlink{ref-lefland18}{Lefland et al., 2018})}.
-Overall, while edge effects near degraded habitat edges are often negative, meta-population \emph{(\protect\hyperlink{ref-levins79}{Levins, 1979})} and -community \emph{(\protect\hyperlink{ref-leibold04}{Leibold et al., 2004}; \protect\hyperlink{ref-warren15}{Warren et al., 2015})} theories highlight dispersal as a key process for offsetting extinction debt and thus maintaining biodiversity.
-Near primary forest, dispersal may facilitate secondary forest regeneration, and help explain relatively high biodiversity compared to adjacent stands that can be found in agroforests \emph{(\protect\hyperlink{ref-oliveira-neto17}{Oliveira-Neto et al., 2017})}, forests affected by logging \emph{(\protect\hyperlink{ref-clark12}{Clark and Covey, 2012}; \protect\hyperlink{ref-edwards14}{Edwards et al., 2014})}, and timber plantations \emph{(\protect\hyperlink{ref-pryde15}{Pryde et al., 2015})}.
+Additionally, properties of the tropical forest carbon stores and tree community depend heavily on land-use history and previous management \emph{(\protect\hyperlink{ref-omeja12}{Omeja et al., 2012}; \protect\hyperlink{ref-pyles22}{Pyles et al., 2022})}.
+Overall, legacy effects from management like intensive timber planting could potentially delay or result in non-linear changes between successional stages \emph{(\protect\hyperlink{ref-albrich20}{Albrich et al., 2020}; \protect\hyperlink{ref-gough21}{Gough et al., 2021})}, which would make future management more uncertain, unlike more sustainable thinning practices and agroforestry \emph{(\protect\hyperlink{ref-lefland18}{Lefland et al., 2018})}.
+In some cases, the leftover timber stands could provide additional shade, which would not be available in a clear-cut harvested timber plantation, and this could help more shade-tolerant taxa establish and recruit better.
+Overall, edge effects near degraded habitat edges are often studied as negative, but conceptual influences from meta-population \emph{(\protect\hyperlink{ref-levins79}{Levins, 1979})} and meta-community \emph{(\protect\hyperlink{ref-leibold04}{Leibold et al., 2004}; \protect\hyperlink{ref-warren15}{Warren et al., 2015})} theories do highlight dispersal as a key process for offsetting extinction debt and thus maintaining biodiversity, thereby potentially making particular edge effects, specifically from adjacent intact forests, actually beneficial for regeneration plantation forest parcels.
+Taken together, these ideas suggest that edge effects specifically from adjacent intact primary forests, potentially via shade-tolerant dispersal and performance, may indeed facilitate plantation forest regeneration.
+Such a beneficial edge effect may ultimately help explain relatively high biodiversity, compared to adjacent stands, found in agroforests \emph{(\protect\hyperlink{ref-oliveira-neto17}{Oliveira-Neto et al., 2017})}, forests affected by logging \emph{(\protect\hyperlink{ref-clark12}{Clark and Covey, 2012}; \protect\hyperlink{ref-edwards14}{Edwards et al., 2014})}, and timber plantations \emph{(\protect\hyperlink{ref-pryde15}{Pryde et al., 2015})}.
 
-This study reports tree regeneration patterns of an abandoned wet neotropical timber plantation, highlighting edge effects from an adjacent primary forest.
-We hypothesized that remaining timber trees would mediate forest regrowth by maintaining shade that would suppress less shade-tolerant pioneer tree taxa and allow for more tree diversity closer to the primary forest edge.
-Accordingly, we predicted that further from the primary forest edge, canopy light availability would increase, while stand biomass and diversity would decrease.
+Influenced by restoration ecology for forest management, this study reports tree regeneration patterns of an abandoned wet neotropical timber plantation, focused on highlighting edge effects from an adjacent primary forest on overall stand properties, tree community composition, and limited functional trait recovery.
+We hypothesized that remaining timber trees would mediate forest regrowth by maintaining shade, which would suppress less shade-tolerant pioneer tree taxa, and in turn facilitate more shade-tolerant tree taxa, ultimately allowing for more tree diversity within the regenerating plantation forest in parts that were closer to the richer edge of the intact unmanaged forest.
+Accordingly, we predicted more specifically that further from the intact primary forest edge, canopy light availability would increase, while stand biomass and diversity would decrease.
 
 \hypertarget{methods}{%
 \section{Methods}\label{methods}}
@@ -186,58 +206,63 @@ Accordingly, we predicted that further from the primary forest edge, canopy ligh
 
 This study was done in a neotropical lowland rainforest on the Osa Peninsula at the Greg Gund Conservation Center (approx. 8.3778176, -83.2935426) near the Piro Biological Station run by Osa Conservation.
 (See \emph{Taylor et al. (\protect\hyperlink{ref-taylor15}{2015})} for a broader ecosystem description of the region.)
-The study site was a regrowing 20 ha timber plantation of \emph{Bombacompsis quinata} abandoned in \textasciitilde1990 after the vulnerably dry-adapted species from the Guanacaste region \emph{(\protect\hyperlink{ref-hulshof20}{Hulshof and Powers, 2020}; \protect\hyperlink{ref-perezcordero02}{Pérez Cordero and Kanninen, 2002})} grew poorly in very wet conditions.
+The study site was a regrowing 20 ha timber plantation of \emph{Bombacompsis quinata} abandoned in \textasciitilde1990 after the vulnerably dry-adapted species from the Guanacaste region
+\emph{(\protect\hyperlink{ref-hulshof20}{Hulshof and Powers, 2020})} grew poorly in very wet conditions.
 This focal secondary forest area was roughly triangular, surrounded by primary forest on the two S and NW sides (Fig \ref{fig:map}) and a wide service road on the third NE border, with primary forest beyond it.
 This census was done in 2013 during the rainy season months between June and August.
 
 \begin{figure}
 \centering
 \includegraphics{merge_files/figure-latex/map-1.pdf}
-\caption{\label{fig:map}Map of (a) conservation areas and (b) study site (c) showing plot design among distance strata, and focal plantation timber taxon (c) Bombacopsis quinata on Osa Peninsula, Costa Rica. Map image data © 2022 Osa Conservation, © 2009 Google. Map GIS data and photo credit: Max Villalobos, Nicholas Medina.}
+\caption{\label{fig:map}Map of (a) conservation areas and (b) study site (c) showing plot design with 50 m distance strata bins, and (d) focal plantation timber taxon Bombacopsis quinata on Osa Peninsula, Costa Rica. Map image data © 2022 Osa Conservation, © 2009 Google. Map GIS data and photo credit: Max Villalobos, Nicholas Medina.}
 \end{figure}
 
 \hypertarget{census-design}{%
 \subsection{Census design}\label{census-design}}
 
-Edge effects were studied by dividing the secondary forest area into six 50 m strata spanning 0 - 300 m away from the primary forest edge on the S and NW sides, going inward to the E (Fig \ref{fig:map}), using available GIS software (\emph{ArcGIS 10}, \url{esri.com}, and \emph{QGIS 2}, \url{qgis.org}).
+Edge effects were studied by dividing the secondary forest area into six discrete 50 m strata spanning 0 - 300 m away from the primary forest edge on the S and NW sides, going inward to the E (Fig \ref{fig:map}), using available GIS software (\emph{ArcGIS 10}, \url{esri.com}, and \emph{QGIS 2}, \url{qgis.org}).
+Note that in line with hypotheses about facilitated regeneration, this study most often referred to the ``edge'' of the regenerating plantation forest as the part closest to the unmanaged intact forest, where trees may be dispersing from, rather than the open service road, which is usually the focus of other studies evaluating effects of forest fragmentation and degradation, rather than restoration.
 Each stratum was randomly filled with a number of 21 x 21 m square census plots oriented N that was proportional to its area--specifically with 11, eight, five, three, two, and one plot(s), respectively, as distance away from primary forest increased.
+Given the small size of the last 300 m distance stratum (Fig \ref{fig:map}c), one census plot was sufficiently representative.
+All data were later centered at the stratum level, so resulting trends were not weighted by distance bands with more plots in them.
 The total area of the 30 census plots equaled \textasciitilde1 ha or 5\% of the total secondary forest stand area, which is comparable to similar studies \emph{(\protect\hyperlink{ref-onyekwelu16}{Onyekwelu and Olabiwonnu, 2016})}.
 
 \hypertarget{plot-measurements}{%
 \subsection{Plot measurements}\label{plot-measurements}}
 
 Light reaching the forest floor was measured at the center of each plot at chest height using a densiometer \emph{(Forestry Suppliers, Inc.)}, as an average of four readings taken facing each cardinal direction.
-
 The slope of the forest floor was measured using a rangefinder \emph{(Bushnell, Forestry Suppliers, Inc)} to measure the distance the diagonal between two plot corners and triangulate the observation angle.
 
-The diameter of all stems \textgreater10 cm wide were recorded in each census plot, totaling over 1,000 trees.
-Following common forestry guidelines, in cases where a tree split into 2 or more stems below breast height, each stem was measured separately; in cases where a stem split only above breast height, it was measured as a single stem.
+The diameter of all stems \textgreater10 cm wide were recorded in each census plot, totaling over 1,243 trees.
+In cases where a tree split into 2 or more stems below breast height, each stem was measured separately; in cases where a stem split only above breast height, it was measured as a single stem.
 Tree height was recorded by measuring distances to both the crown and the stem at chest height \emph{(\textasciitilde2.7 m)} using a rangefinder \emph{(Bushnell, Forestry Suppliers, Inc.)} and triangulating the missing side length.
-Taxa were identified with localized knowledge and field guides matching common names to Latin binomials,
-and trait information was gathered from the literature.
 
-Aboveground biomass (AGB) was estimated per stem using the allometric equation by \emph{Chave et al. (\protect\hyperlink{ref-chave15}{2015})}.
+Taxa were identified by local experts,
+and trait information was gathered from the literature.
+Final traits used only included successional stage (early, late) and main dispersal mode (wind, animal, water), which were ultimately matched to species using only the specific dataset made available by \emph{Werden et al. (\protect\hyperlink{ref-werden20}{2020})}.
+Otherwise wood tissue carbon was matched to genera with the GLOWCAD database \emph{(\protect\hyperlink{ref-doraisami22}{Doraisami et al., 2022})}, given high taxonomic alignment of this trait above the species level \emph{(\protect\hyperlink{ref-chave06}{Chave et al., 2006})}.
+
+Aboveground biomass (AGB) was calculated at the individual stem level using the allometric equation by \emph{Chave et al. (\protect\hyperlink{ref-chave15}{2015})} and later centered at the plot level.
 The equation specifically for wet tropical forests was used, which has performed slightly better compared to both pantropical and previous other models by \emph{(\protect\hyperlink{ref-alvarez12}{Alvarez et al., 2012}; Chave et al.; \protect\hyperlink{ref-chave05}{2005}; \protect\hyperlink{ref-ngomanda14}{Ngomanda et al., 2014})}.
-The equation version with height was used since height was accessibly measurable and has shown improved local accuracy \emph{(\protect\hyperlink{ref-domke12}{Domke et al., 2012}; \protect\hyperlink{ref-khan20}{Khan et al., 2020})}.
+The equation version with height was used since height was accessibly measurable and has shown improved local accuracy \emph{(\protect\hyperlink{ref-domke12}{Domke et al., 2012})}.
 Wood density (or specific gravity) values when available also improve biomass estimates even more than height \emph{(\protect\hyperlink{ref-vanbreugel11}{Van Breugel et al., 2011})}.
 The equation used was:
 \[{AGB} = 0.0673 (p D^2 H)^{0.976}\]
 with diameter \emph{D} in cm, height \emph{H} in m, and wood density or specific gravity \emph{p} in \emph{g cm\textsuperscript{-3}}.
 DBHs and heights were measured in the field and wood densities were extracted from available literature.
-Where information was limited, values at the genus level were used and unrepresented taxa were assumed to be \emph{0.58} following World Agroforestry Database guidelines \href{worldagroforestry.org}{(worldagroforestry.org)}.
-Original values found and recorded were later updated to modern values using the pipeline developed in the \emph{BIOMASS} 2.1.8 R software package by \emph{Réjou-Méchain et al. (\protect\hyperlink{ref-rejou-mechain17}{2017})}, which notably replaced unknown wood density values with plot-level averages instead during stem biomass calculations.
-
-Traits including successional stage and main dispersal mode were matched to species with \emph{Werden et al. (\protect\hyperlink{ref-werden20}{2020})} data, and wood tissue carbon matched to genera with the GLOWCAD database \emph{(\protect\hyperlink{ref-doraisami22}{Doraisami et al., 2022})} given high alignment at species levels \emph{(\protect\hyperlink{ref-chave06}{Chave et al., 2006})}.
+Values were updated using the pipeline developed in the \emph{BIOMASS} 2.1.8 R software package by \emph{Réjou-Méchain et al. (\protect\hyperlink{ref-rejou-mechain17}{2017})}, which notably replaced unknown wood density values with plot-level averages instead during stem biomass calculations.
 
 \hypertarget{statistical-analyses}{%
 \subsection{Statistical analyses}\label{statistical-analyses}}
 
-For all response variables, data were analyzed using plot or distance strata medians and subject to linear regression with distance to forest edge as the only independent variable, after assumption checks of residual normality with Shapiro-Wilk tests and equal variance with Levene tests, using base R version 4.2.0 (2022-04-22) and \emph{rstatix} 0.7.0 package functions \emph{(\protect\hyperlink{ref-base}{R Core Team, 2022})}.
+For all response variables, data were centered using medians at the plot level, followed by the discrete distance stratum level where applicable, which was most cases and indicated on figures.
+These medians were then subjected to linear regression with distance to intact forest edge as the only independent variable, which was binned discretely according to census design.
+All regressions were run through assumption checks of residual normality with Shapiro-Wilk tests and equal variance with Levene tests, using base R version 4.2.1 (2022-06-23) and \emph{rstatix} 0.7.0 package functions \emph{(\protect\hyperlink{ref-base}{R Core Team, 2022})}.
 
-Non-linear regressions were run using the function \emph{poly()} in the base R package \emph{stats} 4.2.0,
+Non-linear regressions were run using the function \emph{poly()} in the base R package \emph{stats} 4.2.1,
 which was only ultimately recorded for stem density and richness variables, based on significance and explained variance over linear models.
-All trees censused were included in each analysis including unidentified taxa that represented a single group in taxa-specific analyses.
-Community analysis and ordination was done as a PERMANOVA with the \emph{adonis()} function from the \emph{vegan} 2.6.2 R package \emph{(\protect\hyperlink{ref-dixon03}{Dixon, 2003})}.
+All trees censused were included in each analysis, including unidentified taxa, which were only grouped together for taxonomic analyses and whose exclusion did not affect observed patterns shown in results.
+Community analysis and ordination was done as a PERMANOVA with the \emph{adonis()} function from the \emph{vegan} 2.6.4 R package \emph{(\protect\hyperlink{ref-dixon03}{Dixon, 2003})}.
 Data and code were organized with R packages \emph{here} \emph{(\protect\hyperlink{ref-here}{Müller, 2020})}, \emph{bookdown} \emph{(\protect\hyperlink{ref-bookdown2022}{Xie, 2022})}, and \emph{grateful} \emph{(\protect\hyperlink{ref-grateful}{Rodríguez-Sánchez et al., 2022})}, and internal pipeline \emph{oir} \emph{(\protect\hyperlink{ref-softwareMedina22oir}{Medina, 2022a})}, and are stored at \url{github.com/nmedina17/osa} \emph{(\protect\hyperlink{ref-softwareMedina22osa}{Medina, 2022b})}.
 
 \hypertarget{results}{%
@@ -262,7 +287,7 @@ while tissue carbon did not change significantly with distance to forest edge
 Plot stem density also tended to increase significantly
 (p=0.03)
 with edge distance but more strongly and non-linearly, by
-\textasciitilde17.4 ±
+\textasciitilde17.39 ±
 3.4 per m
 (Fig \ref{fig:biomass}d).
 At this stage in forest regeneration, canopy light availability did not tend to change with distance from forest edge
@@ -275,6 +300,7 @@ per g plot wood density,
 yet only explaining
 \emph{\textasciitilde4} \% of variance
 (Fig \ref{fig:biomass}f).
+Additional variables tested, including maximum height and diameter, tended to stay the same across the edge gradient \emph{(data not shown)}.
 
 \begin{verbatim}
 ##   |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%
@@ -283,7 +309,7 @@ yet only explaining
 \begin{figure}
 \centering
 \includegraphics{merge_files/figure-latex/biomass-1.pdf}
-\caption{\label{fig:biomass} Plot stand properties, namely (a) biomass, (b) wood density, (c) tissue carbon, (d) stem density, (d) canopy light availability, all across distance to primary forest edge gradient, and (e) diversity against wood density. Grey dots show individual tree values, white dots with border show plot medians, black dots show distance strata medians ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians.}
+\caption{\label{fig:biomass} Plot stand properties, namely (a) biomass, (b) wood density, (c) tissue carbon, (d) stem density, (e) canopy light availability, all across distance to primary forest edge gradient, and (f) diversity against wood density. Grey dots show individual tree values, white dots with border show plot medians, black dots show plot-level data binned into discrete distance strata medians ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians.}
 \end{figure}
 
 \hypertarget{composition}{%
@@ -295,7 +321,7 @@ Diversity significantly
 (p=0.003)
 decreased non-linearly by
 \textasciitilde0.5 ±
-0 per m
+0.029 per m
 as distance to primary forest edge increased,
 which explained
 \emph{73}\% of variance
@@ -305,14 +331,14 @@ while in contrast taxonomic richness increased slightly
 (p=0.067)
 and linearly
 by
-0 ±
-0 per m
+0.0063 ±
+0.0025 per m
 and had \emph{16}\% variance explained
 among distance strata
 (Fig \ref{fig:taxa}b).
 Community composition and beta diversity also changed significantly
 (p=0.01) with
-11.4\%
+11.38\%
 variance among distance strata explained by distance to primary forest edge,
 and the first two principal components explaining
 47\% and
@@ -325,10 +351,11 @@ Key abundant taxa \emph{Vochysia} and \emph{Ficus} showed different responses --
 while \emph{Ficus} decreased marginally significantly
 (p=0.088)
 and linearly by
--62.6 ±
-25.1 per m
+-62.62 ±
+25.05 per m
 with \emph{\textasciitilde20}\% variance among distance strata explained
 (Fig \ref{fig:taxa}f).
+Other taxa did not change significantly with distance to intact forest \emph{(data not shown)}.
 
 \begin{verbatim}
 ##   |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%
@@ -337,7 +364,7 @@ with \emph{\textasciitilde20}\% variance among distance strata explained
 \begin{figure}
 \centering
 \includegraphics{merge_files/figure-latex/taxa-1.pdf}
-\caption{\label{fig:taxa} Taxonomic composition measures including (a) diversity, (b) richness, (c) overall biomass, (d) beta diversity, and (e,f) biomass of key taxa. White and colored dots with border show plot medians, black dots show distance strata medians ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians.}
+\caption{\label{fig:taxa} Taxonomic composition measures including (a) diversity, (b) richness, (c) overall biomass, (d) beta diversity, and (e,f) biomass of key taxa. White and colored dots with border show plot medians, black dots show plot-level data binned into discrete distance strata medians ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians.}
 \end{figure}
 
 \hypertarget{traits}{%
@@ -349,8 +376,8 @@ Taxa associated with both early and late successional stages decreased significa
 (p=0.042)
 and curvi-linearly
 by
-\textasciitilde{} -584.9 ±
-167.3 kg per m
+\textasciitilde{} -584.87 ±
+167.31 kg per m
 with distance to edge explaining
 \emph{\textasciitilde14}\% variance
 among distance strata medians
@@ -367,38 +394,46 @@ Dispersal modes did not show consistent trends in biomass with increasing distan
 \begin{figure}
 \centering
 \includegraphics{merge_files/figure-latex/traits-1.pdf}
-\caption{\label{fig:traits} Functional regeneration based on taxa associations with (a) successional stages and (b) primary dispersal mode. Grey dots show individual tree values, white dots with border show plot medians, black dots show distance strata medians ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians.}
+\caption{\label{fig:traits} Functional regeneration based on taxa associations with (a) successional stages and (b) primary dispersal mode. Grey dots show individual tree values, white dots with border show plot medians, black dots show plot-level data binned into discrete distance strata medians ± 1 absolute deviation, and black lines show linear or non-linear regression through strata medians.}
 \end{figure}
 
 \hypertarget{discussion}{%
 \section{Discussion}\label{discussion}}
 
 This study found significant edge effects on secondary forest stand wood and stem density, tree diversity and community composition, and some functional traits, yet not on overall aboveground biomass.
-It was initially hypothesized that community composition would vary with distance to edge, favoring more shade-tolerant taxa, due to light availability and dispersal potential,
-and the evidence presented here supported edge effects on community composition and biomass of taxa associated with both early- and late-successional stages, but without detectable roles for light availability or general dispersal mode.
+It was initially hypothesized that community composition would vary with distance to high-quality intact primary forest edge, favoring more shade-tolerant taxa, due to light availability and dispersal potential.
+The evidence presented here supported edge effects on community composition and biomass of taxa that were associated with both early- and late-successional stages, but without detectable roles for light availability or general dispersal mode.
 Accordingly, this suggests that edge effects do significantly change humid tropical forest community taxonomic and functional composition, but primarily due to factors other than light competition or dispersal limitation \emph{(\protect\hyperlink{ref-krishnadas20}{Krishnadas et al., 2020})}, and also suggests that aboveground biomass and even low taxonomic richness are resilient after a decade of regeneration.
 
 Aboveground biomass storage is a key global ecosystem function and service, but edge effects tend to release about one-third of carbon lost from tropical deforestation \emph{(\protect\hyperlink{ref-brinck17}{Brinck et al., 2017})}, with more expected in the future \emph{(\protect\hyperlink{ref-mitchard18}{Mitchard, 2018})}.
 Management has been found to explain most of biomass variation among tropical forest fragments, and wood density \textasciitilde10\% biomass variation \emph{(\protect\hyperlink{ref-pyles22}{Pyles et al., 2022})}.
-This study adds that management via edge effects can also mediate \textasciitilde10\% of wood density variation without affecting local biomass, although median stem wood density can describe regional spatial biomass patterns \emph{(\protect\hyperlink{ref-baker04}{Baker et al., 2004})}.
+Additionally, this study contributes that management via edge effects can also mediate \textasciitilde10\% of wood density variation without affecting local biomass, although median stem wood density can describe regional spatial biomass patterns \emph{(\protect\hyperlink{ref-baker04}{Baker et al., 2004})}.
 In this study, wood density and richness values may have been pulled down by early-successional clonal trees closest to the primary forest, which tend to have lower wood densities, lowering carbon \emph{(\protect\hyperlink{ref-gonzalezj98}{Gonzalez J and Fisher, 1998}; \protect\hyperlink{ref-pyles22}{Pyles et al., 2022})}, and increasing nearby stem density.
-Lower wood density can also reflect more dynamic forest stands \emph{(\protect\hyperlink{ref-malhi06}{Malhi et al., 2006})} with higher tree turnover, a consequence of forest fragmentation \emph{(\protect\hyperlink{ref-nascimento04a}{Nascimento and Laurance, 2004})} together with other global change drivers \emph{(\protect\hyperlink{ref-laurance14}{Laurance et al., 2014})}, as well as may reflect possible differences in soil fertility \emph{(\protect\hyperlink{ref-malhi04}{Malhi et al., 2004})}, all of which represent possible future research directions, beyond strictly neutral dynamics \emph{(\protect\hyperlink{ref-terborgh95}{Terborgh et al., 1995})}.
+Lower wood density can also reflect more dynamic forest stands \emph{(\protect\hyperlink{ref-malhi06}{Malhi et al., 2006})} with higher tree turnover, a consequence of forest fragmentation \emph{(\protect\hyperlink{ref-nascimento04}{Nascimento and Laurance, 2004})} together with other global change drivers \emph{(\protect\hyperlink{ref-laurance14}{Laurance et al., 2014})}, and may also reflect possible differences in soil fertility \emph{(\protect\hyperlink{ref-malhi04}{Malhi et al., 2004})}, all of which represent possible future research directions, beyond strictly neutral dynamics \emph{(\protect\hyperlink{ref-terborgh95}{Terborgh et al., 1995})}.
 Furthermore, light availability at the plot level did not affect biomass storage, but instead, individual light gaps may be more important for biomass dynamics \emph{(\protect\hyperlink{ref-chazdon84}{Chazdon and Fetcher, 1984})}.
 
-Edge effects have been shown in other studies to lower both forest biomass and change community composition \emph{(\protect\hyperlink{ref-anderson22}{Anderson et al., 2022})}, and this study adds that the decline in diversity can be rapid and non-linear across edge gradients, along with supporting the likelihood of lasting changes to community composition.
+Edge effects have been shown in other studies not only to lower forest biomass, but also to change community composition \emph{(\protect\hyperlink{ref-anderson22}{Anderson et al., 2022})}, and in addition this study contributes that the decline in diversity can be rapid and non-linear across edge gradients, along with supporting the likelihood of changes to community composition lasting decades.
 This rapid loss of diversity across the edge gradient may be in part due to existing higher yet constant levels of shade limiting shade-intolerant seedling recruitment and/or performance, together with insufficient time for slower-growing shade-tolerant taxa to accumulate significant amounts of biomass.
-Another possible factor may be overall short dispersal kernels, in part due to higher fungal pathogen pressure under higher constant shade, also increasing tree mortality.
-Decomposing compositional changes into key specific taxa, while the biomass of the most abundant taxon \emph{Vochysia} was resilient to edge effects in this study, that of the key taxon for frugivores like birds and bats \emph{Ficus} was significantly lowered across the secondary forest edge, pointing to potentially different responses of biomass and food web associated ecosystem services.
-Community composition also tended to show lower variance across the edge gradient, although this effect cannot be confirmed here given the uneven sampling that accounted for variable forest area at different distances from edge.
+Another possible factor may be Janzen-Connell processes \emph{(\protect\hyperlink{ref-terborgh20}{Terborgh, 2020}; \protect\hyperlink{ref-wills06}{Wills, 2006})}, including conspecific negative density-dependence of seedling survival on basal area \emph{(\protect\hyperlink{ref-comita09}{Comita and Hubbell, 2009})}, as well as overall short dispersal kernels, whose effects can be mediated by shade \emph{(\protect\hyperlink{ref-comita14}{Comita et al., 2014})} and in part by higher fungal pathogen pressure near conspecifics \emph{(\protect\hyperlink{ref-jia20}{Jia et al., 2020})}.
+While both diversity and community composition changed significantly with distance to intact forest in this study, the biomass of most individual taxa, surprisingly, tended to stay the same along the edge gradient.
+This lack of significant individual taxon biomass responses along this edge gradient could be due to stochastic population factors affecting their biomass growth, perhaps widening variability.
+Regardless of the underlying process, these absent patterns do also help explain the lack of pattern observed with plot biomass overall across the edge gradient.
+This explanation points to future studies of taxon-specific responses to edge effects, to help explain overall forest biomass dynamics near habitat edge.
+More specifically here, the biomass of the most abundant taxon \emph{Vochysia} was resilient to edge effects in this study, however, that of the taxon \emph{Ficus}, key for frugivores like birds and bats \emph{(\protect\hyperlink{ref-cottee-jones15}{Cottee-Jones et al., 2015}; \protect\hyperlink{ref-rafidison20}{Rafidison et al., 2020})}, was significantly lowered across the secondary forest edge, pointing to potentially different responses of biomass and local food web associated ecosystem services.
+Results suggest that this pattern is specific to this locally widespread \emph{Ficus} genus, since the overall biomass of other animal-dispersed taxa as a whole tended to stay the same across the edge gradient studied here.
+Interestingly, community composition also appeared to show lower variance across the edge gradient, although testing this observation in a forested area with evenly distributed area among distance strata bands would provide additional support.
 
 Characterizing community composition by functional traits is also increasingly studied \emph{(\protect\hyperlink{ref-kearney21}{Kearney et al., 2021})}, but less so regarding edge effects.
 A study in Madagascar found lower phylogenetic diversity closer to degraded forest edge, but no change in aboveground biomass \emph{(\protect\hyperlink{ref-razafindratsima18}{Razafindratsima et al., 2018})}.
-These results parallel in showing lower taxonomic diversity, although biomass specifically of taxa assoociated with both early- and late-successional stages also decreased with away from primary forest edge.
-This result by successional stage can be explained by slightly lower habitat quality inferred near exposed habitat edges near roads, and accordingly relatively higher habitat quality near closed primary forest edge.
-While lower biomass of succession-agnostic taxa further from primary forest edge appears consistent with dispersal kernels, the lack of pattern by broad dispersal mode limits this explanation here, yet could be further tested by measuring taxon-specific dispersal kernels.
+This study presents similar results in showing lower taxonomic diversity, although biomass specifically of taxa associated with both early- and late-successional stages also decreased with away from primary forest edge.
+This resulting decrease by successional stage could be explained by slightly lower habitat quality inferred near exposed habitat edges near roads, and accordingly relatively higher habitat quality near closed primary forest edge \emph{(\protect\hyperlink{ref-ries04}{Ries et al., 2004})}.
+While lower biomass of succession-agnostic taxa further from primary forest edge appears consistent with the expected forms of group-level dispersal kernels as an explanation, the lack of significant pattern along forest edge when binned by broad dispersal mode that was found here may limit the potential of seed dispersal to explain biomass trends.
+Instead, seedling survival may have been more important than dispersal in accumulating basal area and biomass \emph{(\protect\hyperlink{ref-comita09}{Comita and Hubbell, 2009})}.
+For taxa primarily dispersed by animals instead of wind, this could be explained by potentially broader local limitations in animal dispersal activity or abundance.
+Additionally, the potential for nearby dispersal to facilitate reforestation could be tested in future studies by measuring taxon-specific dispersal kernels.
 
 Overall, this study highlights how abandoned wet tropical timber plantation can regenerate in alongside fragmented forests.
-Results support related syntheses that biomass and taxonomic richness often regrows relatively quickly,
+Results support related syntheses that tropical forest biomass and taxonomic richness often regrows relatively quickly \emph{(\protect\hyperlink{ref-davies21a}{Davies et al., 2021})},
 while taxonomic composition recovers much more slowly, if not diverging altogether \emph{(\protect\hyperlink{ref-norden15}{Norden et al., 2015})}.
 These findings can suggest that more efficient reforestation could more actively target biodiversity conservation over other resilient functions like carbon storage, and that restoration efforts could include focusing activities like native species planting efforts on degraded habitat edges away from primary forest edges, and investing less in areas closer to existing forest edges, where recruitment may already maintain diversity levels.
 As forests continue to become fragmented \emph{(\protect\hyperlink{ref-haddad15}{Haddad et al., 2015})}, understanding how to work with natural regeneration patterns around edge effects will likely become increasingly important.
@@ -409,34 +444,35 @@ As forests continue to become fragmented \emph{(\protect\hyperlink{ref-haddad15}
 \section*{Funding}\label{funding}}
 \addcontentsline{toc}{section}{Funding}
 
-This study was funded by Brandeis University Hiatt Career Center World of Work Fellowship.
-
-\hypertarget{declaration-of-interests}{%
-\section*{Declaration of interests}\label{declaration-of-interests}}
-\addcontentsline{toc}{section}{Declaration of interests}
-
-Authors declare no conflicts of interest.
+This study was funded by Brandeis University Hiatt Career Center World of Work Fellowship and in part by University of Michigan Rackham Merit Fellowship.
 
 \hypertarget{acknowledgements}{%
 \section*{Acknowledgements}\label{acknowledgements}}
 \addcontentsline{toc}{section}{Acknowledgements}
 
 Thanks to
-Professor Dan Perlman for initial networking;
---\textgreater{}
-concurrent Osa Conservation general manager Manuel Ramirez and Piro Biological Station staff Juan Carlos Cruz Díaz, Annia Barrantes, Larry Villalobos, Hansel Vargas, and visitors for field support;
-peer James Fifer for discussion of early draft;
+Brandeis University Professor Dan Perlman for initial networking;
+Lehigh University Professor Don Morris
+and student Erin Lau
+for field support;
+concurrent Osa Conservation general manager Manuel Ramírez and Piro Biological Station staff Juan Carlos Cruz Díaz, Annia Barrantes, Larry Villalobos, Hansel Vargas, and visitors for field support;
+James Fifer, Chau Ho, and Michelle Spicer for review of early draft content;
 and Luisa Valdez for translation assistance.
+
+Authors declare no conflicts of interest.
 
 \hypertarget{author-contributions}{%
 \section*{Author contributions}\label{author-contributions}}
 \addcontentsline{toc}{section}{Author contributions}
 
-MV and AJ contributed to study conceptualization, administration, and supervision;
+NM, MV and AJ contributed to study conceptualization, design, administration, and supervision;
 NM and AJ contributed to funding acquisition;
-NM contributed to data collection;
+NM, AM, and EC,
+contributed to key data collection;
 NM and MV contributed to data analysis;
 NM wrote initial draft and later revisions.
+
+Study team includes and recognizes diverse and historically-excluded contributions to research; with bilingual communication efforts completed and pending.
 
 \hypertarget{data-statement}{%
 \section*{Data statement}\label{data-statement}}
@@ -497,6 +533,18 @@ Chazdon, R.L., Fetcher, N., 1984. Photosynthetic {Light Environments} in a {Lowl
 \leavevmode\vadjust pre{\hypertarget{ref-clark12}{}}%
 Clark, J.A., Covey, K.R., 2012. Tree species richness and the logging of natural forests: {A} meta-analysis. Forest Ecology and Management 276, 146--153. \url{https://doi.org/10.1016/j.foreco.2012.04.001}
 
+\leavevmode\vadjust pre{\hypertarget{ref-comita09}{}}%
+Comita, L.S., Hubbell, S.P., 2009. Local neighborhood and species' shade tolerance influence survival in a diverse seedling bank. Ecology 90, 328--334. \url{https://doi.org/10.1890/08-0451.1}
+
+\leavevmode\vadjust pre{\hypertarget{ref-comita14}{}}%
+Comita, L.S., Queenborough, S.A., Murphy, S.J., Eck, J.L., Xu, K., Krishnadas, M., Beckman, N., Zhu, Y., 2014. Testing predictions of the {Janzen}\textendash{{Connell}} hypothesis: A meta-analysis of experimental evidence for distance- and density-dependent seed and seedling survival. Journal of Ecology 102, 845--856. \url{https://doi.org/10.1111/1365-2745.12232}
+
+\leavevmode\vadjust pre{\hypertarget{ref-cottee-jones15}{}}%
+Cottee-Jones, H.E.W., Bajpai, O., Chaudhary, L.B., Whittaker, R.J., 2015. Isolated {Ficus} trees deliver dual conservation and development benefits in a rural landscape. Ambio 44, 678--684. \url{https://doi.org/10.1007/s13280-015-0645-9}
+
+\leavevmode\vadjust pre{\hypertarget{ref-davies21a}{}}%
+Davies, S.J., Abiem, I., Abu Salim, K., Aguilar, S., Allen, D., Alonso, A., Anderson-Teixeira, K., Andrade, A., Arellano, G., Ashton, P.S., Baker, P.J., Baker, M.E., Baltzer, J.L., Basset, Y., Bissiengou, P., Bohlman, S., Bourg, N.A., Brockelman, W.Y., Bunyavejchewin, S., Burslem, D.F.R.P., Cao, M., Cárdenas, D., Chang, L.-W., Chang-Yang, C.-H., Chao, K.-J., Chao, W.-C., Chapman, H., Chen, Y.-Y., Chisholm, R.A., Chu, C., Chuyong, G., Clay, K., Comita, L.S., Condit, R., Cordell, S., Dattaraja, H.S., de Oliveira, A.A., den Ouden, J., Detto, M., Dick, C., Du, X., Duque, Á., Ediriweera, S., Ellis, E.C., Obiang, N.L.E., Esufali, S., Ewango, C.E.N., Fernando, E.S., Filip, J., Fischer, G.A., Foster, R., Giambelluca, T., Giardina, C., Gilbert, G.S., Gonzalez-Akre, E., Gunatilleke, I.A.U.N., Gunatilleke, C.V.S., Hao, Z., Hau, B.C.H., He, F., Ni, H., Howe, R.W., Hubbell, S.P., Huth, A., Inman-Narahari, F., Itoh, A., Janík, D., Jansen, P.A., Jiang, M., Johnson, D.J., Jones, F.A., Kanzaki, M., Kenfack, D., Kiratiprayoon, S., Král, K., Krizel, L., Lao, S., Larson, A.J., Li, Y., Li, X., Litton, C.M., Liu, Y., Liu, S., Lum, S.K.Y., Luskin, M.S., Lutz, J.A., Luu, H.T., Ma, K., Makana, J.-R., Malhi, Y., Martin, A., McCarthy, C., McMahon, S.M., McShea, W.J., Memiaghe, H., Mi, X., Mitre, D., Mohamad, M., Monks, L., Muller-Landau, H.C., Musili, P.M., Myers, J.A., Nathalang, A., Ngo, K.M., Norden, N., Novotny, V., O'Brien, M.J., Orwig, D., Ostertag, R., Papathanassiou, K., Parker, G.G., Pérez, R., Perfecto, I., Phillips, R.P., Pongpattananurak, N., Pretzsch, H., Ren, H., Reynolds, G., Rodriguez, L.J., Russo, S.E., Sack, L., Sang, W., Shue, J., Singh, A., Song, G.-Z.M., Sukumar, R., Sun, I.-F., Suresh, H.S., Swenson, N.G., Tan, S., Thomas, S.C., Thomas, D., Thompson, J., Turner, B.L., Uowolo, A., Uriarte, M., Valencia, R., Vandermeer, J., Vicentini, A., Visser, M., Vrska, T., Wang, X., Wang, X., Weiblen, G.D., Whitfeld, T.J.S., Wolf, A., Wright, S.J., Xu, H., Yao, T.L., Yap, S.L., Ye, W., Yu, M., Zhang, M., Zhu, D., Zhu, L., Zimmerman, J.K., Zuleta, D., 2021. {ForestGEO}: {Understanding} forest diversity and dynamics through a global observatory network. Biological Conservation 253, 108907. \url{https://doi.org/10.1016/j.biocon.2020.108907}
+
 \leavevmode\vadjust pre{\hypertarget{ref-depinto20}{}}%
 De Pinto, A., Cenacchi, N., Robertson, R., Kwon, H.-Y., Thomas, T., Koo, J., Begeladze, S., Kumar, C., 2020. The {Role} of {Crop Production} in the {Forest Landscape Restoration Approach}\textemdash{{Assessing}} the {Potential Benefits} of {Meeting} the {Bonn Challenge}. Frontiers in Sustainable Food Systems 4, 61. \url{https://doi.org/10.3389/fsufs.2020.00061}
 
@@ -536,11 +584,11 @@ Hubau, W., Lewis, S.L., Phillips, O.L., Affum-Baffoe, K., Beeckman, H., Cuní-Sa
 \leavevmode\vadjust pre{\hypertarget{ref-hulshof20}{}}%
 Hulshof, C.M., Powers, J.S., 2020. Tropical forest composition and function across space and time: {Insights} from diverse gradients in {Área} de {Conservación Guanacaste}. Biotropica 52, 1065--1075. \url{https://doi.org/10.1111/btp.12689}
 
+\leavevmode\vadjust pre{\hypertarget{ref-jia20}{}}%
+Jia, S., Wang, X., Yuan, Z., Lin, F., Ye, J., Lin, G., Hao, Z., Bagchi, R., 2020. Tree species traits affect which natural enemies drive the {Janzen-Connell} effect in a temperate forest. Nature Communications 11, 286. \url{https://doi.org/10.1038/s41467-019-14140-y}
+
 \leavevmode\vadjust pre{\hypertarget{ref-kearney21}{}}%
 Kearney, M.R., Jusup, M., McGeoch, M.A., Kooijman, S.A.L.M., Chown, S.L., 2021. Where do functional traits come from? {The} role of theory and models. Functional Ecology 35, 1385--1396. \url{https://doi.org/10.1111/1365-2435.13829}
-
-\leavevmode\vadjust pre{\hypertarget{ref-khan20}{}}%
-Khan, M.N.I., Islam, M.R., Rahman, A., Azad, M.S., Mollick, A.S., Kamruzzaman, M., Sadath, M.N., Feroz, S.M., Rakkibu, M.G., Knohl, A., 2020. Allometric relationships of stand level carbon stocks to basal area, tree height and wood density of nine tree species in {Bangladesh}. Global Ecology and Conservation 22. \url{https://doi.org/10.1016/j.gecco.2020.e01025}
 
 \leavevmode\vadjust pre{\hypertarget{ref-krishnadas20}{}}%
 Krishnadas, M., Agarwal, K., Comita, L.S., 2020. Edge effects alter the role of fungi and insects in mediating functional composition and diversity of seedling recruits in a fragmented tropical forest. Annals of Botany 126, 1181--1191. \url{https://doi.org/10.1093/aob/mcaa138}
@@ -587,7 +635,7 @@ Müller, K., 2020. \href{https://CRAN.R-project.org/package=here}{Here: A simple
 \leavevmode\vadjust pre{\hypertarget{ref-muller-landau09}{}}%
 Muller-Landau, H.C., Hardesty, B.D., 2009. Seed dispersal of woody plants in tropical forests: Concepts, examples and future directions. Biotic Interactions in the Tropics 267--309. \url{https://doi.org/10.1017/cbo9780511541971.012}
 
-\leavevmode\vadjust pre{\hypertarget{ref-nascimento04a}{}}%
+\leavevmode\vadjust pre{\hypertarget{ref-nascimento04}{}}%
 Nascimento, H.E.M., Laurance, W.F., 2004. {BIOMASS DYNAMICS IN AMAZONIAN FOREST FRAGMENTS}. Ecological Applications 14, 127--138. \url{https://doi.org/10.1890/01-6003}
 
 \leavevmode\vadjust pre{\hypertarget{ref-ngomanda14}{}}%
@@ -611,9 +659,6 @@ Ordway, E.M., Asner, G.P., 2020. Carbon declines along tropical forest edges cor
 \leavevmode\vadjust pre{\hypertarget{ref-pan13}{}}%
 Pan, Y., Birdsey, R.A., Phillips, O.L., Jackson, R.B., 2013. The {Structure}, {Distribution}, and {Biomass} of the {World}'s {Forests}. Annual Review of Ecology, Evolution, and Systematics 44, 593--622. \url{https://doi.org/10.1146/annurev-ecolsys-110512-135914}
 
-\leavevmode\vadjust pre{\hypertarget{ref-perezcordero02}{}}%
-Pérez Cordero, L.D., Kanninen, M., 2002. Wood specific gravity and aboveground biomass of {Bombacopsis} quinata plantations in {Costa Rica}. Forest Ecology and Management 165, 1--9. \url{https://doi.org/10.1016/S0378-1127(01)00627-2}
-
 \leavevmode\vadjust pre{\hypertarget{ref-perfecto09}{}}%
 Perfecto, I., Vandermeer, J.H., Wright, A.L., 2009. Nature's matrix: Linking agriculture, conservation and food sovereignty. {Earthscan}, {London ; Sterling, VA}.
 
@@ -635,11 +680,17 @@ Pyron, R.A., Mooers, A.Ø., 2022. The normative postulate problem: {Hidden} valu
 \leavevmode\vadjust pre{\hypertarget{ref-base}{}}%
 R Core Team, 2022. \href{https://www.R-project.org/}{R: A language and environment for statistical computing}. R Foundation for Statistical Computing, Vienna, Austria.
 
+\leavevmode\vadjust pre{\hypertarget{ref-rafidison20}{}}%
+Rafidison, V.M., Rakouth, B., Carrière, S.M., Kjellberg, F., Aumeeruddy-Thomas, Y., 2020. Multiple values of isolated and clusters of {Ficus} tree species protected by {Betsileo} farmers in rural landscapes in {Madagascar}: Implications for biodiversity conservation. Biodiversity and Conservation 29, 1027--1058. \url{https://doi.org/10.1007/s10531-019-01924-3}
+
 \leavevmode\vadjust pre{\hypertarget{ref-razafindratsima18}{}}%
 Razafindratsima, O.H., Brown, K.A., Carvalho, F., Johnson, S.E., Wright, P.C., Dunham, A.E., 2018. Edge effects on components of diversity and above-ground biomass in a tropical rainforest. Journal of Applied Ecology 55, 977--985. \url{https://doi.org/10.1111/1365-2664.12985}
 
 \leavevmode\vadjust pre{\hypertarget{ref-rejou-mechain17}{}}%
 Réjou-Méchain, M., Tanguy, A., Piponiot, C., Chave, J., Hérault, B., 2017. {BIOMASS} : An {R} package for estimating above-ground biomass and its uncertainty in tropical forests. Methods in Ecology and Evolution 8, 1163--1167. \url{https://doi.org/10.1111/2041-210X.12753}
+
+\leavevmode\vadjust pre{\hypertarget{ref-ries04}{}}%
+Ries, L., Fletcher, R.J., Battin, J., Sisk, T.D., 2004. Ecological {Responses} to {Habitat Edges}: {Mechanisms}, {Models}, and {Variability Explained}. Annual Review of Ecology, Evolution, and Systematics 35, 491--522. \url{https://doi.org/10.1146/annurev.ecolsys.35.112202.130148}
 
 \leavevmode\vadjust pre{\hypertarget{ref-grateful}{}}%
 Rodríguez-Sánchez, F., Jackson, C.P., Hutchins, S.D., 2022. \href{https://github.com/Pakillo/grateful}{Grateful: Facilitate citation of r packages}.
@@ -662,11 +713,17 @@ Tamme, R., Götzenberger, L., Zobel, M., Bullock, J.M., Hooftman, D.A.P., Kaasik
 \leavevmode\vadjust pre{\hypertarget{ref-taylor15}{}}%
 Taylor, P., Asner, G., Dahlin, K., Anderson, C., Knapp, D., Martin, R., Mascaro, J., Chazdon, R., Cole, R., Wanek, W., Hofhansl, F., Malavassi, E., Vilchez-Alvarado, B., Townsend, A., 2015. Landscape-{Scale Controls} on {Aboveground Forest Carbon Stocks} on the {Osa Peninsula}, {Costa Rica}. PLOS ONE 10, e0126748. \url{https://doi.org/10.1371/journal.pone.0126748}
 
+\leavevmode\vadjust pre{\hypertarget{ref-terborgh20}{}}%
+Terborgh, J., 2020. At 50, {Janzen}\textendash{{Connell Has Come}} of {Age}. BioScience 70, 1082--1092. \url{https://doi.org/10.1093/biosci/biaa110}
+
 \leavevmode\vadjust pre{\hypertarget{ref-terborgh95}{}}%
 Terborgh, J., Foster, R.B., Percy, N.V., 1995. Tropical {Tree Communities}: {A Test} of the {Nonequilibrium Hypothesis}. Ecology 77, 561--567. \url{https://doi.org/10.2307/2265630}
 
 \leavevmode\vadjust pre{\hypertarget{ref-thomson11}{}}%
 Thomson, F.J., Moles, A.T., Auld, T.D., Kingsford, R.T., 2011. Seed dispersal distance is more strongly correlated with plant height than with seed mass. Journal of Ecology 99, 1299--1307. \url{https://doi.org/10.1111/j.1365-2745.2011.01867.x}
+
+\leavevmode\vadjust pre{\hypertarget{ref-tymen16}{}}%
+Tymen, B., Réjou-Méchain, M., Dalling, J.W., Fauset, S., Feldpausch, T.R., Norden, N., Phillips, O.L., Turner, B.L., Viers, J., Chave, J., 2016. Evidence for arrested succession in a liana-infested {Amazonian} forest. Journal of Ecology 104, 149--159. \url{https://doi.org/10.1111/1365-2745.12504}
 
 \leavevmode\vadjust pre{\hypertarget{ref-vanbreugel11}{}}%
 Van Breugel, M., Ransijn, J., Craven, D., Bongers, F., Hall, J.S., 2011. Estimating carbon stock in secondary forests: {Decisions} and uncertainties associated with allometric biomass models. Forest Ecology and Management 262, 1648--1657. \url{https://doi.org/10.1016/j.foreco.2011.07.018}
@@ -679,6 +736,9 @@ Warren, B.H., Simberloff, D., Ricklefs, R.E., Aguilée, R., Condamine, F.L., Gra
 
 \leavevmode\vadjust pre{\hypertarget{ref-werden20}{}}%
 Werden, L.K., Holl, K.D., Rosales, J.A., Sylvester, J.M., Zahawi, R.A., 2020. Effects of dispersal- and niche-based factors on tree recruitment in tropical wet forest restoration. Ecological Applications 30. \url{https://doi.org/10.1002/eap.2139}
+
+\leavevmode\vadjust pre{\hypertarget{ref-wills06}{}}%
+Wills, C., 2006. Nonrandom {Processes Maintain Diversity} in {Tropical Forests}. Science 311, 527--531. \url{https://doi.org/10.1126/science.1117715}
 
 \leavevmode\vadjust pre{\hypertarget{ref-bookdown2022}{}}%
 Xie, Y., 2022. \href{https://github.com/rstudio/bookdown}{Bookdown: Authoring books and technical documents with r markdown}.

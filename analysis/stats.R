@@ -41,7 +41,7 @@ spTbl <- cleanData %>% filter(!is.na(dist | plot)) %>%
     values_fn = length,
     values_fill = 0
     ) %>%
-  select(!`-`) %>% #sig?
+  # select(!`-`) %>% #sig?
   mutate("entropy" = diversity(.))
 
 
@@ -100,20 +100,24 @@ plotVarsTbl <- cleanDataPlotVars |>
       )
   ) #%>%
 
-  # hist parms
+  #hist,parms--SAVE-LATER
   # mutate(
   #   "sys" = varData %>%
   #     modify(
-  #       ~ .x %>%
+  #       ~ .x %>% group_by(dist) %>%
+  #         pull(kg17) %>% # mainMetric, maybe make variable later
+  #         hist(breaks = c(10000000, 1000000, 100000, 1000, 100, 10, 1), #log10
+  #                   plot = F) %>%
+  #         {.$counts + 1} #%>% as_tibble_col("g")
+  #     ),
+  #   varData = varData %>% modify(~.x %>% mutate(g = g))
+  # ) %>%
   #
-  #         pull(
-  #           median
-  #         ) %>%
-  #         hist(
-  #           .,
-  #           plot = F
-  #         )
-  #     )
+  # rename("g" = sys) #%>%
+  # oir::runFits()
+
+
+
     # "varData0" = cleanData %>%
     #   tidyr::nest("varData0" = everything())#,
     # "sys0" = {
@@ -123,7 +127,6 @@ plotVarsTbl <- cleanDataPlotVars |>
     # } %>% tidyr::nest("sys0" = everything())
     #   # where(colnames(.x$varData0) == .x$variable))
   # )
-
 
 
 # ordinate ----

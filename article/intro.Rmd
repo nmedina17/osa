@@ -44,7 +44,7 @@ Modern secondary forest regeneration is often affected by edge effects, or chang
 About 70% of all forests have been estimated to be within a km of their edge *[@haddad15]*, resulting in tropical forests having been estimated to lose ~22% aboveground carbon along heavily-managed edges >100m, in part due to shortening trees and lighter leaf mass *[@ordway20]*.
 Effects of degraded edges have historically favored tree taxa that tend to be pioneering, or be faster-growing, have lower wood densities, and be less shade-tolerant *[@tabarelli08]*.
 Accordingly, secondary forest wood density may also tend to decrease near degraded habitat edges.
-Additionally, the dominance of pioneering taxa could lead to arrested succession *[@tymen15]*, which further delays the recruitment of shade-tolerant taxa, as well as associated increases in aboveground biomass, in part due to their higher survival with increasing shade, and tendency toward relatively higher wood densities.
+Additionally, the dominance of pioneering taxa could lead to arrested succession *[@tymen16]*, which further delays the recruitment of shade-tolerant taxa, as well as associated increases in aboveground biomass, in part due to their higher survival with increasing shade, and tendency toward relatively higher wood densities.
 However, arrested succession could be prevented, and even typical succession accelerated, if intact forests that were adjacent to regenerating plantations functioned as contributing reservoirs of seeds from later-successional tree taxa.
 In this case, having a habitat edge near a relatively rich intact forest, rather than near a relatively degraded open area, would instead be an asset to regenerating plantation forest patches, rather than a detriment.
 Overall, edge effects ultimately have the potential to shape community composition, in part based on the local dispersal kernel patterns of existing taxa *[@wandrag17]*, which while complicated *[@muller-landau09]*, can also correlate with simpler plant traits like height and seed mass *[@thomson11; @tamme14]*.
@@ -67,7 +67,7 @@ Influenced by restoration ecology for forest management, this study reports tree
 <!-- **- what is new in this study?** -->
 We hypothesized that remaining timber trees would mediate forest regrowth by maintaining shade, which would suppress less shade-tolerant pioneer tree taxa, and in turn facilitate more shade-tolerant tree taxa, ultimately allowing for more tree diversity within the regenerating plantation forest in parts that were closer to the richer edge of the intact unmanaged forest.
     <!-- - supported by inference?! -->
-Accordingly, we predicted more specifically that further from the primary forest edge, canopy light availability would increase, while stand biomass and diversity would decrease.
+Accordingly, we predicted more specifically that further from the intact primary forest edge, canopy light availability would increase, while stand biomass and diversity would decrease.
 
 <!-- - conceptual hypothesis diagram? -->
 

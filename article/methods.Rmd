@@ -28,11 +28,13 @@ knitr::opts_chunk$set(echo = F, warning = F, message = F); here::i_am("article/m
 
 This study was done in a neotropical lowland rainforest on the Osa Peninsula at the Greg Gund Conservation Center (approx. `r RgoogleMaps::getGeoCode("cabo matapalo")`) near the Piro Biological Station run by Osa Conservation.
 (See *@taylor15* for a broader ecosystem description of the region.)
-The study site was a regrowing 20 ha timber plantation of *Bombacompsis quinata* abandoned in ~1990 after the vulnerably dry-adapted species from the Guanacaste region *[@perezcordero02; @hulshof20]* grew poorly in very wet conditions.
+The study site was a regrowing 20 ha timber plantation of *Bombacompsis quinata* abandoned in ~1990 after the vulnerably dry-adapted species from the Guanacaste region
+<!-- @perezcordero02; -->
+*[@hulshof20]* grew poorly in very wet conditions.
 This focal secondary forest area was roughly triangular, surrounded by primary forest on the two S and NW sides (Fig \@ref(fig:map)) and a wide service road on the third NE border, with primary forest beyond it.
 This census was done in 2013 during the rainy season months between June and August.
 
-```{r map, fig.width=4.5, fig.height=4.5, fig.cap="Map of (a) conservation areas and (b) study site (c) showing plot design with 50 m distance strata bins, and (d) focal plantation timber taxon Bombacopsis quinata on Osa Peninsula, Costa Rica. Map image data © 2022 Osa Conservation, © 2009 Google. Map GIS data and photo credit: Max Villalobos, Nicholas Medina."}
+```{r map, fig.width=5, fig.height=5, fig.cap="Map of (a) conservation areas and (b) study site (c) showing plot design with 50 m distance strata bins, and (d) focal plantation timber taxon Bombacopsis quinata on Osa Peninsula, Costa Rica. Map image data © 2022 Osa Conservation, © 2009 Google. Map GIS data and photo credit: Max Villalobos, Nicholas Medina."}
 source(here::here("figs/map.R"));
 sitePlot
 # knitr::include_graphics(here::here("figs/figmap.png"))
@@ -66,19 +68,11 @@ The total area of the 30 census plots equaled ~1 ha or 5% of the total secondary
 
 
 Light reaching the forest floor was measured at the center of each plot at chest height using a densiometer *(Forestry Suppliers, Inc.)*, as an average of four readings taken facing each cardinal direction.
-
-
-
 <!-- ### [Topography] -->
-
-
-
 The slope of the forest floor was measured using a rangefinder *(Bushnell, Forestry Suppliers, Inc)* to measure the distance the diagonal between two plot corners and triangulate the observation angle.
 
 
-
 <!-- ### Tree measurements -->
-
 
 
 The diameter of all stems >10 cm wide were recorded in each census plot, totaling over 1,243 trees.
@@ -99,7 +93,8 @@ Otherwise wood tissue carbon was matched to genera with the GLOWCAD database *[@
 
 Aboveground biomass (AGB) was calculated at the individual stem level using the allometric equation by *@chave15* and later centered at the plot level.
 The equation specifically for wet tropical forests was used, which has performed slightly better compared to both pantropical and previous other models by *@chave05 [@alvarez12; @ngomanda14]*.
-The equation version with height was used since height was accessibly measurable and has shown improved local accuracy *[@domke12; @khan20]*.
+The equation version with height was used since height was accessibly measurable and has shown improved local accuracy *[@domke12]*.
+<!-- [@khan20]* -->
 Wood density (or specific gravity) values when available also improve biomass estimates even more than height *[@vanbreugel11]*.
 The equation used was: 
 $${AGB} = 0.0673 (p D^2 H)^{0.976}$$ 
