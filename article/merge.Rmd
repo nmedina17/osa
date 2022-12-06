@@ -123,7 +123,8 @@ shade
 \
 \
   
-***Correspondence**: Nicholas Medina, nmedina@umich.edu
+***Correspondence**:  
+Nicholas Medina, nmedina@umich.edu, https://orcid.org/0000-0001-5465-3988
 
 
 \newpage
@@ -203,7 +204,7 @@ Study team includes and recognizes diverse and historically-excluded contributio
 
 # Data statement{-}
 
-Code stored at [github.com/nmedina17/osa](github.com/nmedin17/osa) *[@softwareMedina22osa]*.
+Code stored at [github.com/nmedina17/osa](github.com/nmedin17/osa) *[@softwareMedina22osa]* with data stored at [https://doi.org/10.5281/zenodo.7406478](https://doi.org/10.5281/zenodo.7406478) *[@medina22osaDataRaw]*.
 
 
 \newpage
