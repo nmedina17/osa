@@ -124,7 +124,7 @@ shade
 \
   
 ***Correspondence**:  
-Nicholas Medina, nmedina@umich.edu, https://orcid.org/0000-0001-5465-3988
+Nicholas Medina, nmedina@umich.edu, [https://orcid.org/0000-0001-5465-3988](https://orcid.org/0000-0001-5465-3988)
 
 
 \newpage
