@@ -105,10 +105,6 @@ header-includes:
   - \usepackage{setspace}\doublespace
 ---
 
-
-<!-- journals: J [Appl] Ecol (6.8), J [Appl] Veg Sci (3.4), Basic Appl Ecol (3.7), Biotropica (2.5), J Forestry Res (2.2), J Trop Ecol (1.3), Small-scale Forestry (1.3), Eco Evo -->
-
-
 \
 \
 
